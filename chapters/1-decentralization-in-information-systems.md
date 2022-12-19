@@ -227,9 +227,251 @@ can provide a system with high efficiency. One of the striking examples is that 
 and fast. Suppose a vulnerability is detected in a centralized accounting system, whereas developers discover the source 
 of the issue and release an appropriate update. Eventually, all the users who wish to continue using a system have to 
 update their software. In this case, the entire process of updating occurs fast and as painless as possible.
+
 > **Operation of traditional payment systems**
 > * Database is stored on the main server (cloud or cluster)
 > * System is managed in a centralized way 
 > * Users send requests to the system for conducting transactions
+
+However, there are certain risks that must be considered when operating in such a system. One of them is the probability 
+of complete system failure. In certain situations (turn-off of the primary power source, negligence of staff maintaining 
+a system), key components of a system can fail and lead to an overall loss of its operability. The application of the 
+redundancy principle could help but not in all cases.
+
+Security is a key component of any system. Regardless of the security measures, centralized systems are yet more 
+vulnerable—they are potentially more exposed to various attacks. Decentralized systems, however, have their key 
+components spread physically and usually with a different software. It provides a higher level of protection from 
+targeted attacks, which are always aimed at a single point.
+
+Traditional financial systems work on the principle that the internal accounting system is secured by means of brute 
+force—the protection is only at the perimeter [12]. If you overcome external protection, the database becomes 
+vulnerable. This is where the drawbacks lie. Additionally, this approach does not allow users to personally verify their 
+data. A user can only send a request to the server that will process it and send back a response (Fig. 1.5).
+
+[Picture 1.5] - Traditional systems protection principle
+
+For a regular user, the internal structure of such a system is non-transparent, and there are no guarantees of its work 
+as expected. Also, centralized systems have a single point of failure (Figure 1.5). On the plus side, however, there's 
+always an entity that is responsible in case of failure or service denial.
+
+If there is a need to verify the correctness of the final database state, you would have to do it manually or using some 
+automation tools; it is very likely that this check will be performed by an auditor. Until 2009 all accounting systems 
+had been operating by this principle.
+
+Another disadvantage is the possibility to censor user actions in the system. A centralized system implies complete and 
+unconditional trust by its users to the owner and the managers of the system. The issue with such an approach is that 
+the owner of a system is able to violate the protocol rules at any moment.
+
+### Application of a decentralized approach
+Historically, people have been designing systems that simulate a familiar model of social relations, and therefore most 
+of the systems we use are based on the hierarchical principle. There is a considerable number of areas where the 
+hierarchical model is well-suited, yet this approach is also related to a number of potential problems.
+
+> **Problems that decentralization solves** 
+>> * Possibility of censorship
+>> * Presence of a single point of failure
+>> * Necessity to trust the owner of a system
+
+> **_NOTE:_** *Censorship in the context of an accounting system means that a particular party (e.g., organization that 
+> maintains the system) is able to perform activities such as blocking user accounts and modifying transaction data at 
+> its own discretion.*
+
+Generally, decentralization is possible when it comes to the interaction of parties with equal rights. Over the last 
+twenty years, there has been active implementation of systems where the interaction of participants is peer-to-peer 
+(p2p). It has been made possible to perform a number of processes in a decentralized way while maintaining a sufficient 
+level of automation. However, the social aspect of decentralization is much more complex than the technological one, 
+which results in a relatively low adoption rate.
+
+### Principles of designing decentralized systems
+We will list the main aspects of decentralization associated with new technological and organizational risks in order to 
+analyze the features and challenges in designing, developing, and using decentralized systems.
+
+> **Basic principles of decentralization**
+>> * Ultimate increase in the level of independence of each system component
+>> * Maintaining the balance between performance and resources applied
+>> * Preserving the integrity of the entire system [13]
+
+> **_NOTE:_** *Further in the text, we will mostly use the term "data" when referring to a sequence of bytes that can be 
+> transmitted, stored, and processed in automated systems and the term "information" when referring to some knowledge 
+> that people exchange with each other or remember.*
+
+First of all, let’s focus on the ways users interact within systems. In Figure 1.6, you can see three approaches, which 
+fundamentally differ in their design [14].
+
+[Picture 1.6] - Types of systems based on how users interact
+
+Popular social networks are a good example of *centralized* systems. Their main disadvantage is that any issue in their 
+databases will affect all the users.
+
+The global banking system may be viewed as *decentralized* since it consists of a number of local centers. For instance, 
+if something goes wrong in a bank in Argentina, this will not lead to delays in the payments of banks in Germany.
+
+*Distributed* systems include mesh networks and communication systems based on hand-held radios, where the system is 
+supported only by the users' devices, and disabling one device will not affect other users.
+
+> **_NOTE:_** *We will use the general term, a decentralized system, to describe the last two types of systems 
+> (decentralized and distributed) since both cases imply the absence of a central node.*
+
+An *accounting system* is a particular case of an automated data processing system which manages a ledger and the 
+decision-making process about its updating (Fig. 1.7).
+
+[Picture 1.7] - Accounting system architecture
+
+A *centralized accounting system* includes a database, mechanisms for updating it, and a management center responsible for 
+maintaining its operation. A management center may not always provide a sufficient level of security of data processing 
+and reliability of decision-making.
+
+In the search for better solutions, the world has come up with an idea to decentralize accounting systems.
+
+### Base architecture of decentralized systems
+A *decentralized* system is a particular case of a system which uses the *mechanism for reaching consensus* (agreement) 
+between independent parties on how to process and update a shared database (ledger) (Fig. 1.8). All parties have their 
+own copies of a database, while the *consensus-reaching algorithm* ensures that all copies are securely synchronized. 
+Instead of a single authorized party (*management center*), multiple independent parties (*validators*) take part in 
+matching the final state of all copies.
+
+[Picture 1.8] - Decentralized accounting system architecture
+
+### Advantages of decentralized systems
+In general, a decentralized system assumes that participants exchange information directly, using p2p protocols, and 
+independently store the required data. To do this, they run special software that supports the required p2p protocol of 
+a particular decentralized system. In decentralized systems such as cryptocurrencies, all participants are assumed 
+(ideally) to store copies of the same database and update them using the consensus algorithms.
+
+> * Fault tolerance 
+> * Independence from individual control 
+> * Trustless (no need to trust a third party)
+> * Permissionless (free use)
+> * Persistence (immutability of the final state of a database)
+> * Liveness (appending records is guaranteed)
+> * Formality of protocols 
+
+Let's start with *fault tolerance*. This feature means that a system remains operable even after one or several its 
+components fail. In the traditional client-server architecture, the main efforts are directed at protecting a central 
+server. If an attacker takes over the server and gains access to a database, he will be able to rewrite the database for 
+his own purposes. Though, an attacker cannot critically harm a decentralized system by taking over one server and 
+gaining access to its database.
+
+The principles of decentralization have been successfully used for many years in aviation and space technology as well 
+as in the operation of high-precision computing systems. When working in unstable conditions, it is very important that 
+the basic systems (e.g. navigation, communications, controls, etc.) work reliably; in such cases, builders of the system 
+apply *redundancy*. 
+
+*Independence from individual control* is another distinguishing feature of a decentralized system. If there are a large 
+number of independent participants, then no one, not even a very interested party, can influence the decision-making in 
+their own favor.
+
+The *trustless* property implies that there is no need to trust the system concerning the aspects of storing and 
+processing data. Trustlessness can be achieved through a large number of independent participants that make some joint 
+decisions. As the number of independent participants (who are strangers to each other) increases, the probability that 
+they collude with each other reduces.
+
+The *permissionless* property means that the system is available for anyone without any additional permissions (no 
+hierarchy of permissioned roles). Anyone can read and write data, perform an audit and participate in decision-making. 
+However, the permissionless property may also be a disadvantage in certain cases. For example, in cases when decisions 
+must be taken by particular experts instead of the public, or when validators are involved in the processing of 
+confidential or sensitive data.
+
+*Persistence* allows the system to maintain the final state of its database immutable (even if the entire network fails 
+its operation for a moment).
+
+*Liveness* is a property which ensures that appending of records will definitely take place if all honest participants 
+want to perform it.
+
+*Formality* of protocols presumes that all participants come up with the same decision if they strictly follow a 
+specified algorithm.
+
+> **_NOTE:_** *The advantages of decentralized systems depend on their decentralization level.*
+
+### Limitations of decentralized systems
+
+Along with obvious advantages, which, in fact, depend on the level of decentralization of a system, decentralized 
+systems have their limitations.
+
+First of all is the absence of any kind of support service. This means that if a transaction is accidentally sent to the 
+network, there will be no one to ask for the refund.
+
+The second limitation is the increased cost of maintaining the system. In a number of systems, their databases only grow 
+over time, so their participants have to dedicate more and more resources for data storing and processing.
+
+The third limitation is that some functions, which are available in centralized systems, are hard to implement on 
+decentralized platforms. Some examples are getting statistics, or the system state report at a specific point in time.
+
+### Factors slowing down the implementation of decentralized systems
+The reliability and stability of the system grow with its level of decentralization, however, the very process of 
+decentralization usually meets the following difficulties and limitations.
+
+> * Difficulties in updating the protocol 
+> * Responsibility issue 
+> * Difficulties in monetization of development 
+> * High hardware requirements 
+> * Scalability issue
+
+*Difficulties in updating the protocol*. The primary difficulty is that the proposed protocol update requires the 
+majority of active users (nodes) to support it (Fig. 1.9). For this, a party proposing an update should prove the 
+importance of its implementation to others—which is by itself a difficult task. For example, the transition from IPv4 to 
+IPv6 required updates on all devices from all manufacturers, which took much more time than the developers planned. In 
+this case, the benefit for users is not noticed immediately.
+
+[Picture 1.9] - Protocol update issue 
+
+*Responsibility issue*. Decisions in decentralized systems are the result of consent by the majority of participants. 
+There is no single participant who could cancel a decision that was taken mutually by all participants and impose their 
+own. However, if a user becomes a victim of scammers (due to his own carelessness), there is no one to complain to, no 
+responsible party, and no guarantees (Fig. 1.10). Here, we are talking about taking risks which are very difficult to 
+measure.
+
+[Picture 1.10] - Responsibility issue 
+
+*Difficulties in monetization of development*. It is generally easier to monetize a centralized rather than a 
+decentralized system. This is because centralized systems are more manageable and can use legal enforcement since there 
+is a designated representative to appear in court. In such circumstances, it is easier to build a business model and 
+monetize the project. For example, in decentralized systems, it is quite difficult to introduce effective filtering and 
+ensure copyright protection. Therefore, it is difficult for protocol developers of decentralized systems to make a 
+profit from their projects.
+
+*Scalability issue*. If the case is about a distributed decision-making mechanism, all participants are required to 
+communicate and reach agreement. The capacity of the system decreases with the growth of a number of validators in it 
+(Fig. 1.11).
+
+[Picture 1.11] - Example of how capacity decreases as the number of users grows
+
+Decentralized systems also have to *store redundant data amounts and to meet high hardware requirements*. 
+These limitations will be considered in detail further (see 5.3).
+
+There are *other issues* that can harm the distribution of decentralized software. For example, network traffic can 
+easily be filtered by an Internet service provider. Since a significant amount of software is distributed through 
+centralized services such as Microsoft, App Store, Google Play, GitHub etc., they can implement censorship based on 
+their own decision (Fig. 1.12). Therefore, applications may be rejected so much as deleted (even in quite a long time 
+after the successful release).
+
+[Picture 1.12] - Provider services capable of censoring software for operating in decentralized systems
+
+### Summary
+Comparing decentralization with centralization is not always a good idea since everything depends on purpose, 
+requirements, and operating conditions.
+
+A centralized system has a number of useful properties: it is easier to manage and usually operated by a known, 
+responsible entity; decisions are generally made quickly, so you can build almost any particular business model and 
+stick to it, which gives you an advantage when monetizing.
+
+The main goal of decentralization is to implement properties that allow users to interact with each other effectively 
+and reliably in a situation where they don’t trust some central party or intermediary. Cryptographic algorithms, 
+protocols for mutual decision-making, and blockchain technology have become the building bricks for a truly transparent, 
+secure, and sufficiently effective decentralized accounting system.
+
+**Common myths**
+
+*The amount of resources required for the maintenance of a decentralized system constantly increases over time.*
+
+The required resource amount increases only if a decentralized system must preserve the ability to audit the entire 
+change history of its shared database. In such a case, what will definitely increase are only disk space requirements, 
+while computational power requirements may remain unchanged.
+
+
+
+
+
+
 
 
