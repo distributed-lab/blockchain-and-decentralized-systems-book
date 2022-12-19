@@ -227,9 +227,9 @@ can provide a system with high efficiency. One of the striking examples is that 
 and fast. Suppose a vulnerability is detected in a centralized accounting system, whereas developers discover the source 
 of the issue and release an appropriate update. Eventually, all the users who wish to continue using a system have to 
 update their software. In this case, the entire process of updating occurs fast and as painless as possible.
-> Operation of traditional payment systems
->> * Database is stored on the main server (cloud or cluster)
->> * System is managed in a centralized way 
->> * Users send requests to the system for conducting transactions
+> **Operation of traditional payment systems**
+> * Database is stored on the main server (cloud or cluster)
+> * System is managed in a centralized way 
+> * Users send requests to the system for conducting transactions
 
 
