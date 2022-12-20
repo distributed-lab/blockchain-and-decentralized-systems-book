@@ -889,6 +889,417 @@ between all the addresses, but it is difficult to identify who is behind each bi
 transaction history of a specific user. For a better understanding of privacy in Bitcoin, let's draw an analogy with 
 traditional financial systems (Table 2.1).
 
+Table 2.1 — Traditional payment systems as compared to Bitcoin
+
+|Traditional payment systems| Bitcoin |
+|---|---------|
+|Non-transparent transaction history and limited access to audit|Transparent transaction history; all changes are evident to everyone|
+|Centralized decision-making regarding the changes (governance)|Collective update of the database with transactions|
+|Requires full trust to the responsible organization|Trust only to mathematics and the program code|
+|Possibility to restore access to an account |Self-management of access keys|
+|Risk of bankruptcy and denial of service|Each user bears all the risks related to their keys and software management |
+
+The bank performs the functions of storing and accounting. It takes money and valuables from customers and in return 
+promises to remember how much and to whom it owes. Generally, this approach is convenient since access to money is 
+performed through a credit card, and only the owner has the ability to use this card. This saves the customer from 
+having to carry cash, while the lost cards can easily be replaced. However, the funds of customers are managed entirely 
+by the bank and subject to their centralized decisions. A client will have problems in the case that a bank "forgets" 
+how much and to whom it owes the money. This is a typical example of a *trade-off between convenience and security*.
+
+Before Bitcoin, this was essentially the only possible way to perform financial relations in society—users could only 
+hope that banks would fulfill their obligations. So banks have been increasingly adopting this specific scheme and over 
+time developed a lot of different implementations of it.
+
+Bitcoin operates without the restrictions common in traditional payment systems. In one sense, Bitcoin complements an 
+established financial system; it shows that alternative architectures are possible as well as an accounting system 
+without any managing authority.
+
+**Common myths**
+
+*The creator of Bitcoin can change the currency rules or steal users' coins.*
+
+This is not true. The creator of Bitcoin has the same capabilities as other users.
+
+*To send and receive payments in Bitcoin, you need to register.*
+
+In Bitcoin, there is no database of registered users and no decision-making center. Each transaction is validated 
+separately, and anyone can verify a digital signature. Typically, centralized systems use session authentication, which 
+means that once a user is verified, he does not need to redo this process for each next action. Meanwhile, in Bitcoin, 
+a user is assumed to generate a new address for each new payment.
+
+**Frequently asked questions**
+
+*– What does the bitcoin coin look like?*
+
+Bitcoin coins do not have a physical representation but are defined abstractly. This abstract concept quite clearly 
+indicates the properties of the digital currency because the shared database has the record of all actions performed in 
+it—the need for physical coins is simply absent.
+
+*– What happens if a transaction is disputed in court, and it orders the transaction to be canceled?*
+
+There is no any global jurisdiction on Bitcoin, as there is no law which rules over the open source protocol. Since 
+decisions in Bitcoin are taken in a decentralized way through a consensus, a single action will not affect the overall 
+state of the database. The court, of course, can decide to cancel the transaction but most likely will not be able to 
+implement it. The only exception is the case in which the majority of participants would support the court order. 
+Though, such an arbitrage practice can hardly be imagined nowadays.
+
+## 2.5 Confirmation of transactions in Bitcoin
+
+We have mentioned heretofore that Bitcoin can work reliably, given the anonymity of participants and the potential 
+presence of an unknown number of cybercriminals. In this section, we will try to describe in detail how it is made 
+possible. In addition, we will explain the issues related to full confirmation of transactions (namely, how the 
+transaction that has been previously confirmed can then again become unconfirmed) and why finality of transactions is 
+impossible to attain in such conditions [28]. Also, we will consider how Bitcoin implements transaction confirmation in 
+a *decentralized environment*.
+
+Among the unconfirmed transactions, any user can choose those that she considers correct, then merge them into a block, 
+and offer this block to all other nodes of the network. The block can be adopted or rejected by the decision of the 
+majority. If the validator worked honestly, verified transactions according to the protocol rules, and proposed the next 
+block of the general chain earlier than the rest, then other honest participants will accept this block.
+
+### Creation of blocks with transactions
+A correctly created block consists of transactions that have not been confirmed in the previous blocks and do not 
+conflict with each other. Each block necessarily contains the hash value of the previous block. In this way, each new 
+block confirms that not only are the transactions in it correct and confirmed but also those in the previous blocks to 
+which it refers. Another feature is that the protocol regulates the difficulty of a resource-intensive problem for block 
+creation in such a way that a new block is added to the shared database on average every 10 minutes.
+
+> **A correctly created block**
+>> * Contains correct transactions which have not been confirmed so far and do not conflict with each other
+>> * Contains a hash value of the previous block
+
+How is the new block created? A particular user's computer stores the entire chain of blocks that has been verified 
+using the Bitcoin software and is considered correct. Coin transfers between users in the system occur constantly and 
+new unconfirmed transactions are propagated across all nodes. Each user's computer verifies the flow of new transactions 
+and adds to the block those it considers correct (Fig. 2.21). Further, it refers to the previous block by indicating a 
+link to it, so that the operational history is clear—and this is how the integrity of the database is maintained. Next, 
+the computer suggests its created block as a continuation of the general chain to other nodes.
+
+[Figure 2.21] - Verification of received transactions
+
+What happens if one user runs a network node that is cheating and offering fake blocks to other users? Even worse, what 
+if it were an organized group of intruders launching a whole botnet of modified network nodes that ignore the protocol 
+rules? How can honest users achieve consensus in such a situation? This obvious risk was solved by Satoshi Nakamoto, and 
+we will explain how, next.
+
+> **Consensus regarding the new transactions**
+>> * Any user can choose among the unconfirmed transactions the correct ones and add them to a block
+>> * The proposed block will be accepted or rejected by the decision of the majority of validators
+
+### Requirements for the new blocks
+The solution to the potential problem of fake blocks is as follows: the block is considered correct if a given amount of 
+computing resources was spent on its creation. This means that a user must provide a solution to a *resource-intensive 
+task* so that all other participants can check and accept his block.
+
+In this way, a bad actor cannot trick the rest of the participants with a large number of fake blocks. The task which 
+needs to be performed also addresses two other considerations: how frequently new blocks should appear and how to 
+prioritize the order in which blocks are added to the shared database. It works like this: everyone starts creating a 
+new block, yet only the one who solves the resource-intensive task first gets the right to offer his block to the rest.
+
+So, the more computational power a user has, the more often she becomes the first to finish the task. The probability 
+for a particular participant becoming the first to complete is the percentage of the total system computational 
+resources which a particular participant has.
+
+> **Block creation flow**
+>> * A solution to a resource-intensive task must be provided
+>> * The one who has solved the task first notifies everyone else by sending them his proposed block
+>> * The probability of being first depends on both the share of participant's resources as compared to all resources 
+>> * involved in the system and delays in data transmission channels
+
+That's how we come to the very essence of mining in Bitcoin, which in practice means the solving of a resource-intensive 
+task. This task is the same difficulty for all nodes in the network. Mining is essential for Bitcoin: honest users are 
+involved in mining to maintain the reliability of the transaction confirmation process. Those who control more computing 
+power create blocks more often. Let’s see how it works in the example below.
+
+### Principles of competition between users
+Suppose that there are 10 validators operating in the system. Each of them has one mining computer, which calculates the 
+same number of hash values per one unit of time (Fig. 2.22). Let's take this computing power as 1, and thus the total 
+power of the system will be 10. Each validator, accordingly, controls 1/10 of this capacity and has a 0.1 probability of 
+creating the block first.
+
+[Figure 2.22] - Accounting system consisting of ten validators
+
+Now, let's assume that Alice has noticed that mining appears to be more beneficial than ever before and therefore buys a 
+couple more computers (Fig. 2.23). After that, the total power of the system will be 12 (10 + 2 = 12). Her share is now 
+3/12 (or 1/4), while each other validator’s share remains equal to 1/12. Therefore, the probability that Alice finds the 
+new block first is 0.25, while for the other validators, it will be equal to 0.08(3). In this way, even with a smaller 
+fraction of processing power, a validator can nevertheless create the new block first, but the probability will be 
+lower.
+
+[Figure 2.23] - Network consisting of 10 validators, where one has acquired additional computational power
+
+However, what would happen if an attacker solves the resource-intensive task? What if his block contains transactions 
+which are correct in terms of the protocol, yet honest users will still disagree with this block? Sounds confusing, 
+right? After all, members of the network are anonymous and you cannot say in advance who is honest and who is malicious.
+
+### Propagation of blocks
+Before we answer how disagreements regarding a specific block are solved, let's observe how blocks are propagated over 
+the network. So, one of the network nodes finds a solution to the problem and creates a block. Then, a block is 
+broadcast to the network. That is, the node which has created a block transmits it to all the nodes to which it is 
+connected.
+
+After that, the nodes which have received a block verify whether or not it matches the protocol rules. There are two 
+possible scenarios. In the first one, a node agrees that the block is valid and can be added to the chain of blocks; it 
+saves a copy of the block and propagates it further over the network. What happens in the second scenario, in which a 
+node disagrees that a block received is valid?
+
+### Resolving disagreements
+To answer the above question, we will consider how disagreements regarding confirmation of transactions are solved. If 
+one participant does not agree with the block of the other, it is possible, according to the protocol rules, to create 
+an alternative block at the same height of the chain of blocks.
+
+> *Disagreed participant creates an alternative block*
+> *Alternative blocks can include the same transactions*
+> *Network nodes keep both alternative versions*
+> *Each of the participants creates blocks, extending one particular version of the chain*
+> *The longest chain "wins" (the one which has taken the largest amount of work to be created)*
+
+*The height of the block is the sequence number of the block in the chain starting from the genesis block* (Fig. 2.24).
+
+*Genesis block is a block with a zero height.*
+
+[Figure 2.24] - Numeration of blocks (0 – genesis block)
+
+Therefore, a disagreement between at least two participants may entail a situation where we have two blocks created both 
+referring to the same previous block. Such blocks can include the same or conflicting transactions. In this case, all 
+the other nodes of the network can save both suggested options if they consider both blocks correct, but each of them 
+should nevertheless determine which block is the basis to start creating the next one. In this way, different  
+participants make their choice, creating subsequent blocks on top of one of the existing blocks, and specifying a link 
+to it in their new block to extend a particular version of the chain. The rules of the protocol state that out of the 
+two correct versions, the priority should nevertheless be given to the one for the creation of which more computational 
+resources have been spent (i.e., the version which is supported by the majority of participants).
+
+The process of resolving disagreements can be shown schematically (Fig. 2.25). There is a network of nodes. These nodes, 
+in their local database copies, may store two alternative blocks at the same height. Let's say that users on the left 
+(in the figure) have decided to select the top block as the main one, and users on the right selected the bottom one. 
+Everyone continues to work on creating the next block supporting different versions.
+
+[Figure 2.25] - How disagreements in the Bitcoin network are resolved 
+
+Then, a certain user has created and proposed a new block that refers to the block which is at the top of the two 
+alternative blocks (according to the above figure). Her proposal was accepted by all other participants of the network. 
+Even those who originally chose another alternative block, have checked and accepted a longer chain (Fig. 2.26).
+
+[Figure 2.26] - Network state after disagreements are resolved
+
+This is the so-called *rule of the longest chain*. It says that among all chains a participant considers correct, he 
+must choose the longest one. In other words, he chooses the chain where  more work has been spent on its creation.
+
+Furthermore, an honest participant will switch to the longest chain only if it was created according to the protocol 
+rules. This means that anyone trying to disrupt the chain is prevented from violating the Bitcoin rules, even when 
+having a lot of computational power.
+
+### Concept of a full transaction confirmation
+Probably the most important matter in Bitcoin is the process of confirming transactions. *A transaction can be 
+considered fully confirmed if it is included in the longest chain and there are 5 blocks after the block in which this 
+transaction is contained*. In other words, you need to wait for at least 6 confirmations, not 1. Since a new block is 
+created on average once every 10 minutes, full confirmation of a transaction takes approximately one hour (however, in 
+some situations, one may want to wait much longer to reduce the risk of an attack).
+
+The answer to the question why exactly is it 6 confirmations lies in the mathematical calculation: if there are two 
+alternative chains and one is ahead of the other by 5 blocks given that the same amount of processing power was invested 
+in both chains, the probability that the shorter chain outruns the longer one is very small. In his article [15], 
+Satoshi Nakamoto mathematically proves this on the basis of the following proposition.
+
+[Formula]
+
+where p is the probability that the next block will be created by an honest node; q is the probability that the next 
+block will be created by an attacker; and qz is the probability that an attacker will someday catch up with the main 
+chain if he started his, alternative chain *z* blocks back.
+
+For example, if an attacker possesses 10% of the processing power of all validators, the probability of a successful 
+attack is less than 0.1% (on the assumption that honest nodes operate on the network with an equally fast message 
+delivery).
+
+### Reward for block creation 
+Another important issue is the motivation for users to solve resource-intensive tasks, create new blocks, and confirm 
+transactions, thus leaving no chances for intruders.
+
+We have already described the processes such as block creation, coin issuance, and the imposition of fees for 
+transaction confirmation. In Bitcoin, these processes are very closely related to each other. The fact is that, 
+according to the rules of the protocol, the creator of a block can send to her own address a certain number of coins, 
+which she literally took from nowhere, meaning that these coins did not exist previously—this is how coin issuance 
+works. The total amount of a reward is calculated as the issued coins plus the fees for all transactions included in the 
+block.
+
+**reward = new (issued) coins + fees**
+
+In 2018, the reward for creating one block is 12.5 coins plus fees. Note that, for security reasons, a validator does 
+not receive this reward immediately after the block is created. There is a special parameter called *coinbase 
+maturity* [29]. It indicates the minimum number of transaction confirmations for which the validator was rewarded. 
+In Bitcoin, this parameter has a value of 100, which means that after the block is created, the reward (fees + issued 
+coins) becomes available only after 99 further blocks confirm this block.
+
+As noted earlier, a new block appears on average every 10 minutes regardless of the total computational power of the 
+system. This is achieved by using the *difficulty parameter*, which is calculated by each node independently by the 
+known algorithm and used to specify the requirements for solving the resource-intensive task. Over time this parameter 
+is recalculated according to the change in computing power of the system.
+
+All network nodes create a new block collectively in 10 minutes. For an individual participant, creating it may take 
+hours, days, or even years. But according to the theory of probability, one block will be created on average every 10 
+minutes provided that all validators work on one chain of blocks. This also means that turning off half the power of the 
+system at some moment will increase the average block creation period to approximately 20 minutes. It will remain 
+extended until the difficulty parameter is recalculated.
+
+It is believed that only those who control more than 50% of the capacity can influence the processing of transactions. 
+Bitcoin can be considered secure when most of the computational power of the system is controlled by honest validators. 
+The confidence in Bitcoin as an accounting system, therefore, depends on the fact that thousands of people are unlikely 
+to collude against a particular user (the opposite of a centralized system where censorship is easy to implement and 
+hide). This means that trusting Bitcoin, a user is confident that thousands of people will not disagree with him at the 
+same time. An attack in which an adversary controls more than half of the computational power of the system is called a 
+*51% attack* (for more details, see 4.2). Bitcoin has never been exposed to this in practice (as of 2020). However, 
+there are striking examples of 51% attacks in several digital currencies such as Bitcoin Gold and ZenCash, which cost 
+more than 18 million US dollars in total.
+
+### Influence of network disruptions on Bitcoin
+Let's start by imagining the following fictional situation. One day, the sea beavers got drunk with pirate rum and cut 
+all the fiber-optic cables, which passed on the bottom of the oceans and connected all continents into a global network. 
+Data transmission channels between continents refused to operate, but nodes on each continent continued working 
+correctly in their subnets. However, users of different subnets could not synchronize in order to exchange transactions 
+and blocks. Therefore, on each continent validators formed different versions of the chain of blocks.
+
+It is obvious that the majority of Bitcoin network nodes use a global network to communicate with each other, while the 
+population of entrepreneurs-miners is unevenly distributed on the surface of the continents (Fig. 2.27). What can happen 
+to Bitcoin if the Internet fails between six continents?
+
+[Figure 2.27] - Exemplified network connection between continents
+
+While Dr. Powderpill was grinding the teeth of all the sea beavers to prevent them from breaking the cables for a second 
+time, and Inspector Gadget was mending the fiber optic cables with his electrical tape, validators continued creating 
+blocks (Fig. 2.28). Since the computational power of validator groups on different continents is different and the 
+difficulty parameter had not yet been updated, the period of block creation for each subnet significantly exceeded the 
+default parameter, which is 10 minutes. Moreover, this period was different for each continent, which led to the 
+creation of alternative chains of different lengths.
+
+[Figure 2.28] - Non-uniformity of the database state on different continents
+
+By the time Dr. Powderpill and Inspector Gadget finished their work and data transfer channels were restored, the 
+Bitcoin network nodes from different continents started synchronizing with each other. Then it turned out that there are 
+several different versions of the chain of blocks, all with a different length (Fig. 2.29). Moreover, different chains 
+now contained different transactions, and only the subsets of these transactions could partially intersect.
+
+In accordance with Bitcoin protocol rules, all nodes will eventually choose the longest chain and consider it as the 
+primary one (*the mainchain*). Another interesting fact is that the transactions that were already confirmed but 
+included in alternative chains have lost their confirmation status. Nevertheless, full nodes of the network continue to 
+store and synchronize them, and validator-nodes, as always, are interested in including them in their blocks and receive 
+the rewards, provided that these transactions do not conflict with those already confirmed in the mainchain.
+
+[Figure 2.29] - Process of choosing the longest chain of blocks
+
+Therefore, transactions of the *orphan blocks* get to the list of unconfirmed transactions but will very likely be 
+confirmed later. And even though some of the validators will not receive a reward for solving the resource-intensive 
+task since there is a possibility that the transaction from the orphan block (which they created) will be confirmed in 
+the mainchain by a different validator. Thus only one validator will receive a reward even though both worked with the 
+same diligence.
+
+In the situation described, there are risks of losing coins not only for Bitcoin validators (who lose both the reward 
+for created blocks and transaction fees) but also for regular users who accept payments in bitcoins. These risks are due 
+to the fact that the computational power of Bitcoin was used just partially to maintain the reliability of the currency. 
+For example, users may not notice the split of the global network into subnets and continue receiving payments in 
+bitcoins, which means that there is a risk that they will later find out that their balance is zero.
+
+Pirates of the Caribbean Sea could well carry out a similar deception. Suppose that Captain Jack Sparrow somehow 
+obtained a representation of a private key. On the address controlled by this private key—even before pirates taught 
+beavers to drink rum and be mad—someone sent some bitcoins, which remained unspent. Once the beavers had turned the 
+global network into six local ones, Captain Jack, without wasting time, decided to install a diesel engine on his Black 
+Pearl in the port of the closest continent and arrange this payment in bitcoins. Then the ship, under a favorable wind, 
+swiftly sailed to the second continent to refill with diesel fuel.
+
+Pirates don't have a lot of time for their deception to work before communication is restored; on the second continent, 
+no one knows about the first transaction by Captain Jack Sparrow. Arriving at the second continent, Jack again uses the 
+private key to pay for refilling the pirate ship with bitcoins (Fig. 2.30). The local tanker waits for the first 
+confirmation and accepts the coins that were actually spent on the first continent, buying the diesel engine.
+
+[Figure 2.30] - Captain Jack Sparrow spending the same coins several times
+
+Meanwhile, Dr. Powderpill and Inspector Gadget are promising to eliminate the threat and solve the communication problem 
+very soon. Knowing how persistent Dr. Powderpill and Inspector Gadget are at their work, the pirates have in advance 
+prepared the schedule for a swift around-the-world travel. Having a representation of a private key and a fast ship with 
+a full tank of diesel fuel, they are ready to visit other continents to fill the hold with rum and buy a manual on 
+studying quantum computing.
+
+Obviously, after the nodes were synchronized, only one of Jack's transactions was confirmed—the one which paid the 
+merchant from the continent with the biggest part of the Bitcoin computational power. The pirates had given the deceived 
+traders a good lesson—check the network healthiness before accepting a transaction. The captain and his team are 
+analyzing the events and think about improving their strategy—now they consider using a quantum computer.
+
+**Common myths**
+
+*Creation of a block in Bitcoin always takes 10 minutes.*
+
+In practice, a block can be created in a split second or in an hour and a half. Time of creation of the next block is 
+almost unpredictable. However, there is an algorithm that adapts difficulty so that blocks appear on average every 10 
+minutes.
+
+*If someone controls the majority of mining power, then he may violate the rules of the protocol.*
+
+The greatest harm that the owner of most of the power can inflict is actually a successful attempt to double-spend his 
+coins and also filtering or blocking someone else's transactions upon confirmation. This is only possible when an 
+attacker has appropriate equipment. He cannot steal coins or perform an arbitrary issuance.
+
+**Frequently asked questions**
+
+*– What is the minimum number of confirmations a transaction should receive to be added to the chain of blocks?*
+
+One confirmation. But in order to consider a transaction fully confirmed, there has to be more: 6 confirmations by 
+default. Some services accept payments with two or three confirmations. In general, the number of confirmations depends 
+on the amount of payment (and a risk of a double-spending attack; for further details, see 4.2) and can even exceed 100.
+
+*– What is the probability that a correctly created transaction will be confirmed after it is sent to the network?*
+
+The probability that a correctly created transaction is confirmed is close to 1 if it includes a sufficient fee and the 
+process of creating new blocks is truly decentralized (is not censored).
+
+*– Is it required to set up a full node and in what cases is it necessary?*
+
+A full Bitcoin node is required if you want to accept and send payments and see the current version of the database 
+without having to trust other nodes. Light clients, web wallets, mobile wallets, which do not store the entire chain of 
+blocks, use trusted nodes to obtain up-to-date data. In other words, a node launched by a service itself keeps track of 
+the current state of all transactions and current distribution of coins, while the light client (that trusts this node) 
+receives this state to make the payments. In some cases having trustees is unacceptable; therefore you will set up your 
+own full node, make an audit of its software, and no longer depend on the third-party services.
+
+*– What is a fork? What kinds of forks are there?*
+
+There are two different meanings of fork: the branching of the chain of blocks and the copying of the source code. In 
+the context of blockchain, forks can either be planned or unplanned. Forks of the source code are usually performed 
+either for the development of a separate project or in order to make some changes to the protocol for the purpose of 
+testing them. At the same time, forks should not be confused with concepts such as *softfork* and *hardfork*: these are 
+types of protocol updates (for further details, see 6.1).
+
+*– Who in the Bitcoin system makes the decision to increase or decrease the difficulty?*
+
+No one does. The difficulty is determined by the same rules, which are laid down in the software of each node of the 
+network. Each participant updates the difficulty parameter in her software according to these rules. As a result, this 
+parameter will be the same for all; the decision center is not required. This is the most important principle in the 
+work of decentralized systems.
+
+*– If 1 hour is initially set in the system for transaction confirmation, how could Bitcoin be used as a means of 
+payment?*
+
+In fact, 1 hour is only a recommendation that is better to adhere to by default. If you go deeper into detail, it turns 
+out that the waiting time before accepting payment is determined by the recipient. And the larger is the transaction 
+amount, the longer the recipient is interested in waiting. According to a rough estimate, one transaction confirmation 
+is sufficient for accepting a payment of $1; for the amount of $1,000,000, it is 16 confirmations (for further details, 
+see 4.2) [30]. In addition, there are methods for making payments through the so-called *payment channels*, where they are 
+confirmed much faster than usual (*on-chain*) transactions, and the confirmation time does not depend on the amount of 
+payment and the established fee (for more details, see 4.8).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
