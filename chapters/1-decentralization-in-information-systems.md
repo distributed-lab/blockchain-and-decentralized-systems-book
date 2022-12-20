@@ -467,11 +467,3 @@ secure, and sufficiently effective decentralized accounting system.
 The required resource amount increases only if a decentralized system must preserve the ability to audit the entire 
 change history of its shared database. In such a case, what will definitely increase are only disk space requirements, 
 while computational power requirements may remain unchanged.
-
-
-
-
-
-
-
-

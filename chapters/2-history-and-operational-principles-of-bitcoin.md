@@ -1284,27 +1284,3 @@ is sufficient for accepting a payment of $1; for the amount of $1,000,000, it is
 see 4.2) [30]. In addition, there are methods for making payments through the so-called *payment channels*, where they are 
 confirmed much faster than usual (*on-chain*) transactions, and the confirmation time does not depend on the amount of 
 payment and the established fee (for more details, see 4.8).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
