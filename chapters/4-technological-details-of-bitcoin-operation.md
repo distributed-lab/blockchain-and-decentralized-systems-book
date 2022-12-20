@@ -2087,6 +2087,415 @@ which witness data is stored, respectively. As simple as that: a user has a data
 of the transaction (bytes of the first input and bytes of the second input), two outputs, and two more sets of witness 
 data, which are also written similarly as a sequence of bytes.
 
+## 4.7 Fees mechanism in Bitcoin
+In this section, we will describe the main purpose of fees in Bitcoin, namely how they work and what they influence on. 
+We will cover reasons for the volatility of fees, delays in confirming transactions, and approaches to solving these 
+problems. In addition, we will touch on the topic of how the Segregated Witness update contributes to lowering the 
+transaction costs. In conclusion, we will give some food for thought considering how being friends with validators may 
+reduce fees to zero, and what this trend may lead to in future.
+
+According to the Bitcoin protocol rules, in order to confirm a transaction, owners of most computational power must 
+create a block containing the transaction and extend the chain based on the block. In other words, several more blocks 
+must be built on the basis of the block in which the transaction received the first confirmation (Fig. 4.56). It is 
+important that this chain is the longest, and there should not be any competitive chains. The required number of the 
+following blocks (transaction confirmations) is determined by the recipient at his own discretion. The recipient uses 
+the following rule: *the more confirmations a transaction has, the less likely it is to be canceled later*.
+
+[Figure 4.56] - Inclusion of a transaction in a block 
+
+With the growth of Bitcoin's popularity, the flow of new transactions on the network has significantly increased. The 
+maximum block size in Bitcoin is 1 MB, which is strictly defined by the protocol rules. Block creation time is 10 
+minutes on average, hence, the capacity is limited (1.7 KB/s). If the flow of new transactions exceeds the network 
+capacity, some transactions will not be processed (such a situation is not rare). Which transactions will receive 
+confirmation first and which of them will wait—these are the questions that require a clear answer. The basic idea here 
+is that transactions compete with each other.
+
+Fees mechanism in Bitcoin is a necessary tool that allows you to pay for the service of a distributed network, whilst 
+the service essentially is a reliable data storage. In fact, Bitcoin users pay for each byte of data added to the shared 
+database. Due to the fact that the capacity of this database is limited, users compete with each other for the priority 
+of record.
+
+When creating transactions, users set a fee of a certain amount of satoshis per one byte of data. Each node-validator 
+arranges all unconfirmed transactions in a queue so that those transactions that pay a larger fee per unit of their size 
+(weight unit) are confirmed first. This means that those transactions that get to the end of the queue may remain 
+unconfirmed for a long time (Fig. 4.57).
+
+[Figure 4.57] - Competition for the space in a block
+
+Another important task that fees mechanism has solved is the so-called *tragedy of the commons*. In the context of 
+Bitcoin, it is referred to transaction spam protection. The presence of mandatory fees means that it will be expensive 
+for an attacker to flood the network with fake transactions for a long time.
+
+### Volatility of the data recording price 
+At times, users of the Bitcoin network face the problem of unusually high fee volatility. For example, in 2017, the 
+average price of adding one byte of data to Bitcoin's database fluctuated between 1 and 500 satoshis. The queue of 
+unconfirmed transactions ranged from several KiB to tens and even hundreds MiB.
+
+Due to the fact that the price of data recording is apt to change dramatically, users are compelled to compete with each 
+other almost blindly. This is because a transaction is practically confirmed on average within 8 minutes, while the fee 
+for the processing must be established even before the transaction is signed. Therefore, the issue of a properly 
+established fee is still relevant—everyone wants to have their transactions confirmed quickly, that said within minimal 
+costs. In 2017, fees for adding an average transaction to the Bitcoin database reached up to $50. Paying such a fee is 
+obviously not the best idea especially when you can save up to 90% of that amount by intelligently calculating fee and 
+propagation time.
+
+And so, the consequences of a sharp increase in the flow of new transactions are due to the fact that there is a huge 
+queue of transactions waiting to be added to the block. Among them, there are transactions in which senders either 
+created their transactions at the moment right before the sharp price increase or, simply, did not pay attention to a 
+leap in the price of the record. Commonly, the main problem is not due to the users but due to the wallet software or 
+the service that manages bitcoins. Moreover, many software products for working with Bitcoin even hide the fee 
+management from user.
+
+### Solving the problem of fee volatility 
+Instead of using constant or manually updated values, Bitcoin wallets can use special mechanisms to estimate the current 
+price of data recording. These mechanisms are implemented in the software of the wallet and allow users to manage the 
+priority of data recording intelligently.
+
+What is noteworthy is that it is possible to forecast the price of the record. Such forecasts, however, usually work 
+only for very short periods of time (few minutes on average). If the forecast is outdated and the transaction is not 
+confirmed, then you will very likely wait for its confirmation for a long time (several hours, sometimes even up to a 
+day).
+
+**transaction fee = transaction size * byte price**
+
+Dynamic (or adaptive) fee calculation implies an automatic estimation of the final transaction size in bytes and the 
+price of adding one byte of data to the Bitcoin database for the next few hours. For both estimates, there are special 
+algorithms for analyzing transactions and activity on the network. After you receive the estimates of transaction size 
+and the price of adding one byte of data to the Bitcoin database, you multiply these two values; the result would be the 
+amount of bitcoins you need to add as a fee to your transaction.
+
+The advantage of adaptive calculation is that the fee you include is much more accurate; it will be above the minimum 
+threshold yet not too high. Moreover, the probability that this transaction gets to the end of the queue of unconfirmed 
+transactions is minimal. Nevertheless, there are exceptions, so we will consider in more details what can be done in 
+case of an emergency situation.
+
+### Increasing the fee after the transaction has been sent
+Bitcoin protocol is currently quite flexible regarding the fees. There are two protocol improvements that allow you to 
+increase fees even after the transaction has already been created and sent to the network: *replace-by-fee* [69] and 
+*child-pays-for-parent* [70]. Unfortunately, only a few wallets support this functionality, yet more of them appear over 
+time.
+
+*RBF (replace-by-fee)* allows replacing an unconfirmed transaction with an alternative transaction with an increased 
+fee. This means that a user can again create a transaction where he uses the same coins as in the first attempt but this 
+time set a higher fee for the transaction and submit it to the network again. There is a set of rules which determine 
+how to create such transactions and how network nodes should do the replacement. These two transactions conflict with 
+each other and only one of them will eventually receive confirmation.
+
+*CPFP (child-pays-for-parent)*. In this case, you need to create a new child transaction that will try to spend coins of 
+your unconfirmed parent transaction. In this child transaction, you include a fee that is beneficial for validators. But 
+in order to confirm it and get the fees, a validator should first confirm the parent transaction and eventually add both 
+of them to his block. The method was proposed in August 2016 [71]. This approach has a number of technical nuances and 
+organizational requirements for its correct use. One of these requirements is that a user (or the software in the 
+automatic mode) should recalculate the fee of a transaction, create and sign a new, alternative transaction, distribute 
+it to the network, and continue monitoring its state.
+
+An example of a transaction that is confirmed using the child-pays-for-parent method is demonstrated in Figure 4.58; 
+there you can see two corresponding transactions (parent and child) confirmed in one block.
+
+[Figure 4.58] - Child-pays-for-parent mechanism
+
+As you can see the problem of raising a fee can be solved yet has certain inconveniences. Despite the fact that the RBF 
+and CPFP options are supporting the protocol for quite a long time now, their adoption in bitcoin wallet software is 
+quite slow.
+
+### How does Segregated Witness help to lower fees?
+Recall that one of the protocol changes that have been introduced with the Segregated Witness update is the new 
+transaction format and its *weight (transaction weight)*. Prior to the advent of Segregated Witness, only the size of a 
+transaction was usually considered when calculating a fee, and now both the size and the weight of a transaction are 
+important. A new transaction contains proof of coin ownership in a separate structure (witness data). To convert the 
+*transaction size (total size)* to its weight, the witness data size is multiplied by a smaller coefficient than the 
+other transaction data. The transaction weight is calculated using the formula below.
+
+**transaction weight = base size * 3 + total size**
+
+In this case, *base size* is the transaction size excluding the size of witness data. Any data included in the witness 
+data requires 4 times fewer fees than other transaction data. This approach allows validators to determine a more 
+profitable transaction regarding the space occupied in the block and the reward received.
+
+About 60% of all transaction data is precisely the proof of coin ownership (this data can be included in the witness 
+structure). Accordingly, the weight of new-format transactions significantly decreases, and users pay less for having 
+their transactions confirmed. Moreover, these transactions have the same priority for validators as the old transactions 
+that pay a higher fee.
+
+Figure 4.59 shows the dependence of the price of adding one byte of data in the shared Bitcoin database from the load 
+(flow of unconfirmed transactions) expressed in bytes per second (byte per second). A conclusion is very simple: if the 
+flow of new transactions is lower or equal to the capacity of Bitcoin, then the price of record is almost zero. If the 
+flow of new transactions exceeds the capacity, then the price increases sharply.
+
+[Figure 4.59] - Dependence of fees and capacity in the Bitcoin system
+
+### Friend miner case
+Imagine that you have a friend who is engaged in mining and who controls 10% of the entire processing power of the 
+Bitcoin network. This means that he creates one block on average once in 100 minutes. If your friendship is strong 
+enough, you can create a transaction with a zero fee and send it to your friend for confirmation (Fig. 4.60).
+
+[Figure 4.60] - Friend miner case
+
+On the average, the first confirmation for your transaction will be received with 100% probability within 100 minutes, 
+and full confirmation will be received 50 minutes after the first one. As a result, your transactions will receive full 
+confirmation in 150 minutes. If you did not have such a friend, full confirmation of a transaction would be received 
+within approximately 60 minutes, but you would have to include the fee payment.
+
+Thus, if the question is about saving money, having a friend miner who controls a significant part of all mining 
+capacity in Bitcoin is a fortune. However, even if you do not have such a friend, there may be alternative ways of 
+paying for a block space.
+
+### Option of selling places in the confirmation queue
+Commonly, a validator operates according to a standard scheme and sorts transactions according to the price of adding 1 
+byte of data—it seems that every software for mining is organized this way. However, there possibly may be a way for 
+validators to have a better motivation: they can independently formulate a policy of monetizing their activity (i.e., 
+they can benefit from an alternative method of adding transactions in the block). Validators may very likely consider 
+changing their policies if they find something more beneficial or relevant. This approach assumes that users can pay 
+validators for confirmation of their transactions not using a pre-established fee but rather directly—according to their 
+own business logic.
+
+In practice, any sufficiently large mining pool can conduct its campaign in order to increase profitability and use 
+simple mechanisms for this, for example:
+
+* Determine its priorities for sorting transactions 
+* Establish partnerships with certain services (exchanges, stores, browsers, etc.)
+* Sell guarantees for a particular space in the future block
+
+Moreover, pools can even pre-sell certificates for free space in their blocks as an obligation on the provision of a 
+certain capacity of the system in future (for more details about tokenization, see 6.4).
+
+**Frequently asked questions**
+
+*– How to send a transaction with a zero fee to a friend miner?*
+
+As a regular transaction, it is unlikely to be propagated on the network because a node configuration has a default 
+parameter *minRelayFee*, which is not equal to zero. This means that a transaction must necessarily have a fee greater 
+than a certain threshold. Only then, nodes will react to the transaction and will pass it further. This is done to 
+prevent spamming. Therefore, in such a situation, a user may apply a different approach to transmitting this "unusual" 
+transaction to the friend miner. One of the options is to forcibly connect the user's node to the friend node-validator 
+by manually entering the network address in the configuration file of the user's node and to set minRelayFee to zero on 
+the node-validator. There is a problem, however: a friend node must distinguish "unusual" transactions from the 
+transactions of other users. Therefore, another solution is that user wallet and the friend node-validator would use 
+their own API.
+
+*– What is the benefit for a validator to take a smaller fee by selling certificates if she can take more bitcoins?*
+
+The benefit is that a validator can sell space in the block in advance. For example, she may need money earlier than she 
+will be able to create a block. Moreover, a fixed price can be important for Bitcoin wallet users; sometimes they need 
+to know their costs for a few months in advance. Also, this provides a certain guarantee for users that there will be a 
+place in future blocks for their transactions for the upfront known price.
+
+## 4.8 Payment channels and Lightning Network
+
+The idea of *payment channels* (and its development in *Lightning Network*) has undoubtedly become revolutionary for the 
+world of digital payments. The application of this idea is not limited only to cryptocurrencies. An important question 
+for any digital accounting system are the capacity limitations, as well as concerns for user privacy. Before the 
+appearance of digital communication systems, these problems were irrelevant—the operation to transfer a paper banknote 
+from hand to hand, obviously, did not require accessing a server and was neither tracked nor censored. The appearance of 
+digital accounting systems made it possible to transfer funds fast without the physical limits of delivering gold or 
+banknotes. However, in digital systems, every new transaction should be added to the database as soon as possible, with 
+both the sender and recipient having access to the database—so that both could verify that the payment has been 
+completed. In addition, a party who has access to the history of all transactions (a government, for example) has a 
+tremendous leverage in influencing people's lives through the ability to analyze this history and track the activities 
+of citizens.
+
+The appearance of off-chain payment channels and Lightning Network (LN) [72] allowed for payment networks which are 
+scalable, secure, cheap, and that work in a truly p2p manner, preventing breach of privacy. Below we will discuss the 
+principles of both mechanisms, their features in the context of Bitcoin, and see how they work.
+
+## What is a payment channel?
+For the first time, the idea of payment channels was described by Satoshi Nakamoto in a personal letter to one of the 
+active developers of the protocol many years ago. At that time, Bitcoin did not yet receive enough important updates to 
+allow for the implementation of reliable payment channels. However later it became possible, and in 2013 developers 
+returned to this truly promising idea. We will consider the main methods for implementing payment channels.
+
+*A payment channel is a method that allows carrying out multiple payments without adding transactions for each payment 
+into the chain of blocks*. In order to open and close a payment channel, counterparties need to perform two on-chain 
+transactions, opening and closing. Channel members interact only with each other [73], and the presence of additional 
+validators or trusted third parties is not required.
+
+The process of using a payment channel is similar to that of recording a loan at the everyday level (paper record). The 
+difference is that through payment channels there is a guarantee parties can fulfill their obligations—which a paper 
+record cannot allow for.
+
+Below, we will consider the principles of payment channels and the protocol which allowed developing and applying this 
+concept to improve Bitcoin—namely, Lightning Network.
+
+## Why are payment channels needed? 
+Main limitations in Bitcoin are long transaction confirmation time and unpredictable fees which make micropayments 
+(e.g., a fraction of a cent) impractical. What are the advantages of a payment channel compared to usual transactions? 
+In the payment channel, participants make payments between themselves without publishing transactions on the Bitcoin 
+network. The receiving party performs a quick independent verification and accepts the payment. Since only a few parties 
+are involved, fees are absent by default. Due to this specific feature, payment channels are also called *micropayment 
+channels* [74].
+
+The interaction of channel members is private by default. The details of each micropayment will remain secret from 
+everyone else, and only the fact of using the payment channel will be known to the public—namely specific bitcoin 
+addresses between which the payment channel is established.
+
+What is noteworthy is that participants of a payment channel should not necessarily trust each other. Security 
+mechanisms in the payment channels allow preventing the fraud on the part of interacting parties. The idea is that in a 
+fraud scenario, a malicious party would not only lose the coins he tried to illegally possess but, depending on the 
+implementation method, also he would lose all the coins on which he opened the channel.
+
+## Payment channel: step-by-step example
+In a simplified version, the operation of a payment channel is shown in Figure 4.61. Alice and Bob have Bitcoin wallets 
+with additional modules for working with the payment channel. These modules exchange data for making payments (for 
+instance, data about coins distribution, relevant data about signatures, etc.).
+
+[Figure 4.61] - Operation of a payment channel
+
+It would be interesting to consider this in more detail and see the very way how coins are distributed within the 
+payment channel (Fig. 4.62).
+
+[Figure 4.62] - Interaction within a payment channel 
+
+*Step 0*. To open the channel, Alice and Bob create a multisignature address and both transfer their coins on it, let’s 
+say, 5 BTC each. So the multisignature address now stores 10 BTC from which they each “own” 5 BTC (below we will explain 
+what does this “own” means).
+
+*Step 1*. Now let’s imagine Alice wants to pay Bob 2 BTC for some service. To do this, Alice creates an off-chain 
+transaction that distributes value in the payment channel so that Alice now owns 3 BTC and Bob 7 BTC.
+
+*Step 2*. Alice needs to pay Bob one more time, let’s say 1 BTC. To transfer it to Bob, Alice again creates another 
+off-chain transaction that distributes the coins so that Alice now owns 2 BTC and Bob 8 BTC.
+
+*Step 3*. Now Bob decides to pay Alice 7 BTC, and so he creates a new transaction with the corresponding terms of coin 
+distribution: Alice owns 9 BTC and Bob 1 BTC.
+
+*Step 4*. After Alice and Bob have performed all the required payments, they close the channel. For this, they publish 
+the last transaction (the one that Bob created in step 3) on the Bitcoin network. The input of a resulting transaction 
+will be 10 BTC that are stored on the multisignature address; this transaction will pay 9 BTC to Alice and 1 BTC to Bob.
+
+Noteworthy, only two of all transactions took place on the Bitcoin network, the opening transaction (step 0) and the 
+closing transaction (step 4). The rest transactions were off-chain and thus were not burdening the Bitcoin network. 
+Correspondingly, Alice and Bob didn’t have to pay any fees for them. Inside the payment channel, they were simply 
+exchanging with each other the same transaction with the same input but with updated output fields. When the time has 
+come, one of them publishes the last updated transaction on the Bitcoin network.
+
+### Features of a payment channel
+Payment channels (as a concept) do not have any noteworthy shortcomings compared to usual transactions, but they do have 
+certain characteristic features.
+
+A payment channel must be opened and, sooner or later, closed. These processes are performed by separate on-chain 
+transactions. Waiting for confirmation and carrying fees is inevitable with these transactions. Note that for an opening 
+transaction, it is better to wait for a full transaction confirmation since you have to be sure that the coins on which 
+you opened the channel are definitely locked up on a multiSig address.
+
+Inside a particular channel, payments are available only within a predefined amount (following our above example, this 
+means that Alice and Bob can interact only within predefined 10 BTC). This amount is a sum of deposits on the 
+participants’ mutual multisignature address.
+
+Payment channels can be *unidirectional* and *bidirectional*. It depends on the method of the channel implementation.
+
+The lifetime of the channel and the maximum number of payments in the channel can be unlimited. However, depending on 
+the technique, it is possible to set limits on the channel's parameters. Accordingly, the channels can be closed at the 
+advent of a certain time or before the scheduled time. In addition, the channel can be closed both by mutual consent of 
+the participants and at the request of one of them but with some specific requirements.
+
+### Methods of payment channel implementation 
+As we have mentioned in the Alice and Bob example, users have a special module that allows them to interact within a 
+payment channel. Depending on the implementation, these modules can support different methods of payment channels 
+functioning. We will list some of the most popular ones.
+
+*Spillman-style payment channel* is the simplest version of a one-way channel with a limited lifetime and an unlimited 
+number of payments.
+
+Later, another improvement on the Bitcoin protocol was made and *CLTV-style payment channels* became available, which 
+are an improvement of the previous method.
+
+*Poon-Dryja payment channel* is a method of bidirectional channels with unlimited time of operation. They require 
+several updates of the Bitcoin protocol, which were recently adopted: these channels are used in the design of 
+Lightning Network.
+
+*Decker-Wattenhofer duplex payment channel* is an option of using two unidirectional channels simultaneously. It allows 
+improving the properties of channels because it forms a whole tree of replaced transactions rather than a consecutive 
+chain of replaceable ones.
+
+We will consider in detail the Spillman-style implementation since it is the simplest and the most understandable one. 
+
+### Spillman-style payment channels
+*Spillman-style payment channel* is the method of creating unidirectional payment channels, where there is a role of a 
+sender and recipient. The operational time of this channel is set arbitrarily by the sender, while the recipient can 
+close the channel ahead of the schedule. The basic steps of operation of this channel are shown in the diagram below 
+(see Fig. 4.63).
+
+[Figure 4.63] - How Spillman-style payment channels work
+
+For a better understanding, imagine there is a service that trades access to a Wi-Fi access point, and there is a client 
+that wants to get a 24 hours access to the network; suppose the service costs one coin. The client does not trust the 
+service and therefore wants to pay for the traffic per second.
+
+The service and client decide to open a payment channel for 24 hours with the full payment amount of one coin. The 
+service generates a new key pair for the digital signature and passes the public key to the client. The client, in turn, 
+generates a new key pair and uses his public key and a public key of the service to create a 2-of-2 multisignature 
+address. After that, the client creates a transaction number one, through which he sends 1 BTC to the multisignature 
+address. The client signs it but does not send it to the Bitcoin network since the service can potentially deceive him 
+and refuse to sign any transactions for the further transfer of one bitcoin.
+
+Therefore, the customer creates a transaction number two, in which 1 BTC is sent from the multisignature address to the 
+address that he controls himself; at that, he sets the nLockTime field in such a way that the transaction can be 
+confirmed only in 24 hours. He does not sign this transaction but sends it to the service, which, in turn, agrees that 
+the client can take the entire coin but no earlier than a day later, and then signs the transaction with its key. The 
+service passes the signature to the client, and the client checks it. Now the client has an opportunity to sign the 
+transaction with his key and take the coin back guaranteed in case company decides to refuse its service. So basically 
+the second transaction acts as an insurance against fraud and it has to be signed even before the funds are sent to the 
+service. Such an insuring method is made possible through the proper use of the locktime mechanism. And it is for this 
+reason that we can affirm that a user actually “owns” certain amount of coins on the multisignature address right after 
+its funding.
+
+The next step is to distribute the first transaction to the Bitcoin network or send it to the service so that it would 
+distribute it in case a customer does not have a connection. After the first transaction is confirmed, the payment 
+channel is considered open.
+
+In this case, transaction 1 is called a *funding* transaction, and transaction 2 is called a *refunding* transaction.
+
+How is the payment settlement within the payment channel work? Consider the following scheme (Fig. 4.64).
+
+[Figure 4.64] - Coins settlement in the channel after a payment is conducted
+
+In order to send the first payment, a client requests the bitcoin address of the service, which the service controls 
+itself. Next, he creates a transaction 3, in which the coin from a multisignature address is distributed between two 
+outputs. The first output is a payment to the address of the service for, let's say, 1 second of operation of its WiFi 
+access point. The second output is the transfer to the client's address. The client signs the transaction 3 with his own 
+key and passes it to the service. The service checks the validity of a transaction and signature and then accepts the 
+payment; it can guaranteedly receive the payment for the first second of its traffic if it finally signs this 
+transaction in 24 hours. If the service intends to continue providing its services to a customer and receive payments 
+in the channel, then it simply saves the transaction 3 locally until the channel is closed.
+
+In order to send next payments, the client changes output values of a transaction number three, re-signs it, and then 
+all that he needs to pass to the service is only his signature and the amount of change of the payment. The service also 
+checks the received data and saves the new version of a transaction number three—in this version, it receives more coins 
+(see Fig. 4.65).
+
+[Figure 4.65] - Publication of results on the Bitcoin network
+
+How do you close the channel? The diagram shows that the service must succeed to publish the latest version of 
+transaction 3 on the Bitcoin network before the end of the channel operation time. Otherwise, the sender may cheat and 
+withdraw the entire amount to his address by finally signing and publishing transaction 2.
+
+Note that the client can publish the refunding transaction at any time while the channel is open and set in it any 
+amount of transfer within one bitcoin (the amount on which the channel was initially opened). If the refunding 
+transaction is published on the mainchain and the time set in its locktime field has already come, then the transaction 
+will very likely be confirmed. Therefore, the service constantly monitors whether the customer published a refunding 
+transaction to the network or not; in case he published, the service breaks the contract with the client closing the 
+channel ahead of schedule (the time set in the locktime) by publishing the latest version of transaction number three. 
+The third transaction can be considered valid since it is signed by the client. This is how the service can be confident 
+that the client will not be able to deceive and steal the money.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
