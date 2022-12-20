@@ -1816,6 +1816,260 @@ Finally, Bob has two signatures and a full redeem script. The transaction is con
 to the network and waits for confirmation. These are the basic principles of spending coins from a multisignature 
 address.
 
+## 4.6 Features of the Segregated Witness update
+The Segregated Witness update was probably the most desired and at the same time difficult to achieve in the ten-year 
+history of the Bitcoin protocol. It provoked the first division of the community and showed to the whole world the 
+non-triviality of implementing *governance* in a decentralized anonymous environment, where participants are prone to 
+have conflicting interests. When the community members faced the problem of limited capacity in Bitcoin (3 to 4 
+transactions per second), they began looking for the solutions. Opinions about who takes the final responsibility for 
+the adoption of new rules—developers, validators, or users—were also divided. It is fair to note that many projects 
+after Bitcoin (especially Dash, Cardano, and EOS) have initially included governance mechanisms in the p2p protocol. 
+Yet, fortunately or unfortunately, when designing Bitcoin Satoshi did not provide mechanisms for resolving such 
+disputes.
+
+> **Issues of the original Bitcoin architecture**
+>> * Low capacity of the system
+>> * Transaction malleability (mutability of unconfirmed transactions)
+>> * Combining business logic and coin ownership proofs
+>> * Limitations on implementing off-chain protocols
+
+Segregated Witness has brought great changes to the protocol and significantly improved the format of transactions. In 
+this section, we will cover new formats of transactions and addresses, the possibility to separate the data with proofs 
+of coin ownership, new formats for input and output scripts, and of course, the impact of this update on the capacity of 
+the system.
+
+You might want to see how the Segregated Witness actually looks like and what is its difference with a ordinary 
+serialized Bitcoin transaction, which is presented in Figure 4.48.
+
+[Figure 4.48] - Example of a standard serialized Bitcoin transaction
+
+Figure 4.49 shows the Segregated Witness transaction. The difference with this one is that witness data, which is 
+detached in the figure, can be separated. Updated nodes receive full data about the transaction, including the witness 
+data, while for the nodes which are not updated, witness data is not available, and they consider such a transaction 
+correct by default (even if proof of ownership is not correct). We will describe why further in the section.
+
+[Figure 4.49] - Example of a serialized SegWit Bitcoin transaction
+
+Essentially this is the primary idea of Segregated Witness update—the proof of coin ownership is kept separately from 
+the primary transaction data (Fig. 4.50).
+
+[Figure 4.50] - Segregating proof of coin ownership from the rest transaction data
+
+In addition, the SegWit update includes many other improvements. It allows increasing the network capacity, separating 
+the proof of coin ownership from the rest transaction data, and eliminating disadvantages of the transaction format 
+related to modifying data in the signed transactions (*transaction malleability*) while preserving backward 
+compatibility with the previous versions of the protocol. The greatest value of this update is that it allows 
+implementing a number of important off-chain solutions on top of the Bitcoin protocol (for more details, see 4.8).
+
+### Backward compatibility and increased capacity 
+Since the block size is limited, the number of transactions which can be included to a block is limited as well; it is 
+what the system capacity depends on. Certainly, when an issue of increasing capacity appeared, the methods of increasing 
+the maximum block size were primarily thought about as the solution. Though, this idea was not supported by the majority 
+of the network participants.
+
+Any proposal is being thoroughly checked and tested by the Bitcoin protocol team. An update is only released if the 
+community reaches consensus and decides to implement the proposal in the protocol. Let's consider two basic ways of how 
+the problem of increasing the capacity of an accounting system can be solved.
+
+*Hardfork*. The simplest approach to updating is to increase the block size literally. One block is assumed to include 
+more transactions, resulting in an increased capacity. Such a block, however, will not be accepted by the nodes that 
+operate under the old protocol rules, according to which the maximum block size cannot exceed 1 MB. This change requires 
+a hardfork, which is organizationally more complex than a softfork.
+
+*Softfork*. Segregated Witness allows solving the problem through a softfork. It allows dividing a block into two parts: 
+in the first one, you have transactions and in the second, proofs of coin ownership. New nodes of the network receive 
+both parts, while the old ones receive only the part with transactions, which is 1 MB in size. Old nodes cannot receive 
+the data with proofs and, accordingly, cannot fully validate the new-format transactions (what they see is that the 
+block is correct according to general rules and therefore can be added to the mainchain). This solution allows old nodes 
+to participate in reaching consensus while not resorting to a hardfork; also, it motivates the old nodes to gradually 
+move towards the new software.
+
+According to the old rules, the maximum block size was limited to 1 MB, and transactions in the block contained built-in 
+proofs. New rules also imply the maximum base block size as 1 MB; however, outside the block, there is an additional 
+data structure containing proofs, and hence the total size of a new-format block exceeds 1 MB.
+
+For backward compatibility, the protocol rules allow old nodes to work with the new blocks; the difference is that they 
+receive blocks in their base configuration, with a maximum size of 1 MB, and they are not able to see the structure 
+witness (proof of coin ownership). The new nodes, however, receive full blocks containing both transactions and proofs 
+(see Fig. 4.51).
+
+[Figure 4.51] - Result of Segregated Witness update
+
+On the left, you can see how the Bitcoin protocol operated before the activation of Segregated Witness. The block had a 
+maximum size of 1 MB and was distributed among different nodes of the network in the same form.
+
+### Innovations of Segregated Witness
+The first and the most important innovation of Segregated Witness was the new transaction structure. In addition to the 
+already known fields, the new transaction now includes three more: *marker* and *flag*, which are used for versioning 
+(in this case, they are strictly specified, but this can change in further protocols), and also the field *witness*. 
+*Witness data is a set of proofs of coin ownership that are excluded from the primary transaction part*. Structurally, 
+it looks like a set of inputs, where each witness data element corresponds to an input with a certain number. This 
+allows comparing the proof with specific spent coins.
+
+Each transaction has its unique identifier, *txid*, by which it can be traced. To receive it, you need to cast the 
+transaction to a single data sequence and then get the hash value from this data sequence. With the introduction of 
+Segregated Witness, the new identifier, *wtxid*, and the new serialization format appeared. For the old transactions 
+(that spend coins without using Segregated Witness), *wtxid* is the same as *txid*. Figure 4.52 shows the transaction 
+fields that take part in generating *wtxid* (for default and SegWit transactions respectively).
+
+[Figure 4.52] - Difference in how transaction identifiers are formed
+
+*Wtxid* is required to build an alternative Merkle tree for proofs. It is built almost the same way as for the usual 
+transactions, but here, instead of a transaction hash, the *wtxid* value is applied. Accordingly, the *wtxid* values of 
+transactions are pairwise hashed and, as a result, the Merkle root is generated.
+
+Merkle root is inserted into a coinbase transaction, not into a block header. Otherwise, the block structure would 
+change, so that nodes supporting the old protocol could not operate with the new-format blocks, and it would hinder 
+preserving the backward compatibility. Therefore, Merkle root is inserted into one of the coinbase transaction outputs. 
+As soon as all nodes switch to Segregated Witness, this situation may change, and new approaches may possibly be 
+considered.
+
+Let's observe the issue of *transaction malleability* in more detail. In Bitcoin, there is a possibility to modify certain 
+transaction data while keeping a transaction itself correct (coins will be sent from and to the same addresses) [67]. 
+However, minor these modifications may seem, they are enough to cause a change in the hashing result, making it a 
+completely different transaction (even though it sends coins from and to the same addresses as the original one). Such 
+modifications can only be applied to unconfirmed transactions, which by itself may seem non-threatening. However, for 
+unconfirmed transactions, the immutability of data is of no less importance: the undefined probability of such 
+modification of transaction data interferes with the implementation of off-chain protocols, which are based on building 
+chains of unconfirmed transactions.
+
+How does it work? When a Bitcoin transaction is created, not all data is hashed and signed: namely, you cannot sign the 
+scriptSig field because it contains the data of a digital signature generated by a user. This vulnerability allows 
+permitting several types of attacks in Bitcoin. Let's consider some of the basic ones.
+
+First of such attacks allows modifying the signature format. In the Bitcoin protocol, the signature format, which is 
+placed in scriptSig, has happened to be non-strict and depends on the implementation of OpenSSL, which also does not 
+provide a strict format. An outsider can intercept the transaction and slightly modify it while keeping it valid. The 
+hash value of the transaction will change so that it will become a completely different transaction.
+
+The second attack affects the scriptSig directly. Since scriptSig is a set of commands by which a user proves the 
+ownership of coins, it allows specifying the number of additional operations. It is possible to add several meaningless 
+operations to the original data in scriptSig, which will not affect the result of a script but will change the hash 
+value of a transaction.
+
+What's wrong with changing the transaction hash value? This question is relevant because one might think that an 
+unconfirmed transaction is not trustworthy and you better not rely on it until it is confirmed. However, the issue of 
+transaction malleability is more important than it may seem at first glance. Firstly, it makes it possible to create a 
+transaction that will be exactly like the original one but because of a changed hash value, network nodes will consider 
+it as a different (new) transaction. Therefore, the original transaction will conflict with the alternative one, meaning 
+that you cannot ever be sure that your confirmed transaction has the original hash value. Secondly, solving the problem 
+of transaction malleability is important for the implementation of protocols which are based on building the chain of 
+unconfirmed transactions. If a hash value of at least one transaction from this chain changes, the entire subsequent 
+transaction chain will get invalid. Thus, it turns out that the hash value of any transaction can be changed by an 
+outsider simply because you don't have to have the access to private keys to change the hash value.
+
+The SegWit update solves issues related to transaction malleability, namely for the new-format transactions, where now 
+fields are filled by strict rules. It prescribes setting and serializing the data unambiguously, excluding duality.
+
+### Example of a SegWit transaction
+In order to understand what is stored in the corresponding transaction fields, consider an example of a segwit 
+transaction confirmed on the Bitcoin network and which is presented in JSON format (Fig. 4.53).
+
+[Figure 4.53] - Real SegWit transaction
+
+First, let's pay attention to the fact that the *scriptSig* fields are empty. The corresponding *proofs of coin 
+ownership* in this case are placed in additional fields: witness. And just like in normal bitcoin transactions, these 
+fields consist of digital signature and public key. The only difference is that the scriptSig field is included in the 
+basic structure of the transaction, while the witness field is not. This allows not to transfer this data over the 
+network, not to verify and not to store it in memory when it is not needed, because the proofs of ownership of the coins 
+has already been verified.
+
+In fact, *witness data* is a separate part of the transaction, which in some cases may not be used or even be completely 
+absent without changing the basic structure of the transaction and its hash value. However, when displaying a 
+transaction on the screen or in JSON format, it is convenient to show *witness data* in the transaction inputs.
+
+### New concepts of weight and size
+
+The concepts of transaction weight and block weight are another innovations that the Segregated Witness update has 
+introduced. Prior to the update, there were only concepts such as the transaction size and block size. Everything 
+related to it (for instance, transaction fees) was determined according to the size. The block size was limited to 1 MB. 
+With the introduction of Segregated Witness, it became necessary to process old-format transactions (with the "old" 
+size) along with new-format ones.
+
+Another important issue to solve was to reduce the cost of processing an additional part of a block (witness data). In 
+order to solve it, the concept of transaction weight and corresponding weight units have been introduced. The size of 
+the main part of a transaction is now calculated with the coefficient 3, and the size of witness data with the 
+coefficient 1. As you might guess, any data included in witness data requires 3 times fewer fees than the basic data of 
+a transaction. Such an approach allows validators to determine a more profitable transaction as to the relation between 
+space occupied in a block and the reward received. Transaction weight is calculated with the formula below.
+
+**transaction weight = base size * 3 + total size**
+
+* transaction weight is measured in weight units;
+* base size is measured in bytes;
+* total size is measured in bytes.
+
+In this formula, the base transaction size (that is the transaction size when serialized under the old rules) is 
+multiplied by three, and the result is added to the transaction size that is serialized according to the new rules. 
+Thus, we get the transaction weight.
+
+Regardless of the rules (old or new) under which old-format transactions are serialized, their size will always stay the 
+same, while the weight, accordingly, will be exactly 4 times bigger. For SegWit transactions, the weight is slightly 
+less because they do not include proofs of coin ownership.
+
+Along with the weight, the concept of *virtual size* was also introduced; it is calculated by dividing the weight by 4. 
+Virtual size is used to calculate fees for transactions and to make it possible for validators to understand the 
+profitability of including a particular transaction in their block while using the usual price of the record, which is 
+measured in spb (satoshi per byte) units.
+
+**virtual size = weight units / 4**
+
+Since the weight of an old-format transaction is 4 times bigger than its size, the virtual size of a transaction is 
+equal to its usual size. Accordingly, for the old-format transactions, fee calculation remains the same, and for the 
+new-format ones, it will be slightly less because signatures are put to a separate structure. This is how SegWit 
+transactions make it possible to pay lower fees but have the same priority for validators to have them included in the 
+block. At the same time, the maximum block size without the witness data (base size) remains 1 MB, while the maximum 
+block weight is up to 4 MB.
+
+Now, you may well have a logical question: what is the final size of a block with the witness data? The answer is 
+obviously somewhere in the range from 1 MB to 4 MB (conditional weight units), but you cannot actually tell the precise 
+value but only approximate, which is about 1.8 MB. How is it obtained? Through an accurate theoretical evaluation. A 
+typical block with transactions currently consists of approximately 60% of proofs of coin ownership. Let's calculate the 
+weight of a 1 MB block, which consists of 60% of proofs of coin ownership.
+
+**400,000 bytes * 4 = 1,600,000 conditional weight units**
+
+**600,000 bytes * 1 = 600,000 conditional weight units**
+
+**1,600,000 + 600,000 = 2,200,000 conditional weight units** (This value matches the actual size of 1 MB.)
+
+Now, given the maximum weight of the block of 4,000,000 conditional units (defined according to the protocol rules), it 
+is possible to determine how much this will increase the final size of the block together with the witness data.
+
+**4,000,000 / 2,200,000 = 1.8** (Hence, the block size will be 1.8 MB.)
+
+Thus, the average effective block size can be assumed to be around 1.8 MB (do not confuse the actual size of the block 
+with its weight). In practice, though, this value totally depends on the set of transactions in a particular block.
+
+### SegWit adoption statistics
+In November 2018, the number of SegWit transactions exceeded 40% of the total number of transactions on the Bitcoin 
+network. Moreover, if you consider the total number of coins transferred on the Bitcoin network, SegWit transactions are 
+liable for 55-60%. At the same time, digital wallets (e.g., Electrum, Bitxfy) and other major services operating with 
+Bitcoin have implemented Segregated Witness support not long before 2018.
+
+After the update adoption, dynamics of the final block size is also noticeable (Fig. 4.54). At the moments when the flow 
+of new transactions increases, almost all blocks exceed 1 MB (sometimes even 2 MB). It is quite obvious that after the 
+activation of SegWit, the issue of low capacity in Bitcoin seemed no longer as pressing as before the update [68].
+
+[Figure 4.54] - Graph of how block size has changed after SegWit adoption
+
+If you look at the dependence of an average transaction fee on the number of new-format transactions, you will also see 
+a very strong correlation between these values (Fig. 4.55).
+
+[Figure 4.55] - Dependence of average transaction fee on the number of transactions
+
+Also, we should not forget that Segregated Witness has enabled the development of the off-chain solutions on top of the 
+Bitcoin protocol. To get ahead of the story, we would like to point out that the adoption of Lightning Network (LN) is 
+much more difficult than the SegWit implementation. However, the work towards LN adoption is well underway, and there 
+are already significant achievements (see 4.8).
+
+**Frequently asked questions**
+
+*– Is it correct to claim that RBF (replace-by-fee) will not work for the Segregated Witness transactions?*
+
+
+
+
 
 
 
