@@ -2478,6 +2478,190 @@ channel ahead of schedule (the time set in the locktime) by publishing the lates
 The third transaction can be considered valid since it is signed by the client. This is how the service can be confident 
 that the client will not be able to deceive and steal the money.
 
+### Application of payment channels
+There are two ways of applying payment channels. The first and the basic one is to use them for regular payments between 
+pre-established parties. And the second is through the commutation of channels, the LN case.
+
+Commutation can be defined as the ability to make payments between users who did not open a payment channel with each 
+other directly but have opened channels with other users. In such case, coins are generally transmitted through a chain 
+of channels of users who do not know each other.
+
+In the case of LN, there are additional complications and peculiarities. The complications are associated with the 
+development of a generally accepted format for the commutation of channels and the nodes communication protocol. It is 
+also important that the wallets of particular developers could operate with the wallets of others. Another and probably 
+the most crucial difficulty is the routing issue. The problem is that you need to find the shortest way for transferring 
+the value while considering the amount of coins and possible restrictions on the transfer in each channel.
+
+### Features of the Bitcoin network and Lightning Network operation 
+On the Bitcoin network, full nodes exchange data about transactions, blocks, and network addresses of each other. There 
+are also lightweight nodes that only receive the information they need without having to process and store the entire 
+history. As a result, a consensus is reached and a shared database is formed.
+
+*Lightning Network* implies a reliable routing of a payment from the sender to the recipient through a set of opened 
+*bidirectional payment channels*; moreover, these routing sets can be established through channels of outsiders who know 
+neither the sender nor the recipient of a payment. The LN nodes do not exchange transactions and do not reach consensus 
+as in Bitcoin. Therefore, each node of LN should obtain up-to-date information about its transactions either directly 
+from the Bitcoin network nodes or from the trusted sources.
+
+The idea of LN began to form together with the appearance of payment channels in Bitcoin [73]. At approximately the same 
+time when the payment channel idea was first proposed, the Bitcoin Core developers, Peter Todd and Gavin Andresen, 
+started considering the creation of payment networks on top of the primary accounting system. However, only in 2015, the 
+world saw a work called "The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments" [75].
+
+At the time the LN whitepaper was published, the idea it described was incompatible with the current version of Bitcoin; 
+therefore some changes in the protocol were required. The first changes were the addition of operations 
+OP_CHECKLOCKTIMEVERIFY and OP_CHECKSEQUENCEVERIFY, which allowed blocking coins for a certain period of time. 
+Additionally, the SegWit update was essential, which was activated in summer 2017 (see section 4.6). Officially, the LN 
+entered at the alpha stage in January 2017 [76]; its first full implementation appeared at the same time [77; 112].
+
+As mentioned earlier, in summer 2017 the SegWit update was released and became the basis for the introduction of LN. 
+Three months later Blockstream announced the first successful transaction through LN [114]. In November, the first 
+transfer of coins between the Bitcoin and Litecoin networks was completed. In December, the leading teams of 
+Blockstream, Lightning Labs, and ASINQ announced that their implementations were fully compatible.
+
+The edges in Figure 4.66 denote the network connections between nodes of Bitcoin and Lightning networks. The arrows in 
+the figure indicate the interaction of these nodes, which is required for the actualization of the states. The nodes of 
+LN need to update each other's information about their status and exchange messages to support the operation of payment 
+channels.
+
+[Figure 4.66] - Message exchanging between Bitcoin network and Lightning Network
+
+### How does Lightning Network work?
+To understand the basic idea of LN, consider the following example. Suppose there is a grocery store in town that 
+enables its customers to pay in bitcoins. Moreover, this store gives an opportunity for regular customers to open 
+bidirectional payment channels with it so that both could save on fees and transaction confirmation time. Alice and Bob 
+are **regular** clients and both have opened the channels with the store.
+
+The idea of LN is that not only Alice and Bob can provide payments to the party with which they have opened the channel 
+(in our case, a grocery store), but also they can transfer coins to each other by using this party as an intermediary. 
+The important point is that a client does not need to trust this intermediary (in practice, the number of them is most 
+often more than one).
+
+As we have described above, specific payment channel implementations are designed in a way to prevent the fraudulent 
+behavior at the root (an attempt to steal coins of an interacting party may end up losing all your funds). Lightning 
+Network operates on the same principles. Intermediaries who “pass” your funds are technically prevented from the ability 
+to steal your coins. This is what makes payments in Lightning Network atomic: the transfer of coins is either performed 
+successfully and completely or not performed at all. The basis for such a trustless interaction became the proper 
+implementation of a locktime mechanism into the LN protocol (more details will be discussed in the next volume of this 
+book).
+
+To have a clearer understanding about how LN works, now consider the example (Fig. 4.67) that shows how coins are 
+transferred from Alice to Bob, while they do not have a payment channel opened with each other directly.  
+
+[Figure 4.67] - Simplified example of how nodes are arranged in Lightning Network
+
+The figure schematically presents a small network of 6 users, each with a node. In practice, of course, there could be 
+hundreds of them. Suppose that Alice needs to transfer 2 BTC to Bob. In such a case, the software of her node will need 
+to find the most optimal way to “pass” the coins. Since nodes in the network constantly synchronize, Alice’s node knows 
+the required information about the other opened channels such as the number of coins, the time on which the channel is 
+opened, and so on.
+
+The software of Alice’s node determines the routes by which it can transfer 2 BTC to Bob. This process is as follows. In 
+the Alice—Ken channel, the state of balances is 6|10, which means that Alice has 6 BTC and Ken has 10 BTC—value transfer 
+is possible. In the Ken—Den channel, the state of balances is 1|4, meaning that Ken has 1 BTC and Den has 4 BTC—value 
+transfer (2 BTC) is impossible. Noteworthy, if in the Ken—Den channel, the state of balances would be reversed (4|1), 
+value transfer could be completed.
+
+[Figure 4.68] - Sending a payment from Alice to Bob
+
+Now, there’s the second path. In the Alice—Eva channel, balances are 17|43—value transfer is possible. In the Eva—Dave 
+channel, balances are 4|1—value transfer is possible (as you can see, the fact the Dave has only 1 BTC in the Eva—Dave 
+channel doesn’t prevent the transfer of Alice’s 2 BTC because it is only the sender who must have the required amount). 
+Eventually, in the Dave—Bob channel, balances are 17|15, meaning that value transfer is possible, and Alice will be able 
+to transfer 2 BTC to Bob through two intermediaries, Eva and Dave. Figure 4.69 also vividly shows how the state of 
+balances have changed after Alice has transferred her 2 BTC to Bob.
+
+[Figure 4.69] - How the state of channel balances has changed after the payment has been transferred
+
+In fact, in the very same situation, there’s also another possible way to send the payment from Alice to Bob. Alice can 
+split the payment into two parts and send the coins separately: 1 BTC through Eva and Dave, and another 1 BTC through 
+Ken and Den (Fig. 4.70).
+
+[Figure 4.70] - Sending the same payment but separately
+
+In Figure 4.71, you can see how the state of balances of each channel will change provided that the payment is made in 
+this way (if Alice splits her coins and sends them separately).
+
+[Figure 4.71] - How the state of channel balances has changed after the payment has been transferred separately
+
+In practice, the number of nodes and possible routes is much higher.  Moreover, LN is not that uniform as the Bitcoin 
+network. This means that there are nodes with the greater and lower load as well as nodes with inconsistent activity. 
+In Figure 4.72, you can see the relevant state of LN in December 2018 [78]. 
+
+> **Statistics of the Lightning Network in 2018**
+>> * Estimated 4,500 nodes
+>> * 14,000 channels opened on average
+>> * 479.70 BTC locked on the Bitcoin network (are in the circulation of LN)
+
+[Figure 4.72] - State of Lightning Network in the end of 2018
+
+To open a payment channel, you need to freeze a certain amount of coins; thus sending and accepting payments in channels 
+is possible only within a limited, predetermined sum. If an ordinary user divides her coins into several parts and 
+correspondingly opens several channels, she will only be able to operate within a limited amount of coins in each of the 
+channels. This is why large organizations such as wallet developers, centralized exchanges, or popular merchants will 
+serve as *hubs*. They can afford maintaining a huge number of channels opened on large sums and for long periods of time 
+without going offline. Ordinary users will very likely open at most one or two payment channels with one of these hubs.
+
+Based on the above-mentioned facts, let's define the basic functions of LN nodes.
+
+> * Routing
+> * Opening channels
+> * Making transfers between intermediary nodes
+> * Closing channels
+
+Routing is one of the most complex functions of LN nodes. Every LN node determines the optimal path of a payment, 
+considering factors such as the capacity of a specific channel, the sum on which it is opened, how these parameters 
+could possibly change as the payment passes over the network, and a “backup plan” in case some of these channels 
+suddenly shut down.
+
+Also, every network node must make sure that it has open channels with other nodes. Some channels are particularly 
+important for the network, and the loss of them may cause both malfunctioning and network breaches. To avoid this, every 
+node should maintain connections with as many nodes as possible.
+
+Perhaps, the paramount function of the network nodes is to perform payments. The size and number of payments a node is 
+able to perform directly depend on the width of channels opened by this node.
+
+Another function of network nodes is to close the payment channels. In LN, there are so-called dominant nodes (with a 
+huge number of opened channels). In some sense, these nodes could manipulate the flow of funds by opening or closing 
+their payment channels. This issue can be solved by increasing the number of channels between all LN nodes. This 
+approach, however, would be quite expensive for the owners of nodes since they pay fees for opening and closing their 
+channels, and they should also have a sufficient amount of coins to have it frozen and provide the operation of their 
+channel.
+
+**Frequently asked questions**
+
+*– How much are payment transfers in the channels reliable compared to usual Bitcoin transactions?*
+
+The reliability of payments in channels can be compared with ordinary bitcoin transactions; coins will not be taken 
+away, and the payment will not be canceled. However, there are a number of peculiarities such as the need to open and 
+close the channels on-time, limiting the amount in the channel, the need to constantly synchronize with the Bitcoin 
+network, the probability of freezing of coins on a certain period of time, etc.
+
+*– Is the capacity in the Lightning Network limited?*
+
+The fact is that there are no limitations, but there may be delays related to channel processing, network exploration, 
+and route planning. It depends on the performance of specific network nodes. It should also be taken into account that 
+nodes can unpredictably go offline, and this can entail certain restrictions in making payments to other participants.
+
+*– Should channel members trust each other?*
+
+No, the mechanism of payment channels provides protection from malicious actions of interacting parties according to the 
+protocol.
+
+*– What is the use of channels to a person who wants to send only one payment?*
+
+If a person wants to get rid of the last coins and no longer plans to accept and send payments, then it makes no sense 
+to open the channel; instead, it would be better to send a regular on-chain transaction. In all other cases, the opening 
+of the channel will be useful. For example, it can reduce the fee and the time of transaction confirmation.
+
+*– What is the difference between a sidechain and payment channels?*
+
+A *sidechain* is a separate chain of blocks that accounts for coins from the *mainchain*. Rules in a sidechain may 
+differ from the rules in the mainchain and be determined by the new protocol. Sidechain does not have a base currency, 
+but it implements the coins transfer mechanism from the main chain of blocks. At the same time, the payment channel is 
+not a separate chain of blocks and does not implement the transfer of coins from the mainchain. It is simply a method of 
+carrying out multiple payments without having to process transactions by validators (only the two transactions are 
+confirmed for each payment channel: an opening one and a closing one).
 
 
 
