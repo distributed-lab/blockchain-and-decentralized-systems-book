@@ -2067,6 +2067,28 @@ are already significant achievements (see 4.8).
 
 *– Is it correct to claim that RBF (replace-by-fee) will not work for the Segregated Witness transactions?*
 
+No, it is not. Replace-by-fee will work for the Segregated Witness transactions because it is based not on what the 
+spending rules are but on the fact of using the same coins and specifying the sequence number of the transaction input. 
+If you increase the input value using the same coins and specify correct proof of coin ownership, then you can replace 
+the previous transaction.
+
+*– How can I change the hash of an unconfirmed transaction?*
+
+Transaction hash is the result of computing the hash function of all the data that is stored in the transaction. 
+ScriptSig, which is contained in a transaction, participates in the calculation of hash but cannot be signed. Minor 
+changes in this field that do not entail changes to the signature verification rules will cause changes to the 
+transaction hash value. It means that while the signature and transaction remain valid, the hash of the transaction will 
+change.
+
+*– How is witness data stored in a transaction?*
+
+As noted before, Segregated Witness transactions have a new structure: a set of inputs, a set of outputs, and proofs in 
+which witness data is stored, respectively. As simple as that: a user has a dataset describing that there are two inputs 
+of the transaction (bytes of the first input and bytes of the second input), two outputs, and two more sets of witness 
+data, which are also written similarly as a sequence of bytes.
+
+
+
 
 
 
