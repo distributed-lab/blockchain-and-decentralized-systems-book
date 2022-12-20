@@ -474,4 +474,426 @@ words, the probability of this coincidence is almost zero.
 > **_NOTE:_** *If the software that generates private keys is initialized based on some obvious data, such as a user's 
 > password or the current time, then the probability of guessing and matching keys increases.*
 
+### Centralized storages
+There are online services that implement the basic functions of digital wallets but store private keys on their own 
+servers. Their users have a false feeling that they have a bitcoin wallet, whereas it is actually a particular remote 
+service that performs operations and stores coins instead of the user himself. Obviously, by using such services, you do 
+not control your coins and must completely trust the third-party organization.
+
+One of the largest providers of centralized storage is Coinbase. In fact, it is a kind of bitcoin bank, where a user 
+registers as with PayPal (login, password, etc). After that, a user is given an address for the deposit of bitcoins and 
+an application for remote management of her coins. A user in fact only has a promise from the centralized service to 
+keep funds safe. Using centralized wallets, your ability to manage funds is limited: you can only send a request for a 
+withdrawal of bitcoins, and then “hope” that it will be processed.
+
+Most exchanges store coins of users on the principle of centralized storage, hence they require a maximum level of trust 
+from their users.
+
+### Wallet backup
+Since the private key is the only way to prove ownership of coins and spend them, *the owner of coins is determined by 
+the knowledge of the private key*. All bitcoin wallets implement the following functions: generation of addresses for 
+coin receiving, displaying of balances and transaction history, payment sending, creation of a *wallet backup*, and 
+wallet restoring from a backup.
+
+There was an interesting incident in the life of a man named James. He had a hard drive storing the keys with access to 
+7,500 BTC. Since, at that time, the price of bitcoins was low, James threw the hard drive away. When the price of the 
+coin increased, James realized how much money he had lost and started looking for his hard drive at the dump. He even 
+appealed to the municipality, so that the local authorities would allow him to search the dump, but he was refused. 
+Ultimately, James spent a long time pursuing various options to find the hard drive holding his coins, but all efforts 
+proved unsuccessful [27].
+
+We deliberately emphasize the fact that making a backup copy of your wallet is mandatory and something you should carry 
+out even before you receive the first payment. For this functionality, there is a technical specification supported by 
+different developers of the wallet software. A backup copy can generally be restored in wallets from different 
+developers.
+
+If a user is wondering whether or not it makes sense to make a backup copy of the wallet after each payment, the answer 
+will depend on the implementation of a specific wallet. Usually, the wallet generates new addresses and corresponding 
+keys for each payment, meaning that you have to re-transfer them to a backup copy each time. However, there are wallets 
+that use the so-called deterministic key generation (*deterministic wallets*). In this case, one backup is enough.
+
+For the deterministic wallets, there is the concept of the main secret of the wallet. All new keys are mathematically 
+generated from this main secret. This means that users can make a backup copy of the main secret of the wallet only once 
+and then, using it, restore the access to coins on another device and/or in other software at any time. Usually, special 
+encoding is used by the wallet to allow users to represent the main secret with an easy-to-remember mnemonic phrase.
+
+An example of a mnemonic phrase is illustrated in Figure 2.11. In practice, it is convenient to write a mnemonic phrase 
+on a piece of paper and store it in a very safe place and, when necessary, enter it into another wallet. To store keys 
+conveniently, you can use password managers. They allow a user to remember from 4 to 6 words instead of writing down the 
+entire mnemonic phrase. A user will further need those particular words to open a password manager and access all her 
+private keys.
+
+[Figure 2.11] - Example of a mnemonic phrase
+
+**Common myths**
+
+*If you store private keys on your device, they cannot be stolen.*
+
+The most common way to steal coins is to steal private keys using a software virus. Therefore, it is not recommended to 
+store the private keys which big coin amounts are tied to on unprotected devices.
+
+*If you store private keys on a device with no internet access, you need not worry about security.*
+
+This approach can actually improve the security of key storage and protect against most remote attacks, but this does 
+not mean that the private key stored in this way is ultimately secured.
+
+*Quantum computers can easily hack the Bitcoin encryption system.*
+
+In fact, Bitcoin does not use encryption at all. It uses digital signatures and hash functions in a combination that 
+makes them not vulnerable to attacks by a quantum computer (see 3.2).
+
+**Frequently asked questions**
+
+*– Are there any organizations that resolve disputes regarding transactions?*
+
+There is no such centralized organization. Disputes regarding transactions are resolved at the Bitcoin protocol level. 
+However, there may be disputes outside the protocol during its usage. To solve them, the so-called escrow agents are 
+used. This means that during a transaction, coins are frozen between the sender and the recipient. The decision on how 
+to distribute these coins is made with the mediator’s participation. In this case, the mediator must be trusted by both 
+parties of the transaction.
+
+*– Why can't you personalize a wallet—bind it to a specific person?*
+
+Bitcoin as a payment system protocol does not require user identification. Moreover, this is not an exclusive 
+requirement for verifying transactions (for this, a digital signature is enough). The one who generates such signatures 
+is the owner. And so, the signature can be owned by a person, a group of several people, even a robot, etc. As for 
+personalization, there is no identity data in the Bitcoin database, but the entire transaction history is publicly 
+available. This means that if you manage to associate a particular address with a particular person, then you can 
+deanonymize some users with a certain probability.
+
+*– If several billion new users get wallets, will Bitcoin slow down?*
+
+If you just open a wallet and create many addresses, this will not affect the network and the database. What does matter 
+is the number of transactions. So, it's not about the number of users but the scale of their activity.
+
+*- Is it possible to create wallets that work without servers and a center (peer-to-peer)?*
+
+Yes, it is possible. However, in this case, the requirements for the mobile device increase: internet connectivity, long 
+recovery on another device, power consumption, and device memory.
+
+## 2.3 Concept of transaction in Bitcoin
+In this subsection, we describe some general ideas around the concept of transaction in Bitcoin: what a bitcoin 
+transaction is, how it is verified in a shared database, how a user proves her ownership of the coins that she tries to 
+spend, how fees are determined and set in Bitcoin, and what conflicting transactions are.
+
+### What is a bitcoin transaction?
+As we noted earlier, *a transaction is a set of digital data which is used to update a particular database (which 
+reflects coin transferring from one address to another)*. A transaction is especially what determines the transfer 
+amount and the recipient’s address as well as the terms required to access the transferred coins.
+
+> **Lifecycle of a transaction**
+>> * Creation
+>> * Propagation
+>> * Verification
+>> * Inclusion in a block (validation)
+>> * Rejection (in case the block is invalidated later)
+
+Let's explore what data makes up a bitcoin transaction. Any transaction in Bitcoin contains the origin of coins that are 
+being spent (i.e., references to transactions where these coins were received), proof of coin ownership, addresses of 
+new owners (more broadly, conditions under which the coins can be spent), and the transfer amounts.
+
+> **Data in the body of a transaction**
+>> * Origin of coins that are being spent
+>> * Proof of coin ownership
+>> * Address for the transfer (spending conditions)
+>> * Transfer amounts
+
+> **_NOTE:_** *In the simplest case, an address is associated with one pair of keys (the public and private key), which 
+> is used to generate and verify the digital signature. A private key is used to authenticate transactions and is only 
+> known to the address owner. The number of all possible addresses is huge, and the number of possible private keys is 
+> even greater. Therefore, guessing a private key to someone else's address is almost impossible (given that key 
+> generation is a truly random process). It is important not to confuse the concept of address with the concept of 
+> account since there are no accounts in the Bitcoin protocol.*
+
+The analogy with a usual receipt might help to better understand the idea of a bitcoin transaction. In one sense, 
+regular money is a receipt. Each receipt contains data: who received the payment, from whom, for what, the payment 
+amount, date, and signature (Fig. 2.12).
+
+[Figure 2.12] - Example of a traditional receipt
+
+A bitcoin transaction, just like the lawful receipt, must meet specific requirements to be considered correct. First, it 
+must transfer coins that the sender owns. Secondly, these coins can be spent only once.
+
+*Verification is the process of checking the data (transactions, blocks, etc.) according to the protocol rules.*
+
+During the verification process, each transaction is checked to ensure that the sender owns the coins that she tries to 
+spend. Usually, the originator of a transaction proves the ownership of coins by using a digital signature. In addition, 
+it is necessary to verify that a transaction spends existing coins for the first time and only once.
+
+The authenticity of the paper receipt is easy to verify, while arguably digital receipts could be copied many times, 
+making it difficult to determine the original. Suppose that Alice has given a receipt to Bob. If Bob turns out to be a 
+fraud, you can assume that he may come with his, say, five friends, all with the same receipts, and all five would 
+demand money from Alice. Thus, if each receipt would have had the authenticity of the original one, then Alice would 
+definitely find herself in an awkward situation. In paper form, it is relatively easy to distinguish a copy from the 
+original; in digital form, it is not. This and similar problems obviously demand their solutions.
+
+In Bitcoin, the solution is that transactions are joined in the structure units called blocks. A block is a unit of data 
+consisting of a header and a body that represents a set of transactions (generally, non-empty). Blocks are linked to 
+each other with hash values (for further details, refer to 3.1) and in this way stored in a shared database. This 
+approach ensures the immutability of a database of all transactions.
+
+### Verification of transactions
+Paper checks (Fig. 2.13) are still common in the US and many other countries: people receive their salary in checks, pay 
+for rent, cash them out in banks, etc. On the check, you can see its serial number (12982 as in Figure 2.13), which is 
+unique for each check (you cannot cash out two checks of the same serial number).
+
+[Figure 2.13] - Example of a paper check
+
+How does Bitcoin solve the problem of protection against copying of original "receipts”, in its case called 
+transactions? In the checkbook, each check has an order number, which is its unique identifier. But in a *decentralized 
+environment*, where Bitcoin functions, it is impossible to enumerate transactions since all participants work 
+asynchronously. Therefore, in order to distinguish one transaction from another, in Bitcoin there is a globally unique 
+transaction identifier (*txid/wtxid*)—the so-called *hash value* calculated from the transaction data (for further 
+details, see 3.1). If multiple transactions appear to have the same hash value, only one of them will be considered 
+correct. However, there can be exceptional situations, which will be described separately.
+
+An interesting feature of Bitcoin is that it is possible in any transaction to show "where" the coins came from (there 
+is a reference to the previous transaction with its hash value). This is how the origin of transmitted coins is verified 
+in Bitcoin. You can schematically see how a new transaction spends the coins received from the previous transaction in 
+Figure 2.14.
+
+[Figure 2.14] - How Bitcoin transactions work
+
+> **Basic stages of transaction verification**
+>> * Verification of the condition that the spent coins exist in the accounting system
+>> * Verification of the condition that the coins are spent for the first time and not more than once
+>> * Verification of the proof of coin ownership submitted by the sender (initiator of a transaction)
+
+Here is how it works: in order to spend the coins, a user must indicate where he received them from and prove the 
+ownership. If the origin of coins does not raise additional issues—there is no other transaction that spends the same 
+coins and the user has proved his ownership—then all that remains is to wait for the confirmation of this transaction by 
+other members of the system.
+
+The process of transaction confirmation demands that participants first check them and then mutually agree which 
+transactions they consider correct. This means that a transaction in order to be confirmed should receive a consent of 
+*the majority of active participants* (see 2.5). Anyone can participate in the process of confirming transactions in 
+Bitcoin (Fig. 2.15).
+
+[Figure 2.15] - How nodes interact in the Bitcoin network
+
+### Concept of fee in Bitcoin
+The transaction model in Bitcoin assumes transaction fees which are paid in bitcoins. Fees are included by the sender 
+during the creation of a transaction and should, by default, be above a certain threshold. Although in practice, users 
+can set a zero fee and such a transaction will be considered correct. The fee is technically an additional reward for 
+the participants who confirm transactions.
+
+With the growing popularity of Bitcoin, the flow of new transactions in the network has increased significantly. In 
+Bitcoin, the block size was limited under the rules of the protocol (the maximum base size of a block is 1 MB). 
+Sometimes there are situations when the flow of new transactions exceeds the capacity in Bitcoin. In this case, each 
+network node arranges all unconfirmed transactions into a queue, where transactions that pay higher fees are at the 
+front. In fact, transactions in Bitcoin can be considered as a data record in a shared database. The price of this data 
+record is the ratio of a fee defined in a transaction and the size of a transaction in bytes (or its size in *weight 
+units*; see 4.6). So transactions at the end of the queue may remain unconfirmed for longer. Therefore, this provokes a 
+hardly predictable market for adding a unit of data to the Bitcoin database—namely, how much you should pay to have your 
+transaction confirmed within a reasonable time (see 4.7).
+
+The principles of decentralization applied to defining fees in bitcoin transactions can be illustrated by an example: 
+you can compare a potentially confirmed transaction in Bitcoin to a political party that wants to enter parliament. 
+Which of the deputies gets to the upper part of the election list depends on the amount of his "contribution" 
+(unfortunately, such an approach is very popular in many countries). The deputies will be "sorted" by the total of this 
+"contribution"; those who offered less will not succeed. Most likely they will have to wait for the next parliamentary 
+elections and try again. Due to the high volatility of fees in Bitcoin, this became a problem as the transaction sent to 
+the network could remain unconfirmed for a long time (or even forever). However, this problem was later solved (for more 
+details about fee volatility and the solution to this problem, see 4.7).
+
+> *Transaction pays a fee per each unit of its weight*
+> *Maximum base size of a block is 1 MB*
+> *Validators sort transactions by descending price of data records*
+> *Transactions with a low price of data recording may remain unconfirmed for a longer time (or even forever)*
+
+### Concept of conflicting transactions
+A well-formed chain of blocks contains transactions that do not conflict with each other. You may wonder what a 
+conflicting transaction is. If John transferred 5 coins to Mary in one transaction and later sent the same 5 coins in 
+another transaction to Paul, then it is obvious that both transactions cannot be recorded in one version of history. 
+Therefore, only one of these transactions will receive full confirmation. The question is: who will get these 5 
+coins—Mary or Paul? Until the point of full confirmation, it is impossible to answer the question as to which 
+transaction will definitely be accepted. You can only suppose that the transaction with a higher chance of confirmation 
+is the one which was distributed over the network first or, even more likely, the one that pays a higher fee.
+
+**Common myths**
+
+*The Bitcoin protocol source code is closed and only the creator can make changes.*
+
+Quite the opposite: there are several implementations of one protocol in different programming languages; the source 
+code of most of them is open and available for study, modification, etc.
+
+*Ordinary engineers and developers cannot suggest improving the Bitcoin protocol or develop their own wallet.*
+
+Anyone can offer a protocol modification and even program his own network client or application. The existing Bitcoin 
+community is open to new proposals and primarily consists of independent enthusiasts. Though, it is generally the more 
+experienced participants who offer the most worthwhile protocol modifications.
+
+**Frequently asked questions**
+
+*– Is it necessary to connect to the Bitcoin network to generate a new address?*
+
+No, you do not need a network connection for this. Generation of keys for a digital signature and the generation of 
+addresses is performed locally. This process does not depend on other users.
+
+*– What happens if private keys of two different users match?*
+
+The probability of such a coincidence is extremely small yet exists, so it is usually neglected. But if due to a 
+generation error or some other unlikely reason this happens, then both users will, in fact, see one amount on the 
+balance sheet and have access to the same coins, which can be spent only once.
+
+*– Who establishes the fee for the transaction?*
+
+The amount of the fee is specified in the body of the transaction itself. It is determined by the one who creates and 
+signs the transaction. According to the Bitcoin protocol rules, a zero-fee transaction is correct. However, the software 
+of most network nodes will simply ignore the transaction if it is below the necessary minimum (which can change over 
+time).
+
+*– Is it true that somehow one can analyze the history of the origin of all coins and violate the privacy of some 
+transactions in Bitcoin?*
+
+Yes, there is a practice of creating such organizations that analyze a large number of direct and indirect data 
+regarding the transactions in Bitcoin. And these organizations can with some probability say which coins belong to whom 
+and for what purpose they are used. In turn, services that take bitcoins, for example, centralized exchanges, can apply 
+to such organizations for information. Services that value their reputation, such as Kraken, do not accept payment if 
+the history of the *coins origin* is doubtful (see 4.1). However, there are approaches that allow increasing the level of 
+privacy in Bitcoin: cryptocurrencies such as Monero and ZCash place greater emphasis on the anonymity of users 
+(see 7.2).
+
+## 2.4 High-level architecture of Bitcoin
+In this subsection, we will cover how Bitcoin works, review the features of a shared database and collective processing 
+of transactions, describe the basic principle of reaching consensus in Bitcoin, and also compare Bitcoin with 
+traditional payment systems.
+
+The architecture of Bitcoin is heavily affected by the need to work in an extremely hostile Internet environment, which 
+is anonymous, where law enforcement barely works, which is full of hackers, and where there are no responsible parties 
+nor any guarantees. Therefore, its launch has proved that it is possible to create a financial system with an open 
+database that anyone can use without registration. The basic principles are as follows: a copy of the database is stored 
+by all users; users follow the same rules and trust only what they can verify themselves. This is the essence of 
+*decentralization in accounting systems*.
+
+### Architecture of Bitcoin
+Each user has their local copy of the database organized as a chain of strictly ordered sets of transactions—blocks. In 
+Bitcoin, transactions are considered unconfirmed until they are added to the block. After this block is confirmed by 
+honest participants, it is impossible to modify or remove the transaction from the shared database undetected. 
+Schematically, this data organization can be represented as a chain of blocks, in which each block is a set of 
+transactions (see Fig. 2.16). Satoshi called this format of data storage *block chain*; later it was called 
+*blockchain*. 
+
+[Figure 2.16] - How a blockchain-based database is arranged
+
+The blockchain technology allows organizing the database in such a way that all the blocks are linked to each other (The 
+green block in Figure 2.16 is a so-called *genesis block*; for further details, see section 4.3). Since blocks are 
+linked together, it is impossible to change the content of one block without affecting all the subsequent ones.
+
+Who verifies the transactions and how do they get onto the chain of blocks? Any user can create a correct (in terms of 
+the protocol) transaction, send it to the network, and it will be transmitted to all other participants. Then, each 
+validator independently verifies the validity of a transaction and adds it to their block for confirmation; when the 
+transaction has been added to one of the new blocks, it can be considered confirmed. Each new block in the chain is 
+created as a result of parallel and independent work by each participant (Fig. 2.17).
+
+[Figure 2.17] - Users working on the continuation of the chain of blocks
+
+Who creates blocks and chooses which transactions to include in them? In Figure 2.18, you can see that each block is 
+created by one of the users and hence extends the main chain. The creator proposes her block to other network nodes. 
+They verify this block and add it to their database copies if this block complies with the protocol rules. If the 
+majority of participants add the proposed block, it gets to the chain, and the transactions in the block become 
+confirmed. It should be understood that just one block is added to the chain. All the other blocks which have been 
+generated by other participants but have not got to the chain are discarded. The transactions of a discarded block 
+(an *orphan block*) are not confirmed and are available for future confirmation. This sequence of actions is required to 
+achieve consensus in a *decentralized environment*.
+
+[Figure 2.18] - How users create blocks
+
+### Processes in the Bitcoin accounting system
+
+> *Audit of the accounting system*
+> *Validation of transactions*
+> *Update management (governance)*
+
+*Audit* is the process of verifying that the current state of the database fully complies the conducted transactions.
+
+*Validation of transactions* (also known as mining or the process of block creation) is the process of verifying 
+transactions for the compliance with the protocol rules and of adding them to a block (and subsequently to the database 
+of the system).
+
+*Update management (governance)* is the process of affirming the functionality of the system and, at best, transforming 
+all nodes of a system to a uniform operation model.
+
+### Roles of participants in the Bitcoin accounting system
+Bitcoin allows every participant to manage the above-mentioned processes and hence perform any of the below roles.
+
+> *User*
+> *Auditor*
+> *Validator*
+> *Developer*
+> *QA engineer*
+
+Another feature of Bitcoin is that every system participant decides himself (in a *permissionless* manner) which role he 
+will perform.
+
+### Conditions in which the consensus in Bitcoin is reached
+As described above, before making any changes to the general state of the chain of blocks, participants must come to an 
+agreement. If participants have checked the block for correctness, and everyone agrees to add it to their chain, then 
+the block is added, and all the subsequent blocks will be created on its basis. Coming to an agreement is very often 
+difficult yet a crucial task. Without a solution, you wouldn't achieve reliable operation of a *decentralized accounting 
+system*. Therefore, one of its crucial components is the *consensus mechanism*.
+
+*Consensus is the state of users' agreement regarding the transactions that they consider correct, which is developed 
+during the "discussion"* (exchange of messages about transactions, blocks, state of nodes). Reaching consensus is the 
+goal of all honest participants in Bitcoin, but obviously, you wouldn’t blindly rely on the fact that most Bitcoin 
+participants are honest. For this reason, the Bitcoin protocol is designed in such a way that consensus can be reached 
+in the system even under the following conditions.
+
+> *Number of network nodes is unknown*
+> *Participants can be anonymous*
+> *Validators can be anonymous*
+> *System participants do not trust each other*
+> *There is no single governing authority*
+> *Number of malicious nodes is unknown*
+
+Ideally, everyone should agree with the list of confirmed transactions. However, in practice, there are a number of 
+difficulties during the reconciliation. As we have already stated, Bitcoin is designed to securely operate in an 
+extremely hostile Internet environment. Here, all participants are anonymous and do not trust each other; their number 
+is generally unknown and is very likely large; each user's vote can be easily forged (if you consider the traditional 
+approach to voting). Directly on the network, there is a computer program which is usually controlled by a person. 
+However, it may be that particular software isn't run by an honest participant but rather is a bot controlled by a 
+malicious person. Moreover, it may even happen that for a hundred or a thousand users there will be only one real 
+person.
+
+### How is the consensus in Bitcoin reached?
+Having determined the complexity of the task—reaching overall consensus in the environment which is trustless and where 
+any participant may potentially be malicious—we can cover the key question, how.
+
+The principle of reaching consensus in a decentralized accounting system can be explained in the following example. 
+Imagine playing a card game. In this game, there is no "dealer" responsible for controlling the game: all participants 
+know the rules and are obliged to adhere to them. All moves (in our case, transactions) are public and checked by all 
+participants of the game. In case one player cheats, this will be immediately noticed by other players, and the cheater 
+will be excluded (Fig. 2.19). The distribution of new cards from the deck is carried out by the same principles. Rules 
+determine the order in which players pick up cards as well as the number of these cards.
+
+[Figure 2.19] - Card game as an example of reaching consensus in an auditable environment
+
+Let's draw a consensus schematically (see Fig. 2.20). All users store their local copy of the database, which is 
+organized using blockchain technology. The state of unanimous approval means that copies of all honest users are 
+identical after they have been synchronized (i.e., database copies of all participants have the same blocks of data 
+forming identical chains).
+
+[Figure 2.20] - Case in which the system participants have reached consensus
+
+> **_NOTE:_** *In the context of Bitcoin, the concepts such as shared database, chain of blocks, and transaction history 
+> have the same meaning.*
+
+### Bitcoin as compared to traditional payment systems
+
+> *Bitcoin does not require registration*
+> *Transaction does not contain any users’ personal  data*
+> *Payment address can be used only once*
+
+Very often people wonder how confidential their bitcoin transactions are. In fact, everyone can see all the transactions 
+between all the addresses, but it is difficult to identify who is behind each bitcoin address as well as track the 
+transaction history of a specific user. For a better understanding of privacy in Bitcoin, let's draw an analogy with 
+traditional financial systems (Table 2.1).
+
+
+
+
+
+
+
+
 
