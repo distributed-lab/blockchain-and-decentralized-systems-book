@@ -866,7 +866,7 @@ the recognition of the entire transaction history since Bitcoin has existed.
 Now let's slightly enlarge the idea of data structure in the chain of blocks (Fig. 4.32). Recall that each block 
 consists of two parts: the block header and the included transactions.
 
-[Figure 4.32] - Structure of the chain of blocks
+![Figure 4.32 - Structure of the chain of blocks](/resources/img/chapter-1/4.3-how-is-blockchain-implemented-in-bitcoin/4.32-structure-of-the-chain-of-blocks.png)
 
 *A genesis block is the first block created in the blockchain, after which all parties may create subsequent blocks*. 
 Its peculiarity is that it is not propagated when nodes are synchronized with each other because it is built in the 
@@ -1011,7 +1011,7 @@ that stores and processes unconfirmed transactions. Each Bitcoin network node ha
 queue of transactions that it has checked and considers valid. Broadly speaking, mempool is an organized queue 
 (Fig. 4.33), where transactions are stored and sorted before being added to the newly created blocks.
 
-[Figure 4.33] - Operation of mempool
+![Figure 4.33 - Operation of mempool](/resources/img/chapter-1/4.3-how-is-blockchain-implemented-in-bitcoin/4.33-operation-of-mempool.png)
 
 Mempool directly displays the network capacity status (the larger the queue of transactions is in the mempool, the less 
 effective the network capacity happens to be). During 2017, the average load of the queue was 30,000 transactions with 
@@ -1042,7 +1042,7 @@ to the mempool, and then starts forming the next block based on the one it has j
 Figure 4.34 shows how a block is propagated over the network. This process is not instantaneous; this is why the state 
 of the database seems unclear at a particular time point when some nodes have not yet received the last block created.
 
-[Figure 4.34] - Block propagation over the network 
+![Figure 4.34 - Block propagation over the network](/resources/img/chapter-1/4.3-how-is-blockchain-implemented-in-bitcoin/4.34-block-propagation.png)
 
 *Block verification*. In order to verify that a particular coin is not being double-spent, there is a separate database 
 used along with the main one and maintained by each Bitcoin network node. It is called coins database. It stores the 
@@ -1071,7 +1071,7 @@ becomes known which of the chains is longer, then, according to the protocol rul
 the shorter chain and switch to the longest one. However, the organization of this process is not as simple as it might 
 seem at first glance.
 
-[Figure 4.35] - Switching to alternative chain of blocks
+![Figure 4.35 - Switching to alternative chain of blocks](/resources/img/chapter-1/4.3-how-is-blockchain-implemented-in-bitcoin/4.35-switching-between-blockchains.png)
 
 There is a process called *reorganization*. It allows users to cancel a particular version of event history and switch 
 to another one. How does it work? Reorganization includes the block disconnection process, which exposes some key 
@@ -1125,7 +1125,7 @@ In Figure 4.36, you can see that among all the blocks that a node downloads, onl
 values match, the software continues to function normally; if not, a user gets notified. This notification indicates 
 that either the checkpoint is incorrect or that a user is imposed with an incorrect transaction history.
 
-[Figure 4.36] - Correspondence of checkpoints to blocks at particular height
+![Figure 4.36 - Correspondence of checkpoints to blocks at particular height](/resources/img/chapter-1/4.3-how-is-blockchain-implemented-in-bitcoin/4.36-checkpoints.png)
 
 The author of these checkpoints is the community, namely, the software developers. Due to this, you have to trust that 
 they have selected hash values from correct blocks (that received enough confirmations) and that the probability of this 
