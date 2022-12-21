@@ -1841,19 +1841,19 @@ the system.
 You might want to see how the Segregated Witness actually looks like and what is its difference with a ordinary 
 serialized Bitcoin transaction, which is presented in Figure 4.48.
 
-[Figure 4.48] - Example of a standard serialized Bitcoin transaction
+![Figure 4.48 - Example of a standard serialized Bitcoin transaction](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.48-serialized-tx.png)
 
 Figure 4.49 shows the Segregated Witness transaction. The difference with this one is that witness data, which is 
 detached in the figure, can be separated. Updated nodes receive full data about the transaction, including the witness 
 data, while for the nodes which are not updated, witness data is not available, and they consider such a transaction 
 correct by default (even if proof of ownership is not correct). We will describe why further in the section.
 
-[Figure 4.49] - Example of a serialized SegWit Bitcoin transaction
+![Figure 4.49 - Example of a serialized SegWit Bitcoin transaction](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.49-serialized-sewit-tx.png)
 
 Essentially this is the primary idea of Segregated Witness update—the proof of coin ownership is kept separately from 
 the primary transaction data (Fig. 4.50).
 
-[Figure 4.50] - Segregating proof of coin ownership from the rest transaction data
+![Figure 4.50 - Segregating proof of coin ownership from the rest transaction data](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.50-segregation-of-coin-ownership.png)
 
 In addition, the SegWit update includes many other improvements. It allows increasing the network capacity, separating 
 the proof of coin ownership from the rest transaction data, and eliminating disadvantages of the transaction format 
@@ -1893,7 +1893,7 @@ receive blocks in their base configuration, with a maximum size of 1 MB, and the
 witness (proof of coin ownership). The new nodes, however, receive full blocks containing both transactions and proofs 
 (see Fig. 4.51).
 
-[Figure 4.51] - Result of Segregated Witness update
+![Figure 4.51 - Result of Segregated Witness update](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.51-result-of-segwit-update.png)
 
 On the left, you can see how the Bitcoin protocol operated before the activation of Segregated Witness. The block had a 
 maximum size of 1 MB and was distributed among different nodes of the network in the same form.
@@ -1912,7 +1912,7 @@ Segregated Witness, the new identifier, *wtxid*, and the new serialization forma
 (that spend coins without using Segregated Witness), *wtxid* is the same as *txid*. Figure 4.52 shows the transaction 
 fields that take part in generating *wtxid* (for default and SegWit transactions respectively).
 
-[Figure 4.52] - Difference in how transaction identifiers are formed
+![Figure 4.52 - Difference in how transaction identifiers are formed](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.52-diff-between-txs.png)
 
 *Wtxid* is required to build an alternative Merkle tree for proofs. It is built almost the same way as for the usual 
 transactions, but here, instead of a transaction hash, the *wtxid* value is applied. Accordingly, the *wtxid* values of 
@@ -1965,7 +1965,7 @@ fields are filled by strict rules. It prescribes setting and serializing the dat
 In order to understand what is stored in the corresponding transaction fields, consider an example of a segwit 
 transaction confirmed on the Bitcoin network and which is presented in JSON format (Fig. 4.53).
 
-[Figure 4.53] - Real SegWit transaction
+![Figure 4.53 - Real SegWit transaction](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.53-real-segwit-tx.png)
 
 First, let's pay attention to the fact that the *scriptSig* fields are empty. The corresponding *proofs of coin 
 ownership* in this case are placed in additional fields: witness. And just like in normal bitcoin transactions, these 
@@ -2051,12 +2051,12 @@ After the update adoption, dynamics of the final block size is also noticeable (
 of new transactions increases, almost all blocks exceed 1 MB (sometimes even 2 MB). It is quite obvious that after the 
 activation of SegWit, the issue of low capacity in Bitcoin seemed no longer as pressing as before the update [68].
 
-[Figure 4.54] - Graph of how block size has changed after SegWit adoption
+![Figure 4.54 - Graph of how block size has changed after SegWit adoption](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.54-block-changing-after-adoption.png)
 
 If you look at the dependence of an average transaction fee on the number of new-format transactions, you will also see 
 a very strong correlation between these values (Fig. 4.55).
 
-[Figure 4.55] - Dependence of average transaction fee on the number of transactions
+![Figure 4.55 - Dependence of average transaction fee on the number of transactions](/resources/img/chapter-1/4.6-features-of-the-segregated-witness-update/4.55-average-tx-fee.png)
 
 Also, we should not forget that Segregated Witness has enabled the development of the off-chain solutions on top of the 
 Bitcoin protocol. To get ahead of the story, we would like to point out that the adoption of Lightning Network (LN) is 
