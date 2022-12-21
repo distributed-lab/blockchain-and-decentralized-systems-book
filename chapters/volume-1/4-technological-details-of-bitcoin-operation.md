@@ -486,14 +486,14 @@ available for anyone with a computer.
 The Bitcoin network can be represented schematically as in Figure 4.15. Independent people and organizations maintain 
 full nodes, but only a few of them are engaged in mining (known as node-validators).
 
-[Figure 4.15] - Scheme of Bitcoin network
+![Figure 4.15 - Scheme of Bitcoin network](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.15-scheme-of-bitcoin-network.png)
 
 There are many users on the network and each pursues their own goals. Some deploy a full node and mine, thus actively 
 supporting the network; some simply store and process all transactions; some work as a payment gateway operator, and 
 some, without a node, simply use a wallet and do not directly participate in the confirmation of transactions. Thus, all 
 nodes of the Bitcoin network can be divided into at least three groups (Fig. 4.16).
 
-[Figure 4.16] - Classification of the Bitcoin network nodes
+![Figure 4.16 - Classification of the Bitcoin network nodes](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.16-classification-of-nodes.png)
 
 *A full node is a node that performs verification and storage of all transactions.*
 
@@ -507,7 +507,7 @@ the SHA-2 algorithm on the length of 256 bits. The solution to the problem can o
 thus finding it requires a lot of resources. In other words, it requires sorting input values until you find the one 
 which when hashed gives the outcome of a certain pattern (Fig. 4.17).
 
-[Figure 4.17] -  Brute-force search of values to find the hash value preimage
+![Figure 4.17 - Brute-force search of values to find the hash value preimage](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.17-brute-force-search.png)
 
 Moreover, this hash value must satisfy a certain difficulty parameter. According to the rules of the Bitcoin protocol, 
 the number of zero higher-order hexadecimal digits in the final hash value increases along with the difficulty 
@@ -586,7 +586,7 @@ Sometimes the appearance of orphan blocks causes undesired effects. One of them 
 block which later became an orphan block will lose his mining reward (Figure 4.18 shows the number of orphan blocks 
 created for the period from March 2014 to July 2017 [48]).
 
-[Figure 4.18] - Graph of orphan blocks creation frequency
+![Figure 4.18 - Graph of orphan blocks creation frequency](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.18-orphan-blocks-freq.png)
 
 Also, the occurrence of a large number of orphan blocks can potentially contribute to the possibility of a 51% attack. 
 This is because the entire computing power of the network gets distributed between the alternative chains that compete 
@@ -619,7 +619,7 @@ As an example of a double-spending attack, imagine a user named Taras who wants 
 shop which costs 4 bitcoins, and also he wants to buy a phone in the E2 internet shop for the same price. The problem is 
 that Taras only has 4 coins. Since he is a tricky guy, he decides to perform a double-spending attack. (Fig. 4.19). 
 
-[Figure 4.19] - Creation of two transactions that spend the same coins
+![Figure 4.19 - Creation of two transactions that spend the same coins](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.19-conflicting-txs.png)
 
 So, Taras creates two transactions. In the first transaction, he sends coins to the wallet of E1, and in the second 
 transaction, the same coins are sent to the wallet of E2. These transactions are obviously conflicting and cannot be 
@@ -636,21 +636,21 @@ E2. His idea is to secretly build an alternative chain where the same 4 coins ar
 Obviously, he will not publish this alternative chain on the network until the first internet shop, E1, accepts the 
 payment for the computer (Fig. 4.20). 
 
-[Figure 4.20] - One internet shop accepting the payment
+![Figure 4.20 - One internet shop accepting the payment](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.20-acceptance-of-payment-by-the-shop.png)
 
 When E1 internet shop makes sure that the payment is submitted (the transaction has received enough confirmations), it 
 sends the computer to Taras. Without wasting time, Taras publishes his alternative chain. If this chain exceeds other 
 validators' chains, all nodes will switch to it and will consider it is the main one (Fig. 4.21). This will only be 
 possible if we assume that Taras controls more than half of the computing power in the Bitcoin network.
 
-[Figure 4.21] - Taras double-spending his coins
+![Figure 4.21 - Taras double-spending his coins](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.21-doublespending.png)
 
 According to this alternative chain, the 4 coins now belong to E2 internet shop, which will send a smartphone to Taras. 
 The fact that the previous chain with the first transaction is now considered invalid indicates that E1 will no longer 
 have Taras' original payment and hence will lose the money (Fig. 4.22). If this is the case then we can affirm that 
 Taras had performed a 51% attack as a result of which he had double-spend his coins.
 
-[Figure 4.22] - Result of performed double-spending attack
+![Figure 4.22 - Result of performed double-spending attack](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.22-result-of-attack.png)
 
 ### Appearance of a specific equipment
 Over time, it has become apparent that specialized equipment helps you mine most effectively [49]. In times of rapid 
@@ -669,19 +669,19 @@ parallel and with lower energy costs. To achieve this, the source code of a reso
 GPU. Since then, the demand for more energy-efficient mining equipment has been progressively growing. As a result, 
 companies have appeared who design and produce optimized chips (ASICs) for solving uniform tasks (Fig. 4.23). 
 
-[Figure 4.23] - Mining equipment
+![Figure 4.23 - Mining equipment](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.23-mining-equip.jpg)
 
 The first such chips began to appear in 2012. They significantly outperformed the processing power of regular computers 
 (by thousand times). The financial benefit attracted many participants who aimed to increase their capacity (hash rate). 
 Slowly, this trend began to resemble a race of capacities. The graph below (Fig. 4.24) shows how the hash rate in the 
 Bitcoin network has been increasing over time [50].
 
-[Figure 4.24] - How the Bitcoin hash rate changes over time
+![Figure 4.24 - How the Bitcoin hash rate changes over time](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.24-hashrate.png)
 
 Given that the difficulty parameter in Bitcoin is permanently adjusted (Fig. 4.25) [50], all participants have to 
 constantly improve their mining equipment to solve their tasks more energy-efficiently.
 
-[Figure 4.25] - How difficulty parameter in Bitcoin changes over time
+![Figure 4.25 - How difficulty parameter in Bitcoin changes over time](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.25-difficulty.png)
 
 ### Mining pools and their tasks
 Let's suppose there are 1 million identical computers on the network. In this case, the probability of one computer to 
@@ -698,7 +698,7 @@ group. If one of the participants finds a solution, the reward is distributed am
 power of particular engaged equipment. Hence, pool members receive a reward of a smaller size but more frequently than 
 if they worked individually (Fig. 4.26).
 
-[Figure 4.26] - Comparing solo mining and pool mining according to frequency of block creation and the received reward
+![Figure 4.26 - Comparing solo mining and pool mining according to frequency of block creation and the received reward](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.26-comparing-solo-and-pool-mining.png)
 
 In this approach, we should note one important detail: none of the participants of the mining pool decide which 
 transactions to include in the block—all they do is solve the resource-intensive task. So the only thing a participant 
@@ -717,7 +717,7 @@ node-validators, which lead the mining pools. You can also see that pools such a
 TOP accumulate more than half of the total processing power. Although there have been no conspiracy issues to date, the 
 current situation is not really a perfect example of applied decentralization principles.
 
-[Figure 4.27] - Distribution of mining capacities in the Bitcoin network as of October, 2018
+![Figure 4.27 - Distribution of mining capacities in the Bitcoin network as of October, 2018](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.27-distributing-the-mining-capacities.png)
 
 Technically, together they could perform a 51% attack, but if the attack happened, it would immediately be visible on 
 the network. This would very likely outrage the community, and the participants of these pools would turn to another 
@@ -730,7 +730,7 @@ necessarily mean that they are independent of each other. So, technically, it is
 pools, which are hard to deanonymize and could conduct a double-spending attack after having reached some threshold 
 size. Such a pool could be owned by both a group of validators or even one person. 
 
-[Figure 4.28] - Distribution of mining capacities in the Bitcoin network as of December, 2018
+![Figure 4.28 - Distribution of mining capacities in the Bitcoin network as of December, 2018](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.28-distributing-th-mining-cap-december.png)
 
 ### Mining statistics and estimation of energy consumption
 In April 2018, electricity consumed by mining was estimated at 110 GW per day, while the total daily profit of the 
@@ -747,7 +747,7 @@ showed 97.6 TW. The graph in Figure 4.29 is no less vivid. It shows the energy c
 compared to some countries. As you can see, the total energy required to power Bitcoin exceeds the national needs of the 
 Czech Republic, Chile, or Austria [51].
 
-[Figure 4.29] - Energy consumption by different states as compared to that by Bitcoin
+![Figure 4.29 - Energy consumption by different states as compared to that by Bitcoin](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.29-energy-consumption.png)
 
 Based on this data, it has been calculated that a confirmation of a single transaction in Bitcoin consumes about 921 kW 
 per day. Approximately the same amount is needed to supply 30 average US houses for one day. On the graph in Figure 
@@ -755,12 +755,12 @@ per day. Approximately the same amount is needed to supply 30 average US houses 
 Visa. Based on the data from the graph, it is possible to count that 1 transaction in Bitcoin costs more than 500,000 
 Visa transactions.
 
-[Figure 4.30] - Comparison of energy consumption by Bitcoin and Visa transactions
+![Figure 4.30 - Comparison of energy consumption by Bitcoin and Visa transactions](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.30-bitcoin-vs-visa.png)
 
 In fact, the energy consumption in Bitcoin does not always increase. If you look at how indicator changed from August to 
 December 2018 [54], you will see how sharply it decreased since mid-November to 53.04 TW per year (Fig. 4.31).
 
-[Figure 4.31] - Energy consumption in Bitcoin
+![Figure 4.31 - Energy consumption in Bitcoin](/resources/img/chapter-1/4.2-mining-in-bitcoin/4.31-energy-in-bitcoin.png)
 
 Despite the seemingly wasteful energy consumption in Bitcoin, it could be said though that this cost does not come from 
 nowhere. Essentially, this is the price we pay for one of Bitcoin's primary properties—*protection against transaction 
