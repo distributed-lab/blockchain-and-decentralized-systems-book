@@ -292,7 +292,7 @@ We will start our review of alternative coins with Litecoin (Fig. 6.7). This is 
 which appeared in 2011. The currency is based on the Bitcoin source code but with some changes. The block creation time 
 was reduced fourfold (to 2.5 minutes). Accordingly, the maximum issuance amount has increased by 4 times.
 
-[Figure 6.7] - Litecoin
+[Figure 6.7 - Litecoin](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.7-litecoin.png)
 
 For the proof of performed work, Litecoin uses the script hash function. This hash function uses SHA-256 as a 
 subprogram, relying on a large number of arithmetic calculations but also requiring quick access to large amounts of 
@@ -305,17 +305,325 @@ contributes to increased network capacity. The hashing algorithm is PoW X11, whi
 resource-intensive task energy-efficiently and only on graphics processors, but later integrated circuits (ASICs) were 
 designed and released for this purpose.
 
-[Figure 6.8] - Dash
+[Figure 6.8 - Dash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.8-dash.png)
 
 Dash supports *PrivatSend* and *InstantSend* technologies. PrivatSend is the technology of mixing coins; in other words, 
 the technology of entangling the history of coins origin. *InstantSend* is an instant payment technology, where the 
 recipient does not need to wait for transaction confirmation because it is guaranteed to be added to the mainchain.
 
-Consensus-reaching in Dash also has its peculiarities: PrivatSend and InstantSend options are implemented using the so-called masternodes, which are a separate group of validators that reach consensus between themselves [90].
-The Dash project has made its priority to increase user privacy. For this, they have implemented a modification of the CoinJoin approach. This approach involves pooling several payments in one common transaction that mixes coins and prevents the tracing of a straightforward history of their origin.
-The basic principle of CoinJoin can be explained with a practical example: imagine four people, each of whom first put their money in one common safe and then independently took the same amount of money from it. An outsider, even if had known the total sum of money which was put in the safe, would have never known the share of each person, namely who has how much. In Dash, this principle is implemented through the subnet of masternodes. In fact, any node can become a masternode: all that is required is to have a certain amount of coins on your address. These coins will be frozen and will serve as a deposit.
-Change management in Dash also has its peculiarities. The total mining profit is distributed: 10% goes to founding members (for the development of the Dash project), 45% to regular nodes, and 45% to masternodes. Managing the budget for the development of the Dash project is done through voting of masternodes. In this way, all developers' proposals for the improvement of the protocol (e.g., improving the network quality, capacity, etc.) can either be accepted or rejected by masternodes. Yet the system is not completely decentralized because not all users can vote for the improvements. However, any user can suggest her own improvements, and this may potentially be supported and sponsored. For this, a user needs to leave a treasury request with a suggestion for an idea, and the owners of masternodes will vote for it.
+Consensus-reaching in Dash also has its peculiarities: *PrivatSend* and *InstantSend* options are implemented using the 
+so-called masternodes, which are a separate group of validators that reach consensus between themselves [90].
 
+The Dash project has made its priority to increase user privacy. For this, they have implemented a modification of the 
+*CoinJoin* approach. This approach involves pooling several payments in one common transaction that mixes coins and 
+prevents the tracing of a straightforward history of their origin.
+
+The basic principle of CoinJoin can be explained with a practical example: imagine four people, each of whom first put 
+their money in one common safe and then independently took the same amount of money from it. An outsider, even if had 
+known the total sum of money which was put in the safe, would have never known the share of each person, namely who has 
+how much. In Dash, this principle is implemented through the subnet of *masternodes*. In fact, any node can become a 
+masternode: all that is required is to have a certain amount of coins on your address. These coins will be frozen and 
+will serve as a deposit.
+
+Change management in Dash also has its peculiarities. The total mining profit is distributed: 10% goes to founding 
+members (for the development of the Dash project), 45% to regular nodes, and 45% to masternodes. Managing the budget for 
+the development of the Dash project is done through voting of masternodes. In this way, all developers' proposals for 
+the improvement of the protocol (e.g., improving the network quality, capacity, etc.) can either be accepted or rejected 
+by masternodes. Yet the system is not completely decentralized because not all users can vote for the improvements. 
+However, any user can suggest her own improvements, and this may potentially be supported and sponsored. For this, a 
+user needs to leave a *treasury* request with a suggestion for an idea, and the owners of masternodes will vote for it.
+
+### Difference between mining algorithms of Litecoin, Dash, and Bitcoin 
+The above-mentioned altcoins are different from Bitcoin by the hashing algorithms. This means that, for example, bitcoin 
+mining equipment is not suitable for mining of alternative digital currencies with different hashing algorithms. The 
+purpose of such measures has been reaching the conditions under which validators of the Bitcoin network cannot attack 
+the network of Litecoin, Dash, or any other cryptocurrency. In other words, separate currencies generally use different 
+hashing algorithms, making 51% attack technically impossible to conduct.
+
+Let's imagine that hashrate of the Litecoin network is 10% compared to that of Bitcoin and that both currencies use the 
+same algorithm to solve the task of block creation. In this case, Bitcoin validators could easily switch to the Litecoin 
+network and very quickly build an alternative chain that could significantly surpass the mainchain by length. This would 
+allow Bitcoin validators to conduct a 51% attack because the more computing power is involved, the faster the chain is 
+created. 
+
+### NXT
+NXT (Fig. 6.9) was launched in 2013 by an anonymous developer. It was one of the first well-known protocols that used 
+the proof-of-stake consensus mechanism. Originally, NXT was designed as a versatile platform allowing for the 
+implementation of various financial applications and services.
+
+[Figure 6.9 - NXT](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.9-nxt.png)
+
+The NXT infrastructure is quite complex compared to Bitcoin. The platform features an integrated digital asset exchange 
+and a messaging system [91]. Issuance in the system was performed only once and in a centralized way. NXT allows anyone 
+to create colored coins which represent certain assets. These assets can be traded on an internal exchange.
+
+The messaging system allows sending plain or encrypted messages within the system and storing up to 1,000 bytes of data 
+permanently. If the data is up to 42 kilobytes, it can only be stored for a limited time.
+
+The disadvantages of the platform are low capacity (4–5 transactions per second) and relatively long transaction 
+confirmation time (10 to 15 minutes).
+
+### BitShares
+The idea of the BitShares protocol was announced in 2013. It was created as a tool for trading different assets and 
+currencies in a decentralized environment without having to deposit them on the trading platforms. So, essentially, 
+BitShares is a decentralized exchange (Fig. 6.10). BitShares was the first protocol that used DPoS consensus mechanism, 
+which focus is on capacity.
+
+The BitShares platform allows anyone to create the so-called user-issued assets (UIA), known as digital tokens. This 
+means that the platform accounts a base currency, BitShares (BTS), and a lot of user-issued tokens.
+
+[Figure 6.10 - BitShares](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.10-bitshares.png)
+
+In addition, BitShares is a smart contract platform. Smart contracts here are preinstalled and their number is limited 
+(i.e., only the most popular contracts are implemented on the platform), but they are more cost and energy effective.
+
+An additional feature for the users of the platform are the so-called Stealth Transfers, which allow for the payments 
+with increased user privacy.
+
+### Monero
+In Monero, the primary focus is increased privacy for users (Fig. 6.11). The project appeared in 2014 as a Bytecoin 
+fork, another 2014 project, which was promoted as an anonymous payment system.
+
+A part of the community became concerned when they discovered that 80% of Bytecoin coins (BCN) had already been mined. 
+The prospects were disappointing: there was only 20% of the planned issuance left to reward validators who mine coins; 
+the other 80% were accumulated in the hands of the early participants [92]. This was putting the price of BCN at threat 
+because it could potentially be manipulated. That's how a part of the community created its own project, Monero.
+
+Monero operates according to the rules defined in the CryptoNote protocol [93]. It allows anonymization of traffic at 
+the network level with the origin of coins hidden in each transaction.
+
+[Figure 6.11 - Monero](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.11-monero.png)
+
+At the level of the transaction model, there is a mechanism for entangling the history of the origin of coins that does 
+not involve any third parties. Unlike Dash, where a specific server or group of servers act as a mixer, monero coins are 
+mixed through cryptographic algorithms. It works as follows: each transaction (that transfers a certain amount of coins 
+to a certain address) is placed into a sequence of transfers. This complicates the history so much that tracing an 
+actual sender's address is virtually impossible.
+
+This mechanism uses a *ring* signature, which implies that the sender forms on his own a group of addresses among which 
+to hide the transfers. The sender creates transactions and signs them on behalf of the group without the consent of 
+other group members. Also, Monero implements the *confidential transactions* function [94], which, in addition to the 
+address, hides the amount of transfer. However, since the size of the group is limited, the probability that a 
+transaction can be traced yet exists (the complexity of tracing directly depends on the group size).
+
+As to the anonymization at the network level, Monero has implemented an optimized version of the I2P protocol (Invisible 
+Internet Project) [95], which is more advanced than Tor.
+
+Block creation in the network takes approximately two minutes, and full transaction confirmation takes up to 30 minutes.
+
+### Ethereum
+The feature of Ethereum (see Fig. 6.12) is supporting a programmable digital currency. Ethereum is described in 
+different ways—some people call it a platform for smart contracts, and others as a decentralized computer. The 
+accounting platform has a native ether currency.
+
+[Figure 6.12 - Ethereum](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.12-ethereum.png)
+
+Issuance in Ethereum is not limited. 18 million new coins are issued each year; therefore inflation is infinite. The 
+block creation period is 10–20 seconds. Ethereum operates on the proof-of-work consensus algorithm, but the possibility 
+of switching to proof-of-stake is currently being actively discussed.
+
+The idea of Ethereum is that transactions in the network can be performed according to the rules that participants 
+determine in advance.
+
+For example, Alice sends coins to Bob. She sets a certain condition that supposes certain events that will act as a 
+trigger for the validators to confirm the transaction. For instance, in the Bitcoin transaction, there is only one 
+trigger condition, a valid digital signature. Whereas in Ethereum, you can specify any required condition, even 
+including the source of external data. In the latter case, the furnishing of this external data is entrusted to the 
+so-called *oracles*.
+
+This idea can be explained empirically. Let's suppose there is a wheat field which is insured in case of fire, and you 
+have to create a *smart contract* (more details in 6.3) that will pay compensation for the lost crop to its owner. Thus, 
+a number of owners will need to create an insurance budget, which will be shared among those whose crop suffered due to 
+fire. This budget will be managed exclusively by the smart contract, namely according to the conditions which the owners 
+have previously specified. Here, you need *oracles* to furnish the smart contract with the trigger condition, fire 
+situation data.
+
+It is always better to use more than one oracle. The more independent oracles you have, the more objective the data, and 
+the more you minimize the risk of bribery and collusion. Oracles will independently transmit the fire situation data to 
+the smart contract. Each of the oracles will use their own methods of observation: satellite data, local fire safety 
+points, data from the drones, surveillance cameras, etc. If the contract receives the trigger (a message from the 
+majority of oracles that informs about the fire situation on a particular field), then the contract pays the insured 
+amount to the owner of the field.
+
+If a fire did not occur during the predetermined period of time, the budget is returned to the accounts of depositors. 
+As to the oracles reward, it is even possible to specify in the contract that oracles receive a fixed reward for their 
+work regardless of the outcome.
+
+### Cardano
+The Cardano project (Fig. 6.13) is a decentralized platform of *smart contracts* that can be programmed by 
+Turing-complete languages. The protocol of the full network nodes is implemented in Haskell, a functional programming 
+language. As the developers say, their platform uses a persistently strong consensus algorithm based on the idea of 
+proof-of-stake. The algorithm is named Ouroboros and was designed and implemented specifically for the use in this 
+decentralized system.
+
+[Figure 6.13 - Cardano](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.13-cardano.png)
+
+The currency supports governance through voting for all changes. The maximum issuance of coins of the platform's base 
+currency is 45 billion coins; there was a one-off pre-issuance of a certain amount of coins in a centralized way, and 
+further issuance has been performed as a reward for the validators who mine blocks.
+
+### Stellar and Ripple
+
+The Ripple digital currency was launched in 2011. Initially, the project was called Opencoin, and in 2013 it was 
+renamed, Ripple. Some ideas behind Ripple appeared even before Bitcoin (in 2005–2006), while the principles of work are 
+similar to the middle-aged money transfer system, Hawala. However, after Bitcoin appearance, the founder of Ripple 
+decided to implement these ideas in his own project.
+
+The founder of Ripple had a conflict with other members of the team. As a result of this conflict, in 2014 a fork 
+occurred and was called Stellar (Fig. 6.14). Stellar began to develop separately. Although initially, the code was the 
+same, Stellar, unlike the Bcash fork, which up to a certain block shares a transaction history with Bitcoin, has its own 
+transaction history.
+
+[Figure 6.14 - Stellar](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-stellar.png)
+
+[Figure 6.14 - Ripple](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-ripple.png)
+
+The purpose of Ripple as a system is to create a decentralized exchange and a settlement mechanism between parties. All 
+the coins of native currencies in both accounting systems were issued and distributed centrally. Users are able to issue 
+their own assets (IOU) and trade them on a decentralized exchange.
+
+To summarize, the main differences between these digital currencies and Bitcoin are as follows: the issuance of coins is 
+performed centrally; the consensus mechanism is based on FBA; and validators are not anonymous (instead, each of them is 
+identified).
+
+### ZCash
+ZCash is a cryptocurrency, which is mostly focused on making transactions confidential. Results of transactions are 
+published in the chain of blocks, but details such as the sender's and receiver's data and the transaction amount remain 
+hidden. This cryptocurrency was announced in 2016 (Fig. 6.15).
+
+[Figure 6.15 - ZCash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.15-zcash.png)
+
+ZCash is the first cryptocurrency based on the *zero-knowledge proof* protocol, which allows hiding the transaction 
+details. Its architecture is identical to that of Bitcoin. The key differences are the decreased block creation time and 
+increased block size (the latter measure is required because transactions with zero-knowledge proofs are much larger in 
+size). The difference from Monero is the fact that space of addresses among which transactions "hide" is equal to the 
+entire amount of "hidden" coins.
+
+The ZCash cryptocurrency has an important mechanism called *trusted setup*. Its zero-knowledge proofs are based on a set 
+of public parameters which allow creating and verifying confidential transactions. These parameters are the ones to be 
+generated at the initial configuration stage of trusted setup (in which there are six participants) [96]. It is supposed 
+that these six participants delete the intermediate key material (because if they don't, the privacy and total issuance 
+in ZCash would be broken). Obviously, there is no way to verify whether this parameter is deleted or not (for example, 
+their hardware devices could be modified upfront by the government agencies).
+
+One of the peculiarities of ZCash is that transaction audit is permissioned, which means that you can only see the 
+details of a transaction if you are granted corresponding permission by the creator of the transaction. Also, it stands 
+to mention that 20% of all mined coins are automatically deposited to developers' addresses. 
+
+### Other digital currencies
+To compare the above-listed digital currencies, we have decided to use the following criteria: coin issuance, 
+transaction confirmation, transaction audit, update management, capacity, full transaction confirmation time, and user 
+privacy (Table 6.1).
+
+[Table 6.1 - Comparison of digital currencies](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.1-comp.png)
+
+Having analyzed, for example, the base currency of Ripple (XRP), you can see that processes such as issuance and 
+transaction confirmation are performed centrally. Therefore Ripple is a digital currency, not a cryptocurrency because 
+not all processes are decentralized.
+
+Let's now move on to another type of digital asset, tokens, and define the main features by which they can be 
+distinguished from digital currencies (Fig. 6.16).
+
+[Figure 6.16 - Classification of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.16-classification.png)
+
+### Tokens
+At the end of 2016, there was a sharp increase in the number of projects launching their own currency to finance the 
+development of a certain product or service. Most often, this was justified by the need to have a network that would 
+provide these services in a decentralized manner. Among the most prominent projects are Filecoin, OmiseGo, Steemit, 
+Golem, Basic Attention Token, Bancor, and others. Among the overwhelming majority, their goal was not the creation of a 
+cryptocurrency in its full meaning but rather an internal means of payment through which users could have access to 
+services (a utility token).
+
+Almost all similar projects were aimed at launching their own network using the blockchain technology. Before the 
+launch, however, their tokens generally were issued on the Ethereum platform and traded on exchanges. Once their own 
+system was launched (e.g., as a smart contract or a digital currency platform), these Ethereum-based tokens were 
+replaced with coins of the base currency.
+
+Tokens can be issued either in a *centralized* (under the management of one organization) or *decentralized* (under the 
+management of a predetermined algorithm) manner. This essentially is the main difference between tokens and 
+cryptocurrencies, where all the processes are decentralized.
+
+> **_NOTE:_** *Unlike a digital currency, a token is a digitalized ownership right on a asset and can also be used as a 
+> payment tool. The essence of exchanging tokens or paying in them for other goods or services is equivalent to the 
+> essence of bartering.* 
+
+In Table 6.2, you can see how digital assets are different according to the nature of processes that occur in their 
+accounting systems.
+
+[Table 6.2 - Distinction between groups of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.2-dist.png)
+
+### Conclusion
+We ultimately give the following definition of a cryptocurrency that demonstrates as accurately as possible its essence 
+and properties. *A cryptocurrency is an independent digital currency in which the management of the following processes 
+is decentralized: coin issuance, transaction confirmation, data storage, audit of an accounting system, and governance 
+(decision-making about the updates). Anyone can become a member of the system, own the coins, and perform transactions 
+under the common-for-all rules; the cost of coins is not affected by the creator*.
+
+Knowing the correct terminology is essential in order to accurately perceive and present information. In Table 6.3, 
+there is a comparison of various digital assets according to certain criteria. Studying this table will allow you to 
+distinguish the main groups of assets as well as to better navigate the entire field of digital financial technologies. 
+
+[Table 6.3 - Сomparison of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.3-comp.png)
+
+**Frequently asked questions**
+
+*– What is the fundamental difference between Ripple and Stellar?*
+
+The difference is that Ripple is a commercial company that sells its currency for profit. Stellar is registered as a 
+non-profit organization that sells the currency's issuance only partially, for covering their expenses. The principle of 
+their operation is quite the same, but Ripple primarily focuses on banks and Stellar on payment systems. 
+
+*– How reliable is a digital currency that does not implement mining?*
+
+Reliability can be understood as the inability to falsify transactions. This feature does not depend on the presence of 
+mining and instead is determined by the protocol that specifies the mechanism of protection against counterfeit 
+transactions. The advantage of currencies with PoW-based mining is that reaching consensus among validators does not 
+depend on individuals, while the subjectivity of decision-making is minimal.
+
+*– It is known that ZCash supports addresses of two types, one start with "t" and other with "z". What is the difference 
+between these addresses?*
+
+Addresses starting with "t" are actually no different than Bitcoin addresses. They are called transparent addresses: all 
+actions under such addresses are visible to all network users.
+
+Addresses starting with "z" include the confidentiality improvements, which are provided by zero-knowledge proofs; they 
+are called *shielded addresses*.
+
+*– Does ZCash support multisignature transactions?*
+
+The public ZCash addresses support multisignature transactions. However, the shielded addresses do not support this 
+functionality for now.
+
+*– Does BitShares support SPV nodes?*
+
+At present, BitShares does not support SPV clients—every its user must have a local copy of the database to interact 
+reliably on the network.
+
+*– Why do users in their transactions set GasLimit parameter manually? Why isn’t it determined automatically?*
+
+The GasLimit parameter carries the maximum number of coins that a user is ready to spend for the execution of a smart 
+contract. For ordinary coin transfers between the network users, this parameter is generally computed automatically. The 
+smart contract case is a bit different. This is because it is very hard to determine upfront whether your smart contract 
+will loop or not (if there is a mistake in the code, it can be executed forever). In such a case, if your coins are 
+withdrawn progressively as the contract is executed, then there is a risk that you will lose all your coins. The 
+GasLimit parameter may serve as a protection against endless loops in the smart contracts. This is why it must be set by 
+a user directly.
+
+*– Are there lightweight nodes in Monero?*
+
+Monero does not support SPV clients. However, there is the implementation of a so-called lightweight wallet. The feature 
+of its operation as follows. In your wallet software, you determine the node to which you connect and which will trace 
+your transactions in the chain of blocks. Although this node will know when you received the money, yet the amounts and 
+senders’ addresses will remain unknown. For increased privacy, you can launch your own full network node to which you 
+would connect your own lightweight wallets.
+
+*– What is a masternode in Dash?*
+
+Masternodes play an important role in the Dash infrastructure since they allow for certain functions which are either 
+impossible or extremely challenging for p2p decentralized systems. Essentially, a masternode is a computer connected to 
+the Internet and which performs functions such as blocking transactions, supporting instant transactions, mixing coins, 
+voting the network financing, etc. A masternode must be backed with a certain number of DASH coins (in 2018, it is 
+1,000), be online 24 hours, and ultimately prevent its connection losses.
 
 
 
