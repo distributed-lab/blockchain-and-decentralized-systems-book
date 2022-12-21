@@ -56,7 +56,7 @@ it is actually more proper to speak about *pseudorandom numbers*). A private key
 random sequence of a constant length. A public key is calculated from a private key by means of mathematical 
 transformations (Fig. 3.1).
 
-[Figure 3.1] -  Public and private keys relation
+![Figure 3.1 -  Public and private keys relation](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.1-public-and-private-relation.png)
 
 > **_NOTE:_** *When dealing with cryptographic algorithms that are considered sufficiently reliable (according to 
 > cryptographic standards), the inverse transformation—obtaining a private key from a public key—cannot be done in 
@@ -146,7 +146,7 @@ determine the data that has been submitted at the input. It is considered crypto
 only with brute force. This means that the only solution to ensure that an output value has a specified value is to 
 iterate over all possible input values. Schematically, a hash function is shown in Figure 3.2.
 
-[Figure 3.2] - Work principle of a hash function
+![Figure 3.2 -  Work principle of a hash function](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.2-principle-of-hash-function.png)
 
 At the input, the hash function can receive a message of almost unlimited size (any data). At the output, a unique 
 identifier (a hash value) is obtained. Having a hash value obtained with a cryptographically secure hash function, it is 
@@ -159,13 +159,13 @@ the result is obtained fast enough because of the simplicity of the counting alg
 one-way as the output value contains only the data about the sum in a message but not the position of digits. Thus, the 
 complexity of guessing the initial message grows with the length of the message itself (Fig. 3.3).
 
-[Figure 3.3] - Example of a simple hash function operation
+![Figure 3.3 -  Example of a simple hash function operation](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.3-silly-hash-function.png)
 
 However, using this function might be insecure as it is relatively easy to find certain collisions in it: in this case, 
 it is possible to substitute an input message (i.e., submit a message with the same digits to the input of the function) 
 to get the same result (Fig. 3.4).
 
-[Figure 3.4] - Example of hash function collision
+![Figure 3.4 -  Example of hash function collision](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.4-silly-hash-colision.png)
 
 Now, let's consider what a hash function must feature so that its use would be sufficiently secure.
 
@@ -178,7 +178,7 @@ Now, let's consider what a hash function must feature so that its use would be s
 collision is a situation when there are several input values that match the same value at the output of a hash function 
 (Fig. 3.5). 
 
-[Figure 3.5] - Hash function collision
+![Figure 3.5 -  Hash function collision](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.5-collision.png)
 
 *Resistance to finding the first preimage* (*non-invertibility*) implies that knowing the corresponding hash value will 
 not allow you to restore an initial message in a realistic timeframe (one life may not be enough).
@@ -192,7 +192,7 @@ the alteration of a half of the output bits. This feature is easily illustrated 
 value. If someone would want to substitute the transaction by changing the amount of transfer (say, not 10 but 100 BTC), 
 then the transaction counterfeit will be detected immediately.
 
-[Figure 3.6] - How output value of a hash function changes depending on the input
+![Figure 3.6 -  How output value of a hash function changes depending on the input](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.6-input-affect-output.png)
 
 Among existing hash functions, one of the good examples is SHA-1 [31], which is considered relatively reliable and with 
 a functioning principle that is quite easy to explain. The essence of its functioning lies in the cyclical shuffling 
@@ -205,7 +205,7 @@ where
 * W<sub>i</sub> is the element of modified input data (4 bytes),
 * <<<*x* is the rotate shift of *x* positions to the left.
 
-[Figure 3.7] - Operation scheme of SHA-1
+![Figure 3.7 -  Operation scheme of SHA-1](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.7-sha1.png)
 
 ### Application of hash functions
 Hashing is very useful for obtaining a unique identifier for a dataset. In Bitcoin, a hash function is required to 
@@ -236,7 +236,7 @@ A Merkle tree consists of the following components (Fig. 3.8):
 * Merkle nodes 
 * Merkle root
 
-[Figure 3.8] - Merkle tree structure
+![Figure 3.8 -  Merkle tree structure](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.8-merkle-tree.png)
 
 *Merkle leaves* represent hash values of data blocks that need to be included in the structure. A *Merkle node* is a 
 value obtained through concatenation and hashing of either two child nodes or Merkle leaves. A *Merkle root* is also a 
@@ -254,7 +254,7 @@ corresponding key is able to restore the original text*. Let's take a look at ho
 
 We will start with the most common type—symmetric encryption. Schematically, this process is shown in Figure 3.9.
 
-[Figure 3.9] - Symmetric encryption scheme
+![Figure 3.9 -  Symmetric encryption scheme](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.9-symmetric-encryption.png)
 
 There is a function that performs data encryption: it receives a plain text and an encryption key to the input and 
 returns encrypted data, a ciphertext. Data decryption is performed through another function: it takes an encrypted data 
@@ -269,7 +269,7 @@ of this method is in the modular addition of an input text with a one-time key. 
 is also a key for decryption) and an input text must be equal in their length. This cipher is a good example because it 
 is perfectly secure: having the ciphertext, an adversary cannot get any information about the initial message.
 
-[Figure 3.10] - Example of how Vernam cipher works
+![Figure 3.10 -  Example of how Vernam cipher works](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.10-vernam-cipher.png)
 
 This encryption method can be considered sufficiently secure only if the key was generated randomly. Generating a random 
 key of a long size imposes another limitation because truly random generators are slow (if you compare the capacity of 
@@ -284,7 +284,7 @@ the operations are performed on the elements of this matrix. The basic operation
 * *Mix Columns* is multiplying matrix columns by the static, predefined matrix 
 * *Add Round Key* is adding the state matrix with a round key
 
-[Figure 3.11] - AES cypher construction
+![Figure 3.11 -  AES cypher construction](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.11-aes.jpg)
 
 Symmetric encryption has certain drawbacks. The main challenge is to provide confidentiality of the secret key while 
 transferring it to the intended recipient *before* the secure communication starts; this is required because both the 
@@ -317,7 +317,7 @@ In Figure 3.12 you can see how asymmetric encryption works. There is an encrypti
 a public key to the input and returns the encrypted data to the output. The inverse function is called the decryption 
 function. It accepts the encrypted message and the recipient's private key and returns the plain text of the message.
 
-[Figure 3.12] - Asymmetric encryption scheme
+![Figure 3.12 -  Asymmetric encryption scheme](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.12-assymetric-encryption.png)
 
 ### Digital signature
 Another application for asymmetric cryptography is a digital signature.
@@ -340,7 +340,7 @@ parameters: a message, the value of the signature, and a public key. It returns 
 valid or not. The signature may prove to be incorrect if the message has been substituted, the signature data has been 
 violated, or if an incorrect (corrupted or substituted) public key has been used for verification.
 
-[Figure 3.13] - How digital signature works
+![Figure 3.13 -  How digital signature works](/resources/img/chapter-1/3.1-introduction-to-cryptography/3.13-digital-signature.png)
 
 ### Adversary model and threat model
 One of the prerequisites for building a reliable information system is the development of a security policy. For this, 
@@ -454,9 +454,9 @@ efficiency of operations. In Bitcoin, a = 0, and b = 7, so the elliptic curve is
 y<sup>2</sup> = x<sup>3</sup> + 7 [36]. The graph of this curve over the field of real numbers is shown in Figure 3.14, 
 and the more detailed curve segment containing inflection points is shown in Figure 3.15.
 
-[Figure 3.14] - Elliptic curve in Bitcoin
+![Figure 3.14 -  Elliptic curve in Bitcoin](/resources/img/chapter-1/3.2-cryptography-in-bitcoin/3.14-ec-in-bitcoin.png)
 
-[Figure 3.15] - Curve segment with inflection points
+![Figure 3.15 -  Curve segment with inflection points](/resources/img/chapter-1/3.2-cryptography-in-bitcoin/3.15-curve-segment.png)
 
 The main operations on the group of points of an elliptic curve are the following: *addition*, *doubling*, and 
 *multiplication by a scalar*. Note that a result of each of the listed operations is also a point that belongs to an 
@@ -469,9 +469,9 @@ A<sub>3</sub>=A<sub>1</sub>+A<sub>2</sub>, which is the inverse (by the Ox axis)
 
 *Multiplication by a scalar is a multiple addition of a point with itself*. Figure 3.17 shows how a point is doubled.
 
-[Figure 3.16] - Addition of elliptic curve points
+![Figure 3.16 -  Addition of elliptic curve points](/resources/img/chapter-1/3.2-cryptography-in-bitcoin/3.16-addition.png)
 
-[Figure 3.17] - Doubling of an elliptic curve point
+![Figure 3.17 -  Doubling of an elliptic curve point](/resources/img/chapter-1/3.2-cryptography-in-bitcoin/3.17-doubling.png)
 
 ### Creation of addresses in Bitcoin
 An understanding of the main principles of hash functions and features of generating keys for ECDSA is enough to delve 
@@ -479,7 +479,7 @@ into the address generation in Bitcoin. In the simplest case, an address is obta
 applying hashing algorithms (Fig. 3.18). These are called Secure Hash Algorithm 2 (SHA-2) and RACE Integrity Primitives 
 Evaluation Message Digest (RIPEMD), to be specific SHA256 and RIPEMD160.
 
-[Figure 3.18] - Scheme of address computation in Bitcoin
+![Figure 3.18 -  Scheme of address computation in Bitcoin](/resources/img/chapter-1/3.2-cryptography-in-bitcoin/3.18-address-in-Bitcoin.png)
 
 A public key is hashed using SHA256; in order to obtain the result, the hash value is calculated with RIPEMD160. The 
 output is a 160-bit (20-byte) number. Next, this number is presented in Base58Check encoding. During encoding, 4-byte 
@@ -630,7 +630,7 @@ do not own the actual cryptocurrency—yet such services are quite popular. They
 and a virtual balance, which corresponds to the balance of the digital currency (Fig. 3.19). However, the actual access 
 to these coins is only provided by the keys that the service owns.
 
-[Figure 3.19] - Keys are stored and processed on a remote server
+![Figure 3.19 -  Keys are stored and processed on a remote server](/resources/img/chapter-1/3.3-keys-storage-and-processing/3.19-remote-server.png)
 
 In this case, there are two options for transferring coins between users:
 
@@ -670,7 +670,7 @@ Another approach is that keys are stored on the server, but the keys management 
 application. In this case, a user has a higher level of control over his coins compared to the previous approach 
 (Fig. 3.20). The service, although it stores the private keys of its clients, does not have direct access to them.
 
-[Figure 3.20] - Keys are stored on a remote server but processed by a user
+![Figure 3.20 -  Keys are stored on a remote server but processed by a user](/resources/img/chapter-1/3.3-keys-storage-and-processing/3.20-stored-separately-with-direct-control.png)
 
 When a user registers in such a service, she generates a private key on her device (in a mobile wallet or web wallet), 
 encrypts it with a password, and then sends it to the server in a protected form. Later, when a user needs to obtain a 
@@ -698,7 +698,7 @@ network once the access is restored (Fig. 3.21). He can transfer this transactio
 from his device—it is possible to transfer the transaction to another device, the one with access, and send it to the 
 network from there.
 
-[Figure 3.21] - Keys are stored and processed in the user's application
+![Figure 3.21 -  Keys are stored and processed in the user's application](/resources/img/chapter-1/3.3-keys-storage-and-processing/3.21-keys-in-app.png)
 
 Such an approach, however, is also not perfect. The main disadvantage is the need to store keys on one device 
 constantly. The loss of this device or its damage results in a loss of access to your keys. In addition, if a user 
@@ -726,7 +726,7 @@ multisignature for sending coins (Fig.  3.22), several signatures with different
 keys can be stored and processed on a separate device independently of others (we will describe this mechanism in more 
 detail in section 4.5).
 
-[Figure 3.22] - Multisignature mechanism application
+![Figure 3.22 -  Multisignature mechanism application](/resources/img/chapter-1/3.3-keys-storage-and-processing/3.22-multisig.png)
 
 For example, you can implement a 2-of-3 multisignature. In this case, there are three keys. Storage and management of 
 one of them will be performed by a server, and the rest will be managed using a smartphone. In order to assure the 
@@ -761,7 +761,7 @@ the ability to directly connect to the global network.*
 the global network but not permanently—only according to the user's decision (for example, for sending transactions or 
 updating their status).*
 
-[Figure 3.23] - Comparison of hot, cold, and warm wallets
+![Figure 3.23 - Comparison of hot, cold, and warm wallets](/resources/img/chapter-1/3.3-keys-storage-and-processing/3.23-comparison-of-wallets.png)
 
 The wallet application on smartphones and many digital wallets for PCs can be attributed to the group of *hot storage 
 wallets*. These are the most convenient wallets. However, theoretically, an engineer with special abilities could find a 
