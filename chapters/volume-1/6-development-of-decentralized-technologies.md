@@ -625,6 +625,351 @@ the Internet and which performs functions such as blocking transactions, support
 voting the network financing, etc. A masternode must be backed with a certain number of DASH coins (in 2018, it is 
 1,000), be online 24 hours, and ultimately prevent its connection losses.
 
+## 6.3 Introduction to smart contracts
+In a way, we can view blockchain technology as a way to agree about the past. This agreement is based on the security of 
+cryptographic algorithms that protect the integrity of transactions history (events). The usage of smart contracts will 
+allow us to agree about the future. This is achieved through programming the conditions that will or potentially can 
+happen. Smart contracts allow us to assign different outcomes with which all parties explicitly agree. This is why they 
+are considered one of the most promising technologies that can change the traditional way of doing business. The 
+practical impact of using smart contracts is the automation of financial and legal relationships between two or more 
+parties. In order to thoroughly understand the possibilities, principles, and limitations of the technology, let's first 
+review the disadvantages of traditional (paper) contracts.
+
+We will start with a focus on the complexities that often accompany working with traditional contracts. Problems can 
+arise at all levels including drafting, verifying, executing, and even simply understanding.
+
+> **Some challenges in drafting a traditional contract**
+>> * In many cases, you need a qualified lawyer 
+>> * It is difficult to achieve contract terms which are complete and comprehensive 
+>> * It is virtually impossible to quickly check whether the contract is consistent with other contracts and whether it 
+is compliant with all the requirements of current legislation
+
+When all conditions are taken into consideration and the parties have signed the contract, there are still a number of 
+other problems that may arise later.
+
+> **Some challenges in understanding and verifying contracts**
+>> * Contract language is very often hard to understand for people who do not have a legal background 
+>> * Lawyers often disagree on the language and meaning of contracts 
+>> * Unsigned contract pages may be substituted 
+>> * Signatures can be falsified
+
+It is difficult to actually assess the scale of time and money wasted by participants due to unfit contracts. If you 
+consider the number of forged documents, it would amount to something like an economic or social disaster. The majority 
+of issues arise at the execution stage and in litigation. Analyzing what can go wrong during execution identifies many 
+potential problems.
+
+> **Challenges in executing a contract**
+>> * Success often depends on the skills of lawyers (not the contract quality)
+>> * Unpredictable duration and costs of legal proceedings 
+>> * Possibility of bribery 
+>> * No guarantee of compensation if the other party goes bankrupt
+
+A solution for the future has emerged. A contract could be written digitally using a programming language to implement 
+all the necessary conditions. 
+
+> **Features of a contract written in a code language**
+>> * Universal code language will be recognized by the computer explicitly 
+>> * Program code always returns the same result if the input data is the same (Fig. 6.17)
+>> * Contract is signed using a digital signature, which is difficult to forge 
+>> * Need for human comprehension and execution is excluded 
+>> * Such a contract can be tested
+
+![Figure 6.17 - Result of smart contract execution is the same on all devices](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.17-result-of-execution.png)
+
+### What is a smart contract?
+A *smart contract* is an agreement for the redistribution of value, which implies a strict and unambiguous assignment of 
+conditions, automation of execution processes, and minimal involvement of a trust relationship between contracting 
+parties. Most often, this is achieved by combining the mechanisms for setting conditions with mechanisms for their 
+strict implementation since such protocols are usually used to describe the procedure for creating, processing, and 
+implementing smart contracts. A system managed by such protocols is called a platform of smart contracts, where 
+contracts are put in special transactions (or requests) that must be signed by all parties involved in the transaction. 
+After such a transaction is transferred to the platform of smart contracts, it is impossible to make any changes to the 
+contract or to stop or cancel the execution. The idea of smart contracts was proposed by the researcher Nick Szabo 
+in 1994. His paper, "The Idea of Smart Contracts" [62], was published in 1997 (Fig. 6.18).
+
+![Figure 6.18 - Idea of smart contracts by Nick Szabo](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.18-nick-szabo.png)
+
+> **What do you need to know about smart contracts?**
+>> * Smart contracts allow counterparties to interact without having third parties involved 
+>> * Smart contracts are easier to audit than traditional contracts 
+>> * There are different types of smart contract protocols and different implementation methods 
+>> * They allow the management of digital assets that are stored on a specific platform 
+>> * Initiation of the contract can be performed either manually or automatically
+
+Execution of smart contracts implies that the platform has one validator (or a network of validators) and a database 
+that stores all smart contracts that are submitted for execution in strict chronological order. This database has to 
+contain all the data that trigger conditions for the execution of the smart contract as well as manage all the assets 
+that it can redistribute.
+
+In other words, smart contract validators must have access to **all** the data that may act as a trigger for the smart 
+contract. For example, if there is a database used to account for the digital currencies, user balances, user 
+ransactions, and timestamps, then all this data can act as a trigger for the smart contract: user's balance in a certain 
+currency, certain timestamps, or the fact of implementation of a transaction, but nothing more.
+
+Smart contracts imply automation of the value distribution, which depends only on specific conditions that are 
+determined in advance. In the simplest version, it is a programmable contract with strictly defined conditions, which is 
+usually verified by all parties involved in the transaction using a digital signature (Fig. 6.19).
+
+![Figure 6.19 - Validation of a smart contract by involved parties](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.19-validation-od-a-smart-contract.png)
+
+Smart contracts are designed to minimize reliance on third parties. Sometimes even the decision-making center on which 
+everything depends is completely excluded. In the case of smart contracts, audits are easier and faster to perform, due 
+to the design features of such systems. A smart contract also acts in a decentralized environment and has the 
+functionality which allows anyone to analyze the database and conduct a full audit of the performance of contracts. 
+Thus, there is a protection against retroactive data changes, which could entail a change in the performance of the 
+contract itself. The maintenance costs are reduced since the creation and execution of a contract are digitized 
+processes.
+
+### Role of oracles for smart contracts
+The implementation of a smart contract heavily depends on the data with which it operates—namely, where this data is 
+stored. If this is within a single accounting system, then the data is verified and a smart contract can operate with it 
+without any intermediaries: the case is about a primary accounting system which is self-sufficient. This case may prove 
+to be more reliable regarding the level of required trust; it is minimal. However, from a practical perspective, the 
+capabilities of a smart contract operating only with internal data is much limited.
+
+In a number of cases, a contract would need certain verified external data—the fact that a certain event happened, a 
+certain threshold reached, etc. Oracles are the sources of this external data.
+
+Oracles transmit the data from the outside world into a decentralized system. Commonly, oracles have verified identities 
+and they require a particular trust from users to the data they transmit. All the data broadcast should be signed with a 
+digital signature for two purposes: the integrity of data and non-repudiation. The last one relates to the fact that 
+each participant can definitely prove the provision of particular data by a particular oracle.
+
+To minimize the level of required user trust, a smart contract can receive the data from a number of independent 
+oracles, coordinate the data, and then reach the decision (Fig. 6.20). 
+
+![Figure 6.20 - Smart contract receiving data from independent oracles](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.20-smart-contracts-and-oracles.png)
+
+### Example of purchase in an online store
+Let's consider a simple example. It will help to understand the functionality of smart contracts and suggest in which 
+cases they should be used. In fact, smart contracts can also be implemented using Bitcoin, but nowadays Bitcoin cannot 
+be considered a fully-fledged platform for smart contracts.
+
+Imagine a buyer and online store. The buyer wants to buy a display (Fig. 6.21). In the simplest case, the buyer creates 
+and sends the payment, while the online store accepts it, confirms, and then sends the display. However, this situation 
+requires a high level of confidence—the buyer must trust the online store with the full cost of the display. If the 
+online store has a bad reputation, then there is a risk that after accepting the payment, the store will refuse to send 
+the goods to the buyer. The buyer may wonder (as may the online store) what measures can be taken in order to minimize 
+the risk and make such transactions more reliable.
+
+![Figure 6.21 - Using a smart contract for buying goods online](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.21-smart-contract-for-buying-good.png)
+
+In the context of Bitcoin, you can provide an opportunity for the buyer and seller to independently choose a mediator. 
+Commonly, there are many people engaged in resolving disputes, so the participants should find it easy to choose from a 
+general list of mediators those who they both trust. Together they create a 2-of-3 multisignature address, where there 
+are three keys and you need two signatures with any two keys in order to spend coins from this address. One key will 
+belong to the buyer, the second to the online store, and the third to the mediator. With such a multisignature address, 
+the buyer will send the necessary amount in order to pay for the display. When the seller is convinced that the coins 
+have been blocked in the multisignature address, he can send the display with confidence.
+
+Meanwhile, the buyer receives the delivery, inspects the goods and decides to complete the purchase. He can be satisfied 
+with the service provided, sign the transaction with his key, and transfer the coins from the multisignature address to 
+the seller. Should the buyer be unsatisfied with the goods, he can contact the mediator to create an alternative 
+transaction, which will distribute these coins according to the mutual decision.
+
+Let's imagine that the display arrived scratched. In this case, the buyer collects the evidence necessary for the 
+mediator: he takes a photo of the check from the post and a photo of the scratches on the monitor. The online store, if 
+considering necessary, collects its evidence and gives it to the mediator.
+
+The mediator is interested in satisfying both the angry buyer and the online store (we will explain why further). The 
+mediator conducts a transaction in which coins from the multisignature address will be spent in a certain proportion 
+between the buyer, the online store, and the mediator (who takes a part as a reward for his work). Let's say 90% of the 
+total amount goes to the seller, 5% to the mediator, and 5% to the buyer. The mediator signs this transaction with his 
+own key (the transaction still cannot be finalized since it requires two signatures). This transaction is sent to both 
+the buyer and the seller. If at least one of them is satisfied with this option of coins redistribution, the transaction 
+will be signed and distributed to the network. To validate it, it is enough that one of the participants (the buyer or 
+the online store) in the transaction agrees with the mediator option.
+
+It is important to initially choose a mediator that both sides trust. He will act independently and objectively to 
+assess the situation. If the mediator does not provide a coin distribution option that will satisfy at least one 
+participant, then, by mutual agreement, both the buyer and the online store can transfer the coins to a new multiSig 
+address by placing their two signatures. The new multiSig address will be created with another mediator, who it is hoped 
+will be more competent and will provide a better solution to the conflict. In this example, there are two crucial 
+features:
+
+* Mediator cannot steal users’ money 
+* It is possible to change the mediator during the process of conflict resolution by the agreement of both parties
+
+### Example of a contract for mutual purchase
+Let's look at a more complex example that shows the capabilities of a smart contract more clearly. Imagine there are 
+three students who have recently settled in one room in a house. All three are interested in buying a fridge, which they 
+will use together. One of them volunteered to collect and store the necessary amount of money to buy a fridge and 
+negotiate with the seller. However, they recently met and there is an insufficient trust between them. Two of them take 
+a risk by giving the money to the third. At the same time, they need to reach an agreement in choosing a seller.
+
+The students can use an escrow service, meaning that they can choose a mediator who will monitor the transaction and 
+settle any disputes. After agreeing, they use a smart contract and prescribe certain conditions (Fig. 6.22). One of the 
+conditions is that by a certain time, let's say one week, the corresponding account of the smart contract should receive 
+three payments from certain addresses in a certain amount. If this does not happen, the smart contract terminates and 
+returns the coins to all the participants. If all conditions are present and there are no misunderstandings, then all 
+the participants agree with the choice of the seller and mediator. When all conditions are fulfilled, the funds will be 
+transferred to the indicated addresses.
+
+![Figure 6.22 - Using smart contracts for a mutual purchase](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.22-mutual-purchase.png)
+
+Such an approach can protect participants from fraud on either side and generally excludes the need to trust. This 
+example clearly demonstrates the main principle: the possibility to set parameters for the fulfillment of each condition 
+step by step. This allows for the creation of contracts of any complexity and depth of nested levels. In addition, first 
+of all, in a smart contract you can define the condition, and only after its execution, you have to set parameters for 
+the next condition, which is formally prescribed, and parameters can be set already during its operation.
+
+> **Other difficulties**
+>> * Error in the smart contract code can lead to unavoidable consequences 
+>> * Data for all the triggers must be in one accounting system 
+>> * Assets need to be digitized and accounted on the platform 
+>> * In some cases, the trustless property is impossible to achieve
+
+### Classification of smart contracts
+For the classification, there are different groups of criteria to specify. Smart contracts can be distinguished by 
+their:
+* Execution environment 
+* Execution method 
+* Initiation method 
+* Level of privacy
+
+As to privacy, contracts can either be completely confidential (outsiders cannot see the conditions of smart 
+contracts) or completely or partially public. Below, we will review the rest of the options.
+
+### Differences between platforms according to their execution environment
+By execution environment, smart contracts platforms are divided into centralized and decentralized ones. In the case of 
+centralized digital contracts, there is a service with one validator. Additionally, there may be a backup restore 
+service that is also centrally managed according to the same rules. There is one database that stores all the necessary 
+information for setting the conditions of the smart contract and distributing the "value" (a digitized ownership right 
+for an asset). Such a service has a client, and since the platform is centralized, the authentication mechanisms can be 
+more primitive than in Bitcoin (Fig. 6.23).
+
+![Figure 6.23 - Centralized smart contract platform](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.23-centralized-smart-contract.png)
+
+Let's take, for example, different mobile operators. Suppose a certain operator accounts mobile traffic of different 
+formats (e.g., voice calls, SMS, mobile Internet traffic) according to different standards on its servers in a 
+centralized way. It also maintains a balance on users' accounts. Accordingly, the mobile operator can create contracts 
+for a specific amount of services and their costs with the help of different conditions. Specifying conditions in such a 
+case is much easier (e.g., in order to get a fixed service, a user should pay a fixed amount).
+
+Another good example are the traditional banks using Internet banking and conventional contracts such as regular (e.g., 
+monthly) payments, automatic conversion of incoming payments, automatic deduction of interest on a specified account, 
+etc.
+
+If the smart contract execution environment is decentralized, then we deal with a group of validators who process 
+contracts that are stored in an immutable way (Fig. 6.24). Ideally, in such a permissionless environment, anyone can be 
+the validator. 
+
+![Figure 6.24 - Decentralized smart contract platform](/resources/img/chapter-1/6.3-introduction-to-smart-contracts/6.24-decentralized-smart-contract.png)
+
+In this case, transactions will contain instructions for executing the contract according to a strict specification. 
+This specification is open and platform users can independently audit and validate the smart contracts. Decentralized 
+platforms exceed the centralized ones in parameters such as *independence* and *fault tolerance*, but their design and 
+maintenance are much more difficult.
+
+### Differences between platforms in the way contracts are executed
+Let's consider how smart contracts are different by the way you specify and fulfill conditions there.
+
+*Turing-complete* smart contract language allows you to specify almost any algorithm as a condition for executing a 
+contract: you can use iteration loops, your own algorithms for digital signatures, functions for calculating 
+probabilities, etc. The idea is that you basically can prescribe any logic, even a custom smart contract. The benefit of 
+this approach is greater flexibility when programming. The drawback is that there is no way to fully guarantee the 
+security of the platform itself since Turing complete language allows finding unpredictable ways of execution of the 
+code. Among arbitrary Turing complete contracts, there are platforms such as Ethereum [115] and RootStock.
+
+*Turing-incomplete* smart contracts language (such as Bitcoin and Litecoin with their own scripts) allow you to use only 
+certain operations in an arbitrary order but not iteration loops or your own algorithms. This allows creating a more 
+secure environment.
+
+*Pre-defined (template)* smart contracts support a limited list of templates, usually a few dozen of the most popular 
+contracts that are natively implemented. It also gives greater control over security. Examples are Stellar, Bitshares, 
+Steemit. Bitshares has smart contracts for trading, managing accounts, managing the platform and its parameters. Steemit 
+is a similar platform, but, unlike Bitshares, it is no longer focused on issuing and trading tokens; it is used for 
+blogging; namely, it stores and processes the content in a decentralized manner.
+
+### Differences between platforms in the way smart contracts are initiated
+Smart contracts can also be divided into at least two groups according to the method of initiation: *automated* and 
+*manual (non-automated)*. For those which are automated, it is typical that all parameters are known and the conditions 
+of the smart contract are fully automatically executed. This does not require sending any additional transactions and 
+spending additional fees for each subsequent execution. The platform has all the necessary data to compute how the smart 
+contract execution will end. Logic, in this case, is not arbitrary but predetermined, which means that the result is 
+predictable. This allows for assessing the complexity of the smart contract implementation and, for example, calculating 
+the fees for its execution in advance.
+
+For the smart contracts that are programmed arbitrarily, execution is not automated. To initiate such a contract, you 
+need to create a new transaction at each step. It will recall the next stage of the implementation or the next smart 
+contract method, pay the relevant fee, and wait for the transaction confirmation. The execution, in such cases, is 
+either successful or not. This is because the smart contract code is arbitrary, and unpredictable events may occur such 
+as infinite loop, a lack of certain parameters and arguments, or other exceptional circumstances.
+
+### Summary
+Businesses have many expectations from the introduction of smart contracts. However, a smart contract itself is a piece 
+of code programmed by somebody. The result of this code should be the consent of all participants of the system 
+regarding account balances (mutual settlements). This leads to several conclusions:
+
+* A contract can be considered smart only when all interested parties simultaneously perform it and when a sufficient 
+number of them agree with the results of executing it 
+* The result of the smart contract implementation are the changes in the ledger containing digitized ownership rights 
+for assets
+
+Thus, a smart contract can only manage assets that have already been digitalized. The register in which these assets are 
+recorded should be the only primary accounting system for **all** its participants. Without meeting these requirements, 
+smart contracts are absolutely useless. Inside a single business, they are equivalent to a regular system without such 
+properties as *transparency*, *auditability*, and *trustlessness*.
+
+The creation of conditions for the operation of smart contracts is the necessary step towards the automation of business 
+processes.
+
+Nevertheless, we must underline the notion of a social consensus, which may influence expected smart contract outcomes 
+by rewriting the blockchain. These situations happened a few times even in permissionless networks, and the most known 
+event was The DAO hardfork in Ethereum (we have already described it in section 6.1).
+
+**Common myths**
+
+*Smart contracts are designed to function autonomously.*
+
+It is a mistake to believe that smart contracts are able to analyze the environment and act according to the introduced 
+changes. Their code is triggered when a payment is received or a message about a certain condition fulfilled. It is 
+activated through the external account of the company or through other mechanisms for initiating the execution. Thus, 
+not all platforms are capable of fully autonomous implementation of smart contracts.
+
+*Smart contracts can be changed when an error is detected in the same way as a classical paper contract.*
+
+If during the drawing up of a traditional contract something needs to be corrected, the contract can be enhanced with 
+the supplementary clauses or edits. Decentralized environment, however, implies no default "administrator" who could 
+make corrections to the contract, and there is no central decision-maker who can stop the running program. The only 
+solution if a mistake is detected is to create a "corrective" smart contract if all parties of the transaction agree.
+
+By the time this book was written, over the course of the existence of smart contracts, there has only been one known 
+case that required manual regulation. In June 2016, attackers hacked The DAO and started withdrawing the tokens from 
+their wallets, which not only caused the collapse of The DAO but also a price drop of ether and even bitcoin. An error 
+in the smart contract has created an opportunity for the attack. While there were attempts to correct this situation, 
+smart contracts were not rewritten—this is impossible. The decision was to conduct a hardfork, as a result of which 
+Ethereum Classic appeared.
+
+**Frequently asked questions**
+
+*– Do smart contracts exclude trust from relationships between parties? After all, they include oracles—aren't they 
+third parties?*
+
+The principal difference is in the choice. In the case of an ordinary store, the buyer must trust the administration of 
+this store. He can only believe that the goods in the shop windows are of high quality, the markings are not forged, 
+etc. Administrators can force employees to give false data to the customers in order to get rid of stale products as 
+soon as possible. In the case of a smart contract, you can choose trusted parties who may not even know each other, so 
+it will be difficult for them to conspire. The decision in the event of certain conditions will be taken by voting. 
+While an automated audit will make it able to ensure that voting and calculation of results is performed according to 
+the protocol.
+
+*– Is it possible to use a timer in a smart contract so that the platform can know when to make a payment?*
+
+No, timers are not used in smart contracts. Instead, you can program to check the current time for exceeding a certain 
+constant value before performing a certain operation or payment, while the interested party may be able to initiate the 
+execution of this verification.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
