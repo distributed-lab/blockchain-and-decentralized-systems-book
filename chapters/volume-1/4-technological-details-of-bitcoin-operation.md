@@ -2101,7 +2101,7 @@ important that this chain is the longest, and there should not be any competitiv
 following blocks (transaction confirmations) is determined by the recipient at his own discretion. The recipient uses 
 the following rule: *the more confirmations a transaction has, the less likely it is to be canceled later*.
 
-[Figure 4.56] - Inclusion of a transaction in a block 
+![Figure 4.56 - Inclusion of a transaction in a block](/resources/img/chapter-1/4.7-fees-mechanism-in-bitcoin/4.56-inclusion-the-transaction-in-the-block.png)
 
 With the growth of Bitcoin's popularity, the flow of new transactions on the network has significantly increased. The 
 maximum block size in Bitcoin is 1 MB, which is strictly defined by the protocol rules. Block creation time is 10 
@@ -2120,7 +2120,7 @@ arranges all unconfirmed transactions in a queue so that those transactions that
 (weight unit) are confirmed first. This means that those transactions that get to the end of the queue may remain 
 unconfirmed for a long time (Fig. 4.57).
 
-[Figure 4.57] - Competition for the space in a block
+![Figure 4.57 - Competition for the space in a block](/resources/img/chapter-1/4.7-fees-mechanism-in-bitcoin/4.57-competition-for-the-space.png)
 
 Another important task that fees mechanism has solved is the so-called *tragedy of the commons*. In the context of 
 Bitcoin, it is referred to transaction spam protection. The presence of mandatory fees means that it will be expensive 
@@ -2192,7 +2192,7 @@ it to the network, and continue monitoring its state.
 An example of a transaction that is confirmed using the child-pays-for-parent method is demonstrated in Figure 4.58; 
 there you can see two corresponding transactions (parent and child) confirmed in one block.
 
-[Figure 4.58] - Child-pays-for-parent mechanism
+![Figure 4.58 - Child-pays-for-parent mechanism](/resources/img/chapter-1/4.7-fees-mechanism-in-bitcoin/4.58-child-pays-for-parent.png)
 
 As you can see the problem of raising a fee can be solved yet has certain inconveniences. Despite the fact that the RBF 
 and CPFP options are supporting the protocol for quite a long time now, their adoption in bitcoin wallet software is 
@@ -2222,14 +2222,14 @@ Figure 4.59 shows the dependence of the price of adding one byte of data in the 
 flow of new transactions is lower or equal to the capacity of Bitcoin, then the price of record is almost zero. If the 
 flow of new transactions exceeds the capacity, then the price increases sharply.
 
-[Figure 4.59] - Dependence of fees and capacity in the Bitcoin system
+![Figure 4.59 - Dependence of fees and capacity in the Bitcoin system](/resources/img/chapter-1/4.7-fees-mechanism-in-bitcoin/4.59-dependence-of-fees-and-capacity.png)
 
 ### Friend miner case
 Imagine that you have a friend who is engaged in mining and who controls 10% of the entire processing power of the 
 Bitcoin network. This means that he creates one block on average once in 100 minutes. If your friendship is strong 
 enough, you can create a transaction with a zero fee and send it to your friend for confirmation (Fig. 4.60).
 
-[Figure 4.60] - Friend miner case
+![Figure 4.60 - Friend miner case](/resources/img/chapter-1/4.7-fees-mechanism-in-bitcoin/4.60-friend-miner-case.png)
 
 On the average, the first confirmation for your transaction will be received with 100% probability within 100 minutes, 
 and full confirmation will be received 50 minutes after the first one. As a result, your transactions will receive full 
