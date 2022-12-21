@@ -16,7 +16,7 @@ incomplete—especially if they're hearing about Bitcoin for the first time. The
 with more familiar words. The best analogy that appears in publications on this subject is the analogy with "digital 
 gold" (Fig. 2.1).
 
-[Figure 2.1 - Bitcoin is a digital gold analog](/resources/img/chapter-1/2.1-what-is-bitcoin/2.1-gold.png)
+![Figure 2.1 - Bitcoin is a digital gold analog](/resources/img/chapter-1/2.1-what-is-bitcoin/2.1-gold.png)
 
 It is fair to assume that the creator of Bitcoin actually aimed to reproduce all the properties of gold such as a 
 limited supply, mining, independence from a single organization, and the impossibility of artificial reproduction. The 
@@ -52,7 +52,7 @@ attempts to create an independent digital currency): Adam Back's HashCash [16] a
 first introduced the proof-of-work approach, originally created to combat spam in emails, while B-Money introduced a 
 network model for distributing transaction data, plus the use of cryptographic signatures to send money. 
 
-[Figure 2.2 - Fragment of the first publication about Bitcoin](/resources/img/chapter-1/2.1-what-is-bitcoin/2.2-bitcoin-wp.png)
+![Figure 2.2 - Fragment of the first publication about Bitcoin](/resources/img/chapter-1/2.1-what-is-bitcoin/2.2-bitcoin-wp.png)
 
 Thus, Satoshi used existing concepts to implement Bitcoin and solved the issues of earlier attempts to create digital 
 money. It is fair to assume that not many would have recognized an embryonic formation of an independent digital 
@@ -154,7 +154,7 @@ Connection and disconnection of participants occur independently and do not affe
 Everyone keeps and updates the database and the corresponding software independently. All the rules of work are stored 
 by everyone, and all users double-check each other. The Bitcoin network of users can be represented as in Figure 2.3.
 
-[Figure 2.3 - Network of Bitcoin users exemplified](/resources/img/chapter-1/2.1-what-is-bitcoin/2.3-network-of-users.png)
+![Figure 2.3 - Network of Bitcoin users exemplified](/resources/img/chapter-1/2.1-what-is-bitcoin/2.3-network-of-users.png)
 
 A particular user may process any network transactions on her own. By using the software, she may confirm a particular 
 transaction which she considers correct. As a result, each of the users has the set of transactions which he has 
@@ -203,7 +203,7 @@ Now, let's see how the number of issued coins changes over time. The graph in Fi
 of coins in existence during a certain time. We can see that it resembles a logarithmic curve. In 2018, the number of 
 mined coins exceeded 17 million BTC.
 
-[Figure 2.4 - Graph of the change in the amount of issued bitcoins over time](/resources/img/chapter-1/2.1-what-is-bitcoin/2.4-graph-of-issuance.png)
+![Figure 2.4 - Graph of the change in the amount of issued bitcoins over time](/resources/img/chapter-1/2.1-what-is-bitcoin/2.4-graph-of-issuance.png)
 
 > **Properties of bitcoin coins**
 >> * Scarcity (limited amount)
@@ -226,12 +226,12 @@ they do for stocks and other financial instruments. Globally, there are many dif
 users and order books. Therefore, the price of bitcoin can be different across exchanges because it is determined by the 
 demand and supply ratio created by users of a specific site (Fig. 2.5).
 
-[Figure 2.5 - Demand and supply ratio for bitcoins](/resources/img/chapter-1/2.1-what-is-bitcoin/2.5-demand-and-supply.png)
+![Figure 2.5 - Demand and supply ratio for bitcoins](/resources/img/chapter-1/2.1-what-is-bitcoin/2.5-demand-and-supply.png)
 
 In Figure 2.6, there is the graph of the price of one bitcoin (1 BTC) from the launch date of Bitcoin, namely from 2009 
 to 2018 [22].
 
-[Figure 2.6 - Graph of the change in value of a bitcoin over time](/resources/img/chapter-1/2.1-what-is-bitcoin/2.6-value-change.png)
+![Figure 2.6 - Graph of the change in value of a bitcoin over time](/resources/img/chapter-1/2.1-what-is-bitcoin/2.6-value-change.png)
 
 In the early days of Bitcoin, the price of bitcoin did not use to be determined, as there used to be no public 
 exchanges. Later people started exchanging bitcoins for other currencies in a certain ratio. The first purchase of a 
