@@ -10,7 +10,7 @@ goals, even Buddy the dog and Pluto can bravely defend the right to fulfil their
 (Fig. 6.1). In this section, we will consider the concept of *forks* and also briefly touch on the topic of conscious 
 (planned) divisions that can occur in open communities.
 
-[Figure 6.1] - Disagreements among community members
+[Figure 6.7 - Litecoin](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.1-disagreements.png)
 
 In the context of cryptocurrencies, there are two different meanings of *fork*.
 
@@ -31,7 +31,7 @@ There are a lot of nodes which interact and form the Bitcoin network. They work 
 consensus and maintaining one transaction history, which is recorded in the same sequence for all of the blocks, as 
 shown in Figure 6.2.
 
-[Figure 6.2 ] - Maintaining transaction history by each node independently
+[Figure 6.2 - Maintaining transaction history by each node independently](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.2-maintaining-txs-history.png)
 
 There is a special Bitcoin repository where you can document and post your proposal for improving the Bitcoin protocol 
 (BIP) [87]. After a proposal is published in the repository, the most active users of the relevant forums conduct 
@@ -46,7 +46,7 @@ Although a decentralized system is made up of an open community of members who a
 technical and organizational issues, it does not have any authority. The final decision is made by the participants 
 independently of one another (Fig. 6.3).
 
-[Figure 6.3] - Partial protocol update by part of network participants
+[Figure 6.3 - Partial protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.3-particular-protocol-update.png)
 
 In this way, if owners of a certain number of full nodes (this is mostly the concern of validators) have doubts about 
 whether or not to install a particular update, they will probably not take the risk and will continue working according 
@@ -60,7 +60,7 @@ different rules will be generated at one height, certain conflicts can arise.
 One of the scenarios is that old-protocol network nodes will not accept the blocks that have been formed by the 
 new-protocol network nodes. As a result, two different chain versions will be built (Fig. 6.4).
 
-[Figure 6.4] - Network division as a result of non-acceptance of protocol update by part of network participants
+[Figure 6.4 - Network division as a result of non-acceptance of protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.4-network-division.png)
 
 Accordingly, we have examined problems that the community can face during the software update. Now, let's take a closer 
 look at exactly how the protocol updates occur.
@@ -82,7 +82,7 @@ In other words, the set of allowable blocks and transactions grows narrow as the
 will recognize new blocks as valid (see Fig. 6.5), a softfork is backward-compatible. To have a softfork carried out 
 without the network being divided, the nodes that control most of computational power of the network must be updated.
 
-[Figure 6.5] - Protocol update through softfork
+[Figure 6.5 - Protocol update through softfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.5-protocol-update.jpg)
 
 A *hardfork* is a protocol change that makes previously invalid blocks and transactions valid. Therefore, a hardfork 
 requires that **all** nodes update the software to avoid the splitting of the chain. It can be related to introducing 
@@ -92,7 +92,7 @@ updated, and the chain is further built according to the new rules; the particip
 the chain is forked, and the community breaks up into groups each of which works according to its own protocol 
 (Fig. 6.6).
 
-[Figure 6.6] - Protocol update through hardfork
+[Figure 6.6 - Protocol update through hardfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.6-hardfork.jpg)
 
 Above, we have described planned forks. However, there are other situations in which a fork needs to be brought into 
 effect and quickly. For example, once a critical vulnerability was found in Bitcoin, and an unplanned softfork had to be 
