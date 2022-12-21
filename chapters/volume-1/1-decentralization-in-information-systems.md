@@ -315,7 +315,7 @@ supported only by the users' devices, and disabling one device will not affect o
 An *accounting system* is a particular case of an automated data processing system which manages a ledger and the 
 decision-making process about its updating (Fig. 1.7).
 
-[Picture 1.7] - Accounting system architecture
+![Figure 1.7 - Accounting system architecture](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.7-accounting-system-architecture.png)
 
 A *centralized accounting system* includes a database, mechanisms for updating it, and a management center responsible for 
 maintaining its operation. A management center may not always provide a sufficient level of security of data processing 
@@ -330,7 +330,7 @@ own copies of a database, while the *consensus-reaching algorithm* ensures that 
 Instead of a single authorized party (*management center*), multiple independent parties (*validators*) take part in 
 matching the final state of all copies.
 
-[Picture 1.8] - Decentralized accounting system architecture
+![Figure 1.8 - Decentralized accounting system architecture](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.8-dec-acc-system-architecture.png)
 
 ### Advantages of decentralized systems
 In general, a decentralized system assumes that participants exchange information directly, using p2p protocols, and 
@@ -413,7 +413,7 @@ importance of its implementation to others—which is by itself a difficult task
 IPv6 required updates on all devices from all manufacturers, which took much more time than the developers planned. In 
 this case, the benefit for users is not noticed immediately.
 
-[Picture 1.9] - Protocol update issue 
+![Figure 1.9 - Protocol update issue](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.9-houses.png)
 
 *Responsibility issue*. Decisions in decentralized systems are the result of consent by the majority of participants. 
 There is no single participant who could cancel a decision that was taken mutually by all participants and impose their 
@@ -421,7 +421,7 @@ own. However, if a user becomes a victim of scammers (due to his own carelessnes
 responsible party, and no guarantees (Fig. 1.10). Here, we are talking about taking risks which are very difficult to 
 measure.
 
-[Picture 1.10] - Responsibility issue 
+![Figure 1.10 - Responsibility issue](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.10-responsibility.png)
 
 *Difficulties in monetization of development*. It is generally easier to monetize a centralized rather than a 
 decentralized system. This is because centralized systems are more manageable and can use legal enforcement since there 
@@ -434,7 +434,8 @@ profit from their projects.
 communicate and reach agreement. The capacity of the system decreases with the growth of a number of validators in it 
 (Fig. 1.11).
 
-[Picture 1.11] - Example of how capacity decreases as the number of users grows
+![Figure 1.11.1 - Example of how capacity decreases as the number of users grows](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.11.1-scalability.png)
+![Figure 1.11 - Example of how capacity decreases as the number of users grows](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.11-scalability.png)
 
 Decentralized systems also have to *store redundant data amounts and to meet high hardware requirements*. 
 These limitations will be considered in detail further (see 5.3).
@@ -445,7 +446,7 @@ centralized services such as Microsoft, App Store, Google Play, GitHub etc., the
 their own decision (Fig. 1.12). Therefore, applications may be rejected so much as deleted (even in quite a long time 
 after the successful release).
 
-[Picture 1.12] - Provider services capable of censoring software for operating in decentralized systems
+![Figure 1.12 - Provider services capable of censoring software for operating in decentralized systems](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.12-centralized-access.png)
 
 ### Summary
 Comparing decentralization with centralization is not always a good idea since everything depends on purpose, 
