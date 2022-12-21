@@ -2338,12 +2338,12 @@ In a simplified version, the operation of a payment channel is shown in Figure 4
 with additional modules for working with the payment channel. These modules exchange data for making payments (for 
 instance, data about coins distribution, relevant data about signatures, etc.).
 
-[Figure 4.61] - Operation of a payment channel
+![Figure 4.61 - Operation of a payment channel](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.61-operation-of-payment-channel.png)
 
 It would be interesting to consider this in more detail and see the very way how coins are distributed within the 
 payment channel (Fig. 4.62).
 
-[Figure 4.62] - Interaction within a payment channel 
+![Figure 4.62 - Interaction within a payment channel](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.62-interaction-within-payment-channel.png)
 
 *Step 0*. To open the channel, Alice and Bob create a multisignature address and both transfer their coins on it, let’s 
 say, 5 BTC each. So the multisignature address now stores 10 BTC from which they each “own” 5 BTC (below we will explain 
@@ -2415,7 +2415,7 @@ sender and recipient. The operational time of this channel is set arbitrarily by
 close the channel ahead of the schedule. The basic steps of operation of this channel are shown in the diagram below 
 (see Fig. 4.63).
 
-[Figure 4.63] - How Spillman-style payment channels work
+![Figure 4.63 - How Spillman-style payment channels work](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.63-spillman-style-payment-channel.png)
 
 For a better understanding, imagine there is a service that trades access to a Wi-Fi access point, and there is a client 
 that wants to get a 24 hours access to the network; suppose the service costs one coin. The client does not trust the 
@@ -2447,7 +2447,7 @@ In this case, transaction 1 is called a *funding* transaction, and transaction 2
 
 How is the payment settlement within the payment channel work? Consider the following scheme (Fig. 4.64).
 
-[Figure 4.64] - Coins settlement in the channel after a payment is conducted
+![Figure 4.64 - Coins settlement in the channel after a payment is conducted](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.64-coins-settlement.png)
 
 In order to send the first payment, a client requests the bitcoin address of the service, which the service controls 
 itself. Next, he creates a transaction 3, in which the coin from a multisignature address is distributed between two 
@@ -2463,7 +2463,7 @@ all that he needs to pass to the service is only his signature and the amount of
 checks the received data and saves the new version of a transaction number three—in this version, it receives more coins 
 (see Fig. 4.65).
 
-[Figure 4.65] - Publication of results on the Bitcoin network
+![Figure 4.65 - Publication of results on the Bitcoin network](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.65-publication-to-the-bitcoin.png)
 
 How do you close the channel? The diagram shows that the service must succeed to publish the latest version of 
 transaction 3 on the Bitcoin network before the end of the channel operation time. Otherwise, the sender may cheat and 
@@ -2524,7 +2524,7 @@ the figure indicate the interaction of these nodes, which is required for the ac
 LN need to update each other's information about their status and exchange messages to support the operation of payment 
 channels.
 
-[Figure 4.66] - Message exchanging between Bitcoin network and Lightning Network
+![Figure 4.66 - Message exchanging between Bitcoin network and Lightning Network](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.66-message-exchanging.png)
 
 ### How does Lightning Network work?
 To understand the basic idea of LN, consider the following example. Suppose there is a grocery store in town that 
@@ -2548,7 +2548,7 @@ book).
 To have a clearer understanding about how LN works, now consider the example (Fig. 4.67) that shows how coins are 
 transferred from Alice to Bob, while they do not have a payment channel opened with each other directly.  
 
-[Figure 4.67] - Simplified example of how nodes are arranged in Lightning Network
+![Figure 4.67 - Simplified example of how nodes are arranged in Lightning Network](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.67-simplified-example.png)
 
 The figure schematically presents a small network of 6 users, each with a node. In practice, of course, there could be 
 hundreds of them. Suppose that Alice needs to transfer 2 BTC to Bob. In such a case, the software of her node will need 
@@ -2562,7 +2562,7 @@ is possible. In the Ken—Den channel, the state of balances is 1|4, meaning tha
 transfer (2 BTC) is impossible. Noteworthy, if in the Ken—Den channel, the state of balances would be reversed (4|1), 
 value transfer could be completed.
 
-[Figure 4.68] - Sending a payment from Alice to Bob
+![Figure 4.68 - Sending a payment from Alice to Bob](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.68-sending-the-payment.png)
 
 Now, there’s the second path. In the Alice—Eva channel, balances are 17|43—value transfer is possible. In the Eva—Dave 
 channel, balances are 4|1—value transfer is possible (as you can see, the fact the Dave has only 1 BTC in the Eva—Dave 
@@ -2571,18 +2571,20 @@ Eventually, in the Dave—Bob channel, balances are 17|15, meaning that value tr
 to transfer 2 BTC to Bob through two intermediaries, Eva and Dave. Figure 4.69 also vividly shows how the state of 
 balances have changed after Alice has transferred her 2 BTC to Bob.
 
-[Figure 4.69] - How the state of channel balances has changed after the payment has been transferred
+![Figure 4.69 - How the state of channel balances has changed after the payment has been transferred](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.69-state-of-channels.png)
 
 In fact, in the very same situation, there’s also another possible way to send the payment from Alice to Bob. Alice can 
 split the payment into two parts and send the coins separately: 1 BTC through Eva and Dave, and another 1 BTC through 
 Ken and Den (Fig. 4.70).
 
-[Figure 4.70] - Sending the same payment but separately
+![Figure 4.70 - Sending the same payment but separately](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.70-sending-the-same-payment.png)
 
 In Figure 4.71, you can see how the state of balances of each channel will change provided that the payment is made in 
 this way (if Alice splits her coins and sends them separately).
 
 [Figure 4.71] - How the state of channel balances has changed after the payment has been transferred separately
+![Figure 4.71 - How the state of channel balances has changed after the payment has been transferred separately](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.71-end-state.png)
+
 
 In practice, the number of nodes and possible routes is much higher.  Moreover, LN is not that uniform as the Bitcoin 
 network. This means that there are nodes with the greater and lower load as well as nodes with inconsistent activity. 
@@ -2593,7 +2595,7 @@ In Figure 4.72, you can see the relevant state of LN in December 2018 [78].
 >> * 14,000 channels opened on average
 >> * 479.70 BTC locked on the Bitcoin network (are in the circulation of LN)
 
-[Figure 4.72] - State of Lightning Network in the end of 2018
+![Figure 4.72 - State of Lightning Network in the end of 2018](/resources/img/chapter-1/4.8-payment-channels-and-lightning-network/4.72-state-of-ln.png)
 
 To open a payment channel, you need to freeze a certain amount of coins; thus sending and accepting payments in channels 
 is possible only within a limited, predetermined sum. If an ordinary user divides her coins into several parts and 
