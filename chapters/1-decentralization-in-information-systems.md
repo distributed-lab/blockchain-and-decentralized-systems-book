@@ -99,7 +99,7 @@ different types.
 For file-sharing systems and data storage systems, the decentralized approach implies that different network nodes store 
 different file fragments (Fig. 1.1).
 
-[Picture 1.1] - A scheme for distribution of file fragments among
+[Figure 1.1 - A scheme for distribution of file fragments among](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image1.png)
 
 Decentralized applications started to be developed rapidly especially with the invention of services and protocols for 
 file sharing (Fig. 1.2).
