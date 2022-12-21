@@ -400,7 +400,7 @@ limitations, level of security, and performance. This, in turn, strongly affects
 systems. Let's figure out which characteristics are the most important for typical decentralized systems and how they 
 depend on the approach to reaching consensus.
 
-[Figure 5.6] - Reaching consensus regarding house repairs
+![Figure 5.6 - Reaching consensus regarding house repairs](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/5.6-house-repairs.png)
 
 ### Proof-of-work
 The consensus mechanism based on PoW has become popular due to cryptocurrencies. It is the simplest and at the same time 
@@ -424,7 +424,7 @@ The idea of PoS is similar to the voting of shareholders of a company—the one 
 correspondingly has a greater voice in making the final decision. In this way, decisions in the system are not really 
 determined by the number of votes but rather by their weight (Fig. 5.7).
 
-[Figure 5.7] - PoS functioning principle
+![Figure 5.7 - PoS functioning principle](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/5.7-pos.png)
 
 The specific threshold of this weight can differ and depends solely on the rules in a particular group: some would 
 require the simple majority (i.e., 51%), others, two thirds (66%); and there could even be cases when 90% of the voters 
@@ -469,7 +469,7 @@ Therefore, all generals have to come to an agreed decision. The statement of the
 in one scientific paper. After it, the name of the algorithm for achieving consensus was published, BFT [111]. Nowadays 
 such a problem can be relevant not only for generals, but, say, for a football team as well (Fig. 5.8).
 
-[Figure 5.8] - Reaching consensus using BFT
+![Figure 5.8 - Reaching consensus using BFT](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/5.8-bft.png)
 
 > **Working conditions for a BFT-class consensus reaching mechanism**
 >> * Nodes which interact are equal in rights 
@@ -496,7 +496,7 @@ Each participant trusts only a limited circle of other participants (3–10) and
 narrow circle. But due to the fact that social ties overlap, the agreement can be reached in the entire system 
 (Fig. 5.9).
 
-[Figure 5.9] - Reaching consensus using FBA
+![Figure 5.9 - Reaching consensus using FBA](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/5.9-fba.png)
 
 There are very few cases of real implementations or analogs of such a method in the world. For example, revolutionary 
 ideas spread in a similar way—when people share news and infect others with ideas. A final decision in such a system 
@@ -517,7 +517,7 @@ the current time. Therefore, all blocks that would otherwise become orphan block
 methods for organizing the interaction of a large number of simultaneously working validators. This positively impacts 
 the reliability of accounting and the level of system protection against double-spending attacks and similar attacks.
 
-[Figure 5.10] - Structure of DAG
+![Figure 5.10 - Structure of DAG](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/5.10-dag.png)
 
 There is an issue with current implementations of systems using DAG that lies in the centralization of the process of 
 resolving conflicts (double-spending transactions). This process is performed by *witness nodes* in ByteBall and the 
@@ -538,7 +538,7 @@ Note the table below (Table 5.2). It shows that there are mechanisms where trust
 facilitated by a number of certain circumstances such as the system’s rules that motivate validators to be honest and 
 also by the interchangeability of these validators—when it does not matter who will participate in the confirmation.
 
-[Table 5.2] - Comparison of different consensus mechanisms
+![Table 5.2 - Structure of DAG](/resources/img/chapter-1/5.2-difference-in-consensus-approaches/table-5.2-comparison.png)
 
 Another important criterion is the right to become a validator. This process can both occur on a public basis or either 
 require the approval of a group of existing validators.
