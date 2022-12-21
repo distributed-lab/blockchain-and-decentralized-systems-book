@@ -10,7 +10,7 @@ goals, even Buddy the dog and Pluto can bravely defend the right to fulfil their
 (Fig. 6.1). In this section, we will consider the concept of *forks* and also briefly touch on the topic of conscious 
 (planned) divisions that can occur in open communities.
 
-[Figure 6.7 - Litecoin](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.1-disagreements.png)
+![Figure 6.7 - Litecoin](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.1-disagreements.png)
 
 In the context of cryptocurrencies, there are two different meanings of *fork*.
 
@@ -31,7 +31,7 @@ There are a lot of nodes which interact and form the Bitcoin network. They work 
 consensus and maintaining one transaction history, which is recorded in the same sequence for all of the blocks, as 
 shown in Figure 6.2.
 
-[Figure 6.2 - Maintaining transaction history by each node independently](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.2-maintaining-txs-history.png)
+![Figure 6.2 - Maintaining transaction history by each node independently](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.2-maintaining-txs-history.png)
 
 There is a special Bitcoin repository where you can document and post your proposal for improving the Bitcoin protocol 
 (BIP) [87]. After a proposal is published in the repository, the most active users of the relevant forums conduct 
@@ -46,7 +46,7 @@ Although a decentralized system is made up of an open community of members who a
 technical and organizational issues, it does not have any authority. The final decision is made by the participants 
 independently of one another (Fig. 6.3).
 
-[Figure 6.3 - Partial protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.3-particular-protocol-update.png)
+![Figure 6.3 - Partial protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.3-particular-protocol-update.png)
 
 In this way, if owners of a certain number of full nodes (this is mostly the concern of validators) have doubts about 
 whether or not to install a particular update, they will probably not take the risk and will continue working according 
@@ -60,7 +60,7 @@ different rules will be generated at one height, certain conflicts can arise.
 One of the scenarios is that old-protocol network nodes will not accept the blocks that have been formed by the 
 new-protocol network nodes. As a result, two different chain versions will be built (Fig. 6.4).
 
-[Figure 6.4 - Network division as a result of non-acceptance of protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.4-network-division.png)
+![Figure 6.4 - Network division as a result of non-acceptance of protocol update by part of network participants](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.4-network-division.png)
 
 Accordingly, we have examined problems that the community can face during the software update. Now, let's take a closer 
 look at exactly how the protocol updates occur.
@@ -82,7 +82,7 @@ In other words, the set of allowable blocks and transactions grows narrow as the
 will recognize new blocks as valid (see Fig. 6.5), a softfork is backward-compatible. To have a softfork carried out 
 without the network being divided, the nodes that control most of computational power of the network must be updated.
 
-[Figure 6.5 - Protocol update through softfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.5-protocol-update.jpg)
+![Figure 6.5 - Protocol update through softfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.5-protocol-update.jpg)
 
 A *hardfork* is a protocol change that makes previously invalid blocks and transactions valid. Therefore, a hardfork 
 requires that **all** nodes update the software to avoid the splitting of the chain. It can be related to introducing 
@@ -92,7 +92,7 @@ updated, and the chain is further built according to the new rules; the particip
 the chain is forked, and the community breaks up into groups each of which works according to its own protocol 
 (Fig. 6.6).
 
-[Figure 6.6 - Protocol update through hardfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.6-hardfork.jpg)
+![Figure 6.6 - Protocol update through hardfork](/resources/img/chapter-1/6.1-bitcoin-forks-and-clones/6.6-hardfork.jpg)
 
 Above, we have described planned forks. However, there are other situations in which a fork needs to be brought into 
 effect and quickly. For example, once a critical vulnerability was found in Bitcoin, and an unplanned softfork had to be 
@@ -292,7 +292,7 @@ We will start our review of alternative coins with Litecoin (Fig. 6.7). This is 
 which appeared in 2011. The currency is based on the Bitcoin source code but with some changes. The block creation time 
 was reduced fourfold (to 2.5 minutes). Accordingly, the maximum issuance amount has increased by 4 times.
 
-[Figure 6.7 - Litecoin](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.7-litecoin.png)
+![Figure 6.7 - Litecoin](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.7-litecoin.png)
 
 For the proof of performed work, Litecoin uses the script hash function. This hash function uses SHA-256 as a 
 subprogram, relying on a large number of arithmetic calculations but also requiring quick access to large amounts of 
@@ -305,7 +305,7 @@ contributes to increased network capacity. The hashing algorithm is PoW X11, whi
 resource-intensive task energy-efficiently and only on graphics processors, but later integrated circuits (ASICs) were 
 designed and released for this purpose.
 
-[Figure 6.8 - Dash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.8-dash.png)
+![Figure 6.8 - Dash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.8-dash.png)
 
 Dash supports *PrivatSend* and *InstantSend* technologies. PrivatSend is the technology of mixing coins; in other words, 
 the technology of entangling the history of coins origin. *InstantSend* is an instant payment technology, where the 
@@ -351,7 +351,7 @@ NXT (Fig. 6.9) was launched in 2013 by an anonymous developer. It was one of the
 the proof-of-stake consensus mechanism. Originally, NXT was designed as a versatile platform allowing for the 
 implementation of various financial applications and services.
 
-[Figure 6.9 - NXT](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.9-nxt.png)
+![Figure 6.9 - NXT](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.9-nxt.png)
 
 The NXT infrastructure is quite complex compared to Bitcoin. The platform features an integrated digital asset exchange 
 and a messaging system [91]. Issuance in the system was performed only once and in a centralized way. NXT allows anyone 
@@ -372,7 +372,7 @@ which focus is on capacity.
 The BitShares platform allows anyone to create the so-called user-issued assets (UIA), known as digital tokens. This 
 means that the platform accounts a base currency, BitShares (BTS), and a lot of user-issued tokens.
 
-[Figure 6.10 - BitShares](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.10-bitshares.png)
+![Figure 6.10 - BitShares](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.10-bitshares.png)
 
 In addition, BitShares is a smart contract platform. Smart contracts here are preinstalled and their number is limited 
 (i.e., only the most popular contracts are implemented on the platform), but they are more cost and energy effective.
@@ -392,7 +392,7 @@ because it could potentially be manipulated. That's how a part of the community 
 Monero operates according to the rules defined in the CryptoNote protocol [93]. It allows anonymization of traffic at 
 the network level with the origin of coins hidden in each transaction.
 
-[Figure 6.11 - Monero](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.11-monero.png)
+![Figure 6.11 - Monero](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.11-monero.png)
 
 At the level of the transaction model, there is a mechanism for entangling the history of the origin of coins that does 
 not involve any third parties. Unlike Dash, where a specific server or group of servers act as a mixer, monero coins are 
@@ -416,7 +416,7 @@ The feature of Ethereum (see Fig. 6.12) is supporting a programmable digital cur
 different ways—some people call it a platform for smart contracts, and others as a decentralized computer. The 
 accounting platform has a native ether currency.
 
-[Figure 6.12 - Ethereum](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.12-ethereum.png)
+![Figure 6.12 - Ethereum](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.12-ethereum.png)
 
 Issuance in Ethereum is not limited. 18 million new coins are issued each year; therefore inflation is infinite. The 
 block creation period is 10–20 seconds. Ethereum operates on the proof-of-work consensus algorithm, but the possibility 
@@ -456,7 +456,7 @@ language. As the developers say, their platform uses a persistently strong conse
 proof-of-stake. The algorithm is named Ouroboros and was designed and implemented specifically for the use in this 
 decentralized system.
 
-[Figure 6.13 - Cardano](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.13-cardano.png)
+![Figure 6.13 - Cardano](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.13-cardano.png)
 
 The currency supports governance through voting for all changes. The maximum issuance of coins of the platform's base 
 currency is 45 billion coins; there was a one-off pre-issuance of a certain amount of coins in a centralized way, and 
@@ -474,9 +474,9 @@ occurred and was called Stellar (Fig. 6.14). Stellar began to develop separately
 same, Stellar, unlike the Bcash fork, which up to a certain block shares a transaction history with Bitcoin, has its own 
 transaction history.
 
-[Figure 6.14 - Stellar](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-stellar.png)
+![Figure 6.14 - Stellar](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-stellar.png)
 
-[Figure 6.14 - Ripple](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-ripple.png)
+![Figure 6.14 - Ripple](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.14-ripple.png)
 
 The purpose of Ripple as a system is to create a decentralized exchange and a settlement mechanism between parties. All 
 the coins of native currencies in both accounting systems were issued and distributed centrally. Users are able to issue 
@@ -491,7 +491,7 @@ ZCash is a cryptocurrency, which is mostly focused on making transactions confid
 published in the chain of blocks, but details such as the sender's and receiver's data and the transaction amount remain 
 hidden. This cryptocurrency was announced in 2016 (Fig. 6.15).
 
-[Figure 6.15 - ZCash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.15-zcash.png)
+![Figure 6.15 - ZCash](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.15-zcash.png)
 
 ZCash is the first cryptocurrency based on the *zero-knowledge proof* protocol, which allows hiding the transaction 
 details. Its architecture is identical to that of Bitcoin. The key differences are the decreased block creation time and 
@@ -515,7 +515,7 @@ To compare the above-listed digital currencies, we have decided to use the follo
 transaction confirmation, transaction audit, update management, capacity, full transaction confirmation time, and user 
 privacy (Table 6.1).
 
-[Table 6.1 - Comparison of digital currencies](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.1-comp.png)
+![Table 6.1 - Comparison of digital currencies](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.1-comp.png)
 
 Having analyzed, for example, the base currency of Ripple (XRP), you can see that processes such as issuance and 
 transaction confirmation are performed centrally. Therefore Ripple is a digital currency, not a cryptocurrency because 
@@ -524,7 +524,7 @@ not all processes are decentralized.
 Let's now move on to another type of digital asset, tokens, and define the main features by which they can be 
 distinguished from digital currencies (Fig. 6.16).
 
-[Figure 6.16 - Classification of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.16-classification.png)
+![Figure 6.16 - Classification of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/6.16-classification.png)
 
 ### Tokens
 At the end of 2016, there was a sharp increase in the number of projects launching their own currency to finance the 
@@ -550,7 +550,7 @@ cryptocurrencies, where all the processes are decentralized.
 In Table 6.2, you can see how digital assets are different according to the nature of processes that occur in their 
 accounting systems.
 
-[Table 6.2 - Distinction between groups of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.2-dist.png)
+![Table 6.2 - Distinction between groups of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.2-dist.png)
 
 ### Conclusion
 We ultimately give the following definition of a cryptocurrency that demonstrates as accurately as possible its essence 
@@ -563,7 +563,7 @@ Knowing the correct terminology is essential in order to accurately perceive and
 there is a comparison of various digital assets according to certain criteria. Studying this table will allow you to 
 distinguish the main groups of assets as well as to better navigate the entire field of digital financial technologies. 
 
-[Table 6.3 - Сomparison of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.3-comp.png)
+![Table 6.3 - Сomparison of digital assets](/resources/img/chapter-1/6.2-alternative-digital-currencies-and-tokens/table-6.3-comp.png)
 
 **Frequently asked questions**
 
