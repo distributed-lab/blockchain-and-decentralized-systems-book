@@ -48,7 +48,7 @@ resistance, trustless verification of data, and economic incentives to distribut
 
 If we try to graph the possible degrees of the system decentralization on a linear scale, it might resemble Figure 5.1.
 
-[Figure 5.1] - Degree of decentralization on a linear scale
+![Figure 5.1- Degree of decentralization on a linear scale](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/5.1-degree-of-decentalization.jpg)
 
 All these cases can be evaluated, compared, and contrasted by evaluating them with respect to a few criteria. The first 
 such criteria is the number of validators; the second is the requirement that validators maintain their anonymity; the 
@@ -127,7 +127,7 @@ In the chain of blocks, each subsequent block contains a hash value of the previ
 attempt to change the data recorded on a historical block will cause changes to all subsequent blocks. This change will 
 be noticed by other participants (network nodes) and can be rejected if improper, ensuring database integrity.
 
-[Figure 5.2] - Link between blocks in the chain
+![Figure 5.2- Link between blocks in the chain](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/5.2-link-between-blocks.png)
 
 A sequence of blocks is thus formed—a chain (hence the name "blockchain"), where each new block contains a hash value 
 derived from the prior block. Of course, the hash function which links all of these blocks must be consistent. If you 
@@ -153,7 +153,7 @@ blocks of a certain format and transmitted over the network.
 
 The features of implementing blockchain properties for different environments are shown in Table 5.1.
 
-[Table 5.1] - Properties that blockchain may provide
+![Table 5.1- Properties that blockchain may provide](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/table-5.1.png)
 
 When the decentralization degree of an accounting system increases, i. e. the number of validators goes up, the need 
 appears for a mechanism for reaching consensus regarding the correct system state.
@@ -203,7 +203,7 @@ allowed and it is difficult to steal someone’s vote. All transactions on the n
 reduces the probability of establishing the identity of a voter. During voting, anyone can check the correctness of all 
 transactions containing votes to make sure that they have all been taken into account (see Fig. 5.3).
 
-[Figure 5.3] - E-voting
+![Figure 5.3- E-voting](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/5.3-evoting.png)
 
 A voter must be able to prove that he has the right to vote, and will be constrained to only the allowed number of votes 
 (usually one vote). Most likely, this would entail the need to create certification centers where voters register their 
@@ -246,7 +246,7 @@ is fake).
 conduct auctions on many small trading platforms. A product that is put up for sale on one of the trading sites will be 
 available on all others (Fig. 5.4). Thus, it allows sellers to present goods to a wider audience of buyers.
 
-[Figure 5.4] - Example of a decentralized auction
+![Figure 5.4 - Example of a decentralized auction](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/5.4-auction.png)
 
 A seller saves a lot of time since there is no need to manually duplicate information about the goods on each site. 
 Moreover, trades are conducted on the sites simultaneously, and the data about bids is synchronized in real time. 
@@ -272,7 +272,7 @@ Therefore, maintenance of public registries can be transferred to non-government
 reduction of state spendings and increased citizen satisfaction. The most suitable consensus algorithm for this task is 
 FBA.
 
-[Figure 5.5] - Decentralized public registries
+![Figure 5.5 - Decentralized public registries](/resources/img/chapter-1/5.1-blockchain-technology-and-its-capabilities/5.5-registry.png)
 
 *Mutual settlements*. Let's imagine that ten banks want to build a partnership to provide the service for their 
 customers faster and cheaper. For this, they will need to create a shared payment system for arranging direct settlement 
