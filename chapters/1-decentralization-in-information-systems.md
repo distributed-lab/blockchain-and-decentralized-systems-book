@@ -104,7 +104,7 @@ different file fragments (Fig. 1.1).
 Decentralized applications started to be developed rapidly especially with the invention of services and protocols for 
 file sharing (Fig. 1.2).
 
-[Picture 1.2] - Scheme of file sharing in decentralized file-sharing systems
+![Figure 1.2 - Scheme of file sharing in decentralized file-sharing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image3.png)
 
 One of the first such services, Napster, provided a way to exchange MP3 files. At that time, recorded music had been 
 mostly available on tapes and disks (of course, it required payment). Therefore, Napster became very popular among 
@@ -157,7 +157,7 @@ five people put a cake into a shared safe and agreed to eat it only if the major
 secret of the code lock and distribute its parts between each other. The cake can only be eaten if the majority of 
 participants decides to share their part of the secret and unlock the safe (Fig. 1.3). 
 
-[Picture 1.3] - Decision-making by independent parties
+![Figure 1.3 - Decision-making by independent parties](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image4.png)
 
 Nowadays major firms cannot be managed by one person, and even if they do exist, their effectiveness is quite doubtful. 
 For this reason, almost any large company in practice has a board of directors, a countless number of advisors, and 
@@ -177,7 +177,7 @@ each computer solves its part to reduce the time for obtaining results.
 Grid systems use distributed computational resources to reach a common goal (Fig. 1.4). The number of nodes in such a 
 system can fluctuate from several machines to hundreds and thousands of workstations.
 
-[Picture 1.4] - Scheme for transferring results of calculations in parallel computing systems
+![Figure 1.4 - Scheme for transferring results of calculations in parallel computing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image2.png)
 
 Such an approach was first suggested in 1999 in the publication “The Grid: Blueprint for a new computing infrastructure” 
 [9]. That same year the first grid project, SETI@home [10], was launched. Today there are a huge number of similar 
