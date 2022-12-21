@@ -1304,7 +1304,7 @@ someone else's network node that a user of the wallet trusts). The third approac
 the validity of transactions with a sufficiently high degree of reliability yet without resorting to launching a full 
 network node. Let’s take a more detailed look at each of these approaches.
 
-[Figure 4.37] - Approaches to wallet synchronization with the network
+![Figure 4.37 - Approaches to wallet synchronization with the network](/resources/img/chapter-1/4.4-approaches-to-network-synchronization-and-spv-nodes/4.37-approaches-for-wallet-synch.png)
 
 ### Working with full nodes
 In this case, everything is simple enough. A wallet implements the mechanisms for storing and processing the entire 
@@ -1348,7 +1348,7 @@ In practice, there has been a case when a node of a private company, Blockchain.
 two days due to DNS problems (Fig. 4.38) [60]. Applications that used this node as a trusted host could not synchronize 
 with the Bitcoin network and maintain regular operation.
 
-[Figure 4.38] - Service denial of one of the wallet services
+![Figure 4.38 - Service denial of one of the wallet services](/resources/img/chapter-1/4.4-approaches-to-network-synchronization-and-spv-nodes/4.38-dos.png)
 
 Since transaction verification takes place on a remote server, you need to be able to verify the reliability of the data 
 transfer channel between a wallet and the server on which verification is performed. This approach carries the risk of 
@@ -1418,7 +1418,7 @@ does not exceed 43 MB. In comparison, the size of a local copy of the Bitcoin da
 synchronization with the network, an SPV node only requires headers of further blocks (80 bytes in size) [61]. A diagram 
 describing the functioning of an SPV node is shown in Figure 4.39.
 
-[Figure 4.39] - Operating model of an SPV node
+![Figure 4.39 - Operating model of an SPV node](/resources/img/chapter-1/4.4-approaches-to-network-synchronization-and-spv-nodes/4.39-spv-node.png)
 
 In order for the SPV node to consider the transaction as having been confirmed, two conditions must be met:
 * A transaction must be added to the block.
@@ -1431,7 +1431,7 @@ pairs and then submitted to the hash function input. This process repeats until 
 If you imagine this schematically, the intermediate hash values are iteratively added to a tree structure, the Merkle 
 tree, which contains the Merkle root value in its vertex.
 
-[Figure 4.40] - How Merkle root is linked to each transaction in a block
+![Figure 4.40 - How Merkle root is linked to each transaction in a block](/resources/img/chapter-1/4.4-approaches-to-network-synchronization-and-spv-nodes/4.40-merkle-root.png)
 
 The advantage here is that in order to verify the inclusion of a transaction in a block, you do not need the entire 
 block. Values for pairwise hashing is enough and will allow you to make it to the root of the Merkle tree.
@@ -1560,7 +1560,7 @@ multisignature address is generated in the same way, but, in this case, there ar
 concatenated before being hashed. In Figure 4.41, you can see schematically a transaction that spends coins from a 
 multisignature address.
 
-[Figure 4.41] - Multisignature transaction structure
+![Figure 4.41 - Multisignature transaction structure](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.41-multisig-tx-structure.png)
 
 Above (Fig. 4.41), there is a header area that contains two fields. There are two inputs on the left and two outputs on 
 the right. The first input contains filled fields: a hash value of the previous transaction that spends coins, an output 
@@ -1577,7 +1577,7 @@ are being sent. Compared to the field *script* of the usual bitcoin transaction,
 contains more data and correspondingly occupies more space. This is because there can be at least two or even up to 15 
 signers. 
 
-[Figure 4.42] - Real multisignature transaction
+![Figure 4.42 - Real multisignature transaction](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.42-real-multisig-tx.png)
 
 Different key combinations are possible when using a multisignature address; thus, depending on the circumstances, any 
 combination can be worthwhile. It should be noted that the scheme using the most possible number of mandatory signatures 
@@ -1595,7 +1595,7 @@ spent only with the consent of both of them. In Bitcoin, this can be implemented
 multisignature address, where one key is controlled by the wife and another by the husband. All family's income will be 
 transferred to this address, and the coins will be spent only by their mutual agreement.
 
-[Figure 4.43] - Husband and wife have decided to create a multisignature address
+![Figure 4.43 - Husband and wife have decided to create a multisignature address](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.43-h-and-w.png)
 
 Imagine that wife considers it necessary to buy a washing machine because she is tired of handwashing, while her husband 
 believes that it would be wiser to spend all the money on a new PlayStation. She takes offense at her husband and 
@@ -1631,7 +1631,7 @@ two signatures being enough to sign a transaction (Fig. 4.44). These coins can b
 who make up the majority of a group; any two of the three participants can make a decision to spend coins. They only 
 need to spread the transaction to the network.
 
-[Figure 4.44] - 2-of-3 multisignature
+![Figure 4.44 - 2-of-3 multisignature](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.44-2-of-3-multisig.png)
 
 A more interesting way of using the 2-of-3 combination is when there is a *wallet service* involved. In this case, you 
 should not confuse wallet services with bitcoin wallets that users monitor themselves. The service does not provide a 
@@ -1641,7 +1641,7 @@ one is generated by a user (and is only known to a user), and the third key is a
 separately and is not used regularly. After that, public keys are calculated from private keys and a MultiSig address is 
 created. 
 
-[Figure 4.45] - 2-of-3 multisignature with a wallet service involved
+![Figure 4.45 - 2-of-3 multisignature with a wallet service involved](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.45-2-of-3-with-involved-wallet.png)
 
 Imagine that we deal with a web service that allows a client to receive and send coins using a web browser. The browser 
 loads a code that implements only a part of the bitcoin wallet functionality: receives UTXOs, generates transactions and 
@@ -1777,7 +1777,7 @@ place). To do this Bob generates several private keys locally on his computer an
 keys (Fig. 4.46). Commonly, public keys are first encrypted with base58Check, then sorted in alphabetical order, and 
 then decrypted and concatenated, eventually forming the redeem script.
 
-[Figure 4.46] - Using of P2SH
+![Figure 4.46 - Using of P2SH](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.46-using-of-p2sh.png)
 
 The sorting is worthwhile when you need to recalculate public keys from the private keys. They need to be concatenated 
 exactly in the same order because the next step is to create redeem script and its hashing; if exactly the same keys get 
@@ -1804,7 +1804,7 @@ that he spends, so he takes the necessary number of his private keys (2 if his m
 case), from which he computes two signatures for the transaction. Then, he adds the full redeem script to the 
 transaction input.
 
-[Figure 4.47] - Bob proves his ownership of coins
+![Figure 4.47 - Bob proves his ownership of coins](/resources/img/chapter-1/4.5-multisignature-mechanism-and-bitcoin-script/4.47-bob-proves-the-ownership.png)
 
 Note that Bob should store this redeem script entirely on his computer; either way, he will have to remember the order 
 in which he used the public keys for composing this script. He should also remember the sorting rules that he applied 
