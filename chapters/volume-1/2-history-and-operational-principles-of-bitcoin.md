@@ -384,7 +384,7 @@ running an implementation of a bitcoin wallet. On the main screen (the one on th
 current balance, the list of transactions, the amount of each payment, and the state of their confirmation. You can also 
 switch to another view (the one on the right) to accept and send payments.
 
-[Figure 2.7] - User interface of a particular bitcoin wallet
+![Figure 2.7 - User interface of a particular bitcoin wallet](/resources/img/chapter-1/2.2-how-to-use-bitcoin/2.7-user-interface.png)
 
 ### Addresses in Bitcoin
 A bitcoin address is an identifier of the recipient. In order to send a payment, the sender needs to know the 
@@ -418,7 +418,7 @@ details, see 2.3). Note that transaction is created and sent directly by the use
 which even digital currency developers cannot interfere with. Figure 2.8 shows the screenshots of the interface parts of 
 a particular mobile wallet [25] which allow providing your requisites and send a payment, respectively.
 
-[Figure 2.8] - Sending and receiving funds via mobile wallet 
+![Figure 2.8 - Sending and receiving funds via mobile wallet](/resources/img/chapter-1/2.2-how-to-use-bitcoin/2.8-spend-and-receive.png)
 
 > **Basic types of bitcoin wallets**
 >> * Software wallet
@@ -454,7 +454,7 @@ communication (Fig. 2.9). In some cases, there is even a camera for scanning the
 minimize the risk of theft of private keys but do not protect the owner from their loss. Therefore, many hardware 
 wallets provide a backup of private keys.
 
-[Figure 2.9] - Examples of hardware wallets
+![Figure 2.9 - Examples of hardware wallets](/resources/img/chapter-1/2.2-how-to-use-bitcoin/2.9-hardware-wallets.png)
 
 Once there was an interesting story: one person bought on eBay a used Ledger hardware wallet from an unknown 
 seller [26]. In the box with the wallet, there was a sheet of paper (Fig. 2.10) with a recorded mnemonic phrase with the 
@@ -464,7 +464,7 @@ knew this mnemonic phrase. Therefore, he could access the addresses that the new
 what the previous owner said was: "Put your money in the vault for which I have a key." Thus, the buyer of the device 
 has irretrievably lost all his coins. The mistake was made as the device buyer did not generate new keys.
 
-[Figure 2.10] - Mnemonic phrase for restoring a specific wallet 
+![Figure 2.10 - Mnemonic phrase for restoring a specific wallet](/resources/img/chapter-1/2.2-how-to-use-bitcoin/2.10-mnemonic.png)
 
 In theory, you can imagine a situation where the private key of one user appears to be the same as the one of another 
 user. But in practice, it is extremely unlikely. This is because the amount of possible private keys is 2<sup>256</sup>. 
@@ -523,7 +523,7 @@ conveniently, you can use password managers. They allow a user to remember from 
 entire mnemonic phrase. A user will further need those particular words to open a password manager and access all her 
 private keys.
 
-[Figure 2.11] - Example of a mnemonic phrase
+![Figure 2.11 - Example of a mnemonic phrase](/resources/img/chapter-1/2.2-how-to-use-bitcoin/2.11-mnemonic-example.png)
 
 **Common myths**
 
@@ -609,7 +609,7 @@ The analogy with a usual receipt might help to better understand the idea of a b
 regular money is a receipt. Each receipt contains data: who received the payment, from whom, for what, the payment 
 amount, date, and signature (Fig. 2.12).
 
-[Figure 2.12] - Example of a traditional receipt
+![Figure 2.12 - Example of a traditional receipt](/resources/img/chapter-1/2.3-concept-of-transaction-in-bitcoin/2.12-traditional-receipt.png)
 
 A bitcoin transaction, just like the lawful receipt, must meet specific requirements to be considered correct. First, it 
 must transfer coins that the sender owns. Secondly, these coins can be spent only once.
@@ -637,7 +637,7 @@ Paper checks (Fig. 2.13) are still common in the US and many other countries: pe
 for rent, cash them out in banks, etc. On the check, you can see its serial number (12982 as in Figure 2.13), which is 
 unique for each check (you cannot cash out two checks of the same serial number).
 
-[Figure 2.13] - Example of a paper check
+![Figure 2.13 - Example of a paper check](/resources/img/chapter-1/2.3-concept-of-transaction-in-bitcoin/2.13-paper-check.png)
 
 How does Bitcoin solve the problem of protection against copying of original "receipts”, in its case called 
 transactions? In the checkbook, each check has an order number, which is its unique identifier. But in a *decentralized 
@@ -652,7 +652,7 @@ is a reference to the previous transaction with its hash value). This is how the
 in Bitcoin. You can schematically see how a new transaction spends the coins received from the previous transaction in 
 Figure 2.14.
 
-[Figure 2.14] - How Bitcoin transactions work
+![Figure 2.14 - How Bitcoin transactions work](/resources/img/chapter-1/2.3-concept-of-transaction-in-bitcoin/2.14-how-transactions-work.png)
 
 > **Basic stages of transaction verification**
 >> * Verification of the condition that the spent coins exist in the accounting system
@@ -669,7 +669,7 @@ transactions they consider correct. This means that a transaction in order to be
 *the majority of active participants* (see 2.5). Anyone can participate in the process of confirming transactions in 
 Bitcoin (Fig. 2.15).
 
-[Figure 2.15] - How nodes interact in the Bitcoin network
+![Figure 2.15 - How nodes interact in the Bitcoin network](/resources/img/chapter-1/2.3-concept-of-transaction-in-bitcoin/2.15-nodes-iteraction.png)
 
 ### Concept of fee in Bitcoin
 The transaction model in Bitcoin assumes transaction fees which are paid in bitcoins. Fees are included by the sender 
