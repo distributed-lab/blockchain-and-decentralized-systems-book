@@ -99,12 +99,12 @@ different types.
 For file-sharing systems and data storage systems, the decentralized approach implies that different network nodes store 
 different file fragments (Fig. 1.1).
 
-![Figure 1.1 - A scheme for distribution of file fragments among](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image1.png)
+![Figure 1.1 - A scheme for distribution of file fragments among](/resources/img/chapter-1/1.2-history-of-decentralized-systems/1.1-file-fragment.png)
 
 Decentralized applications started to be developed rapidly especially with the invention of services and protocols for 
 file sharing (Fig. 1.2).
 
-![Figure 1.2 - Scheme of file sharing in decentralized file-sharing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image3.png)
+![Figure 1.2 - Scheme of file sharing in decentralized file-sharing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/1.2-file-sharing.png)
 
 One of the first such services, Napster, provided a way to exchange MP3 files. At that time, recorded music had been 
 mostly available on tapes and disks (of course, it required payment). Therefore, Napster became very popular among 
@@ -157,7 +157,7 @@ five people put a cake into a shared safe and agreed to eat it only if the major
 secret of the code lock and distribute its parts between each other. The cake can only be eaten if the majority of 
 participants decides to share their part of the secret and unlock the safe (Fig. 1.3). 
 
-![Figure 1.3 - Decision-making by independent parties](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image4.png)
+![Figure 1.3 - Decision-making by independent parties](/resources/img/chapter-1/1.2-history-of-decentralized-systems/1.3-decision-making.png)
 
 Nowadays major firms cannot be managed by one person, and even if they do exist, their effectiveness is quite doubtful. 
 For this reason, almost any large company in practice has a board of directors, a countless number of advisors, and 
@@ -177,7 +177,7 @@ each computer solves its part to reduce the time for obtaining results.
 Grid systems use distributed computational resources to reach a common goal (Fig. 1.4). The number of nodes in such a 
 system can fluctuate from several machines to hundreds and thousands of workstations.
 
-![Figure 1.4 - Scheme for transferring results of calculations in parallel computing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/image2.png)
+![Figure 1.4 - Scheme for transferring results of calculations in parallel computing systems](/resources/img/chapter-1/1.2-history-of-decentralized-systems/1.4-distributed-calculation.png)
 
 Such an approach was first suggested in 1999 in the publication “The Grid: Blueprint for a new computing infrastructure” 
 [9]. That same year the first grid project, SETI@home [10], was launched. Today there are a huge number of similar 
@@ -248,7 +248,7 @@ force—the protection is only at the perimeter [12]. If you overcome external p
 vulnerable. This is where the drawbacks lie. Additionally, this approach does not allow users to personally verify their 
 data. A user can only send a request to the server that will process it and send back a response (Fig. 1.5).
 
-[Picture 1.5] - Traditional systems protection principle
+![Picture 1.5 - Traditional systems protection principle](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.5-traditional-protection.png)
 
 For a regular user, the internal structure of such a system is non-transparent, and there are no guarantees of its work 
 as expected. Also, centralized systems have a single point of failure (Figure 1.5). On the plus side, however, there's 
@@ -298,7 +298,7 @@ analyze the features and challenges in designing, developing, and using decentra
 First of all, let’s focus on the ways users interact within systems. In Figure 1.6, you can see three approaches, which 
 fundamentally differ in their design [14].
 
-[Picture 1.6] - Types of systems based on how users interact
+![Picture 1.6 - Types of systems based on how users interact](/resources/img/chapter-1/1.3-applying-the-principles-of-decentralization/1.6-three-types-of%20the-system.png)
 
 Popular social networks are a good example of *centralized* systems. Their main disadvantage is that any issue in their 
 databases will affect all the users.
