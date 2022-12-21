@@ -658,7 +658,7 @@ of a particular client in some external database: currently, it is often perform
 optimal to implement an automatic request within a timeframe that corresponds to the expected time of decision-making 
 (Fig. 5.11).
 
-[Figure 5.11] - Digitalization of processes
+![Figure 5.11 - Digitalization of processes](/resources/img/chapter-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.11-digitalization-of-process.png)
 
 ### Adoption of common rules for data processing
 First, common rules should be established for resolving issues such as those related to confirmation of transactions, 
@@ -719,7 +719,7 @@ For an easier understanding of capacity, consider Fig. 5.12. The idea is that tw
 period of time can perform work on moving different quantities of cargo. Their transmission capacity will be affected by 
 the type of transport selected.
 
-[Figure 5.12] - Low and high capacities exemplified
+![Figure 5.12 - Low and high capacities exemplified](/resources/img/chapter-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.12-low-and-high-capacities.png)
 
 The capacity of a system is influenced by the consensus mechanism and the maximum number of validators working at the 
 same time. In general, a decentralized system has lower capacity than a system with a single control center since making 
@@ -734,12 +734,12 @@ delivering cargo, the type of transport will influence duration. Whereas in the 
 system, the time of transaction confirmation is affected by the rules for selecting validators and the mechanism for 
 reaching consensus.
 
-[Figure 5.13] - Transaction confirmation time limitation exemplified
+![Figure 5.13 - Transaction confirmation time limitation exemplified](/resources/img/chapter-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.13-transaction-cong-time.png)
 
 The problem of storing full amount of data also imposes additional limitations. Generally, every participant must have a 
 copy of the system database, which constantly updates through synchronizing with other nodes of the network (Fig. 5.14).
 
-[Figure 5.14] - Issue of redundant data storing
+![Figure 5.14 - Issue of redundant data storing](/resources/img/chapter-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.14-redundancy.png)
 
 During February–August 2018, depending on the conditions in the Bitcoin network (the flow of new transactions, the hash 
 rate, the difficulty parameter, etc.), the average time of block confirmation ranged from 6 to 18 minutes, while the 
@@ -755,7 +755,7 @@ community is, which argues and proposes solutions, the more opportunities there 
 majority votes for a particular improvement, it will be added to the next update. Thus, everyone can offer his updates 
 and openly discuss its advantages and disadvantages (Fig. 5.15).
 
-[Figure 5.15] - Protocol updating in a decentralized system
+![Figure 5.15 - Protocol updating in a decentralized system](/resources/img/chapter-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.15-protocol-update.png)
 
 The problem, however, is that joint management is always more difficult than personal one; it is difficult for people to 
 reach consensus fast. The decision in such a system is always made slower since participants need time to negotiate.
