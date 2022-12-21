@@ -16,7 +16,7 @@ For example, if the maximum block size is 1 MB, then the maximum transaction siz
 As you can see in Fig. 4.1, each transaction contains an input and an output. An input contains a reference to some 
 previous transaction (a coin source). An output is created in the current transaction in order to spend coins.
 
-[Figure 4.2] - Simplified structure of Bitcoin transaction 
+![Figure 4.1 - Simplified structure of Bitcoin transaction](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.1-simplified-structure-of-tx.png)
 
 Each input contains a proof that the creator of the transaction owns the coins that she wants to spend. In Bitcoin, 
 coins are not recorded into any balance. Instead, there is a reference to the transaction from which the coins were 
@@ -28,7 +28,7 @@ coin ownership* in order to be able to send the coins further.
 Let's consider the body of one particular transaction that was once confirmed in the Bitcoin network. Figure 4.2 
 presents it in the JSON format.
 
-[Figure 4.2] - Example of a transaction in the Bitcoin network
+![Figure 4.2 - Example of a transaction in the Bitcoin network](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.2-example-of-tx.png)
 
 > * ScriptPubKey—a field containing terms of coin spending
 > * ScriptSig—a field containing proof of coin ownership
@@ -49,7 +49,7 @@ If you consider the *transaction input* structure (vin) in detail, you will see 
 field *hash*, the identifier of the previous transaction in which the coins were received is indicated. *Index* is the 
 ordinal number of the output of the previous transaction from which the coins will be spent.
 
-[Figure 4.3] - Structure of Bitcoin transaction inputs
+![Figure 4.3 - Structure of Bitcoin transaction inputs](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.3-structure-of-in.png)
 
 *ScriptSig* contains a proof of coin ownership. This field is called so because it generally contains a digital 
 signature and can also contain a public key to verify this signature.
@@ -67,7 +67,7 @@ The structure of a transaction output (vout) contains two fields: value, which i
 for the recipient, and scriptPubKey, where the terms of coin spending are specified (Fig. 4.4). The second field, 
 scriptPubKey, has such a name because it generally contains either a public key or a hash value of a public key.
 
-[Figure 4.4] - Structure of Bitcoin transaction outputs
+![Figure 4.4 - Structure of Bitcoin transaction outputs](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.4-structure-of-out.png)
 
 In this way, unlike the design of transactions in traditional payment systems that essentially carry one primary 
 message—the transfer of a particular amount from balance A to balance B,—a bitcoin transaction is a complex set of data 
@@ -82,7 +82,7 @@ contains all the necessary data, including the origin of coins and where they ar
 ownership is stored outside the transaction. In some cases, you can use the main part of the transaction without the 
 witness data (see 4.6).
 
-[Figure 4.5] - Simplified structure of a Bitcoin transaction after the Segregated Witness update
+![Figure 4.5 - Simplified structure of a Bitcoin transaction after the Segregated Witness update](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.5-simplified-tx-with-seg-witness.png)
 
 ### Unspent outputs
 *An unspent transaction output (UTXO) is an output that contains unspent coins; these coins can only be spent when 
@@ -144,7 +144,7 @@ the block containing this transaction is created, its creator will be able to co
 Suppose Bob has one unspent output (UTXO) on 100 bitcoins: he received them as a birthday present. He decides to use 
 these coins to pay Alice and Charlie, which is schematically pictured in Figure 4.6.
 
-[Figure 4.6] - Transfer of funds to two recipients within one transaction
+![Figure 4.6 - Transfer of funds to two recipients within one transaction](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.6-transfers-within-tx.png)
 
 Bob creates a transaction with one input in which he refers to the transaction from which he received these 100 coins 
 and adds two outputs to the transaction: one output sends 45 coins to Alice, the other sends 50 coins to Charlie. Note 
@@ -156,7 +156,7 @@ indicating the address of the gardener as a first recipient (20 coins, as in the
 second recipient (also 20 coins). 5 coins remain as a fee. Charlie, who received 50 coins, also spends his money: he 
 pays 10 coins for the new windows, 35 coins for car repair services, and 5 coins as a fee.
 
-[Figure 4.7] - Using of the previous transaction outputs to make payments
+![Figure 4.7 - Using of the previous transaction outputs to make payments](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.7-using-tx-to-make-payments.png)
 
 Now let's imagine that the glazier and the owner of a car workshop turned out to be friends and agreed to make a gift to 
 their mutual fellow. They have decided to spend 10 coins each and buy a painting from a local artist. For this, they 
@@ -164,7 +164,7 @@ will need to create a shared transaction with two inputs: 10 and 35 coins, and t
 the other 20 coins as a change to the car workshop owner (Fig. 4.8). The difference of 5 coins remains as a fee, which, 
 in our case, is paid by the car workshop owner (let's say he was indebted to the glazier for a new window).
 
-[Figure 4.8] - Creation of a transaction with the inputs from different senders which pay to one recipient
+![Figure 4.8 - Creation of a transaction with the inputs from different senders which pay to one recipient](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.8-creation-tx-from-diff-senders.png)
 
 ### Creation of transactions in bitcoin wallets
 How does a bitcoin wallet work and what processes occur during its operation? The typical processes are the generation 
@@ -185,7 +185,7 @@ known that a one-way ticket costs 0.5 BTC, and the traveler does not have a coin
 the software of the wallet uses an algorithm that searches for the best combination of UTXOs in the traveler’s wallet: 
 0.3 BTC and 0.4 BTC and creates a new transaction referring to these coins.
 
-[Figure 4.9] - Choosing proper unspent outputs to perform fund transfer
+![Figure 4.9 - Choosing proper unspent outputs to perform fund transfer](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.9-choosing-proper-outputs.png)
 
 The new transaction will include two new outputs: the zero output goes to the ticket seller for the transport (0.5 BTC), 
 and the first one goes back to the traveler as the change (0.1 BTC). Obviously, the transaction fee is 0.1 BTC.
@@ -201,7 +201,7 @@ the closest nodes. Each of these closest nodes does the same (that said, after h
 all pass the transaction to their closest nodes). As a result, the transaction is eventually propagated in the entire 
 Bitcoin network.
 
-[Figure 4.10] - Propagation of a transaction in the Bitcoin network
+![Figure 4.10 - Propagation of a transaction in the Bitcoin network](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.10-propagation-of-tx.png)
 
 However, this process cannot last forever. Note that each transaction is identified with its hash value. Using this 
 value, each node can determine whether it has already verified a transaction or not. In case a node receives a 
@@ -221,7 +221,7 @@ Figure 4.11 schematically shows the relationship between different transactions 
 of no difficulty to restore the history of the origin of coins and trace the entire chain of transactions through which 
 a user received the payment.
 
-[Figure 4.11] - Link between transactions in the chain of blocks
+![Figure 4.11 - Link between transactions in the chain of blocks](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.11-link-between-txs.png)
 
 > **_NOTE:_** *In Fig. 4.11, the transaction that is zero by order is a coinbase transaction; it contains the reward 
 > provided by the protocol rules for the validator who created this block (for more detail, see 4.3). A coinbase 
@@ -250,7 +250,7 @@ satisfied) for some reason. In this case, you create the so-called backup transa
 a “backup” address as soon as the specified time interval has passed; until that moment, you will be able to use the 
 coins as usual. Schematically, it is shown in Figure 4.12.
 
-[Figure 4.12] - Transaction with delayed confirmation
+![Figure 4.12 - Transaction with delayed confirmation](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.12-tx-with-delayed-confirmation.png)
 
 Suppose that in the eighteenth block, a specific unspent output was created. If the transaction that spends coins of 
 this UTXO has the parameter locktime equal to 404 (and it has passed the preliminary verification), it will remain in 
@@ -273,7 +273,7 @@ transactions that will refer,  accordingly, to the outputs of the off-chain tran
 several alternative chains of coin spending. Though, no off-chain transaction can be added to the block of the mainchain 
 until the transaction preceding it (the one having the output to which it refers) is added.
 
-[Figure 4.13] - How off-chain protocols work
+![Figure 4.13 - How off-chain protocols work](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.13-how-off-chain-protocol-work.png)
 
 Which of the off-chain transaction chains receives confirmation depends on the validators. Some of them will create a 
 new block, where one of the alternative chains will be partially or fully confirmed. Thus, even if the transaction is 
@@ -319,7 +319,7 @@ of the block contains strictly 80 B of data and each field is validated, meaning
 there. However, the structure of a transaction in Bitcoin allows you to write data in it, namely in its fields. So, 
 let's consider this in more detail (Fig. 4.14) [41].
 
-[Figure 4.14] - Example of a transaction containing arbitrary data
+![Figure 4.14 - Example of a transaction containing arbitrary data](/resources/img/chapter-1/4.1-how-do-bitcoin-transactions-work/4.14-arbitary-data.png)
 
 In the *transaction header*, there are 4 B of data with which the version of a transaction is indicated.
 
