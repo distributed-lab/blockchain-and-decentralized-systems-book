@@ -29,3 +29,5 @@ If you do want to express gratitude to the authors—please, do not hesitate.
 Bitcoin donation address
 
 1BooKnbm48Eabw3FdPgTSudt9u4YTWKBvf
+
+[TEST QUESTIONS](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/9-test-questions.md) 

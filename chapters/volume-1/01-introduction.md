@@ -53,3 +53,5 @@ The book is primarily based on the course for the information security students 
 in 2014. Later the material of the course was adapted into an online version by Bohdan Skriabin. The didactic aspect 
 has been developed by Oksana Dubinina. By the moment the work on this book had been finished, the course had been 
 taught 15 times in the universities of Kharkiv, Odesa, and Haifa.
+
+[ABOUT DISTRIBUTED LAB](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/02-about-distributed-lab.md)

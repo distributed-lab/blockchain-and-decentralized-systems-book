@@ -26,3 +26,5 @@ to launch a digital asset ecosystem within days for a fraction of the cost of th
 During the crazy hype period of 2017, we stayed calm and didn’t participate in any ICO while being focused on a search 
 of real business value that blockchain can deliver. We commit ourselves to the long journey of transforming the world 
 with technology.
+
+[DECENTRALIZATION IN INFORMATION SYSTEMS](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/1-decentralization-in-information-systems.md)

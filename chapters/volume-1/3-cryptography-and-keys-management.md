@@ -814,3 +814,5 @@ storing and processing private keys.
 
 In this case, you should stop using the wallet the keys of which were compromised. If the reason for the violation of 
 confidentiality is unknown, then you should even refuse to use the appropriate application or device [39].
+
+[TECHNOLOGICAL DETAILS OF BITCOIN OPERATION](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/4-technological-details-of-bitcoin-operation.md)

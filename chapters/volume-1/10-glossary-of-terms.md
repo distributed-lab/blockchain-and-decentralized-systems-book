@@ -305,3 +305,5 @@ WIF (Wallet Import Format)—a method of encoding an ECDSA private key to have i
 Witness (witness data)—a set of proofs of coin ownership that are excluded from the main part of the transaction.
 
 Zero-knowledge proof (ZKP)—a cryptographic proof of knowledge of a secret without its disclosure.
+
+[ACKNOWLEDGMENTS](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/11-acknowledgements.md)   

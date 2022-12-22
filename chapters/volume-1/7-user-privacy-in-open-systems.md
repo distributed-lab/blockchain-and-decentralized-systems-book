@@ -467,3 +467,5 @@ which such methods of achieving privacy cannot be applied. Certainly, you can tr
 Confidential Transactions artificially, but this will be extremely inefficient in terms of system performance. The 
 reason is that these currencies use balances and accounts, while in Bitcoin the accounting is performed based on unspent 
 outputs (UTXOs).
+
+[CONCLUSION](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/8-conclusion.md)   
