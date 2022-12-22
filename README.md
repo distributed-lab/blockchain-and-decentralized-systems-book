@@ -19,7 +19,7 @@ your review.
 ### Volume 1
 | Chapter | Title                                         |
 |---------|-----------------------------------------------|
-| 0.1     | INTRODUCTION                                  |
+| 0.1     | [INTRODUCTION](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/01-introduction.md)                       |
 | 0.2     | ABOUT DISTRIBUTED LAB                         |
 | 1       | DECENTRALIZATION IN INFORMATION SYSTEMS       |
 | 2       | HISTORY AND OPERATIONAL PRINCIPLES OF BITCOIN |
@@ -43,10 +43,10 @@ TBA
 
 ## Licenses
 | Name    | License                                                                                                                            |
-|---------|------------------------------------------------------------------------------------------------------------------------------------| 
+|---------|------------------------------------------------------------------------------------------------------------------------------------|
 | Cover   | [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  |
-| Content | [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)     |     
-| Images  | [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  | 
+| Content | [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)     |
+| Images  | [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  |
 
 ## Contribution license agreement
 Please review the Contribution License Agreement before contributing.
