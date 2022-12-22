@@ -58,7 +58,7 @@ inability to attribute a series of actions to a certain user on the network. Ano
 to reliably establish the identity of a user in the network. Figure 7.1 shows an example of how a typical person may 
 wish to protect himself and his privacy on the network.
 
-[Figure 7.1 - Principle of achieving user privacy in the world wide web](/resources/img/chapter-1/7.1-privacy-as-a-concept-in-the-digital-world/7.1-principles-of-user-privacy.png)
+![Figure 7.1 - Principle of achieving user privacy in the world wide web](/resources/img/chapter-1/7.1-privacy-as-a-concept-in-the-digital-world/7.1-principles-of-user-privacy.png)
 
 The concept of anonymity implies the presence of both social and technical elements. Social anonymity includes 
 information concerning an individual's personal information. Technical anonymity is much more complicated, and the main 
@@ -104,7 +104,7 @@ implemented in practice and will also consider their advantages and disadvantage
 Some digital currencies use a special transaction structure and a coin registration model which allows hiding data about 
 certain transaction details (Table 7.1). To hide or mix up certain data, different currencies apply different methods. 
 
-[Table 7.1 - Privacy in digital currencies](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/table-7.1-privacy.png)
+![Table 7.1 - Privacy in digital currencies](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/table-7.1-privacy.png)
 
 ### Blind signatures
 First, let’s consider one of the techniques that allows several parties to interact while staying private. It is called 
@@ -118,7 +118,7 @@ what is inside this document [105]. The blind signature scheme is as follows (Fi
 * A sender decrypts the message leaving only the signature of a signer on the document and submits the message and the 
 signature to a verifier.
 
-[Figure 7.2 - Blind signature mechanism](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.2-bling-sig.png)
+![Figure 7.2 - Blind signature mechanism](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.2-bling-sig.png)
 
 Blind signature protocols are the most applied in the fields of digital currencies and secret voting.
 
@@ -177,7 +177,7 @@ three outputs, one for each online store. In addition, they create three more ou
 outputs are mixed randomly. Each user double-checks the received transaction and signs the corresponding input. In case 
 of success, the transaction is considered correct, then it spreads across the network and gets a confirmation.
 
-[Figure 7.3 - Formation of a CoinJoin transaction](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.3-coinjoin.png)
+![Figure 7.3 - Formation of a CoinJoin transaction](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.3-coinjoin.png)
 
 Figure 7.4 shows two graphs: upper and lower. The upper graph is characterized by the fact that each transaction has one 
 or two outputs. In the lower graph, transactions can have three or more outputs. The lower graph is more complicated and 
@@ -188,7 +188,7 @@ Transactions can have dozens of inputs and outputs (or even more). The graph of 
 on an image plane in Figure 7.4) will be very confusing. A coin that passed through the chain of such transactions has 
 thousands of possible options of origin, making it very difficult to find the real one.
 
-[Figure 7.4 - Transaction graph when using the CoinJoin method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.4-coinjoin-graph.png)
+![Figure 7.4 - Transaction graph when using the CoinJoin method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.4-coinjoin-graph.png)
 
 Methods we will further describe are all different modifications of the CoinJoin method where creators aimed to achieve 
 even higher privacy through a variety of ways.
@@ -207,7 +207,7 @@ What is the interaction between the user and the operator when forming a shared 
 prepares the input where he specifies spent coins, address for receiving change, and the blind address for sending the 
 payment. Next, the data is combined into one sequence and is then sent to an operator (Fig. 7.5).
 
-[Figure 7.5 - Interaction of users when using the Chaumian CoinJoin method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.5-chaumian-coinjoin.png)
+![Figure 7.5 - Interaction of users when using the Chaumian CoinJoin method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.5-chaumian-coinjoin.png)
 
 The operator verifies the input and the payment amount, then signs the output address and returns the signature to a 
 user. The operator does not have access to the payment output address because it is blinded. Next, a user removes the 
@@ -241,7 +241,7 @@ Diagrams would help understanding how CoinShuffle works in a simplified version.
 Imagine a small group of users: sly Alice, wise Bob, bearded Charlie, and orange Dave. In the Bitcoin system, each of 
 them has one unspent coin (one UTXO) on the addresses A, B, C, and D respectively (Fig. 7.6). 
 
-[Figure 7.6 - Group of users that will participate in the shared transaction creation](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.6-group-for-shared-tx.png)
+![Figure 7.6 - Group of users that will participate in the shared transaction creation](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.6-group-for-shared-tx.png)
 
 They all want to spend their coins and hide the origin history. For this, each member of the group determines the 
 address to which his coin should be sent, but no one discloses this address to other participants.
@@ -255,7 +255,7 @@ wise, and so on. Now, Alice takes A' and encrypts it directionally to Dave's pub
 resulting ciphertext but now directionally to Charlie. This ciphertext is then encrypted again but now directionally to 
 Bob (Fig. 7.7).
 
-[Figure 7.7 — How users interact when using the CoinShuffle method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.7-users-interaction-coin-shuffle.png)
+![Figure 7.7 — How users interact when using the CoinShuffle method](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.7-users-interaction-coin-shuffle.png)
 
 Alice sends the encryption result to Bob. Bob decrypts the received message with his private key. Then, he takes B' and 
 encrypts it to Dave, then to Charlie, and then adds it to the list. He mixes this list randomly and passes it to 
@@ -269,7 +269,7 @@ required address in the transaction outputs and that the sum is equal. If the co
 the transaction hence confirming the ownership of his input coins (Fig. 7.8). Participants exchange signatures, and if 
 the transaction collects all the necessary signatures, it can be distributed over the network for confirmation.
 
-[Figure 7.8 - Formation of a shared transaction](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.8-formation-of-shared-tx.png)
+![Figure 7.8 - Formation of a shared transaction](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.8-formation-of-shared-tx.png)
 
 An important feature is that if some of the participants start avoiding the original interaction scenario, others can 
 together analyze the interaction history, remove the violators from the group, and repeat the process without them.
@@ -324,7 +324,7 @@ For a better understanding of zero-knowledge proofs, consider the following exam
 how smart and creative her friend, Bob, is. So, she shared an interesting problem—she drew a certain number of points 
 and connected them with lines as in Figure 7.9.
 
-[Figure 7.9 - Positioning of graph nodes](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.9-graph-nodes.png)
+![Figure 7.9 - Positioning of graph nodes](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.9-graph-nodes.png)
 
 Next, Alice gave Bob three markers of different colors and asked him to color the graph points so that there are no 
 connections between two points of the same color.
@@ -334,18 +334,18 @@ turn, replied that not only the solution exists, but also that she can prove it 
 
 So, Alice asked Bob to leave the room for a minute and then colored the graph as in Figure 7.10.
 
-[Figure 7.10 — State of graph nodes after being coloured](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.10-the-second-state-of-the-graph.png)
+![Figure 7.10 — State of graph nodes after being coloured](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.10-the-second-state-of-the-graph.png)
 
 Next, in order to hide the solution (which point has which color), Alice put a cap on each point of the graph. Having 
 entered the room, Bob saw the following (Fig. 7.11).
 
-[Figure 7.11 — Hiding which graph node has which color](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.11-the-hidden-graph.png)
+![Figure 7.11 — Hiding which graph node has which color](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.11-the-hidden-graph.png)
 
 Understandably, Bob got very curious. "And how would these caps help you prove you know the solution?" he asked. Alice, 
 in turn, asked Bob to raise any two caps that covered the connected points. Bob lifted. What he saw is that the two 
 connected points were colored differently (Fig. 7.12).
 
-[Figure 7.12 — Bob verifying Alice’s statement](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.12-verification-of-the-graph.png)
+![Figure 7.12 — Bob verifying Alice’s statement](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.12-verification-of-the-graph.png)
 
 The obvious reaction of Bob was that Alice just got lucky, and other connected points could have the same color. To 
 prove that he is wrong, Alice asked Bob to leave the room once more. She recolored the graph and again covered all the 
@@ -388,7 +388,7 @@ cryptocurrencies already operate. Ring Confidential Transactions use CTs. They a
 multiple inputs and outputs where it is impossible to trace the origin of each input, the payment amounts are hidden, 
 and you don't need to interact with other users to create a transaction (Fig. 7.13).
 
-[Figure 7.13 — Using ring signatures for Ring CTs](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.13-ring-signature.png)
+![Figure 7.13 — Using ring signatures for Ring CTs](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.13-ring-signature.png)
 
 ### MimbleWimble
 MimbleWimble is a format and a protocol of transactions and blocks creation. While being based on the cryptographic 
@@ -409,7 +409,7 @@ shutting down the second test network, a number of technical updates have been a
 and severe vulnerabilities were also fixed. On July 7, 2018, the third test network was launched for the purpose of 
 finishing the update (in Fig. 7.14, you can see the genesis block of this network).
 
-[Figure 7.14 — Genesis block of a third test Grin network](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.14-grin-genesis-block.png)
+![Figure 7.14 — Genesis block of a third test Grin network](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.14-grin-genesis-block.png)
 
 By November 2018, more than 53 thousand blocks have been created. However, most of these blocks contain only the reward 
 for the block creation. Currently, in the network, the number of transactions between users is minimal.
@@ -434,7 +434,7 @@ If the case is about, for example, an online store using stealth addresses for r
 to trace its activity (Fig. 7.15). All because each customer will be supposed to generate a new one-time address for 
 each payment to the online store.
 
-[Figure 7.15 — Online store using stealth addresses for receiving payments](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.15-stealth-addresses.png)
+![Figure 7.15 — Online store using stealth addresses for receiving payments](/resources/img/chapter-1/7.2-privacy-in-digital-currencies/7.15-stealth-addresses.png)
 
 ### Concept of homomorphic encryption
 Also, in the context of asymmetric cryptography, you cannot go without mentioning the homomorphic encryption. A 
