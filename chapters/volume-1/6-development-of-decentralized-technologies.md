@@ -960,7 +960,324 @@ No, timers are not used in smart contracts. Instead, you can program to check th
 constant value before performing a certain operation or payment, while the interested party may be able to initiate the 
 execution of this verification.
 
+## 6.4 Introduction to asset tokenization
+When one says "blockchain" or "tokenization", many people tend to think about cryptocurrency and token sales, which made 
+headlines in 2017. Tokenization was mostly viewed as simply a process of issuance and sale of utility tokens (see 
+below), which bluntly copied the Bitcoin idea of a decentralized currency. This was applied to payments between users of 
+a particular business application. And that was how the world has witnessed tokens for cannabis sale, car washes, 
+exchanges, IoT, browsers, social networks, data storages, phones, investment funds, and many other things, both weird 
+and not. The message that the startups which created such projects were trying to convey was the democratization of 
+investment, transparency of operations, and smart contracts between people and machines. In fact, many of these ideas 
+made sense perfectly. But unfortunately, the real implementations mostly failed due to reasons such as incompetence, 
+lack of a sustainable business model, sometimes even greed or fraud. This is, however, just one version of the story.
 
+The idea of digitalization of all assets and applications with programmable logic to the operations with them is very 
+prominent, and it is getting more and more traction. Once or twice every decade, the IT marketplace experiences a major 
+innovation that shakes the entire data management infrastructure. The appearance of cryptocurrencies has provided an 
+example of how a financial system can be made robust in a completely hostile environment:   fully anonymous, 
+permissionless, distributed, and without any security administrators, firewalls or physical perimeter protection. Many 
+ideas can be borrowed from that scenario and applied to the much more user-friendly (regarding work conditions) 
+environment of enterprise asset management.
+
+Initially, the word token was used when people talked about projects issuing their own coins. In such cases, a token 
+refers to a property right that is created and transferred in the accounting system and could be managed by both a 
+single company and a group of independent validators. If this system becomes the primary source of information for 
+determining the ownership of an asset, then it is called a tokenized asset. In the financial world, people often call it 
+a security token, which implies that the underlying asset is a security (regulated tradable financial instrument)—but 
+this is only a particular case.
+
+The *goal of tokenization* is to accelerate and improve the security of operation with assets [97].
+
+*Tokenization is the process of transformation of an accounting system so that all balances are managed by users through 
+cryptographic keys, and the ownership of an asset is represented by a digital token.*
+
+The concept of token is hardly new: a voucher for a haircut in a barbershop can be considered a token; another example 
+is a subway token. Even the US dollar before the cancellation of the gold standard was a token for a certain amount of 
+gold.
+
+The term *token* is also used in other fields: in the context of authentication, it is used as an identifier or secret. 
+By itself, a token is either a string of data or a physical device for validating access to certain systems, information 
+resources, etc. If you try to formulate a concise and comprehensive definition of a token in the context of digital 
+assets, it would be similar to the one below.
+
+*A token (as a digital asset) is an accounting unit used to represent a user's balance in a digital accounting system 
+which allows proving ownership of a corresponding asset using cryptographic mechanisms, for example, a digital 
+signature* [98].
+
+*Tokens* and tokenization can be viewed at four conceptually different levels:
+
+* *User experience*. The token owner is provided with a legal title to a corresponding asset and is also able to quickly 
+and reliably transfer this right to other users without having to transfer the asset directly. Owners of a token are 
+assumed to recognize the legitimacy and uniqueness of the registry where the record of tokens is maintained; also they 
+should trust the custodian of the physical assets (in case a token is backed by any). 
+* *Business operations*. Primarily, tokenization implies a blockchain-based ledger (registry) of ownership rights. 
+Transferring a token "hand-to-hand" means changing the owner of an asset in the registry which is considered the 
+primary source of information for all. 
+* *IT infrastructure*. A token can be viewed as a recording method in the registry, which reflects a user's balance in 
+the system. At the same time, data backups, role and infrastructure management, integrity of the transaction history, 
+and automated real-time audit are related to using a token.
+* *Technology*. A token is an account structure where all fields are protected with cryptographic mechanisms such as 
+digital signature, zero-knowledge proofs, etc. The account supports operations for updating its state and presumes 
+particular allowed transactions, their lifecycle model, rules for processing, etc.
+
+### Issues of existing accounting systems
+Digitalization of an accounting system is quite a recent trend, which started around the 1970s. Internet attacks, 
+obviously, were not a concern that days, which is one of the reasons why security mechanisms were not implemented in the 
+original architecture. Communication processes were not digitalized until the 1990s, and regulation (reporting, AML, 
+KYC, etc.) was affected even later.
+
+From the architectural perspective, trust to a party interacted with was not considered an issue since the mentality of 
+business behavior was based on confidence supported by legislation and law enforcement. Another common practice which 
+was viewed as a good method for achieving security was the software closeness.
+
+The result was that in the majority of cases, accounting was so far performed on paper, while most of the systems, 
+having inherited certain legacy mechanisms, were not yet ready for the digital age. And if you summarize the issues of 
+existing systems, you will most likely come up with the following list:
+
+* Lack of transparency in the accounting process, particularly in the history of changes 
+* Low level of interoperability with other platforms 
+* Need to trust the management of a system to a third party 
+* High audit complexity 
+* Vulnerability to unintended changes
+
+From the technical perspective, these problems were caused by the following issues:
+
+* Technical incompatibility of data formats and a lack of open secure API 
+* Lack of strict ordering of transactions as well as of transaction integrity verification 
+* Absence of guaranteed data synchronization methods between parties who don't trust each other and who interact within 
+a hostile Internet environment
+
+All the above-mentioned factors lead to an inefficient operation, the need for manual intervention, and additional 
+expenses on audit and insurance.
+
+### What is a tokenization platform?
+*A tokenization platform is a set of components that allows keeping records and performing operations with a particular 
+asset through the use of a digital token as well as provides for the reliable storage, processing, and management of 
+assets*. The components of a tokenization platform are as follows:
+* Ledger 
+* Internal payment system 
+* Internal exchange 
+* Accounts management module 
+* Gateways and integration modules 
+* Wallets 
+* Asset lifecycle management module
+
+In order to reduce the risk of fraud and collusion, different types of actions have to be performed by different 
+(sometimes independent) entities. Therefore, there is a set of roles that a tokenization platform needs to support. The 
+most important among them are as follows.
+
+*A validator* maintains the normal functioning of a system in accordance with the protocol of token accounting. The role 
+of a validator can either be performed by one person or by an entire organization.
+
+*An auditor* is a designated party that has the right to verify transactions, and it is he who “raises a red flag” if 
+notices something suspicious. An auditor stores a full copy of a transaction ledger and is also required to prove the 
+legality of actions performed on the platform.
+
+*A custodian* is responsible for the provision of external assets tokenized on the platform (if there are any). This 
+role is important since an IT platform cannot prevent theft by itself.  
+
+*An issuer* is a party that performs issuance based on the information delivered from the custodian (in some cases, 
+roles of issuer and custodian could be performed by one party). Tokens can be issued either in a centralized (the amount 
+to be issued is set by the responsible party) or decentralized (several validators reach consensus about how to issue 
+tokens) way.
+
+*An administrator* takes decisions on updating and configuring the platform as well as on setting business rules. 
+
+> **Basic principles of tokenization**
+>> * Direct asset management by an asset owner 
+>> * Reliable and automated audit of the entire transaction history 
+>> * Distribution of responsibilities for the platform process management according to roles 
+>> * Increasing fault tolerance of tools for storing, transferring, and exchanging assets 
+>> * Openness of specification of an accounting system and digital wallets 
+>> * Separating asset storage processes from asset management processes
+
+### Operating principles of tokenization platforms
+Having acquainted with the tasks of the tokenization platform and the roles on it, we can now list the main processes:
+* Governance (system management)—performed by parties who are assigned by the creator/owner of the system 
+* Asset storing—performed by a custodian 
+* Issuance—performed by an issuer (issued tokens are backed by a custodian on a tokenization platform)
+* Transaction validation—performed by validators 
+* Audit—performed by an auditor
+
+A simple example of a physical commodity that could be effectively tokenized are the grain receipts. The warehouse 
+manages the system and stores the grain. An issuer may be another organization certified to perform corresponding 
+activities—it will make an initial assessment of the grain quality and confirm that the warehouse actually stores the 
+physical grain. Transaction validation can be performed by both a warehouse and a group of entities responsible for the 
+transaction correctness (this group may include the warehouse, the issuer, third-party organizations, etc.). An audit of 
+transaction correctness can be performed by users of the system as well as by designated organizations that users trust.
+
+The big difference for users is that now they can store signed versions of all transactions on their devices. Therefore, 
+in case of any disagreements, users can provide the court with these versions and indisputably prove their balance (as 
+it is a logical result of performed transactions).
+
+If you draw an analogy with a permissionless accounting system such as Bitcoin, it turns out that all the processes in 
+it are decentralized. There is no physical provision, and therefore the role of a custodian is not relevant. Issuance is 
+performed through a "pre-established formula". The system is publicly available and anyone can be a validator. All 
+processes are transparent, and anyone can verify the integrity of the data and perform an audit. User trust to 
+validators is practically not required. Such a system is most resistant to censorship.
+
+Notably, both types of accounting systems, permissionless and permissioned, solve their assigned tasks, namely ensure 
+transparent audit and secure transactions. However, they are drastically different regarding their application areas.
+
+### Opportunities that tokenization can bring
+Technical features of the new infrastructure provide it with a number of advanced features.
+
+> * Creating global decentralized data registries 
+> * Creating closely integrated systems with high modularity and distribution of operational responsibility 
+> * Real-time and simple audit of an accounting system 
+> * Moving and trading assets on the Internet that has no borders (the opportunity to create the Financial Internet)
+
+### Transparency of accounting system processes 
+A tokenization platform makes it possible to have most business processes transparent. As practice shows, it is more 
+effective to prevent dishonest behavior at root rather than deal with its consequences. A tokenization platform can 
+operate under strict rules, the purpose of which is to prevent opportunities for malicious acts. In such an accounting 
+system, business partners can always check each other's actions.
+
+The more there are independent validators in the system, the more stable it is against failures. Tokenization increases 
+the reliability of data because validators' database copies are all synchronized with each other in real-time, and 
+automatic backups are permanently created. 
+
+### How does tokenization lead to increasing the cost of assets?
+Tokenization can increase the credibility of an accounting system data through the digital signature and by means of 
+validators who reach consensus between each other. This indirectly affects the value of tokenized assets compared to 
+those that are accounted for in a traditional way.
+
+A simple example would be suitable here. Imagine that you go to a drugstore to buy medicine. They give you a transparent 
+box without identification marks containing white pills. Will you take these pills? Of course you won't because there is 
+nothing written to say what they are. What if your pharmacist friend worked in the drugstore and said that these pills 
+would really help you? Most likely, you would still have doubts. After all, it is still unclear what they contain, where 
+they came from, and who produced them.
+
+What if these were the pills in factory packaging with labeling stating that they are certified by leading 
+pharmaceutical manufacturers and that active substance has been tested and proved to be clinically effective? Such pills 
+inspire more confidence. Also, if you have a doctor's prescription for this medicine, then there should be almost no 
+doubt.
+
+How can the medicine be even more reliable? Let's think a little futuristically and imagine that you can reliably check 
+the pills for compatibility of the substances they contained with the biochemical processes that occur in your body.
+
+For example, the World Health Organization has ensured that in every drugstore there is an apparatus that, at the 
+request of a buyer, takes a small drop of her blood (or any other material for analysis) and a tiny part of a medicine 
+sample from the package. Then, it analyzes the state of health of the buyer and the quality of substances contained in 
+the pills. Having evaluated the data, the device then displays the results of the benefits of the drug in the case.
+
+What do you think? Would the medicine in this scenario be more valuable to you? Certainly it would.
+
+The value of the medicine increases according to how much valuable information there is about it. Note that the 
+properties of pills have not changed. This is based on the fact that confidence and independent verification is possible 
+in all operations with the asset, so its *provenance* is established with reliable authentication of data sources.
+
+### Conditions for effective application of tokenization platforms
+To make the application of a tokenization platform more effective, there is a set of necessary conditions that have to 
+be fulfilled:
+
+* Implementation of a digital identity which could bind actions of a  particular participant in the system to their 
+actual identity 
+* Effective methods for decentralized decision-making and resolving conflicts 
+* Established scheme of key storage and management
+
+This is not the full list. There are also other conditions which must be fulfilled before systems of tokenized assets 
+work properly and in full measure. In fact, they match those required for the blockchain implementation—we have 
+mentioned them in section 5.3.
+
+### Risks
+As we have already mentioned, tokenization assumes that digitized property rights registries are the primary sources of 
+information about the asset owners. This means that from a legal perspective, transferring a token within the system is 
+equal to changing the legitimate owner of an asset.
+
+Therefore, some of the primary risks are those related to the provision of tokens. For example, while the accounts of 
+users display correct balances in the accounting system, real assets could be replaced, destroyed, or stolen. This 
+problem mostly relates to properties of tangible assets rather than a tokenization platform—digitization allows many 
+advantages but does not guarantee the safeness of the provision. Another risk is that the private keys of users could be 
+lost or stolen, leading to a permanent loss of asset ownership. This risk is hard to estimate and protect against.
+
+### Difference between tokenization and digitization
+A straightforward digitization of ledgers leaves open the question of security. *Tokenization transforms asset 
+management: an order execution model is replaced with a model of direct asset management using cryptographic 
+mechanisms*. The main difference is the elimination of a role (e.g., administrator or a module that operate with 
+corresponding permissions) that changes balances on users' accounts directly—this is what the order execution model is 
+based on. Tokenization presumes that users control their balances using cryptographic keys that no one else, including 
+admins of the system, knows.
+
+There is also a crucial difference between the registry of authenticity and the title registry (ownership right 
+registry). A registry of authenticity associates a specific asset (e. g., a designer bag) with its manufacturer and 
+allows verifying its authenticity. This registry contains only objects without current owners. A title registry is an 
+information resource that contains data about existing and past ownership rights to certain assets.
+
+### Why use blockchain technology?
+The key question is, why is blockchain better than the traditional approach to building and managing a database? There 
+are several reasons to use blockchain for tokenization and for the ledger protection. In section 5.1, we described some 
+of the fundamental properties that blockchain may provide for depending on the environment. Here, we would like to focus 
+on some of the more practical and specific features.
+
+* Every token holder can prove that his balance represents the result of correct execution of a set of 
+transactions—*auditability*
+* No one can change the balance of accounts unnoticed—*integrity*
+* It is hard to delete the state of the ledger since there are multiple copies of it synchronized real-time with no 
+central point of *failure—robustness* and *accessibility*
+* It is easy to prove who initiated which *action—non-repudiation*
+* It is possible to guarantee that a transaction was approved by all the necessary parties—decentralized 
+*decision-making*
+* Some participants in the system may be able to perform an audit but without the ability to modify data—*trustless 
+transparency*
+
+If you try to achieve all these properties using the possibilities of a traditional database, it would rather be wheel 
+reinventing—you would eventually come up with the blockchain solution.
+
+### Summary
+In general, tokenization is a new trend in improving the *accounting systems* and the IT infrastructure.
+
+Advantages of tokenization platforms become primarily evident when working with digital assets: transparency of 
+accounting (as well as of business processes), instant and easy audit, reliable storage and synchronization of data 
+between parties (validators of the system), and the ability to prove the data integrity and immutability. These features 
+make it possible to create accounting systems in which trust between parties is either not necessary or is at the 
+minimum level—*honesty* will be guaranteed by the rules of the system. Therefore, predictably, all assets will be 
+tokenized in the future.
+
+**Frequently asked questions**
+
+*– What is the difference between tokens and currencies (money)?*
+
+Despite the fact that people already use this word in their everyday life, a token is a technical term that in practice 
+denotes the right to any asset, including a currency. Tokens are a digitized right of ownership of an asset and can 
+also be used as a means of payment. Exchange of tokens or payment in tokens for other goods and services are somewhat 
+equal to barter.
+
+*– How are tokenization and blockchain technology related?*
+
+A digital accounting of value creates a number of risks. It is important to have a system where issuance, storing, and 
+transferring of value is performed with a sufficient level of reliability, efficiency, and transparency for all 
+participants. For this reason, blockchain technology is well suited: security of data is guaranteed by cryptography, 
+while any attempts to violate the accounting rules are particularly apparent to an auditor. Moreover, ordinary users, if 
+they have detected any violation in the operation of a tokenization platform, now have an opportunity to undeniably 
+prove to an auditor that they have been deceived.
+
+*– Who controls the tokenization platform?*
+
+If a company decides to tokenize its asset and controls the validators of a tokenization platform, then essentially it 
+is the owner of a platform who controls it. The company centrally makes decisions on updating the protocol and relevant 
+rules for token accounting. If the task is to decentralize the accounting system, then the validator role can be 
+distributed among partners or even clients of the company. In this case, the platform becomes independent with regards 
+to processing and confirmation of transactions. Therefore, it provides the trustless property for dealing with 
+corresponding tokens.
+
+*– What is a utility token?*
+
+Utility tokens represent the right to use a system functionality. They can simultaneously possess various properties: 
+claim for a service, part of the value created by the ecosystem, and certain properties of an internal currency. 
+Decision-making and issuance are usually centralized.
+
+*– Who is responsible for errors on the tokenization platform?*
+
+If a tokenization platform is centralized, then it is the owner who is responsible. If a platform is decentralized, then 
+the responsibility is distributed among its validators or users.
+
+*– Who can be the validator in the token accounting system?*
+
+The validator could be anyone who is able to maintain the normal functioning of a computing system in accordance with 
+the protocol of token accounting. The role of a validator can either be performed by one person or by an entire 
+organization. In general, transaction validators could be auditors, regulators, as well as partners of the creator 
+(owner) of a tokenization platform (e.g., members of a consortium performing a particular business function).
 
 
 
