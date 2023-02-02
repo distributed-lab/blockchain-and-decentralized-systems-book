@@ -40,12 +40,5 @@ TBA
 ### Volume 3
 TBA
 
-## Licenses
-| Name    | License                                                                                                                            |
-|---------|------------------------------------------------------------------------------------------------------------------------------------|
-| Cover   | [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  |
-| Content | [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)     |
-| Images  | [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  |
-
-## Contribution license agreement
-Please review the Contribution License Agreement before contributing.
+## License agreement
+Please review the [Contribution License Agreement](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/CONTRIBUTION_LICENSE_AGREEMENT.md) before contributing.
