@@ -2665,4 +2665,4 @@ not a separate chain of blocks and does not implement the transfer of coins from
 carrying out multiple payments without having to process transactions by validators (only the two transactions are 
 confirmed for each payment channel: an opening one and a closing one).
 
-[BLOCKCHAIN TECHNOLOGY](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/5-blockchain-technology.md)    
+[BLOCKCHAIN TECHNOLOGY](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/5-blockchain-technology.md)    
