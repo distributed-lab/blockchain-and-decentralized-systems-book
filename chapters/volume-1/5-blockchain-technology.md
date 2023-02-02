@@ -823,4 +823,4 @@ For the application of blockchain in the real economy, it is necessary to create
 implementation. The plan would be to digitize the majority of processes of interaction in the society, define digital 
 identification standards, and develop a legal framework to resolve responsibility issues.
 
-[DEVELOPMENT OF DECENTRALIZED TECHNOLOGIES](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/6-development-of-decentralized-technologies.md)
+[DEVELOPMENT OF DECENTRALIZED TECHNOLOGIES](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/6-development-of-decentralized-technologies.md)
