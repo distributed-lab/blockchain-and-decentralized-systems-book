@@ -1279,24 +1279,4 @@ the protocol of token accounting. The role of a validator can either be performe
 organization. In general, transaction validators could be auditors, regulators, as well as partners of the creator 
 (owner) of a tokenization platform (e.g., members of a consortium performing a particular business function).
 
-[USER PRIVACY IN OPEN SYSTEMS](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/7-user-privacy-in-open-systems.md) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[USER PRIVACY IN OPEN SYSTEMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/7-user-privacy-in-open-systems.md) 
