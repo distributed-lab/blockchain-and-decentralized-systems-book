@@ -54,4 +54,4 @@ in 2014. Later the material of the course was adapted into an online version by 
 has been developed by Oksana Dubinina. By the moment the work on this book had been finished, the course had been 
 taught 15 times in the universities of Kharkiv, Odesa, and Haifa.
 
-[ABOUT DISTRIBUTED LAB](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/02-about-distributed-lab.md)
+[ABOUT DISTRIBUTED LAB](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/02-about-distributed-lab.md)
