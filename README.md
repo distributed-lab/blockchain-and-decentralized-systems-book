@@ -40,5 +40,5 @@ TBA
 ### Volume 3
 TBA
 
-## License agreement
-Please review the [Contribution License Agreement](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/CONTRIBUTION_LICENSE_AGREEMENT.md) before contributing.
+## Contribution and Use License Terms
+Please review the [Contribution and Use License Terms](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/CONTRIBUTION_AND_USE_LICENSE_AGREEMENT.md) before contributing.
