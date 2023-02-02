@@ -27,4 +27,4 @@ During the crazy hype period of 2017, we stayed calm and didn’t participate in
 of real business value that blockchain can deliver. We commit ourselves to the long journey of transforming the world 
 with technology.
 
-[DECENTRALIZATION IN INFORMATION SYSTEMS](https://gitlab.com/oleksandr.kurbatov/blockchain-and-decentralized-systems-book/-/blob/main/chapters/volume-1/1-decentralization-in-information-systems.md)
+[DECENTRALIZATION IN INFORMATION SYSTEMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/1-decentralization-in-information-systems.md)
