@@ -468,4 +468,4 @@ Confidential Transactions artificially, but this will be extremely inefficient i
 reason is that these currencies use balances and accounts, while in Bitcoin the accounting is performed based on unspent 
 outputs (UTXOs).
 
-[CONCLUSION](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/8-conclusion.md)   
+[CONCLUSION](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/8-conclusion.md)   

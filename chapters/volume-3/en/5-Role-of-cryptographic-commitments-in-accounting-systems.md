@@ -177,7 +177,7 @@ What benefit is in this case? Previously, the prover would calculate the value o
 
 In the previous subsections, we separately examined what Pedersen’s commitments are and how the Schnorr identification protocol works. Now let’s examine the scenario where the verifier interactively communicates with the prover in real time (as in the case of the Schnorr interactive protocol), but Pedersen commitments are used.
 
-The knowledge proof will be provided after the prover has generated a set of commitments for each of the following _m_ vectors: $C_{i}=r_{i}H+ \overline{x_{i}G}$, $i \in \{ 1,2, \mathellipsis ,m \}$. After the prover has transmitted a set of the commitments $(C_{1},C_{2}, \mathellipsis ,C_{m})$ to the verifier, he can prove in one step that he knows the original secret vectors.
+The knowledge proof will be provided after the prover has generated a set of commitments for each of the following _m_ vectors: $C_{i}=r_{i}H+ \overline{x_{i}G}$, $i \in \{ 1,2, {\mathellipsis} ,m \}$. After the prover has transmitted a set of the commitments $(C_{1},C_{2}, \mathellipsis{} ,C_{m})$ to the verifier, he can prove in one step that he knows the original secret vectors.
 
 First, the prover creates a random new commitment _C<sub>0</sub>_ for the random value _x<sub>0</sub>_ and sends it to the verifier. After that, the verifier generates a random scalar value _e_ and returns it to the prover. The prover the value pair $(z,s)$ and sends it to the verifier. The calculation of these values is shown in Fig. 5.11-A.
 

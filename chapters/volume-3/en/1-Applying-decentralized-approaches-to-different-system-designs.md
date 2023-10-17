@@ -452,7 +452,7 @@ The voter makes a choice _c_. After that, the client pads the vote _c_ using the
 
 The server receives the encrypted and signed vote _v_, associates it with a unique identifier _x_ and returns _x_ to the client (Fig. 1.24) [21].
 
-![Figure 1.24 – Vote casting process](/resources/img/volume-3/1.3-Decentralized-e-voting-platforms/F-1.24-vote casting.png "Figure 1.24 – Vote casting process")
+![Figure 1.24 – Vote casting process](/resources/img/volume-3/1.3-Decentralized-e-voting-platforms/F-1.24-vote-casting.png "Figure 1.24 – Vote casting process")
 
 The voter can verify if his/her vote has been correctly recorded using special software. By scanning the QR code that the client shows for voting, it receives _r_ and _x_. The application sends _x_ to the forwarding server and receives _b_ and _C_ from it. For each vote option _c'_, it calculates the encrypted form and compares it with the previously received _b_; if there is a match, then the application shows the voter _c'_, otherwise it reports an error. The server allows performing this verification three times per one vote within thirty minutes after casting the vote (Fig. 1.25) [21].
 

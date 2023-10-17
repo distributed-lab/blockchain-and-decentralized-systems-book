@@ -30,4 +30,4 @@ Bitcoin donation address
 
 ***1BooKnbm48Eabw3FdPgTSudt9u4YTWKBvf***
 
-[TEST QUESTIONS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/9-test-questions.md) 
+[TEST QUESTIONS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/9-test-questions.md) 

@@ -16,4 +16,4 @@ Krashtapuk and Yaroslava Dmytrenko.
 
 Our special thanks are extended to Lilia Vershinina, Vladimir Dubinin, Gordon Einstein, Matthew Grimm, and Alex Rusnak.
 
-[USED SOURCES AND LINKS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/12-used-sources-and-links.md) 
+[USED SOURCES AND LINKS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/12-used-sources-and-links.md) 

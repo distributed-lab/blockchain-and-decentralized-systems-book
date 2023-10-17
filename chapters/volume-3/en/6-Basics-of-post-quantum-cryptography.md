@@ -95,7 +95,7 @@ An algebraic lattice is a discrete subset of vectors in the Euclidean space $\ma
 
 The basis of the lattice _L_ is the set of vectors _B_ such that any other vector in the lattice can be represented as a linear combination (with integer coefficients) of the elements from set _B_. If the dimension of the lattice is at least 2, then there always exists an infinite set of different lattice bases (Fig. 6.2).
 
-![Figure 6.2 – Many bases in the lattice](/resources/img/volume-3/6.1-Introduction-to-post-quantum-cryptographic-algorithms/F-6.2-many bases-in-lattice.png "Figure 6.2 – Many bases in the lattice")
+![Figure 6.2 – Many bases in the lattice](/resources/img/volume-3/6.1-Introduction-to-post-quantum-cryptographic-algorithms/F-6.2-many-bases-in-lattice.png "Figure 6.2 – Many bases in the lattice")
 
 Algebraic lattices, as a mathematical construction, were first studied by Lagrange and Gauss. In cryptography, they were used, for example, for cryptanalysis of congruent generators. In 1996, M. Aitai showed how lattices can be used as a new crypto conversion solution. In 2009, Gentry used lattices to build a new homomorphic cryptosystem.
 

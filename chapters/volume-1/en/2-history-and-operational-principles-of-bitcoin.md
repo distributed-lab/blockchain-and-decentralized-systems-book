@@ -1285,4 +1285,4 @@ see 4.2) [30]. In addition, there are methods for making payments through the so
 confirmed much faster than usual (*on-chain*) transactions, and the confirmation time does not depend on the amount of 
 payment and the established fee (for more details, see 4.8).
 
-[CRYPTOGRAPHY AND KEYS MANAGEMENT](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/3-cryptography-and-keys-management.md)
+[CRYPTOGRAPHY AND KEYS MANAGEMENT](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/3-cryptography-and-keys-management.md)

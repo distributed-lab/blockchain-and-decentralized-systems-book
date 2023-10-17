@@ -469,4 +469,4 @@ The required resource amount increases only if a decentralized system must prese
 change history of its shared database. In such a case, what will definitely increase are only disk space requirements, 
 while computational power requirements may remain unchanged.
 
-[HISTORY AND OPERATIONAL PRINCIPLES OF BITCOIN](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/2-history-and-operational-principles-of-bitcoin.md)
+[HISTORY AND OPERATIONAL PRINCIPLES OF BITCOIN](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/2-history-and-operational-principles-of-bitcoin.md)

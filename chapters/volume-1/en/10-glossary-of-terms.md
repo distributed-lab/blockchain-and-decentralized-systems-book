@@ -306,4 +306,4 @@ Witness (witness data)—a set of proofs of coin ownership that are excluded fro
 
 Zero-knowledge proof (ZKP)—a cryptographic proof of knowledge of a secret without its disclosure.
 
-[ACKNOWLEDGMENTS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/11-acknowledgements.md)   
+[ACKNOWLEDGMENTS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/11-acknowledgements.md)   

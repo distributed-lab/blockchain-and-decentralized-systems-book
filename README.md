@@ -19,8 +19,8 @@ your review.
 ### Volume 1
 | Chapter | Title                                                                                                                                                                                                             |
 |---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0.1     | [INTRODUCTION](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/01-introduction.md)                                                                  |
-| 0.2     | [ABOUT DISTRIBUTED LAB](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/02-about-distributed-lab.md)                                                |
+| 0.1     | [INTRODUCTION](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/0-1-introduction.md)                                                                  |
+| 0.2     | [ABOUT DISTRIBUTED LAB](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/0-2-about-distributed-lab.md)                                                |
 | 1       | [DECENTRALIZATION IN INFORMATION SYSTEMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/1-decentralization-in-information-systems.md)             |
 | 2       | [HISTORY AND OPERATIONAL PRINCIPLES OF BITCOIN](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/2-history-and-operational-principles-of-bitcoin.md) |
 | 3       | [CRYPTOGRAPHY AND KEYS MANAGEMENT](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/3-cryptography-and-keys-management.md)                           |

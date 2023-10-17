@@ -1,7 +1,7 @@
 # USED SOURCES AND LINKS
 
-1. Routley, N. (2017). Map: Internet Censorship Around the World. https://www.visualcapitalist.com /internet-censorship-map/.
-2. Data center locations – Data centers – Google. https://www.google.com/about/datacenters/inside/locations /index.html.
+1. Routley, N. (2017). Map: Internet Censorship Around the World. https://www.visualcapitalist.com/internet-censorship-map/.
+2. Data center locations – Data centers – Google. https://www.google.com/about/datacenters/inside/locations/index.html.
 3. Cohen, B. (2008). The BitTorrent protocol specification, 2008. http://bittorrent.org/beps/bep_0003.html.
 4. Facebook Uses BitTorrent, and They Love It. (2010). https://torrentfreak.com/facebook-uses-bittorrent-and-they-love-it-100625/.
 5. Twitter Uses BitTorrent For Server Deployment. (2010). https://torrentfreak.com/twitter-uses-bittorrent-for-server-deployment-100210/.
@@ -22,18 +22,18 @@
 20. Hülsing, A. (2013, June). W-OTS+ – shorter signatures for hash-based signature schemes. In International Conference on Cryptology in Africa (pp. 173–188). Springer, Berlin, Heidelberg.
 21. Schnorr, C. P. (1991). Efficient signature generation by smart cards. Journal of cryptology, 4(3), 161–174.
 22. Rivest, R. L., Shamir, A., Tauman, Y. (2001, December). How to leak a secret. In International Conference on the Theory and Application of Cryptology and Information Security (pp. 552–565). Springer, Berlin, Heidelberg.
-23. Script Types. https://btc.com/stats/script?time_range=year& latest_block=591768&static_type=amount_stats.
-24. bips/bip-0038.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0038.mediawiki.
+23. Script Types. https://btc.com/stats/script?time_range=year&latest_block=591768&static_type=amount_stats.
+24. bips/bip-0038.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki.
 25. https://blockchain.info/tx/e9a66845e05d5abc0ad04ec80f774a7e585c6e8db975962d069a522137b80c1d?format=json.
 26. https://blockchain.info/tx/e9a66845e05d5abc0ad04ec80f774a7e585c6e8db975962d069a522137b80c1d?format=hex.
 27. https://blockchain.info/block/000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506?format=hex.
 28. Network Snapshot - Bitnodes. https://bitnodes.earn.com/nodes/#network-snapshot.
 29. Global Bitcoin Nodes Distribution - Bitnodes. https://bitnodes.earn.com/.
-30. bips/bip-0037.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0037.mediawiki.
+30. bips/bip-0037.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki.
 31. P2P Messages. https://statoshi.info/dashboard/db/p2p-messages.
 32. Bojja Venkatakrishnan, S., Fanti, G., Viswanath, P. (2017). Dandelion: Redesigning the bitcoin network for anonymity. Proceedings of the ACM on Measurement and Analysis of Computing Systems, 1(1), 22.
 33. Fanti, G., Venkatakrishnan, S. B., Bakshi, S., Denby, B., Bhargava, S., Miller, A., Viswanath, P. (2018). Dandelion++: Lightweight cryptocurrency networking with formal anonymity guarantees. Proceedings of the ACM on Measurement and Analysis of Computing Systems, 2(2), 29.
-34. bips/bip-0152.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0152.mediawiki.
+34. bips/bip-0152.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki.
 35. FIBRE: Fast Internet Bitcoin Relay Engine. http://bitcoinfibre.org/.
 36. 365-day Charts - Bitnodes. https://bitnodes.earn.com/dashboard/?days=365#user-agents.
 37. Back, A., Corallo, M., Dashjr, L., Friedenbach, M., Maxwell, G., Miller, A., Wuille, P. (2014). Enabling blockchain innovations with pegged sidechains. http://www.opensciencereview.com/papers/123/enablingblockchain-innovations-with-pegged-sidechains, 72.
@@ -46,7 +46,7 @@
 44. Badertscher, C., Gaži, P., Kiayias, A., Russell, A., Zikas, V. (2018). Ouroboros genesis: Composable proof-of-stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913–930). ACM.
 45. Castro, M., Liskov, B. (1999). Practical Byzantine fault tolerance. In OSDI (Vol. 99, No. 1999, pp. 173–186).
 46. Yin, M., Malkhi, D., Reiter, M. K., Gueta, G. G., Abraham, I. (2019, July). HotStuff: BFT consensus with linearity and responsiveness. In Proceedings of the 2019 ACM Symposium on Principles of Distributed Computing (pp. 347–356). ACM.
-47. Glickstein, B. (2019). Understanding the Stellar Protocol - Interstellar - Medium. https://medium.com/interstellar/understanding-the-stellar- consensus-protocol-423409aad32e.
+47. Glickstein, B. (2019). Understanding the Stellar Protocol - Interstellar - Medium. https://medium.com/interstellar/understanding-the-stellar-consensus-protocol-423409aad32e.
 48. Mazières, D. (2015). The Stellar consensus protocol: A federated model for internet-level consensus. Stellar Development Foundation, 32. https://www.stellar.org/papers/stellar-consensus-protocol.pdf.
 49. Baird, L. (2016). The Swirlds hashgraph consensus algorithm: Fair, fast, byzantine fault tolerance. Swirlds Tech Reports SWIRLDS-TR-2016-01, Tech. Rep.
 50. Birman, K. (2007). The promise, and limitations, of gossip protocols. ACM SIGOPS Operating Systems Review, 41(5), 8–13.
@@ -56,10 +56,10 @@
 54. Jedusor, T. E. (2016). MIMBLEWIMBLE. https://scalingbitcoin.org/papers/mimblewimble.txt.
 55. Poelstra, A. (2016). Mimblewimble. Commit e9f45ec. https://mimblewimble.cash/20161006-WhitePaperUpdate-e9f45ec.pdf.
 56. Bünz, B., Bootle, J., Boneh, D., Poelstra, A., Wuille, P., Maxwell, G. (2018). Bulletproofs: Short proofs for confidential transactions and more. In 2018 IEEE Symposium on Security and Privacy (SP) (pp. 315–334).
-57. grin/doc/mmr.md at master - mimblewimble/grin - GitHub. https://github.com/mimblewimble/grin/blob/master/doc /mmr.md.
+57. grin/doc/mmr.md at master - mimblewimble/grin - GitHub. https://github.com/mimblewimble/grin/blob/master/doc/mmr.md.
 58. Gennaro, R., Gentry, C., Parno, B., Raykova, M. (2013). Quadratic span programs and succinct NIZKs without PCPs. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 626–645). Springer, Berlin, Heidelberg.
 59. Home | Ethereum. https://ethereum.org/.
-60. Ethereum VM (EVM) Opcodes and Instruction Reference. https://github.com/crytic/evm-opcodes/blob/master /README.md.
+60. Ethereum VM (EVM) Opcodes and Instruction Reference. https://github.com/crytic/evm-opcodes/blob/master/README.md.
 61. BitShares.org - Home for BitShares blockchain. https://bitshares.org/.
 62. Trending posts — Steemit. https://steemit.com/.
 63. EOSIO - Blockchain software architecture. https://eos.io/.
@@ -67,9 +67,9 @@
 65. Adams, C., Lloyd, S. (1999). Understanding public-key infrastructure: concepts, standards, and deployment considerations. Sams Publishing.
 66. Creating a Chat Using Pub/Sub. https://medium.com/@jonfoust/ creating-a-chat-using-pub-sub-c89ef5595d3f.
 67. Marton, K., Suciu, A. (2015). On the interpretation of results from the NIST statistical test suite. Science and Technology, 18(1), 18-32.
-68. bips/bip-0141.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0141.mediawiki.
-69. bips/bip-0143.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0143.mediawiki.
-70. bips/bip-0147.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master /bip-0147.mediawiki.
+68. bips/bip-0141.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki.
+69. bips/bip-0143.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki.
+70. bips/bip-0147.mediawiki at master - bitcoin/bips - GitHub. https://github.com/bitcoin/bips/blob/master/bip-0147.mediawiki.
 71. Satoshi Nakamoto Nominated for the 2016 Nobel Prize in Economics. https://bitcoinmagazine.com/articles/satoshi-nakamoto-nominated-for-the-nobel-prize-in-economics-1447088488.
 72. Scaling Bitcoin with subchains. https://sourceforge.net/p/bitcoin/mailman/message/34203499/.
 73. Stellar network visibility. https://stellarbeat.io/quorum-monitor/.

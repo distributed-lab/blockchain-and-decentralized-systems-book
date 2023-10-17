@@ -603,4 +603,4 @@ Which features are inherent in a trustless bulk-service distributed accounting s
 * Absence of the decision making center
 * Public key hashing
 
-[GLOSSARY OF TERMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/10-glossary-of-terms.md)
+[GLOSSARY OF TERMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/10-glossary-of-terms.md)

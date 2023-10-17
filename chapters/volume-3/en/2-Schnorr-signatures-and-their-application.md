@@ -177,7 +177,7 @@ First, let’s examine the concept of an _abstract syntax tree_ (AST) [57]. It 
 
 As an example, let’s take a simple program, the purpose of which is to find the number closest to the given one, which is divisible by 32 without a remainder (to simplify the example, suppose that the search is performed only in the upper side). The pseudocode for this subprogram is shown in Figure 2.16.
 
-![Figure 2.16 – Pseudocode for finding the number divisible by 32](/resources/img/volume-3/2.2-MAST-concept-in-Bitcoin/F-2.16-pseudocode-for- finding-number-divisible-by-32.png "Figure 2.16 – Pseudocode for finding the number divisible by 32")
+![Figure 2.16 – Pseudocode for finding the number divisible by 32](/resources/img/volume-3/2.2-MAST-concept-in-Bitcoin/F-2.16-pseudocode-for-finding-number-divisible-by-32.png "Figure 2.16 – Pseudocode for finding the number divisible by 32")
 
 Figure 2.17 shows a syntax tree that describes the same program. In the tree, the diamond nodes specify the instructions, the ellipse nodes are the variables, and the rectangles are the constant values. The tree edges define transitions between operations.
 
