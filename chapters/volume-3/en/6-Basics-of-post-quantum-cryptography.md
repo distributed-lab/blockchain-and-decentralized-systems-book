@@ -122,11 +122,11 @@ The McEliece cryptosystem was first introduced in 1978; since then no effective 
 
 The safe use of crypto primitives of this group in conditions of attacks using quantum computers is based on the assumption that solving multidimensional polynomial systems over finite fields is a complex task.
 
-The public key in this system is the sequence $(P_{1} P_{2}, \mathellipsis ,P_{2b})$ of $2b$ polynomials with $4b$ variables $(ω_{1},ω_{2}, \mathellipsis ,ω_{4b})$ with coefficients in a field $\mathrm{GF}(2)$. Each polynomial is presented as a sequence $(1,ω_{1},ω_{2}, \mathellipsis ,ω_{4b},ω_{1}ω_{2},ω_{1}ω_{3}, \mathellipsis ,ω_{4b-1}ω_{4b})$. The public key consists of $16b^{3}+4b^{2}+2b$ bits. For example, for $b=128$, the key size will be 4 MB.
+The public key in this system is the sequence $(P_{1} P_{2}, \ldots ,P_{2b})$ of $2b$ polynomials with $4b$ variables $(ω_{1},ω_{2}, \ldots ,ω_{4b})$ with coefficients in a field $\mathrm{GF}(2)$. Each polynomial is presented as a sequence $(1,ω_{1},ω_{2}, \ldots ,ω_{4b},ω_{1}ω_{2},ω_{1}ω_{3}, \ldots ,ω_{4b-1}ω_{4b})$. The public key consists of $16b^{3}+4b^{2}+2b$ bits. For example, for $b=128$, the key size will be 4 MB.
 
 The advantage of MQ cryptography is namely the size of signatures and public keys.
 
-The main task for an attacker is to find a sequence $(ω_{1},ω_{2}, \mathellipsis ,ω_{4b})$ of $4b$ bits, which yields the original sequence $(P_{1} P_{2}, \mathellipsis ,P_{2b})$ of $2b$ bits. The probability of guessing a sequence of $4b$ bits can be estimated as $2^{-2b}$.
+The main task for an attacker is to find a sequence $(ω_{1},ω_{2}, \ldots ,ω_{4b})$ of $4b$ bits, which yields the original sequence $(P_{1} P_{2}, \ldots ,P_{2b})$ of $2b$ bits. The probability of guessing a sequence of $4b$ bits can be estimated as $2^{-2b}$.
 
 
 ### Hash-based cryptography (HB cryptography)

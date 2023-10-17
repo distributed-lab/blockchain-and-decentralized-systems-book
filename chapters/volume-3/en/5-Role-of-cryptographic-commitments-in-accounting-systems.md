@@ -177,7 +177,7 @@ What benefit is in this case? Previously, the prover would calculate the value o
 
 In the previous subsections, we separately examined what Pedersen’s commitments are and how the Schnorr identification protocol works. Now let’s examine the scenario where the verifier interactively communicates with the prover in real time (as in the case of the Schnorr interactive protocol), but Pedersen commitments are used.
 
-The knowledge proof will be provided after the prover has generated a set of commitments for each of the following _m_ vectors: $C_{i}=r_{i}H+ \overline{x_{i}G}$, $i \in \{ 1,2, {\mathellipsis} ,m \}$. After the prover has transmitted a set of the commitments $(C_{1},C_{2}, \mathellipsis{} ,C_{m})$ to the verifier, he can prove in one step that he knows the original secret vectors.
+The knowledge proof will be provided after the prover has generated a set of commitments for each of the following _m_ vectors: $C_{i}=r_{i}H+ \overline{x_{i}G}$, $i \in \{ 1,2, \ldots ,m \}$. After the prover has transmitted a set of the commitments $(C_{1},C_{2}, \ldots ,C_{m})$ to the verifier, he can prove in one step that he knows the original secret vectors.
 
 First, the prover creates a random new commitment _C<sub>0</sub>_ for the random value _x<sub>0</sub>_ and sends it to the verifier. After that, the verifier generates a random scalar value _e_ and returns it to the prover. The prover the value pair $(z,s)$ and sends it to the verifier. The calculation of these values is shown in Fig. 5.11-A.
 
@@ -185,7 +185,7 @@ First, the prover creates a random new commitment _C<sub>0</sub>_ for the random
 
 > _Note. The iteration steps in this protocol are similar to the steps of the Schnorr identification protocol, so that one may suppose that an attack of commitment substitution is possible here as well (further, we examine in more detail how this works)._
 
-Vectors _x<sub>i</sub>_ are hidden from the verifier, since the addition of elements does not reveal each of them individually: $z_{i}=x_{0,i}+ex_{1,i}+e^{2}x_{2,i}+ \mathellipsis +e^{m}x_{m,i}$. The verifier checks the obtained commitments according to the expression in Fig. 5.11-B. If the equation is calculated correctly, then the verifier makes sure that the prover knows a complete set of secrets.
+Vectors _x<sub>i</sub>_ are hidden from the verifier, since the addition of elements does not reveal each of them individually: $z_{i}=x_{0,i}+ex_{1,i}+e^{2}x_{2,i}+ \ldots +e^{m}x_{m,i}$. The verifier checks the obtained commitments according to the expression in Fig. 5.11-B. If the equation is calculated correctly, then the verifier makes sure that the prover knows a complete set of secrets.
 
 ![Figure 5.11-B – Verification of proofs](/resources/img/volume-3/5.3-Using-Pedersen-commitments-for-zero-knowledge-proofs/F-5.11-B-verification-of-proofs.png "Figure 5.11-B – Verification of proofs")
 
@@ -203,7 +203,7 @@ Having only the values _z_ and _s_, Bob, in turn, can verify the knowledge accor
 
 Thus, we have a situation which resembles using the Schnorr identification protocol. Though, it has one important difference: at the last step of the iteration in the Schnorr protocol, just the value of the scalar _s_ is sent; instead, the value pair $(z,s)$ is sent in the protocol in focus. For the considered example, _z_ was also a single scalar, but it can be a value vector.
 
-Therefore, if the prover knows the value of _e_ in advance, he can forge the proof value. To do this, the prover generates a pair of random values $(z,s)$ and then calculates the value of the commitment _C<sub>0</sub>_ as follows: $C_{0} = (sH+aG)- \sum_{i=1}^{m}{e^{i}C_{i}}$.
+Therefore, if the prover knows the value of _e_ in advance, he can forge the proof value. To do this, the prover generates a pair of random values $(z,s)$ and then calculates the value of the commitment _C<sub>0</sub>_ as follows: $C_{0} = (sH+aG)- \displaystyle\sum_{i=1}^{m}{e^{i}C_{i}}$.
 
 Consider how this will work for the following example. Alice sends Bob 3 commitments _C<sub>1</sub>_, _C<sub>2</sub>_, _C<sub>3</sub>_ which match the values of _a<sub>1</sub>_, _a<sub>2</sub>_, _a<sub>3</sub>_. After that, Alice randomly generates $(z,s)$. Having the value of _e_, Alice forms _C<sub>0</sub>_ and sends it to the verifier (Fig. 5.13-A).
 
@@ -229,7 +229,7 @@ _Range proofs_ are used to verify that a particular number is located within cer
 
 We can represent _b_ and _c_ as a bit sequence. If the module length is $k+2$ bit, then the maximum length of the sum of _b_ and _c_ should not exceed $k+1$ bit, and the size of each of these values should be _k_ bit. Accordingly, the task is to prove that _b_ and _c_ are _k_-bit sequences.
 
-As an example, let’s generate such a proof for _b_. It can be presented as the following polynomial: $b=b_{0}+2b_{1}+2^{2}b_{2}+ \mathellipsis +2^{k-1}b_{k-1}$. We already have a commitment for _b_, which is presented as $B=r_{B}H+bG$. In the same manner, we can form similar commitments for each condition of the polynomial _b_. To do this, we generate a new set of values $(r_{B,0},r_{B,1}, \mathellipsis ,r_{B,k-2})$ and define $r_{B,k-1}=r_{B}- \sum_{i=0}^{k-2}{r_{B,i}}$. Next, using these values, we generate commitments for each component _b<sub>i</sub>_ of the polynomial _b_: $P_{i}=r_{B,i}H+2^{i}b_{i}G$. Since the commitments are homomorphic, the following equation holds: $P= \sum_{i=0}^{k-1}{P_{i}}$.
+As an example, let’s generate such a proof for _b_. It can be presented as the following polynomial: $b=b_{0}+2b_{1}+2^{2}b_{2}+ \ldots +2^{k-1}b_{k-1}$. We already have a commitment for _b_, which is presented as $B=r_{B}H+bG$. In the same manner, we can form similar commitments for each condition of the polynomial _b_. To do this, we generate a new set of values $(r_{B,0},r_{B,1}, \ldots ,r_{B,k-2})$ and define $r_{B,k-1}=r_{B}- \displaystyle\sum_{i=0}^{k-2}{r_{B,i}}$. Next, using these values, we generate commitments for each component _b<sub>i</sub>_ of the polynomial _b_: $P_{i}=r_{B,i}H+2^{i}b_{i}G$. Since the commitments are homomorphic, the following equation holds: $P= \displaystyle\sum_{i=0}^{k-1}{P_{i}}$.
 
 In such a way, we can prove that the size of _b_ does not exceed _k_ bits. However, we have not yet proven that each _b<sub>i</sub>_ is indeed a specific bit (0 or 1). To prove this, the ring signature mechanism can be used [98].
 

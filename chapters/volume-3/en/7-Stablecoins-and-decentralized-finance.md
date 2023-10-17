@@ -673,11 +673,11 @@ As a result, the Curve team decided to combine the constant-sum invariant and th
 
 ![Figure 7.22 – Comparison of invariants](/resources/img/volume-3/7.3-Overview-of-DeFi-protocols/F-7.22-comparison-of-invariants.png "Figure 7.22 – Comparison of invariants")
 
-Let’s consider how the merging of invariants is carried out mathematically. The invariants generally look like this: constant sum $\sum_{i}{x_{i}} =D$, constant product $\prod_{i}{x_{i}} =( \frac{D}{n} )^{n}$, where _D_ is the total number of coins at the stage when they had equal prices and _n_ is the number of coins supported by the pool.
+Let’s consider how the merging of invariants is carried out mathematically. The invariants generally look like this: constant sum $\displaystyle\sum_{i}{x_{i}} =D$, constant product $\prod_{i}{x_{i}} =( \frac{D}{n} )^{n}$, where _D_ is the total number of coins at the stage when they had equal prices and _n_ is the number of coins supported by the pool.
 
-To join two graphs, the following formula is applied: $χD^{n-1} \sum_{i}{x_{i}} + \prod_{i}{x_{i}} = χD^{n} + ( \frac{D}{n} )^{n}$, where _χ_ is a dynamic coefficient indicating direction to which the invariant tends. If $χ \to 0$, Stableswap turns to the constant-product invariant; if $χ \to \infin$, then to a constant-sum one. This coefficient is defined as follows: $χ= \frac{A \prod_{i}{x_{i}}}{( \frac{D}{n} )^{n}}$, where _A_ is an amplification coefficient for the constant-sum component of the merged invariant.
+To join two graphs, the following formula is applied: $χD^{n-1} \displaystyle\sum_{i}{x_{i}} + \prod_{i}{x_{i}} = χD^{n} + ( \frac{D}{n} )^{n}$, where _χ_ is a dynamic coefficient indicating direction to which the invariant tends. If $χ \to 0$, Stableswap turns to the constant-product invariant; if $χ \to \infin$, then to a constant-sum one. This coefficient is defined as follows: $χ= \frac{A \prod_{i}{x_{i}}}{( \frac{D}{n} )^{n}}$, where _A_ is an amplification coefficient for the constant-sum component of the merged invariant.
 
-If we plug the expression for _χ_ to the invariant formula, we obtain the following: $An^{n} \sum_{i}{x_{i}} +D=ADn^{n}+ \frac{D^{n+1}}{n^{n} \prod_{i}{x_{i}}}$. Further, the system is only to maintain this equation.
+If we plug the expression for _χ_ to the invariant formula, we obtain the following: $An^{n} \displaystyle\sum_{i}{x_{i}} +D=ADn^{n}+ \frac{D^{n+1}}{n^{n} \prod_{i}{x_{i}}}$. Further, the system is only to maintain this equation.
 
 Examine the Curve interface (see Fig. 7.23) as well as the parameters that will be useful in the context of providing liquidity to the liquidity pool.
 
