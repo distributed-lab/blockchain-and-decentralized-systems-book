@@ -71,4 +71,4 @@ your review.
 | 12 | [USED SOURCES AND LINKS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-3/en/Z.5-Used-sources-and-links.md) |
 
 ## License agreement
-Please review the [Contribution License Agreement](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/CONTRIBUTION_LICENSE_AGREEMENT.md) before contributing.
+Please review the [Contribution License Agreement](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/CONTRIBUTION_AND_USE_LICENSE_AGREEMENT.md) before contributing.
