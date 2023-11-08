@@ -1,5 +1,8 @@
 # 5 Blockchain technology
+
+
 ## 5.1 Blockchain technology and its capabilities
+
 Discussion of blockchain technology as a stand-alone topic separate from the Bitcoin context began early 2014. At that 
 time people started to recognize that Bitcoin’s decentralized approach could be applied in other areas, and that the 
 underlying blockchain technology was the key to this. For example, the use of this technology in the accounting systems 
@@ -40,6 +43,7 @@ the system owners.
 > *Blockchain is not a magic bullet which makes all the data within a system authentic.*
 
 ### Degrees of decentralization
+
 The degree to which a system is decentralized is not always easily measurable. The ultimate goal for any secure system 
 is not decentralization per se, but rather to achieve the optimal combination of required properties such as privacy, 
 integrity, accessibility, resilience, trustworthiness, and performance. Decentralization is beneficial to the extent it 
@@ -123,6 +127,7 @@ permissioned, it means that at least one or more processes require additional au
 referred to as *private blockchains*.
 
 ### Architecture of blockchain
+
 In the chain of blocks, each subsequent block contains a hash value of the previous one (Fig. 5.2). As a consequence, an 
 attempt to change the data recorded on a historical block will cause changes to all subsequent blocks. This change will 
 be noticed by other participants (network nodes) and can be rejected if improper, ensuring database integrity.
@@ -136,6 +141,7 @@ blocks would have to be recreated. This feature makes it impossible to backdate 
 by all other participants.
 
 ### Properties of blockchain
+
 Theoretically, blockchain technology can be used to organize data in any database management system (DBMS). The chain of 
 blocks can be organized at an abstract level, and the software does not have to store transactions in blocks. It is 
 enough that the block header is formatted correctly. Therefore, a network node can organize the storage and the 
@@ -143,13 +149,13 @@ processing of transactions in any convenient way, as well as synchronize with ot
 blocks of a certain format and transmitted over the network.
 
 > **Properties of an accounting system that can be provided through using blockchain**
->> * Integrity of database history 
->> * Minimization of delays related to synchronization and backup 
->> * Ability to work with a group of validators simultaneously 
->> * Ability to perform real-time audit 
->> * Ability to use light clients and SPV nodes 
->> * Timestamping (anchoring and time-based data fixation)
->> * Trustlessness (the required level of user trust is minimal)
+>> * *Integrity of database history* 
+>> * *Minimization of delays related to synchronization and backup* 
+>> * *Ability to work with a group of validators simultaneously* 
+>> * *Ability to perform real-time audit* 
+>> * *Ability to use light clients and SPV nodes* 
+>> * *Timestamping (anchoring and time-based data fixation)*
+>> * *Trustlessness (the required level of user trust is minimal)*
 
 The features of implementing blockchain properties for different environments are shown in Table 5.1.
 
@@ -187,16 +193,17 @@ value is a timestamp. It allows logging the fact of knowledge of particular data
 the most important—afterward prove this fact to anyone. As a result, users can be highly confident that the changes to 
 the database state are very likely to match the sequence in which these changes have been initiated.
 
-### Applications of blockchain technology 
+### Applications of blockchain technology
+
 Now, let's discuss in which situations blockchain technology is worth applying. After all, blockchain allows you to 
 design a reliable system, where the human factor is minimized. Let's consider five of the most suitable and intriguing 
 application areas of blockchain technology.
 
-> * E-voting 
-> * Supply chains 
-> * Decentralized trading 
-> * Public registries 
-> * Mutual settlements
+> * *E-voting* 
+> * *Supply chains* 
+> * *Decentralized trading*
+> * *Public registries* 
+> * *Mutual settlements*
 
 E-voting. Every voter can be sure that their vote will be taken into account. Only the sanction number of votes are 
 allowed and it is difficult to steal someone’s vote. All transactions on the network could be confidential, which 
@@ -288,6 +295,7 @@ easier to conduct a fairly reliable and automated audit compared to traditional 
 for this task are FBA, BFT.
 
 ### Summary
+
 Having analyzed the cases of technology application, the advantages of a blockchain-based system become more evident:
 
 * Simple verification of the database integrity 
@@ -391,6 +399,7 @@ Obviously, using a combination of different techniques, one can create a compreh
 description of such solution is not the primary goal of this book).
 
 ## 5.2 Differences in consensus approaches
+
 It would be safe to say that the consensus mechanism is a cornerstone of any decentralized accounting system. Without 
 understanding the work principles of these mechanisms, you cannot design a secure and efficient system. Sometimes 
 different decentralized systems are blindly compared against each other according to their performance parameter, even 
@@ -403,6 +412,7 @@ depend on the approach to reaching consensus.
 ![Figure 5.6 - Reaching consensus regarding house repairs](/resources/img/volume-1/5.2-difference-in-consensus-approaches/5.6-house-repairs.png)
 
 ### Proof-of-work
+
 The consensus mechanism based on PoW has become popular due to cryptocurrencies. It is the simplest and at the same time 
 the most reliable approach in the case of complete decentralization and anonymity. Though, the operational principle of 
 PoW is generally difficult to explain to an unprepared person. We will try to do it through a simple example.
@@ -420,6 +430,7 @@ to supply the required tickets, then some of the owners can build a new house wh
 to other rules.
 
 ### Proof-of-stake
+
 The idea of PoS is similar to the voting of shareholders of a company—the one with a larger stake in the company 
 correspondingly has a greater voice in making the final decision. In this way, decisions in the system are not really 
 determined by the number of votes but rather by their weight (Fig. 5.7).
@@ -435,6 +446,7 @@ reliable consensus reaching algorithm based on PoS for a decentralized accountin
 validator, is quite complex.
 
 ### Delegated proof-of-stake
+
 This approach to reaching consensus is alternative to those mentioned above. The main idea of delegated proof-of-stake 
 (DPoS) is that here decision-making is performed only by the delegates [79; 80]. Usually, those who become delegates are 
 known from the beginning. Very often these are the people known for their achievements in a particular industry. In the 
@@ -449,6 +461,7 @@ The idea of DPoS development and implementation belongs to the team of developer
 Bitshares.
 
 ### Proof-of-importance
+
 In order to increase the democratic approach to decision-making, the PoS algorithm was elaborated, and eventually what 
 is now called proof-of-importance (PoI) [81] has come into existence. The difference of PoI is that unlike PoS, where 
 weight is measured by the stack, the weight of a participant's vote depends on a number of various factors. The 
@@ -458,6 +471,7 @@ system. Therefore, the situation when the rich become richer is excluded. The fi
 used in the NEM protocol.
 
 ### BFT
+
 The name BFT (Byzantine Fault Tolerance) derives from a comic description of one problem that was implemented in the 
 1980s under the development of a protocol for highly reliable systems [82]. The description was based on the story of 
 Byzantine generals, who organize an attack on a certain city. The task of generals is to reach a common solution given 
@@ -472,11 +486,11 @@ such a problem can be relevant not only for generals, but, say, for a football t
 ![Figure 5.8 - Reaching consensus using BFT](/resources/img/volume-1/5.2-difference-in-consensus-approaches/5.8-bft.png)
 
 > **Working conditions for a BFT-class consensus reaching mechanism**
->> * Nodes which interact are equal in rights 
->> * Some of the participants may be adversaries who act in a coordinated manner 
->> * It is unknown which validators are adversaries 
->> * Honest participants are more than 2/3 of the total number 
->> * Network may experience interruptions and delays 
+>> * *Nodes which interact are equal in rights* 
+>> * *Some of the participants may be adversaries who act in a coordinated manner* 
+>> * *It is unknown which validators are adversaries* 
+>> * *Honest participants are more than 2/3 of the total number* 
+>> * *Network may experience interruptions and delays* 
 
 We also note that the number of participants is known in advance and they know each other. In the solution to a problem, 
 there are two options: to attack or to retreat. It is assumed that honest nodes comprise more than 2/3 of all 
@@ -488,6 +502,7 @@ to a common solution, which cannot be changed or canceled afterward. For non-BFT
 the probability that the solution will be canceled decreases exponentially, but it is never zero.
 
 ### FBA
+
 The Federated Byzantine Agreement (FBA) was first introduced in Ripple and later finalized in Stellar [83]. It allows 
 reaching agreement within a large (potentially unknown) number of participants (about a few thousand) each of which does 
 not know any other participant personally.
@@ -503,6 +518,7 @@ ideas spread in a similar way—when people share news and infect others with id
 requires more time as compared to the systems where each validator knows each other one.
 
 ### Protocols for reaching consensus based on DAG
+
 Directed acyclic graph (DAG) is not a method for reaching consensus, yet with this data organization method, the 
 existing mechanisms can be improved. It is primarily used in systems requiring asynchronous participation of a large 
 number of validators.
@@ -553,6 +569,7 @@ time. Meanwhile, the DPoS and PBFT algorithms are designed in such a way that a 
 to reach agreement in a short time.
 
 ### Summary
+
 The appropriate mechanism for reaching consensus is critical for the reliable operation of a decentralized accounting 
 system. When choosing an accounting system depending on the needs and tasks of a particular business case, a specific 
 mechanism is considered. Based on it, a system possesses its particular properties.
@@ -617,6 +634,7 @@ user will have to purchase coins. Another approach for building systems implies 
 with which every user can initially mine coins and afterward switch to PoS consensus reaching algorithm.
 
 ## 5.3 Limitations of blockchain technology and its application challenges
+
 From the perspective of implementation into existing regulated infrastructure, blockchain and smart contracts are, for a 
 reason, perceived as promising technologies. Though, at the moment things are slightly more complicated than it may seem 
 at first glance.
@@ -630,14 +648,15 @@ Blockchain technology allows for the creation of such systems. Moreover, it does
 trust each other or a third party. However, to incorporate such systems into everyday life, there is a number of complex 
 tasks that have to be solved.
 
-> **Tasks that complement the introduction of blockchain-based accounting systems **
->> * Implementation of a digital identity 
->> * Digitization of all processes 
->> * Adoption of common rules for data processing 
->> * Keeping the record of all assets in one system 
->> * Organizing decentralized decision-making
+> **Tasks that complement the introduction of blockchain-based accounting systems**
+>> * *Implementation of a digital identity* 
+>> * *Digitization of all processes* 
+>> * *Adoption of common rules for data processing* 
+>> * *Keeping the record of all assets in one system* 
+>> * *Organizing decentralized decision-making*
 
 ### Implementation of a digital identity
+
 A *digital identity* is required because it allows associating users' actions with their identities.
 
 Within one organization (centralized environment), implementation of a digital identity is not so much a complex task. 
@@ -651,6 +670,7 @@ several years—it already enables citizens to vote using their digital passport
 To conclude, digital identity is a key element of interaction in the digital world.
 
 ### Digitalization of all processes
+
 This requirement is no less important than digital identity implementation. Any innovations usually imply a gradual 
 transition and some stageness. However, when blockchain is used, it is obvious that nothing will work until all internal 
 accounting processes of a company are digitalized. Imagine a situation when an organization needs to check the presence 
@@ -661,6 +681,7 @@ optimal to implement an automatic request within a timeframe that corresponds to
 ![Figure 5.11 - Digitalization of processes](/resources/img/volume-1/5.3-limitations-of-blockchain-technology-and-its-application-challenges/5.11-digitalization-of-process.png)
 
 ### Adoption of common rules for data processing
+
 First, common rules should be established for resolving issues such as those related to confirmation of transactions, 
 system updating, determining responsibility in the events of unforeseen consequences, etc. All these rules must be 
 approved in advance.
@@ -672,6 +693,7 @@ their legislation so that it takes into account the turnover of cryptocurrencies
 community has more questions than answers so far.
 
 ### Keeping the record of all assets in one system
+
 In a way, implementation of blockchain technology implies that ownership of all assets is processed in the same 
 accounting system. In fact, this is what makes its use so effective.
 
@@ -690,6 +712,7 @@ government, then there is a challenge of synchronizing the data between the two 
 do this is using trusted third parties—oracles (for further details, see 6.3).
 
 ### Organizing decentralized decision-making
+
 The fifth aspect is decentralized decision-making, namely the *agreement* of all parties as to how decisions will be 
 made. In practice, this agreement is very difficult to achieve. People usually find it hard to reach consensus when it 
 comes to their personal benefits that depend on the taken decision. This can be due to anything from political ambitions 
@@ -698,15 +721,16 @@ and different points of view appear, it starts resembling a political wrestling 
 why there are so few working implementations of decentralized systems in the enterprise world.
 
 > **Factors hampering application of blockchain technology**
->> * High redundancy
->> * Node synchronization delays 
->> * Governance issue 
->> * Responsibility issue
+>> * *High redundancy*
+>> * *Node synchronization delays*
+>> * *Governance issue* 
+>> * *Responsibility issue*
 
 These limitations are fundamental since they stem from the very decentralized approach itself. Let's examine them in 
 more detail.
 
 ### Capacity of accounting systems
+
 The *capacity* of an accounting system is usually determined as the number of confirmed transactions or the total amount 
 of data in these transactions per unit of time. Accordingly, the capacity is measured in tps (transactions per second) 
 or B/s (bytes per second). Problems related to performance limitations and scalability of decentralized systems are 
@@ -728,6 +752,7 @@ consensus regarding the information: the decision is no longer taken in one plac
 lead to an increase in response time of the system.
 
 ### Transaction confirmation time 
+
 In order to understand the limitation of confirmation time, you can follow an example in Figure 5.13. A task of the same 
 volume can either be solved in a short or long time, depending on the chosen solution approach. In the case of 
 delivering cargo, the type of transport will influence duration. Whereas in the case of a decentralized accounting 
@@ -746,6 +771,7 @@ rate, the difficulty parameter, etc.), the average time of block confirmation ra
 highest delays were almost up to 30 minutes.
 
 ### Governance
+
 Software development within one company is a process which features responsible parties and a clear plan and is managed 
 in a centralized way. Any suggestions for making changes are approved by a narrow circle of persons involved in the 
 development of rules of the system.
@@ -761,6 +787,7 @@ The problem, however, is that joint management is always more difficult than per
 reach consensus fast. The decision in such a system is always made slower since participants need time to negotiate.
 
 ### Distributed responsibility
+
 A huge issue on the way to practical implementation of decentralized technologies is the unwillingness of society's 
 mindset to accept the consequences of a decentralized approach. It manifests in the fact that we are used to having a 
 specific responsible person. This is how it works in a system with centralized management, which has become natural for 
@@ -791,6 +818,7 @@ requirements rests on the creators of this system only before a certain moment. 
 transfers to users who accepted the rules and possible risks.
 
 ### Protocol updating
+
 Another important feature of decentralized systems is the approach to adopting new updates. Any new proposal for the 
 improvement of system's rules can result in either a solid acceptance or disagreement among the participants. This 
 essentially is the problem of governance in a decentralized accounting system.
@@ -813,6 +841,7 @@ operating in the old system and named it Ethereum Classic, while the supporters 
 new one, Ethereum.
 
 ### Conclusion
+
 Blockchain technology, if correctly implemented, can allow for a transparent business model with the possibility of a 
 transparent audit. This opens up new prospects for business development of partnership companies due to increased trust 
 among users. However, on the way to implementation of this idea, there is a number of difficulties that we have to first 

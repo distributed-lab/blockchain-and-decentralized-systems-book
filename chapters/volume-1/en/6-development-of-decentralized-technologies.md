@@ -1,5 +1,8 @@
 # 6 Development of decentralized technologies
+
+
 ## 6.1 Bitcoin forks and clones
+
 A situation common in the natural world for both wild animals and human beings is that disagreements have always 
 existed. If people's opinions fundamentally diverge, it becomes more difficult for them to effectively interact, 
 exchange and coordinate information. Diversity makes it hard for us to come up with definitive statements.
@@ -23,6 +26,7 @@ these currencies in previous topics and will mention them in the following ones)
 unplanned. We will consider specifically both types of forks in more detail.
 
 ### Planned forks
+
 Some nodes can modify the rules for block creation intentionally and continue working with the same digital currency. 
 However, if you violate some protocol rules, then there may be disagreements concerning both the previous and the 
 following blocks in the chain. This is one more cause why several blocks can appear at the same height.
@@ -66,6 +70,7 @@ Accordingly, we have examined problems that the community can face during the so
 look at exactly how the protocol updates occur.
 
 ### Software update methods: softfork & hardfork
+
 There are two ways to update the software: a *softfork* and a *hardfork*. In fact, both are protocol updates, which 
 involve changing certain rules for generating and verifying transactions as well as blocks. Such updates may either be 
 backward-compatible or not. Now let's dive in.
@@ -99,6 +104,7 @@ effect and quickly. For example, once a critical vulnerability was found in Bitc
 carried out quickly. This case is worth considering in more detail.
 
 ### Unplanned softfork in Bitcoin
+
 On August 15, 2010, a suspicious transaction was found in one of the Bitcoin blocks. It contained a lot of coins of 
 unknown origin, which were being sent to several addresses [88]. Notably, these coins had not been mined. This 
 transaction conflicted with the protocol rules and the entire issuance schedule was completely disrupted. The 
@@ -127,6 +133,7 @@ however, does not always happen, especially when the fork is planned. In the nex
 work. 
 
 ### Appearance of planned forks
+
 There are well-founded reasons for the appearance of planned forks. An example is the case of Ethereum when part of the 
 community decided to update the protocol, changing the history of the blocks to artificially influence the final state 
 of the system. A part of the community did not support this update and retained the original protocol rules to support 
@@ -152,6 +159,7 @@ blocks, and the split of the network. These were not originally envisaged but ar
 community members did not reach agreement.
 
 ### Examples of planned forks of Bitcoin
+
 Let's consider the cases when a major division of Bitcoin's blockchain took place. One of them was Bcash, a hardfork 
 update of the protocol that was conducted to change the basic parameters. Some active community members suggested 
 increasing the capacity by expanding the block size. Not everyone in the community agreed that was the best way. Many of 
@@ -246,6 +254,7 @@ Yes, of course. You can become a member of the Bitcoin community to influence de
 and offer new updates and technological innovations. 
 
 ## 6.2 Alternative digital currencies and tokens
+
 Certain approaches to decentralization discussed in this book have either been first proposed or tested in Bitcoin. 
 Everything that has already been implemented is not the limit of engineers' and professional developers' capabilities, 
 and even more so, it is not the limit of users' dreams. There is a fairly large number of people interested in testing 
@@ -257,6 +266,7 @@ Monero, Ripple, Stellar, Ethereum, Cardano, and ZCash. Prior to reviewing each o
 a cryptocurrency is.
 
 ### What is a cryptocurrency?
+
 *A cryptocurrency is an independent digital currency in which the management of the following processes is decentralized: 
 coin issuance, transaction confirmation, data storage, audit of an accounting system, and governance (decision-making 
 about the updates); anyone can become a member of the system*. The price of a cryptocurrency coin is determined 
@@ -288,6 +298,7 @@ All the above-mentioned properties can be achieved only if the specification and
 and there is a sufficiently large open community around a cryptocurrency.
 
 ### Litecoin
+
 We will start our review of alternative coins with Litecoin (Fig. 6.7). This is one of the earlier cryptocurrencies, 
 which appeared in 2011. The currency is based on the Bitcoin source code but with some changes. The block creation time 
 was reduced fourfold (to 2.5 minutes). Accordingly, the maximum issuance amount has increased by 4 times.
@@ -300,6 +311,7 @@ memory, which makes the creation of ASICs less profitable. Although Litecoin has
 it has found an audience and community which permanently supports it. 
 
 ### Dash
+
 The Dash project (Fig. 6.8) was launched in 2014. In Dash, the period of block creation is also shortened, which in turn 
 contributes to increased network capacity. The hashing algorithm is PoW X11, which initially allowed solving the 
 resource-intensive task energy-efficiently and only on graphics processors, but later integrated circuits (ASICs) were 
@@ -333,7 +345,8 @@ by masternodes. Yet the system is not completely decentralized because not all u
 However, any user can suggest her own improvements, and this may potentially be supported and sponsored. For this, a 
 user needs to leave a *treasury* request with a suggestion for an idea, and the owners of masternodes will vote for it.
 
-### Difference between mining algorithms of Litecoin, Dash, and Bitcoin 
+### Difference between mining algorithms of Litecoin, Dash, and Bitcoin
+
 The above-mentioned altcoins are different from Bitcoin by the hashing algorithms. This means that, for example, bitcoin 
 mining equipment is not suitable for mining of alternative digital currencies with different hashing algorithms. The 
 purpose of such measures has been reaching the conditions under which validators of the Bitcoin network cannot attack 
@@ -347,6 +360,7 @@ allow Bitcoin validators to conduct a 51% attack because the more computing powe
 created. 
 
 ### NXT
+
 NXT (Fig. 6.9) was launched in 2013 by an anonymous developer. It was one of the first well-known protocols that used 
 the proof-of-stake consensus mechanism. Originally, NXT was designed as a versatile platform allowing for the 
 implementation of various financial applications and services.
@@ -364,6 +378,7 @@ The disadvantages of the platform are low capacity (4–5 transactions per secon
 confirmation time (10 to 15 minutes).
 
 ### BitShares
+
 The idea of the BitShares protocol was announced in 2013. It was created as a tool for trading different assets and 
 currencies in a decentralized environment without having to deposit them on the trading platforms. So, essentially, 
 BitShares is a decentralized exchange (Fig. 6.10). BitShares was the first protocol that used DPoS consensus mechanism, 
@@ -381,6 +396,7 @@ An additional feature for the users of the platform are the so-called Stealth Tr
 with increased user privacy.
 
 ### Monero
+
 In Monero, the primary focus is increased privacy for users (Fig. 6.11). The project appeared in 2014 as a Bytecoin 
 fork, another 2014 project, which was promoted as an anonymous payment system.
 
@@ -412,6 +428,7 @@ Internet Project) [95], which is more advanced than Tor.
 Block creation in the network takes approximately two minutes, and full transaction confirmation takes up to 30 minutes.
 
 ### Ethereum
+
 The feature of Ethereum (see Fig. 6.12) is supporting a programmable digital currency. Ethereum is described in 
 different ways—some people call it a platform for smart contracts, and others as a decentralized computer. The 
 accounting platform has a native ether currency.
@@ -450,6 +467,7 @@ As to the oracles reward, it is even possible to specify in the contract that or
 work regardless of the outcome.
 
 ### Cardano
+
 The Cardano project (Fig. 6.13) is a decentralized platform of *smart contracts* that can be programmed by 
 Turing-complete languages. The protocol of the full network nodes is implemented in Haskell, a functional programming 
 language. As the developers say, their platform uses a persistently strong consensus algorithm based on the idea of 
@@ -487,6 +505,7 @@ performed centrally; the consensus mechanism is based on FBA; and validators are
 identified).
 
 ### ZCash
+
 ZCash is a cryptocurrency, which is mostly focused on making transactions confidential. Results of transactions are 
 published in the chain of blocks, but details such as the sender's and receiver's data and the transaction amount remain 
 hidden. This cryptocurrency was announced in 2016 (Fig. 6.15).
@@ -511,6 +530,7 @@ details of a transaction if you are granted corresponding permission by the crea
 to mention that 20% of all mined coins are automatically deposited to developers' addresses. 
 
 ### Other digital currencies
+
 To compare the above-listed digital currencies, we have decided to use the following criteria: coin issuance, 
 transaction confirmation, transaction audit, update management, capacity, full transaction confirmation time, and user 
 privacy (Table 6.1).
@@ -527,6 +547,7 @@ distinguished from digital currencies (Fig. 6.16).
 ![Figure 6.16 - Classification of digital assets](/resources/img/volume-1/6.2-alternative-digital-currencies-and-tokens/6.16-classification.png)
 
 ### Tokens
+
 At the end of 2016, there was a sharp increase in the number of projects launching their own currency to finance the 
 development of a certain product or service. Most often, this was justified by the need to have a network that would 
 provide these services in a decentralized manner. Among the most prominent projects are Filecoin, OmiseGo, Steemit, 
@@ -553,6 +574,7 @@ accounting systems.
 ![Table 6.2 - Distinction between groups of digital assets](/resources/img/volume-1/6.2-alternative-digital-currencies-and-tokens/table-6.2-dist.png)
 
 ### Conclusion
+
 We ultimately give the following definition of a cryptocurrency that demonstrates as accurately as possible its essence 
 and properties. *A cryptocurrency is an independent digital currency in which the management of the following processes 
 is decentralized: coin issuance, transaction confirmation, data storage, audit of an accounting system, and governance 
@@ -626,6 +648,7 @@ voting the network financing, etc. A masternode must be backed with a certain nu
 1,000), be online 24 hours, and ultimately prevent its connection losses.
 
 ## 6.3 Introduction to smart contracts
+
 In a way, we can view blockchain technology as a way to agree about the past. This agreement is based on the security of 
 cryptographic algorithms that protect the integrity of transactions history (events). The usage of smart contracts will 
 allow us to agree about the future. This is achieved through programming the conditions that will or potentially can 
@@ -639,19 +662,18 @@ We will start with a focus on the complexities that often accompany working with
 arise at all levels including drafting, verifying, executing, and even simply understanding.
 
 > **Some challenges in drafting a traditional contract**
->> * In many cases, you need a qualified lawyer 
->> * It is difficult to achieve contract terms which are complete and comprehensive 
->> * It is virtually impossible to quickly check whether the contract is consistent with other contracts and whether it 
-is compliant with all the requirements of current legislation
+>> * *In many cases, you need a qualified lawyer* 
+>> * *It is difficult to achieve contract terms which are complete and comprehensive* 
+>> * *It is virtually impossible to quickly check whether the contract is consistent with other contracts and whether it is compliant with all the requirements of current legislation*
 
 When all conditions are taken into consideration and the parties have signed the contract, there are still a number of 
 other problems that may arise later.
 
 > **Some challenges in understanding and verifying contracts**
->> * Contract language is very often hard to understand for people who do not have a legal background 
->> * Lawyers often disagree on the language and meaning of contracts 
->> * Unsigned contract pages may be substituted 
->> * Signatures can be falsified
+>> * *Contract language is very often hard to understand for people who do not have a legal background* 
+>> * *Lawyers often disagree on the language and meaning of contracts* 
+>> * *Unsigned contract pages may be substituted* 
+>> * *Signatures can be falsified*
 
 It is difficult to actually assess the scale of time and money wasted by participants due to unfit contracts. If you 
 consider the number of forged documents, it would amount to something like an economic or social disaster. The majority 
@@ -659,24 +681,25 @@ of issues arise at the execution stage and in litigation. Analyzing what can go 
 potential problems.
 
 > **Challenges in executing a contract**
->> * Success often depends on the skills of lawyers (not the contract quality)
->> * Unpredictable duration and costs of legal proceedings 
->> * Possibility of bribery 
->> * No guarantee of compensation if the other party goes bankrupt
+>> * *Success often depends on the skills of lawyers (not the contract quality)*
+>> * *Unpredictable duration and costs of legal proceedings* 
+>> * *Possibility of bribery* 
+>> * *No guarantee of compensation if the other party goes bankrupt*
 
 A solution for the future has emerged. A contract could be written digitally using a programming language to implement 
 all the necessary conditions. 
 
 > **Features of a contract written in a code language**
->> * Universal code language will be recognized by the computer explicitly 
->> * Program code always returns the same result if the input data is the same (Fig. 6.17)
->> * Contract is signed using a digital signature, which is difficult to forge 
->> * Need for human comprehension and execution is excluded 
->> * Such a contract can be tested
+>> * *Universal code language will be recognized by the computer explicitly* 
+>> * *Program code always returns the same result if the input data is the same (Fig. 6.17)*
+>> * *Contract is signed using a digital signature, which is difficult to forge* 
+>> * *Need for human comprehension and execution is excluded* 
+>> * *Such a contract can be tested*
 
 ![Figure 6.17 - Result of smart contract execution is the same on all devices](/resources/img/volume-1/6.3-introduction-to-smart-contracts/6.17-result-of-execution.png)
 
 ### What is a smart contract?
+
 A *smart contract* is an agreement for the redistribution of value, which implies a strict and unambiguous assignment of 
 conditions, automation of execution processes, and minimal involvement of a trust relationship between contracting 
 parties. Most often, this is achieved by combining the mechanisms for setting conditions with mechanisms for their 
@@ -690,11 +713,11 @@ in 1994. His paper, "The Idea of Smart Contracts" [62], was published in 1997 (F
 ![Figure 6.18 - Idea of smart contracts by Nick Szabo](/resources/img/volume-1/6.3-introduction-to-smart-contracts/6.18-nick-szabo.png)
 
 > **What do you need to know about smart contracts?**
->> * Smart contracts allow counterparties to interact without having third parties involved 
->> * Smart contracts are easier to audit than traditional contracts 
->> * There are different types of smart contract protocols and different implementation methods 
->> * They allow the management of digital assets that are stored on a specific platform 
->> * Initiation of the contract can be performed either manually or automatically
+>> * *Smart contracts allow counterparties to interact without having third parties involved* 
+>> * *Smart contracts are easier to audit than traditional contracts* 
+>> * *There are different types of smart contract protocols and different implementation methods* 
+>> * *They allow the management of digital assets that are stored on a specific platform* 
+>> * *Initiation of the contract can be performed either manually or automatically*
 
 Execution of smart contracts implies that the platform has one validator (or a network of validators) and a database 
 that stores all smart contracts that are submitted for execution in strict chronological order. This database has to 
@@ -721,6 +744,7 @@ contract itself. The maintenance costs are reduced since the creation and execut
 processes.
 
 ### Role of oracles for smart contracts
+
 The implementation of a smart contract heavily depends on the data with which it operates—namely, where this data is 
 stored. If this is within a single accounting system, then the data is verified and a smart contract can operate with it 
 without any intermediaries: the case is about a primary accounting system which is self-sufficient. This case may prove 
@@ -741,6 +765,7 @@ oracles, coordinate the data, and then reach the decision (Fig. 6.20).
 ![Figure 6.20 - Smart contract receiving data from independent oracles](/resources/img/volume-1/6.3-introduction-to-smart-contracts/6.20-smart-contracts-and-oracles.png)
 
 ### Example of purchase in an online store
+
 Let's consider a simple example. It will help to understand the functionality of smart contracts and suggest in which 
 cases they should be used. In fact, smart contracts can also be implemented using Bitcoin, but nowadays Bitcoin cannot 
 be considered a fully-fledged platform for smart contracts.
@@ -791,6 +816,7 @@ features:
 * It is possible to change the mediator during the process of conflict resolution by the agreement of both parties
 
 ### Example of a contract for mutual purchase
+
 Let's look at a more complex example that shows the capabilities of a smart contract more clearly. Imagine there are 
 three students who have recently settled in one room in a house. All three are interested in buying a fridge, which they 
 will use together. One of them volunteered to collect and store the necessary amount of money to buy a fridge and 
@@ -814,12 +840,13 @@ of all, in a smart contract you can define the condition, and only after its exe
 the next condition, which is formally prescribed, and parameters can be set already during its operation.
 
 > **Other difficulties**
->> * Error in the smart contract code can lead to unavoidable consequences 
->> * Data for all the triggers must be in one accounting system 
->> * Assets need to be digitized and accounted on the platform 
->> * In some cases, the trustless property is impossible to achieve
+>> * *Error in the smart contract code can lead to unavoidable consequences* 
+>> * *Data for all the triggers must be in one accounting system* 
+>> * *Assets need to be digitized and accounted on the platform* 
+>> * *In some cases, the trustless property is impossible to achieve*
 
 ### Classification of smart contracts
+
 For the classification, there are different groups of criteria to specify. Smart contracts can be distinguished by 
 their:
 * Execution environment 
@@ -831,6 +858,7 @@ As to privacy, contracts can either be completely confidential (outsiders cannot
 contracts) or completely or partially public. Below, we will review the rest of the options.
 
 ### Differences between platforms according to their execution environment
+
 By execution environment, smart contracts platforms are divided into centralized and decentralized ones. In the case of 
 centralized digital contracts, there is a service with one validator. Additionally, there may be a backup restore 
 service that is also centrally managed according to the same rules. There is one database that stores all the necessary 
@@ -862,6 +890,7 @@ platforms exceed the centralized ones in parameters such as *independence* and *
 maintenance are much more difficult.
 
 ### Differences between platforms in the way contracts are executed
+
 Let's consider how smart contracts are different by the way you specify and fulfill conditions there.
 
 *Turing-complete* smart contract language allows you to specify almost any algorithm as a condition for executing a 
@@ -882,6 +911,7 @@ is a similar platform, but, unlike Bitshares, it is no longer focused on issuing
 blogging; namely, it stores and processes the content in a decentralized manner.
 
 ### Differences between platforms in the way smart contracts are initiated
+
 Smart contracts can also be divided into at least two groups according to the method of initiation: *automated* and 
 *manual (non-automated)*. For those which are automated, it is typical that all parameters are known and the conditions 
 of the smart contract are fully automatically executed. This does not require sending any additional transactions and 
@@ -897,6 +927,7 @@ either successful or not. This is because the smart contract code is arbitrary, 
 as infinite loop, a lack of certain parameters and arguments, or other exceptional circumstances.
 
 ### Summary
+
 Businesses have many expectations from the introduction of smart contracts. However, a smart contract itself is a piece 
 of code programmed by somebody. The result of this code should be the consent of all participants of the system 
 regarding account balances (mutual settlements). This leads to several conclusions:
@@ -961,6 +992,7 @@ constant value before performing a certain operation or payment, while the inter
 execution of this verification.
 
 ## 6.4 Introduction to asset tokenization
+
 When one says "blockchain" or "tokenization", many people tend to think about cryptocurrency and token sales, which made 
 headlines in 2017. Tokenization was mostly viewed as simply a process of issuance and sale of utility tokens (see 
 below), which bluntly copied the Bitcoin idea of a decentralized currency. This was applied to payments between users of 
@@ -1021,6 +1053,7 @@ digital signature, zero-knowledge proofs, etc. The account supports operations f
 particular allowed transactions, their lifecycle model, rules for processing, etc.
 
 ### Issues of existing accounting systems
+
 Digitalization of an accounting system is quite a recent trend, which started around the 1970s. Internet attacks, 
 obviously, were not a concern that days, which is one of the reasons why security mechanisms were not implemented in the 
 original architecture. Communication processes were not digitalized until the 1990s, and regulation (reporting, AML, 
@@ -1051,6 +1084,7 @@ All the above-mentioned factors lead to an inefficient operation, the need for m
 expenses on audit and insurance.
 
 ### What is a tokenization platform?
+
 *A tokenization platform is a set of components that allows keeping records and performing operations with a particular 
 asset through the use of a digital token as well as provides for the reliable storage, processing, and management of 
 assets*. The components of a tokenization platform are as follows:
@@ -1084,14 +1118,15 @@ tokens) way.
 *An administrator* takes decisions on updating and configuring the platform as well as on setting business rules. 
 
 > **Basic principles of tokenization**
->> * Direct asset management by an asset owner 
->> * Reliable and automated audit of the entire transaction history 
->> * Distribution of responsibilities for the platform process management according to roles 
->> * Increasing fault tolerance of tools for storing, transferring, and exchanging assets 
->> * Openness of specification of an accounting system and digital wallets 
->> * Separating asset storage processes from asset management processes
+>> * *Direct asset management by an asset owner* 
+>> * *Reliable and automated audit of the entire transaction history* 
+>> * *Distribution of responsibilities for the platform process management according to roles* 
+>> * *Increasing fault tolerance of tools for storing, transferring, and exchanging assets* 
+>> * *Openness of specification of an accounting system and digital wallets* 
+>> * *Separating asset storage processes from asset management processes*
 
 ### Operating principles of tokenization platforms
+
 Having acquainted with the tasks of the tokenization platform and the roles on it, we can now list the main processes:
 * Governance (system management)—performed by parties who are assigned by the creator/owner of the system 
 * Asset storing—performed by a custodian 
@@ -1120,14 +1155,16 @@ Notably, both types of accounting systems, permissionless and permissioned, solv
 transparent audit and secure transactions. However, they are drastically different regarding their application areas.
 
 ### Opportunities that tokenization can bring
+
 Technical features of the new infrastructure provide it with a number of advanced features.
 
-> * Creating global decentralized data registries 
-> * Creating closely integrated systems with high modularity and distribution of operational responsibility 
-> * Real-time and simple audit of an accounting system 
-> * Moving and trading assets on the Internet that has no borders (the opportunity to create the Financial Internet)
+> * *Creating global decentralized data registries* 
+> * *Creating closely integrated systems with high modularity and distribution of operational responsibility* 
+> * *Real-time and simple audit of an accounting system* 
+> * *Moving and trading assets on the Internet that has no borders (the opportunity to create the Financial Internet)*
 
 ### Transparency of accounting system processes 
+
 A tokenization platform makes it possible to have most business processes transparent. As practice shows, it is more 
 effective to prevent dishonest behavior at root rather than deal with its consequences. A tokenization platform can 
 operate under strict rules, the purpose of which is to prevent opportunities for malicious acts. In such an accounting 
@@ -1138,6 +1175,7 @@ the reliability of data because validators' database copies are all synchronized
 automatic backups are permanently created. 
 
 ### How does tokenization lead to increasing the cost of assets?
+
 Tokenization can increase the credibility of an accounting system data through the digital signature and by means of 
 validators who reach consensus between each other. This indirectly affects the value of tokenized assets compared to 
 those that are accounted for in a traditional way.
@@ -1168,6 +1206,7 @@ properties of pills have not changed. This is based on the fact that confidence 
 in all operations with the asset, so its *provenance* is established with reliable authentication of data sources.
 
 ### Conditions for effective application of tokenization platforms
+
 To make the application of a tokenization platform more effective, there is a set of necessary conditions that have to 
 be fulfilled:
 
@@ -1181,6 +1220,7 @@ work properly and in full measure. In fact, they match those required for the bl
 mentioned them in section 5.3.
 
 ### Risks
+
 As we have already mentioned, tokenization assumes that digitized property rights registries are the primary sources of 
 information about the asset owners. This means that from a legal perspective, transferring a token within the system is 
 equal to changing the legitimate owner of an asset.
@@ -1192,6 +1232,7 @@ advantages but does not guarantee the safeness of the provision. Another risk is
 lost or stolen, leading to a permanent loss of asset ownership. This risk is hard to estimate and protect against.
 
 ### Difference between tokenization and digitization
+
 A straightforward digitization of ledgers leaves open the question of security. *Tokenization transforms asset 
 management: an order execution model is replaced with a model of direct asset management using cryptographic 
 mechanisms*. The main difference is the elimination of a role (e.g., administrator or a module that operate with 
@@ -1205,6 +1246,7 @@ allows verifying its authenticity. This registry contains only objects without c
 information resource that contains data about existing and past ownership rights to certain assets.
 
 ### Why use blockchain technology?
+
 The key question is, why is blockchain better than the traditional approach to building and managing a database? There 
 are several reasons to use blockchain for tokenization and for the ledger protection. In section 5.1, we described some 
 of the fundamental properties that blockchain may provide for depending on the environment. Here, we would like to focus 
@@ -1225,6 +1267,7 @@ If you try to achieve all these properties using the possibilities of a traditio
 reinventing—you would eventually come up with the blockchain solution.
 
 ### Summary
+
 In general, tokenization is a new trend in improving the *accounting systems* and the IT infrastructure.
 
 Advantages of tokenization platforms become primarily evident when working with digital assets: transparency of 

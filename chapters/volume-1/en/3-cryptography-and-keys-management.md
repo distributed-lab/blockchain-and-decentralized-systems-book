@@ -1,5 +1,8 @@
 # 3 Cryptography and keys management
+
+
 ## 3.1 Introduction to cryptography
+
 In this subsection, without going into a deep dive, we are going to get acquainted with cryptography as a science, its 
 tasks, and basic mechanisms. We will consider the specific cryptographic mechanisms and functions applied in the Bitcoin 
 protocol. Also, we will pay attention to the working features of a digital signature and the digital keys used for 
@@ -13,6 +16,7 @@ You will have an opportunity to learn the basic principles of information securi
 cryptographic algorithms related to the Bitcoin protocol.
 
 ### Principles of cryptographic information security
+
 The development of cryptography began in ancient times. Its history dates back more than four thousand years. Initially, 
 cryptography solved only one problem—ensuring confidentiality when transferring and storing data. To solve this problem 
 then, such mechanisms as text shuffling, mixing of text symbols, use of alternative alphabets, etc. were used.
@@ -25,10 +29,10 @@ Modern cryptography includes symmetric and asymmetric encryption schemes, digita
 schemes, key management methods, zero-knowledge proof schemes, post-quantum cryptography, etc.
 
 > **Basic security services**
->> * Ensuring data ***confidentiality***
->> * Ensuring data ***integrity***
->> * Ensuring data ***accessibility***
->> * Ensuring data ***authenticity***
+>> * *Ensuring data* ***confidentiality***
+>> * *Ensuring data* ***integrity***
+>> * *Ensuring data* ***accessibility***
+>> * *Ensuring data* ***authenticity***
 
 *Confidentiality* implies that unauthorized persons cannot access the semantic content of a document that is stored or 
 transmitted. Most often this service is provided via encryption (symmetric or asymmetric).
@@ -46,6 +50,7 @@ below.
 > (redundancy, usage of uninterruptible power supply systems, and so on).*
 
 ### Concept of key
+
 A modern cryptographic key is a *digital sequence of a particular length created according to certain rules using random 
 number generators and computed by a special algorithm*. A cryptographic key is the core part of cryptographic operations. 
 Security of most cryptographic schemes is generally dependent on the security of keys.
@@ -68,6 +73,7 @@ requires enormous computational power. This process would take a very long time 
 current algorithms and hardware).
 
 ### Generation and processing of secret keys
+
 In practice, it is very important that the schemes of key and digital signature generation work correctly and the 
 security mechanisms be reliable. In cryptocurrencies, the *ownership of coins is proved by the knowledge of the private 
 key which is required to calculate a valid digital signature*. For the key owner, it is important that no one else is 
@@ -108,6 +114,7 @@ the form of plaintext but rather stored on a separate medium which is encrypted,
 If keys are suspected of being compromised, they should be discarded and substituted.
 
 ### Concepts of one-way function and NP-complete problem
+
 Before getting acquainted with hash functions, let's consider what a one-way function is and what features it has. 
 A one-way function is a mathematical function for which:
 
@@ -138,6 +145,7 @@ cities increases. If there are 5 cities in the terms of the problem, we will get
 cities, we will have to look over 181,400 routes.
 
 ### Hash functions
+
 *A hash function is a function that converts a set of input data of arbitrary length into an output bit string of fixed 
 length that is executed using a certain algorithm.*
 
@@ -170,9 +178,9 @@ to get the same result (Fig. 3.4).
 Now, let's consider what a hash function must feature so that its use would be sufficiently secure.
 
 > **Requirements for a hash function**
->> * Resistance to collisions
->> * Resistance to finding its first preimage
->> * Resistance to finding its second preimage
+>> * *Resistance to collisions*
+>> * *Resistance to finding its first preimage*
+>> * *Resistance to finding its second preimage*
 
 *Resistance to collisions* means that there is no algorithm that could find collisions in a comparatively short time. A 
 collision is a situation when there are several input values that match the same value at the output of a hash function 
@@ -208,6 +216,7 @@ where
 ![Figure 3.7 -  Operation scheme of SHA-1](/resources/img/volume-1/3.1-introduction-to-cryptography/3.7-sha1.png)
 
 ### Application of hash functions
+
 Hashing is very useful for obtaining a unique identifier for a dataset. In Bitcoin, a hash function is required to 
 achieve *timestamping* and link blocks as well as to provide a particular data identifier (to prove the presence of 
 particular data) while not disclosing the exact data. Consequently, hash functions have become widespread. Let's take a 
@@ -226,6 +235,7 @@ message and the signature. In this way, the recipient can verify both the integr
 of the digital signature.
 
 ### Merkle trees
+
 Merkle trees are a data structure linking separate pieces of data with a single root value. It allows proving that a 
 specific data block matches a particular root value. This concept was published for the first time in 1979 by Ralph C. 
 Merkle [32]. One of the first implementations of Merkle trees was used in the BitTorrent protocol.
@@ -243,12 +253,12 @@ value obtained through concatenation and hashing of either two child nodes or Me
 node, the one at the top of the Merkle tree.
 
 > **Features of Merkle trees**
->> * Modifying at least one data bit in one of the blocks causes a Merkle root value to change completely
->> * In the event of corruption of one of the blocks, it is possible to determine fast and with high accuracy which of 
->> * the blocks has been modified
->> * It is possible to quickly prove whether or not a specific block is a part of the Merkle tree structure
+>> * *Modifying at least one data bit in one of the blocks causes a Merkle root value to change completely*
+>> * *In the event of corruption of one of the blocks, it is possible to determine fast and with high accuracy which of the blocks has been modified*
+>> * *It is possible to quickly prove whether or not a specific block is a part of the Merkle tree structure*
 
 ### Symmetric encryption
+
 In simple terms, *document encryption is the modification of document text in such a way that only he who has the 
 corresponding key is able to restore the original text*. Let's take a look at how encryption works.
 
@@ -296,6 +306,7 @@ would be 45. And if we assume that the number of users increased tenfold (100 us
 would be 4950 (which is a hundred times more).
 
 ### Asymmetric cryptography
+
 Asymmetric cryptography was proposed in the 1970s, and it was a revolution in cryptography. Asymmetric cryptography uses 
 the so-called key pair instead of a single key as in the symmetric cryptography. The key pair generally consists of a 
 *private key* and a *public key*. The private key must be kept secret, while the public key can be transferred to the 
@@ -320,6 +331,7 @@ function. It accepts the encrypted message and the recipient's private key and r
 ![Figure 3.12 -  Asymmetric encryption scheme](/resources/img/volume-1/3.1-introduction-to-cryptography/3.12-assymetric-encryption.png)
 
 ### Digital signature
+
 Another application for asymmetric cryptography is a digital signature.
 
 How does it work? A person who wants to sign a message, first of all, generates a key pair. The private key which will 
@@ -343,6 +355,7 @@ violated, or if an incorrect (corrupted or substituted) public key has been used
 ![Figure 3.13 -  How digital signature works](/resources/img/volume-1/3.1-introduction-to-cryptography/3.13-digital-signature.png)
 
 ### Adversary model and threat model
+
 One of the prerequisites for building a reliable information system is the development of a security policy. For this, 
 descriptions of the information security threat model and the model of an information security violator are often used.
 
@@ -436,10 +449,12 @@ Despite all the above-listed, it is assumed that an attacker **cannot**:
 * Detect the second (or third) device storing one of the private keys from a particular MultiSig address (see 4.5)
 
 ## 3.2 Cryptography in Bitcoin
+
 This subsection explores how the use of cryptographic properties of an elliptical curve helps to set up interaction in 
 trustless systems.
 
 ## Features of elliptic curves
+
 Elliptical cryptography is the fastest and the most effective method for constructing asymmetric cryptographic 
 transformations in 2018 [34]. In particular, Bitcoin uses ECDSA—a standardized digital signature algorithm.
 
@@ -474,6 +489,7 @@ A<sub>3</sub>=A<sub>1</sub>+A<sub>2</sub>, which is the inverse (by the Ox axis)
 ![Figure 3.17 -  Doubling of an elliptic curve point](/resources/img/volume-1/3.2-cryptography-in-bitcoin/3.17-doubling.png)
 
 ### Creation of addresses in Bitcoin
+
 An understanding of the main principles of hash functions and features of generating keys for ECDSA is enough to delve 
 into the address generation in Bitcoin. In the simplest case, an address is obtained from a public key as a result of 
 applying hashing algorithms (Fig. 3.18). These are called Secure Hash Algorithm 2 (SHA-2) and RACE Integrity Primitives 
@@ -499,6 +515,7 @@ were applied to minimize the risk of an attack on hash functions. As hash functi
 independent, it is extremely unlikely that both algorithms have a backdoor.
 
 ### Confidentiality in Bitcoin
+
 The Bitcoin protocol processes data of transactions and blocks, receiving and transmitting them through the global 
 network. While transmitted, the data is not actually encrypted but instead remains in plaintext. There is limited value 
 in trying to protect this data from modification in transit by unauthorized persons because it has either been hashed or 
@@ -510,6 +527,7 @@ increase the level of privacy of the network node itself. It is important when a
 (for more detail, see 7.1).
 
 ### Basic vectors of attack on keys in Bitcoin 
+
 There are several ways in which an attacker can compromise keys that are used to store bitcoins:
 
 * Hacking of mathematics (elliptic curve, key generation algorithm, hashing algorithm, or digital signature algorithm)
@@ -574,6 +592,7 @@ can track which software and which IP addresses were used to send transactions t
 digital signature is not associated with a particular person.
 
 ## 3.3 Keys storage and processing
+
 Despite the existence of regulations and practices of using digital signatures and digital identity in some countries, 
 it is safe to say that the use of these mechanisms in people's lives has been and still remains particularly modest. 
 However, with the advent of Bitcoin, it became clear that digitalization of property rights for all assets is an 
@@ -589,6 +608,7 @@ work, how they can be categorized according to the key processing approach, and 
 each approach.
 
 ### Main functions of a digital wallet
+
 Speaking about wallets, people usually intend something that is meant to store money. This is why some users are often 
 disoriented; some mistakenly believe that digital wallets are used to store coins. Strictly speaking, this is not 
 correct. Digital coins are an abstraction and, in fact, they neither exist nor are stored anywhere. Hence the question 
@@ -598,11 +618,11 @@ Wallets are used to store keys for those coins associated with a user's balance.
 wallet are the storage and the management of keys*. Achieving these functions is only possible if a digital wallet is 
 designed correctly. 
 
-> *Digital wallet modules*
->> * Module for key generation and storage
->> * Module for synchronizing the current state
->> * Module for processing existing transactions
->> * Module for the creation of transactions and their signatures
+> **Digital wallet modules**
+>> * *Module for key generation and storage*
+>> * *Module for synchronizing the current state*
+>> * *Module for processing existing transactions*
+>> * *Module for the creation of transactions and their signatures*
 
 Digital wallets can have advanced functionality, which can vary widely from one application to another. However, each 
 digital wallet provides mechanisms for authenticating transactions and restoring access to the wallet as well as 
@@ -610,10 +630,10 @@ functionalities to send and accept payments and display balances and transaction
 
 ### Basic approaches to wallet synchronization
 
-> * Keys are stored and processed on a remote server
-> * Keys are stored on a remote server but processed by a user
-> * Keys are stored and processed in the user's application
-> * Combination of previous approaches with the application of multisignature
+> * *Keys are stored and processed on a remote server*
+> * *Keys are stored on a remote server but processed by a user*
+> * *Keys are stored and processed in the user's application*
+> * *Combination of previous approaches with the application of multisignature*
 
 When it comes to storing private keys, it is usually understood that a user must meet certain challenges: how to protect 
 keys from loss or theft, and also how to backup and export them in order to use on other devices. Currently, there is no 
@@ -624,6 +644,7 @@ Each approach has its advantages and disadvantages, and which you choose depends
 approaches essentially differ in where the keys are stored and where they are processed.
 
 ### Processing and storing keys on a server
+
 The case when keys are stored and processed on a dedicated server is one of the simplest; the service that provides the 
 wallet fully controls the keys. Accordingly, users of the wallet do not have any access to the keys, meaning that they 
 do not own the actual cryptocurrency—yet such services are quite popular. They provide each user with a personal account 
@@ -666,6 +687,7 @@ possibly, even on the hard disk. The security requirements for such servers are 
 server as much as possible from the possibility of external access, hacking, and so on.
 
 ### Keys are on the server, but only the client has access
+
 Another approach is that keys are stored on the server, but the keys management is carried out on the client 
 application. In this case, a user has a higher level of control over his coins compared to the previous approach 
 (Fig. 3.20). The service, although it stores the private keys of its clients, does not have direct access to them.
@@ -691,6 +713,7 @@ services, and use them with malicious intent. Some centralized online wallets us
 storing keys.
 
 ### Keys are on the user's device
+
 In the next approach, storing and managing private keys is carried out on a user's device. In this case, you do not need 
 ny back-end or API. Users fully control their coins and, accordingly, are more independent of the external services. For 
 example, even without network access, a user can access their wallet and create a transaction that will be sent to the 
@@ -720,6 +743,7 @@ device. The actual data about transactions is received through trusted nodes of 
 development team.
 
 ### Key storage using multisignature
+
 The last approach to consider is a mixed model of key storage that uses multisignature. This is not a separate approach 
 but rather a combination of several previous methods and is used to increase the level of security. When using 
 multisignature for sending coins (Fig.  3.22), several signatures with different private keys are required; each of the 
@@ -743,6 +767,7 @@ writing in 2018, these solutions are not perfect since they are difficult to use
 implementations will become better and alternative applications on their basis will be developed.
 
 ### Cold, warm, and hot wallets
+
 Above we have considered the basic options of allocating responsibility for storing and processing keys of a digital 
 wallet. Now, let's see what are the options for the responsible party to organize the processes of storing private keys 
 and signing the transactions. There are three main approaches (Fig. 3.23):

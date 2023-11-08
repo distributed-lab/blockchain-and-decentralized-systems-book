@@ -1,4 +1,5 @@
-# Used sources and links
+# USED SOURCES AND LINKS
+
 1. Online Browsing Platform. https://www.iso.org/obp/ui/#iso:std:iso-iec:2382:ed-1:v1:en. 
 2. Usenet: A Bulletin Board for Unix Users. In BYTE. 8(10) January 1983. 219–236. 
 3. A. Bhushan. A File Transfer Protocol. (April 1971). https://www.rfc-editor.org/rfc/pdfrfc/rfc114.txt.pdf. 

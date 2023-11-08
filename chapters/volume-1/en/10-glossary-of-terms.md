@@ -1,4 +1,4 @@
-# Glossary of terms
+# GLOSSARY OF TERMS
 
 51% attack—an attack in which a user (or a group of users), who owns the majority of the processing power starts 
 censoring transactions and performing a double-spending attack.

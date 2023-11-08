@@ -1,6 +1,8 @@
 # 2 History and operational principles of Bitcoin
 
+
 ## 2.1 What is Bitcoin?
+
 Essentially, Bitcoin is a protocol that implements an independent currency and payment system. Other digital money or 
 payment systems (e.g., WebMoney and PayPal) operate with existing (*fiat*) currencies controlled by government entities 
 (e.g., dollar, euro, pound). Bitcoin is both a separate currency and a payment system that manages its own currency. 
@@ -40,6 +42,7 @@ Bitcoin: there is no, say, Bitcoin LLC which can freeze accounts or individually
 transactions are not censored. This property is very important, and we will later discuss how it is achieved.
 
 ### History of Bitcoin creation
+
 We do not know who invented Bitcoin, though it is known that it was someone with the pseudonym Satoshi Nakamoto. Perhaps 
 this is an individual, but there are suggestions that it could be a group of people. Satoshi registered the bitcoin.org 
 domain in 2008, released the first article, and published the initial version of the source code of the protocol. Until 
@@ -59,11 +62,11 @@ money. It is fair to assume that not many would have recognized an embryonic for
 currency from the above-mentioned projects.
 
 > **Background to the invention of Bitcoin**
->> * David Chaum—DigiCash [18] (1989)
->> * Adam Back—HashCash (1997)
->> * Nick Szabo—BitGold [19] (1998)
->> * Wei Dai—B-Money (1998)
->> * Hal Finney—RPoW as e-money [20] (2004)
+>> * *David Chaum—DigiCash* [18] *(1989)*
+>> * *Adam Back—HashCash (1997)*
+>> * *Nick Szabo—BitGold* [19] *(1998)*
+>> * *Wei Dai—B-Money (1998)*
+>> * *Hal Finney—RPoW as e-money* [20] *(2004)*
 
 Bitcoin is the first successful implementation of a decentralized accounting system. There were other attempts before 
 it: for example, the company DigiCash, founded by David Chaum in 1989, was the first to offer digital payments with a 
@@ -72,13 +75,13 @@ The project was supported by several innovative banks in the US and one in Finla
 convince more banks and merchants to accept anonymous currency, the project was canceled.
 
 > **Key dates**
->> * Bitcoin whitepaper release—October 31, 2008
->> * Genesis block creation—January 3, 2009
->> * First bitcoin exchange—February 2010
->> * P2SH adoption—January 5, 2012
->> * Bitcoin Cash fork—August 1, 2017
->> * Segregated Witness adoption—August 24, 2017
->> * Lightning Network launch—March 15, 2018
+>> * *Bitcoin whitepaper release—October 31, 2008*
+>> * *Genesis block creation—January 3, 2009*
+>> * *First bitcoin exchange—February 2010*
+>> * *P2SH adoption—January 5, 2012*
+>> * *Bitcoin Cash fork—August 1, 2017*
+>> * *Segregated Witness adoption—August 24, 2017*
+>> * *Lightning Network launch—March 15, 2018*
 
 One of the first steps in the development of Bitcoin was the publication of the Bitcoin White Paper on October 31, 2008. 
 On January 3, 2009, the first source code was published and the first block (the genesis block) was created—the 
@@ -92,25 +95,26 @@ Bitcoin (for further details, see section 4.6). And on March 15, 2018, the revol
 payment system on top of Bitcoin, Lightning Network, was launched.
 
 > **Statistics of the Bitcoin network in 2018**
->> * Estimated 10 million unique users
->> * On average, 300,000 payments in bitcoins per day
->> * Daily trading volume equivalent to $15 billion
+>> * *Estimated 10 million unique users*
+>> * *On average, 300,000 payments in bitcoins per day*
+>> * *Daily trading volume equivalent to $15 billion*
 
 In 2018, Bitcoin is used by millions of people worldwide and hundreds of companies accept bitcoins as a payment method. 
 Many projects are being developed on the basis of Bitcoin, and some countries (most notably Japan) recognize and 
 acknowledge bitcoin as a legal means of payment.
 
 ### Issues that Bitcoin can solve
+
 The first reason Bitcoin became popular is that it implements a decentralized financial system independent of 
 governments and banks. It is not subject to inflation in a traditional sense of this term (there is no entity or a 
 particular person who can print more Bitcoins on their own). It does not allow freezing, reverting, or canceling 
 transactions, and it relies only on mathematics and not on the whims of people. In addition, bitcoin payments are more 
 private compared to digital currencies that existed before.
 
-> * Financial instrument that operates without restrictions
-> * No complex registration processes
-> * Can be used anonymously
-> * Resistant to censorship
+> * *Financial instrument that operates without restrictions*
+> * *No complex registration processes*
+> * *Can be used anonymously*
+> * *Resistant to censorship*
 
 These properties attract a different group of users. For example, businesses can be sure that when a buyer doesn't like 
 the purchased goods, she cannot just automatically demand a refund. Another issue which became very painful for PayPal 
@@ -133,22 +137,23 @@ return it at the client's request; a little later the bank may refuse its obliga
 that for the client proving this refusal is wrong and returning the money is a very complex task.
 
 > **Issues of existing payment systems**
->> * Users do not control their funds
->> * Fund transfers may take days or weeks to settle
->> * Payments can be canceled or voided
+>> * *Users do not control their funds*
+>> * *Fund transfers may take days or weeks to settle*
+>> * *Payments can be canceled or voided*
 
 It turned out to be very difficult to implement a system in which people could independently manage their own money. 
 However, over time, the demand for this has been increasing, and in 2009, a real solution was presented in the form of 
 Bitcoin. It did not take long for this to capture the attention of the public.
 
 ### Main principles of Bitcoin operation
+
 A concise formulation of the basic principle on which Bitcoin functions would sound something like this: *each user runs 
 the same version of the software which has the same state, and, as a result, they maintain a decentralized system*.
 
-> * Copy of the database is stored by all users
-> * Users process transactions themselves
-> * All users follow the same rules
-> * Users only trust what they can verify themselves
+> * *Copy of the database is stored by all users*
+> * *Users process transactions themselves*
+> * *All users follow the same rules*
+> * *Users only trust what they can verify themselves*
 
 Connection and disconnection of participants occur independently and do not affect the work of other network members. 
 Everyone keeps and updates the database and the corresponding software independently. All the rules of work are stored 
@@ -163,16 +168,17 @@ transactions agreed on by the majority of users. As soon as the transaction ente
 confirmed.
 
 ### Issuance in Bitcoin
+
 *Issuance* (in the context of money) *is the process of putting cash or non-cash money into circulation*. Issuance in 
 Bitcoin is different from that in traditional financial systems. Instead, it occurs through the creation of coins by an 
 algorithm. The basic principle is that the entire process is completely decentralized and is based on mathematical 
 algorithms which are publicly published and cannot be manipulated. This is how absolute transparency in the distribution 
 of coins is achieved.
 
-> * The process of issuance is decentralized
-> * Issuance rules are controlled mathematically
-> * Issuance is performed by the users themselves
-> * New coins are distributed among active participants
+> * *The process of issuance is decentralized*
+> * *Issuance rules are controlled mathematically*
+> * *Issuance is performed by the users themselves*
+> * *New coins are distributed among active participants*
 
 According to the protocol rules, any user can perform issuance, while all the network members verify the compliance with 
 these rules. In short, new bitcoins are distributed among the users who are actively involved in maintaining the 
@@ -180,9 +186,9 @@ accounting system. They are called validators. This means that there can be a lo
 of them can receive new coins.
 
 > **Rules for the issuance of bitcoins**
->> * New coins appear on average every 10 minutes
->> * Every 4 years the number of new coins is reduced by half
->> * Absolute total number of bitcoins which will ever be issued is 20,999,999.9769
+>> * *New coins appear on average every 10 minutes*
+>> * *Every 4 years the number of new coins is reduced by half*
+>> * *Absolute total number of bitcoins which will ever be issued is 20,999,999.9769*
 
 The issuance of coins is determined by the rules that are established in the software of the network *node* (a computer 
 that runs Bitcoin software). Satoshi established that new bitcoins appear on the average every 10 minutes. At first, it 
@@ -206,16 +212,17 @@ mined coins exceeded 17 million BTC.
 ![Figure 2.4 - Graph of the change in the amount of issued bitcoins over time](/resources/img/volume-1/2.1-what-is-bitcoin/2.4-graph-of-issuance.png)
 
 > **Properties of bitcoin coins**
->> * Scarcity (limited amount)
->> * Discreteness (coins are divisible)
->> * Censorship resistance (independence from any company or state)
->> * Immutability (inability to forge coins)
+>> * *Scarcity (limited amount)*
+>> * *Discreteness (coins are divisible)*
+>> * *Censorship resistance (independence from any company or state)*
+>> * *Immutability (inability to forge coins)*
 
 Bitcoin allows paying any amount to anyone for anything to any place in the world. In addition, bitcoin as a currency 
 has a number of properties that make it suitable as a means of payment, which at some point can also become a store of 
 wealth.
 
 ### How is the bitcoin price established?
+
 We believe that the primary reason why many people’s interest is actively drawn by cryptocurrencies is the increase in 
 their price. One of the first questions is how the price is actually determined. The price of bitcoin is determined 
 strictly by the law of supply and demand between buyers and sellers. There is no entity that decides that today the 
@@ -284,6 +291,7 @@ gets irrelevant for people who use them.
 > or some additional functionality.*
 
 ### Concept of trust in Bitcoin
+
 The key feature of Bitcoin is the trustless interaction of all its users. Every single person can verify that the final 
 state of the system is reached with no violations of the protocol rules. Trust between participants of the system is 
 excluded.
@@ -312,11 +320,11 @@ correctness of any transaction or block—he does not have to trust the data pro
 Along with its advantages, Bitcoin also has limitations as compared to the digital currencies which are managed in a 
 centralized way.
 
-> * Limited capacity
-> * High system maintenance costs
-> * Long transaction confirmation
-> * Public availability of transaction data
-> * High fees and their volatility
+> * *Limited capacity*
+> * *High system maintenance costs*
+> * *Long transaction confirmation*
+> * *Public availability of transaction data*
+> * *High fees and their volatility*
 
 In the following subsections, we will consider each limitation in detail and describe the respective solutions (see 
 4.6–4.8).
@@ -327,19 +335,20 @@ In the following subsections, we will consider each limitation in detail and des
 > Ethereum and Ripple).*
 
 ### What does decentralization in Bitcoin mean?
+
 So, you now have a basic grasp of decentralization as a notion and also some of the key aspects of Bitcoin operation. 
 This is why, before proceeding to further sections, we would like to repeat some of the specific peculiarities of 
 Bitcoin, namely what does it mean when one says that Bitcoin is decentralized. Essentially, this means that there is no 
 particular party responsible for a particular process in the system.
 
 > **There is no designated party/organization that is**
->> * Responsible for Bitcoin operation
->> * In charge of system management
->> * Collecting fees
->> * Processing transactions
->> * Exclusively storing the history of transactions
->> * Making refunds
->> * Enforcing court orders
+>> * *Responsible for Bitcoin operation*
+>> * *In charge of system management*
+>> * *Collecting fees*
+>> * *Processing transactions*
+>> * *Exclusively storing the history of transactions*
+>> * *Making refunds*
+>> * *Enforcing court orders*
 
 **Frequently asked questions**
 
@@ -371,13 +380,14 @@ difficulty: in general, it doesn’t. What one can only say surely is that the p
 mining) will be unlikely to be higher than its market price.
 
 ## 2.2 How to use Bitcoin?
+
 In this subsection, we explore the core properties of digital wallets for utilizing Bitcoin: their types, special 
 aspects of their use, features of their implementations, and the impact of these features on the level of security.
 
 > **Most common operations with wallets**
->> * Balance check
->> * User keys generating and storing
->> * Payment sending and receiving
+>> * *Balance check*
+>> * *User keys generating and storing*
+>> * *Payment sending and receiving*
 
 To illustrate the idea of a digital wallet, see Figure 2.7; here you can see a screenshot of a mobile application 
 running an implementation of a bitcoin wallet. On the main screen (the one on the left in the figure), you can see the 
@@ -387,6 +397,7 @@ switch to another view (the one on the right) to accept and send payments.
 ![Figure 2.7 - User interface of a particular bitcoin wallet](/resources/img/volume-1/2.2-how-to-use-bitcoin/2.7-user-interface.png)
 
 ### Addresses in Bitcoin
+
 A bitcoin address is an identifier of the recipient. In order to send a payment, the sender needs to know the 
 destination address. Therefore, it is important for the recipient to provide his address in advance. A regular bitcoin 
 address looks like this:
@@ -412,6 +423,7 @@ practically unlimited. You can send coins to any of them, whereas in the banking
 organization and must have an owner.
 
 ### Transactions in Bitcoin
+
 *A transaction is a set of digital data that initiates the update of the database (the sending of bitcoins from one 
 address to another)*. It is a simplified definition; the transaction structure is actually more complex (for more 
 details, see 2.3). Note that transaction is created and sent directly by the user's digital wallet, so it is the process 
@@ -421,11 +433,12 @@ a particular mobile wallet [25] which allow providing your requisites and send a
 ![Figure 2.8 - Sending and receiving funds via mobile wallet](/resources/img/volume-1/2.2-how-to-use-bitcoin/2.8-spend-and-receive.png)
 
 > **Basic types of bitcoin wallets**
->> * Software wallet
->> * Hardware wallet
->> * Centralized storage
+>> * *Software wallet*
+>> * *Hardware wallet*
+>> * *Centralized storage*
 
 ### Software wallets
+
 Some people use software wallets to store their bitcoins. Software wallets can be launched on a smartphone, laptop, or a 
 desktop computer. *A software wallet is an application that processes keys and transactions*. This application connects 
 to the Bitcoin network through *trusted nodes or centralized services* or is a network node itself.
@@ -442,6 +455,7 @@ needs to trust the services which distribute this software (application stores, 
 system, and the developers of the user's device: backdoors can potentially be implemented at any of these stages.
 
 ### Hardware wallets
+
 We pay special attention to hardware wallets. Such a wallet is a computer that can only perform a narrow set of 
 operations and with limited control interfaces. This is done to ultimately complicate possible virus injections into a 
 device as well as eliminate device hacking in general. Typically, the basic functions are as follows: private key 
@@ -475,6 +489,7 @@ words, the probability of this coincidence is almost zero.
 > password or the current time, then the probability of guessing and matching keys increases.*
 
 ### Centralized storages
+
 There are online services that implement the basic functions of digital wallets but store private keys on their own 
 servers. Their users have a false feeling that they have a bitcoin wallet, whereas it is actually a particular remote 
 service that performs operations and stores coins instead of the user himself. Obviously, by using such services, you do 
@@ -490,6 +505,7 @@ Most exchanges store coins of users on the principle of centralized storage, hen
 from their users.
 
 ### Wallet backup
+
 Since the private key is the only way to prove ownership of coins and spend them, *the owner of coins is determined by 
 the knowledge of the private key*. All bitcoin wallets implement the following functions: generation of addresses for 
 coin receiving, displaying of balances and transaction history, payment sending, creation of a *wallet backup*, and 
@@ -572,31 +588,33 @@ Yes, it is possible. However, in this case, the requirements for the mobile devi
 recovery on another device, power consumption, and device memory.
 
 ## 2.3 Concept of transaction in Bitcoin
+
 In this subsection, we describe some general ideas around the concept of transaction in Bitcoin: what a bitcoin 
 transaction is, how it is verified in a shared database, how a user proves her ownership of the coins that she tries to 
 spend, how fees are determined and set in Bitcoin, and what conflicting transactions are.
 
 ### What is a bitcoin transaction?
+
 As we noted earlier, *a transaction is a set of digital data which is used to update a particular database (which 
 reflects coin transferring from one address to another)*. A transaction is especially what determines the transfer 
 amount and the recipient’s address as well as the terms required to access the transferred coins.
 
 > **Lifecycle of a transaction**
->> * Creation
->> * Propagation
->> * Verification
->> * Inclusion in a block (validation)
->> * Rejection (in case the block is invalidated later)
+>> * *Creation*
+>> * *Propagation*
+>> * *Verification*
+>> * *Inclusion in a block (validation)*
+>> * *Rejection (in case the block is invalidated later)*
 
 Let's explore what data makes up a bitcoin transaction. Any transaction in Bitcoin contains the origin of coins that are 
 being spent (i.e., references to transactions where these coins were received), proof of coin ownership, addresses of 
 new owners (more broadly, conditions under which the coins can be spent), and the transfer amounts.
 
 > **Data in the body of a transaction**
->> * Origin of coins that are being spent
->> * Proof of coin ownership
->> * Address for the transfer (spending conditions)
->> * Transfer amounts
+>> * *Origin of coins that are being spent*
+>> * *Proof of coin ownership*
+>> * *Address for the transfer (spending conditions)*
+>> * *Transfer amounts*
 
 > **_NOTE:_** *In the simplest case, an address is associated with one pair of keys (the public and private key), which 
 > is used to generate and verify the digital signature. A private key is used to authenticate transactions and is only 
@@ -633,6 +651,7 @@ each other with hash values (for further details, refer to 3.1) and in this way 
 approach ensures the immutability of a database of all transactions.
 
 ### Verification of transactions
+
 Paper checks (Fig. 2.13) are still common in the US and many other countries: people receive their salary in checks, pay 
 for rent, cash them out in banks, etc. On the check, you can see its serial number (12982 as in Figure 2.13), which is 
 unique for each check (you cannot cash out two checks of the same serial number).
@@ -655,9 +674,9 @@ Figure 2.14.
 ![Figure 2.14 - How Bitcoin transactions work](/resources/img/volume-1/2.3-concept-of-transaction-in-bitcoin/2.14-how-transactions-work.png)
 
 > **Basic stages of transaction verification**
->> * Verification of the condition that the spent coins exist in the accounting system
->> * Verification of the condition that the coins are spent for the first time and not more than once
->> * Verification of the proof of coin ownership submitted by the sender (initiator of a transaction)
+>> * *Verification of the condition that the spent coins exist in the accounting system*
+>> * *Verification of the condition that the coins are spent for the first time and not more than once*
+>> * *Verification of the proof of coin ownership submitted by the sender (initiator of a transaction)*
 
 Here is how it works: in order to spend the coins, a user must indicate where he received them from and prove the 
 ownership. If the origin of coins does not raise additional issues—there is no other transaction that spends the same 
@@ -672,6 +691,7 @@ Bitcoin (Fig. 2.15).
 ![Figure 2.15 - How nodes interact in the Bitcoin network](/resources/img/volume-1/2.3-concept-of-transaction-in-bitcoin/2.15-nodes-iteraction.png)
 
 ### Concept of fee in Bitcoin
+
 The transaction model in Bitcoin assumes transaction fees which are paid in bitcoins. Fees are included by the sender 
 during the creation of a transaction and should, by default, be above a certain threshold. Although in practice, users 
 can set a zero fee and such a transaction will be considered correct. The fee is technically an additional reward for 
@@ -702,6 +722,7 @@ details about fee volatility and the solution to this problem, see 4.7).
 > *Transactions with a low price of data recording may remain unconfirmed for a longer time (or even forever)*
 
 ### Concept of conflicting transactions
+
 A well-formed chain of blocks contains transactions that do not conflict with each other. You may wonder what a 
 conflicting transaction is. If John transferred 5 coins to Mary in one transaction and later sent the same 5 coins in 
 another transaction to Paul, then it is obvious that both transactions cannot be recorded in one version of history. 
@@ -755,6 +776,7 @@ privacy in Bitcoin: cryptocurrencies such as Monero and ZCash place greater emph
 (see 7.2).
 
 ## 2.4 High-level architecture of Bitcoin
+
 In this subsection, we will cover how Bitcoin works, review the features of a shared database and collective processing 
 of transactions, describe the basic principle of reaching consensus in Bitcoin, and also compare Bitcoin with 
 traditional payment systems.
@@ -815,6 +837,7 @@ of the system).
 all nodes of a system to a uniform operation model.
 
 ### Roles of participants in the Bitcoin accounting system
+
 Bitcoin allows every participant to manage the above-mentioned processes and hence perform any of the below roles.
 
 > *User*
@@ -827,6 +850,7 @@ Another feature of Bitcoin is that every system participant decides himself (in 
 will perform.
 
 ### Conditions in which the consensus in Bitcoin is reached
+
 As described above, before making any changes to the general state of the chain of blocks, participants must come to an 
 agreement. If participants have checked the block for correctness, and everyone agrees to add it to their chain, then 
 the block is added, and all the subsequent blocks will be created on its basis. Coming to an agreement is very often 
@@ -856,6 +880,7 @@ malicious person. Moreover, it may even happen that for a hundred or a thousand 
 person.
 
 ### How is the consensus in Bitcoin reached?
+
 Having determined the complexity of the task—reaching overall consensus in the environment which is trustless and where 
 any participant may potentially be malicious—we can cover the key question, how.
 
@@ -958,6 +983,7 @@ majority. If the validator worked honestly, verified transactions according to t
 block of the general chain earlier than the rest, then other honest participants will accept this block.
 
 ### Creation of blocks with transactions
+
 A correctly created block consists of transactions that have not been confirmed in the previous blocks and do not 
 conflict with each other. Each block necessarily contains the hash value of the previous block. In this way, each new 
 block confirms that not only are the transactions in it correct and confirmed but also those in the previous blocks to 
@@ -965,8 +991,8 @@ which it refers. Another feature is that the protocol regulates the difficulty o
 creation in such a way that a new block is added to the shared database on average every 10 minutes.
 
 > **A correctly created block**
->> * Contains correct transactions which have not been confirmed so far and do not conflict with each other
->> * Contains a hash value of the previous block
+>> * *Contains correct transactions which have not been confirmed so far and do not conflict with each other*
+>> * *Contains a hash value of the previous block*
 
 How is the new block created? A particular user's computer stores the entire chain of blocks that has been verified 
 using the Bitcoin software and is considered correct. Coin transfers between users in the system occur constantly and 
@@ -983,8 +1009,8 @@ rules? How can honest users achieve consensus in such a situation? This obvious 
 we will explain how, next.
 
 > **Consensus regarding the new transactions**
->> * Any user can choose among the unconfirmed transactions the correct ones and add them to a block
->> * The proposed block will be accepted or rejected by the decision of the majority of validators
+>> * *Any user can choose among the unconfirmed transactions the correct ones and add them to a block*
+>> * *The proposed block will be accepted or rejected by the decision of the majority of validators*
 
 ### Requirements for the new blocks
 The solution to the potential problem of fake blocks is as follows: the block is considered correct if a given amount of 
@@ -1001,10 +1027,10 @@ for a particular participant becoming the first to complete is the percentage of
 resources which a particular participant has.
 
 > **Block creation flow**
->> * A solution to a resource-intensive task must be provided
->> * The one who has solved the task first notifies everyone else by sending them his proposed block
->> * The probability of being first depends on both the share of participant's resources as compared to all resources 
->> * involved in the system and delays in data transmission channels
+>> * *A solution to a resource-intensive task must be provided*
+>> * *The one who has solved the task first notifies everyone else by sending them his proposed block*
+>> * *The probability of being first depends on both the share of participant's resources as compared to all resources* 
+>> * *Involved in the system and delays in data transmission channels*
 
 That's how we come to the very essence of mining in Bitcoin, which in practice means the solving of a resource-intensive 
 task. This task is the same difficulty for all nodes in the network. Mining is essential for Bitcoin: honest users are 
@@ -1012,6 +1038,7 @@ involved in mining to maintain the reliability of the transaction confirmation p
 power create blocks more often. Let’s see how it works in the example below.
 
 ### Principles of competition between users
+
 Suppose that there are 10 validators operating in the system. Each of them has one mining computer, which calculates the 
 same number of hash values per one unit of time (Fig. 2.22). Let's take this computing power as 1, and thus the total 
 power of the system will be 10. Each validator, accordingly, controls 1/10 of this capacity and has a 0.1 probability of 
@@ -1033,6 +1060,7 @@ which are correct in terms of the protocol, yet honest users will still disagree
 right? After all, members of the network are anonymous and you cannot say in advance who is honest and who is malicious.
 
 ### Propagation of blocks
+
 Before we answer how disagreements regarding a specific block are solved, let's observe how blocks are propagated over 
 the network. So, one of the network nodes finds a solution to the problem and creates a block. Then, a block is 
 broadcast to the network. That is, the node which has created a block transmits it to all the nodes to which it is 
@@ -1044,6 +1072,7 @@ saves a copy of the block and propagates it further over the network. What happe
 node disagrees that a block received is valid?
 
 ### Resolving disagreements
+
 To answer the above question, we will consider how disagreements regarding confirmation of transactions are solved. If 
 one participant does not agree with the block of the other, it is possible, according to the protocol rules, to create 
 an alternative block at the same height of the chain of blocks.
@@ -1090,6 +1119,7 @@ rules. This means that anyone trying to disrupt the chain is prevented from viol
 having a lot of computational power.
 
 ### Concept of a full transaction confirmation
+
 Probably the most important matter in Bitcoin is the process of confirming transactions. *A transaction can be 
 considered fully confirmed if it is included in the longest chain and there are 5 blocks after the block in which this 
 transaction is contained*. In other words, you need to wait for at least 6 confirmations, not 1. Since a new block is 
@@ -1112,6 +1142,7 @@ attack is less than 0.1% (on the assumption that honest nodes operate on the net
 delivery).
 
 ### Reward for block creation 
+
 Another important issue is the motivation for users to solve resource-intensive tasks, create new blocks, and confirm 
 transactions, thus leaving no chances for intruders.
 
@@ -1152,6 +1183,7 @@ there are striking examples of 51% attacks in several digital currencies such as
 more than 18 million US dollars in total.
 
 ### Influence of network disruptions on Bitcoin
+
 Let's start by imagining the following fictional situation. One day, the sea beavers got drunk with pirate rum and cut 
 all the fiber-optic cables, which passed on the bottom of the oceans and connected all continents into a global network. 
 Data transmission channels between continents refused to operate, but nodes on each continent continued working 

@@ -1,30 +1,13 @@
 # About Distributed Lab
 
-Distributed Lab’s mission is to make Financial Internet a reality. Society enjoys benefits that the modern Internet 
-provides—from family entertainment and social networking to internet banking and global supply chains. However, 
-processes in payments, trading, and management of ownership rights are still heavily paper-based, and as a consequence, 
-they are slow, inefficient, cumbersome, and insecure. We envision the world where all assets are managed using 
-accessible, secure, and open-source software with a uniform protocol.
+The mission of Distributed Lab is to build the Financial Internet. We are used to the simplicity of exchanging data over the Internet when it doesn’t matter what is transmitted over the network – videos, text, or images. In the case of financial or accounting data, the technologies are far behind: we still have to deal with a huge amount of paper documents and use inconvenient bank sites and applications that are not compatible with each other, if they exist at all. Hence, the existing processes related to payments, trading, and management of ownership rights, are presently slow, cumbersome, inefficient and, what is more important, insecure. When we speak about the Financial Internet, we mean a world where all assets are managed through affordable, secure, and open-source software using a uniform protocol.
 
-Distributed Lab (https://distributedlab.com/) was founded in 2014 as an R&D company. We have been working on a wide 
-variety of projects from wallets to digital banks, all operating in the field of accounting and management of assets.
+[Distributed Lab](https://distributedlab.com/) was founded in 2014 as an R&D (research and development) company. We have been working on a wide variety of projects ranging from “simple” digital wallets to full-scale digital banks. All of these projects were in one way or another related to accounting and asset management.
 
-We saw the potential that blockchain technology could bring to business operations and became extremely excited about 
-it. At one point, we realized that we ought to spread the news about the bright future for one simple reason: it is 
-impossible to create advanced systems without a proper education focused on the deep understanding of principles. 
-That’s how we came up with a cornerstone of building the Financial Internet—through conducting research and knowledge 
-sharing.
+At one point, we realized that we need to spread the news about technological prospects for one simple reason: it is impossible to create advanced systems without a proper education focused on deep understanding of the principles of blockchain and decentralized technologies. That’s how we came up with a cornerstone of building the Financial Internet in 2015 — through conducting research and knowledge sharing.
 
-Our mission may seem too ambitious, but we believe that it can be achieved step by step. The closest goal is 
-tokenization (digitization) of asset management systems. To make this happen, we have created a framework called TokenD 
-(https://tokend.io/). It appeared as a consequence of years of work on different projects that, as we then realized, 
-were essentially asking for the same thing. This “thing” is an accounting system which is secure, with wallets for 
-users, a ledger for assets, an internal payment system, an exchange, modules that manage identities and roles, the 
-lifecycle of assets, and gateways for external integrations. Having combined everything mentioned, TokenD allows one 
-to launch a digital asset ecosystem within days for a fraction of the cost of the in-house development.
+One of the primary goals and concepts of a truly digital economy is digitization (tokenization) of asset management systems. To make this happen we created [a framework called TokenD](https://tokend.io/), and because of this as of 2018 we became a product-focused company. We see our product as a white label processing center for digital assets or, you could say, “Wordpress” for digitization. Our framework allows building proprietary systems faster, cheaper and safer than ever before. It is a result of several consequential years of work on different projects that, as we came to realize, were essentially asking for the same universal solution. This solution is an accounting system that is secure, with wallets for users, a ledger for assets, an internal payment system, an exchange, modules that manage identities, roles, the lifecycle of assets, and gateways for external integrations. Having combined everything mentioned, TokenD allows one to create and launch a digital asset ecosystem within days for a fraction of the cost of in-house development, saving precious resources in the process.
 
-During the crazy hype period of 2017, we stayed calm and didn’t participate in any ICO while being focused on a search 
-of real business value that blockchain can deliver. We commit ourselves to the long journey of transforming the world 
-with technology.
+During the crazy crypto hype period of 2017, we stayed calm and did not participate in any ICO or other fundraising while being focused on the search for real business value that blockchain and related technologies can deliver. We decided to commit ourselves to the long journey of transforming the world with technology.
 
 [DECENTRALIZATION IN INFORMATION SYSTEMS](https://github.com/distributed-lab/blockchain-and-decentralized-systems-book/blob/main/chapters/volume-1/en/1-decentralization-in-information-systems.md)

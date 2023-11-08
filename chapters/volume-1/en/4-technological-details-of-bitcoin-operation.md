@@ -1,5 +1,8 @@
 # 4 Technological details of Bitcoin operation
+
+
 ## 4.1 How do Bitcoin transactions work?
+
 A lack of registration requirements for users in Bitcoin has drastically affected the format of transactions—storage and 
 processing is much different compared to transactions in existing financial systems. Hence, the unique format of bitcoin 
 transactions is designed to maintain the anonymity of users and validators. The major differences are how transactions 
@@ -7,6 +10,7 @@ are linked to each other (so-called triple-entry accounting), the concept of an 
 rest of the money after a transaction) is formed. We will study how and why these mechanisms work.
 
 ### Transaction structure
+
 Schematically (Fig. 4.1), a transaction consists of three components: the header, input coins, and output coins.
 
 Going a bit further, every transaction can have several inputs and outputs in its structure; their number is not 
@@ -30,9 +34,9 @@ presents it in the JSON format.
 
 ![Figure 4.2 - Example of a transaction in the Bitcoin network](/resources/img/volume-1/4.1-how-do-bitcoin-transactions-work/4.2-example-of-tx.png)
 
-> * ScriptPubKey—a field containing terms of coin spending
-> * ScriptSig—a field containing proof of coin ownership
-> * Bitcoin Script—a special language used to fill in these fields
+> * *ScriptPubKey—a field containing terms of coin spending*
+> * *ScriptSig—a field containing proof of coin ownership*
+> * *Bitcoin Script—a special language used to fill in these fields*
 
 There is a header that contains two fields: the version of a transaction and the parameter locktime (it will be observed 
 in more detail further). The transaction also contains two inputs and two outputs. The inputs field has the biggest 
@@ -85,6 +89,7 @@ witness data (see 4.6).
 ![Figure 4.5 - Simplified structure of a Bitcoin transaction after the Segregated Witness update](/resources/img/volume-1/4.1-how-do-bitcoin-transactions-work/4.5-simplified-tx-with-seg-witness.png)
 
 ### Unspent outputs
+
 *An unspent transaction output (UTXO) is an output that contains unspent coins; these coins can only be spent when 
 specified in the input of a new transaction.*
 
@@ -141,6 +146,7 @@ The remaining difference does not belong to anyone until the transaction is conf
 the block containing this transaction is created, its creator will be able to collect the fee as a reward.
 
 ### Example of coin transfers 
+
 Suppose Bob has one unspent output (UTXO) on 100 bitcoins: he received them as a birthday present. He decides to use 
 these coins to pay Alice and Charlie, which is schematically pictured in Figure 4.6.
 
@@ -167,6 +173,7 @@ in our case, is paid by the car workshop owner (let's say he was indebted to the
 ![Figure 4.8 - Creation of a transaction with the inputs from different senders which pay to one recipient](/resources/img/volume-1/4.1-how-do-bitcoin-transactions-work/4.8-creation-tx-from-diff-senders.png)
 
 ### Creation of transactions in bitcoin wallets
+
 How does a bitcoin wallet work and what processes occur during its operation? The typical processes are the generation 
 of a key pair and bitcoin addresses, and also the generation, the storage, the signing, and the sending of transactions. 
 To get up-to-date information about the new blocks (i. e., new confirmed transactions), all nodes of the Bitcoin network 
@@ -174,10 +181,10 @@ synchronize. A wallet displays current balance and makes up a list of accomplish
 correctly implemented wallet software follows the particular rules while generating transactions.
 
 > **Common rules for transaction creation**
->> * Create a new address for each incoming payment and change
->> * Optimally select UTXOs for the target payment amount
->> * Sort transaction inputs and outputs by a common for all rule
->> * Include a minimum fee regardless of the size of a transaction
+>> * *Create a new address for each incoming payment and change*
+>> * *Optimally select UTXOs for the target payment amount*
+>> * *Sort transaction inputs and outputs by a common for all rule*
+>> * *Include a minimum fee regardless of the size of a transaction*
 
 Imagine a traveler who has a bitcoin wallet with a certain set of UTXOs: 1 BTC, 3.5 BTC, 0.3 BTC, and 0.4 BTC. The 
 traveler is ready to conquer new horizons, and all that's left for him is to pay for the transport (Fig. 4.9). It is 
@@ -236,6 +243,7 @@ establishing the ownership of specific coins by specific users: most bitcoin wal
 for each new incoming payment as well as for receiving a change.
 
 ### Locktime mechanism
+
 There is a way to restrict the confirmation of a bitcoin transaction by time, such that even if it is published on the 
 network, validators cannot confirm it until a certain moment. For this purpose, the special parameter *locktime* is 
 used. It is a 4-byte value which is included in the header of each transaction in Bitcoin. This value allows specifying 
@@ -265,6 +273,7 @@ includes a greater fee).
 > address) from the paper piece to his own device and propagate the transaction on the network to confirm it.* 
 
 ### Off-chain protocols
+
 It is possible to create a chain of coin spending which can be confirmed afterward. On the right in Figure 4.13, you can 
 see a chain of blocks which are already created and contain on-chain transactions. On the left, you can see the 
 off-chain transactions—the ones which already refer to the UTXO of a specific on-chain transaction but have not yet been 
@@ -281,6 +290,7 @@ not confirmed, it does not block the coins, which means that you can build a cha
 This is the main principle of the off-chain protocol.
 
 ### Signature hash types
+
 The process of signing a bitcoin transaction can be divided into two steps. The first one is the creation of a message 
 which is to be digitally signed. The second one is the computation of the digital signature.
 
@@ -311,6 +321,7 @@ transaction (either using *SIGHASH_ALL* type or *SIGHASH_SINGLE*), but before th
 which will pay 0.5 BTC to her address as a change.
 
 ### Writing arbitrary data to the chain of blocks
+
 As the popularity of the Bitcoin accounting system grew, its users started to wonder how to use it to record not only 
 coin accounting data but also completely arbitrary data.
 
@@ -369,6 +380,7 @@ because one such transaction is generally “bound” to several bitcoin transac
 Counterparty protocols, the transaction price will be higher than in Bitcoin.
 
 ### Summary
+
 One wallet can generate and process an unlimited number of addresses. This raises user privacy through an increased 
 complication of tracing the transaction history by outsiders. Noteworthy, coins received on one wallet or address are 
 not combined together and are not recorded in one balance in the database—they are used separately. You can have 
@@ -452,6 +464,7 @@ the total size of separate transactions even if they use the same set of UTXOs. 
 be included only once. Due to this optimization of data, you save money on fees.
 
 ## 4.2 Mining in Bitcoin
+
 One of the tasks that the creator of Bitcoin faced was to guarantee the synchronization of data between an unknown set 
 of participants who cannot be identified and do not trust each other. The existing approaches to consensus building were 
 not suitable since an attacker could create fictional participants and act on their behalf, imposing his version of the 
@@ -469,6 +482,7 @@ In this subsection, we will consider the mining mechanism in Bitcoin and its rol
 well as its features and tasks it solves.
 
 ### Goals of mining in Bitcoin 
+
 *Mining in Bitcoin is the process of creating a block and confirming transactions, which is rewarded with coins* [43]. 
 Mining in Bitcoin has several goals. One of them is to motivate users to run the network nodes and support correct 
 operation of the payment network. Another its goal is that it protects the transaction history in Bitcoin from changes. 
@@ -477,12 +491,13 @@ protocol rules. Mining has also solved the problem of a fair initial distributio
 available for anyone with a computer.
 
 > **Problems that mining solves**
->> * Decision-making in a decentralized environment
->> * Choosing the main version of transaction history
->> * Transaction confirmation
->> * Issuance
+>> * *Decision-making in a decentralized environment*
+>> * *Choosing the main version of transaction history*
+>> * *Transaction confirmation*
+>> * *Issuance*
 
 ### Classification of network nodes
+
 The Bitcoin network can be represented schematically as in Figure 4.15. Independent people and organizations maintain 
 full nodes, but only a few of them are engaged in mining (known as node-validators).
 
@@ -502,6 +517,7 @@ nodes of the Bitcoin network can be divided into at least three groups (Fig. 4.1
 *A lightweight node is a node that synchronizes and only checks its own transactions.*
 
 ### Concept of a resource-intensive problem
+
 The essence of a *resource-intensive problem* in Bitcoin lies in finding the preimage of a hash value obtained through 
 the SHA-2 algorithm on the length of 256 bits. The solution to the problem can only be found with brute-force search, 
 thus finding it requires a lot of resources. In other words, it requires sorting input values until you find the one 
@@ -532,13 +548,13 @@ solution to it is the proof that the author of the block has done certain work w
 difficulty parameter.
 
 > **Requirements for a PoW problem**
->> * There is an ability to set yourself a task independently 
->> * Solution verification must be performed very fast 
->> * Anyone within the network can verify the solution 
->> * Predicting the setting of a future problem is impossible 
->> * Task for the block is different for all participants 
->> * Difficulty of the task is the same for all participants 
->> * Prime cost of solving the task is proportional to the difficulty parameter
+>> * *There is an ability to set yourself a task independently* 
+>> * *Solution verification must be performed very fast* 
+>> * *Anyone within the network can verify the solution* 
+>> * *Predicting the setting of a future problem is impossible*
+>> * *Task for the block is different for all participants*
+>> * *Difficulty of the task is the same for all participants* 
+>> * *Prime cost of solving the task is proportional to the difficulty parameter*
 
 Based on the above information, it's fair to say that anyone can create the new block first; it is just that each one 
 has a different probability, which primarily depends on the amount of computational power, which a participant owns.
@@ -558,6 +574,7 @@ entrepreneurs to purchase and launch more mining power. They are competing for a
 complexity of a resource-intensive problem increases [46].
 
 ### Frequency limitation of block creation
+
 The protocol specifies a rule that an average time for block creation is 10 minutes. To ensure this, the difficulty 
 parameter for block creation is recalculated every 2016 blocks (given that the creation of each block takes around 10 
 minutes, the creation of 2016 blocks will take approximately 2 weeks). Therefore, if the network capacity, for some 
@@ -567,6 +584,7 @@ close to the specified 10 minutes, which is fundamentally important for Bitcoin 
 appearing.
 
 ### Orphan blocks
+
 A great number of validators working on the creation of a new block are dispersed across the globe [47]. And since the 
 distribution of messages through data transmission channels is not instantaneous, there could be certain synchronization 
 delays between the network nodes. Roughly speaking, nodes located on the same continent synchronize the states of their 
@@ -603,6 +621,7 @@ blocks appearing.
 > problem).*
 
 ### Double-spending attack
+
 We can indicate one attack against which any financial accounting system must be protected. It is the so-called 
 *double-spending attack*. Its essence is that a bad actor spends the same money twice (or more). In the context of 
 cryptocurrency, this means that a user sends the same coins to two (or more) different recipients so that they all 
@@ -653,16 +672,17 @@ Taras had performed a 51% attack as a result of which he had double-spend his co
 ![Figure 4.22 - Result of performed double-spending attack](/resources/img/volume-1/4.2-mining-in-bitcoin/4.22-result-of-attack.png)
 
 ### Appearance of a specific equipment
+
 Over time, it has become apparent that specialized equipment helps you mine most effectively [49]. In times of rapid 
 growth in the coin price, mining turned out to be a profitable activity. People have been trying to acquire as much 
 computing resources as possible in order to compete with each other for a reward while solving a particular PoW problem. 
 It became clear that solving it on a central processor of a conventional computer is non-effective. So over the recent 
 history of Bitcoin, we have seen other methods adopted.
 
-> * CPU—central processing unit (2009–2010)
-> * GPU—graphics processing unit (2010–2012)
-> * FPGA—field-programmable gate array (2011–2013)
-> * ASIC—application-specific integrated circuit (2012–present)
+> * *CPU—central processing unit (2009–2010)*
+> * *GPU—graphics processing unit (2010–2012)*
+> * *FPGA—field-programmable gate array (2011–2013)*
+> * *ASIC—application-specific integrated circuit (2012–present)*
 
 Later the idea came up to perform calculations on the GPU, as it would allow performing a search in several streams in 
 parallel and with lower energy costs. To achieve this, the source code of a resource-intensive task was adapted for the 
@@ -684,6 +704,7 @@ constantly improve their mining equipment to solve their tasks more energy-effic
 ![Figure 4.25 - How difficulty parameter in Bitcoin changes over time](/resources/img/volume-1/4.2-mining-in-bitcoin/4.25-difficulty.png)
 
 ### Mining pools and their tasks
+
 Let's suppose there are 1 million identical computers on the network. In this case, the probability of one computer to 
 find the block would be 0.000001. Hence, the owner of the equipment with such power would create one block on average 
 per 10 million minutes, which is slightly more than 19 years.
@@ -733,6 +754,7 @@ size. Such a pool could be owned by both a group of validators or even one perso
 ![Figure 4.28 - Distribution of mining capacities in the Bitcoin network as of December, 2018](/resources/img/volume-1/4.2-mining-in-bitcoin/4.28-distributing-th-mining-cap-december.png)
 
 ### Mining statistics and estimation of energy consumption
+
 In April 2018, electricity consumed by mining was estimated at 110 GW per day, while the total daily profit of the 
 entrepreneurs involved in mining was $32 million [52; 53]. The percentage of fees from the total profit is 21%, that is, 
 about one fifth. The fee for an average transaction during the previous year ranged from $0.1 to $40. The size of all 
@@ -834,6 +856,7 @@ entrepreneur who configures his equipment and maintains its correct operation. A
 resource-intensive problem, that is, the equipment itself.
 
 ## 4.3 How is blockchain implemented in Bitcoin?
+
 The approach to storing data in an interconnected way is hardly new.  Even so, Bitcoin has revolutionized how to 
 organize a database of an entire accounting system. In fact, it didn't happen as a result of some scientific 
 developments but rather as an attempt to respond to the security threats that can be caused by the participants of the 
@@ -878,6 +901,7 @@ complexity parameter changes over time. However, to carry out a more profound ve
 a node would need to download the body of the block with transactions, in other words, the entire block.
 
 ### Block structure
+
 Let's take a detailed look at the structure of blocks that are transmitted over the Bitcoin network. The corresponding 
 data order is shown in Table 4.1.
 
@@ -942,6 +966,7 @@ the zero block in the chain, and all the subsequent blocks, which are downloaded
 network node.
 
 ### Examples of blocks in Bitcoin
+
 Let's examine some particular Bitcoin blocks. Table 4.3 shows the Bitcoin genesis block [56]. Its peculiarity is that 
 the value of the previous block is zero, meaning that all 256 bits are zero.
 
@@ -1006,6 +1031,7 @@ a coinbase transaction must receive to allow its creator to spend the earned coi
 parameter at 100.
 
 ### Concept of mempool
+
 *Mempool* is another key concept in the Bitcoin protocol. This is a separate module contained in each full network node 
 that stores and processes unconfirmed transactions. Each Bitcoin network node has its own mempool, where it stores the 
 queue of transactions that it has checked and considers valid. Broadly speaking, mempool is an organized queue 
@@ -1019,12 +1045,12 @@ an approximate size of about 40 MB. This is quite a number if you consider that 
 transactions (for further detail, see section 4.7) is created every 10 minutes.
 
 ### Lifecycle of a block
-> * Formation
-> * Creation
-> * Propagation
-> * Verification
-> * Connection
-> * Disconnection
+> * *Formation*
+> * *Creation*
+> * *Propagation*
+> * *Verification*
+> * *Connection*
+> * *Disconnection*
 
 *Block formation*. A validator selects transactions from the mempool, calculates the MerkleRoot value, sets the hash 
 value of the previous block, specifies the timestamp, transaction counter, and the block size, then units this data and 
@@ -1083,6 +1109,7 @@ are liable to perform this process strictly to have the final state of their loc
 that of other honest nodes.
 
 ### Initial node synchronization
+
 We have already considered the concept of a block in Bitcoin, and how a number of such data structures eventually form 
 into an entire chain, which is synchronized among independent participants. Now, it would be interesting to define how 
 actually this database “looks” (how it is stored and organized) on the local users’ computers.
@@ -1114,6 +1141,7 @@ In the Bitcoin protocol, there is a special checkpoints mechanism, which acts as
 situations.
 
 ### Checkpoints
+
 *Checkpoints is a mechanism that represents matching of a block height to a correct hash value of the block at the same 
 height*. This matching is used to verify the correctness of blocks which a certain node receives from other nodes during 
 the initial synchronization with the network.
@@ -1136,16 +1164,17 @@ published—the probability of rewritten history and a subsequent creation of an
 blocks. Since the chain of blocks permanently grows, each new version of the software contains more checkpoints.
 
 ### Features of the shared Bitcoin database
+
 Given the fact that Bitcoin implements a decentralized accounting system supported by tens of thousands of independent 
 nodes, its database has acquired truly valuable properties.
 
-> * Ability to verify the integrity of transactions
-> * Synchronization and backup in real time
-> * Ability to perform an audit in real time
-> * Cooperative decision-making regarding the transactions
-> * Transparency of accounting
-> * Trustlessness (minimum level of required trust)
-> * Immutability
+> * *Ability to verify the integrity of transactions*
+> * *Synchronization and backup in real time*
+> * *Ability to perform an audit in real time*
+> * *Cooperative decision-making regarding the transactions*
+> * *Transparency of accounting*
+> * *Trustlessness (minimum level of required trust)*
+> * *Immutability*
 
 A database that features *integrity* and *availability* of data is extremely valuable for applications that need to work 
 with guaranteed data (timestamping, adding hash values of important documents, and so on). This is driven by the 
@@ -1159,11 +1188,11 @@ writing arbitrary data to the Bitcoin blockchain in section 4.1.
 
 Correct usage of blockchain technology may help to achieve the following properties.
 
-> * Decentralization of the decision-making process 
-> * Higher fault tolerance of a system
-> * Complicating fraud
-> * Higher level of user trust towards the system
-> * Immutability and irreversibility of transactions
+> * *Decentralization of the decision-making process* 
+> * *Higher fault tolerance of a system*
+> * *Complicating fraud*
+> * *Higher level of user trust towards the system*
+> * *Immutability and irreversibility of transactions*
 
 These factors are the main reason why people started talking about blockchain separated from cryptocurrency. There were 
 a lot of speculations about whether blockchain technology is applicable beyond Bitcoin. We will cover this topic 
@@ -1255,11 +1284,11 @@ If you recall the basic functions of a digital wallet and the way it is organize
 wallet needs to communicate with the network in order to synchronize current data. 
 
 > **Basic functionality of a digital wallet**
->> * Backing up private keys
->> * Receiving payments
->> * Displaying the balance 
->> * Displaying the transaction history
->> * Sending payments
+>> * *Backing up private keys*
+>> * *Receiving payments*
+>> * *Displaying the balance* 
+>> * *Displaying the transaction history*
+>> * *Sending payments*
 
 The first functionality (backing up private keys) does not require a connection with the Bitcoin network—all that you 
 need is a module responsible for storing and managing keys. Conversely, to perform all other functions, your wallet 
@@ -1297,6 +1326,7 @@ Let’s now consider the several and fundamentally different approaches to the i
 digital wallet with a distributed network.
 
 ### Approaches to synchronizing wallets with the payment network
+
 There are three main approaches to synchronizing a wallet with the payment network (Fig. 4.37). The first assumes that 
 the wallet itself is a full node of the Bitcoin network. The second uses a so-called trusted node (usually, this is 
 someone else's network node that a user of the wallet trusts). The third approach, Simplified Payment Verification 
@@ -1307,6 +1337,7 @@ network node. Let’s take a more detailed look at each of these approaches.
 ![Figure 4.37 - Approaches to wallet synchronization with the network](/resources/img/volume-1/4.4-approaches-to-network-synchronization-and-spv-nodes/4.37-approaches-for-wallet-synch.png)
 
 ### Working with full nodes
+
 In this case, everything is simple enough. A wallet implements the mechanisms for storing and processing the entire 
 chain of blocks including the module for the network interaction (p2p messaging) with other nodes of the Bitcoin 
 network. A user can always check the new incoming transaction to verify whether it complies with the rules of the 
@@ -1372,6 +1403,7 @@ of operation of a mobile application. Examples of such mobile wallets for Bitcoi
 Distributed Lab has developed and supports the Bitxfy wallet, where this approach is also applied.
 
 ### Working with SPV nodes
+
 The third most commonly used approach to synchronization between a digital wallet and the Bitcoin network is using a 
 lightweight network node. This is referred to as an SPV node. This approach may not require a user to run her full nodes 
 or to select the trusted nodes. It assumes that a digital wallet directly communicates with other nodes of the network: 
@@ -1409,6 +1441,7 @@ This approach to synchronization with the system is quite widespread and is used
 including, Bitcoin Wallet, Electrum, and Bread Wallet.
 
 ### Operation of SPV nodes
+
 As has been described, the main idea behind this approach is that a client using the SPV mechanism for initial 
 synchronization only needs to download the headers of all blocks of the mainchain; given that the block header size is 
 80 bytes, it is easy to calculate the required data size for the download. This can be achieved simply by multiplying 
@@ -1452,6 +1485,7 @@ from the full nodes to allow it to verify that a transaction is actually in the 
 that each block belongs to the mainchain, it can then verify the belonging of particular transactions to this block.
 
 ### Conclusion
+
 Having considered three main approaches to wallet synchronization with the network, you can evaluate the advantages and 
 disadvantages of each of them respectively. The most reliable approach for Bitcoin operation, yet the most 
 resource-demanding, is a full node. Alternatively, interaction with the network through a trusted node does not require 
@@ -1530,6 +1564,7 @@ can apply software that will index all the blocks and cache certain data. An exa
 (supported by BitPay). BitCore has an open source code and is simple to use with a full network node.
 
 ## 4.5 Multisignature mechanism and Bitcoin Script
+
 The possibility of setting conditions for performing transactions (*programmable money*) had for a long time troubled 
 the minds of researchers, the first of them being Nick Szabo with the idea of smart contracts [62]. However, almost 
 right after the appearance of Bitcoin, it became clear that the risk of keys being compromised was much higher than it 
@@ -1555,6 +1590,7 @@ Moreover, it is possible to set conditions under which several signatures must b
 one address.
 
 ### Bitcoin multisignature transaction 
+
 Recall that a regular bitcoin address is generated through double hashing of a public key (see 3.2). In general, a 
 multisignature address is generated in the same way, but, in this case, there are several public keys that are 
 concatenated before being hashed. In Figure 4.41, you can see schematically a transaction that spends coins from a 
@@ -1584,6 +1620,7 @@ combination can be worthwhile. It should be noted that the scheme using the most
 and public keys is 15-of-15. We will consider some of the most frequent options: 2-of-2, 2-of-3, and 3-of-3.
 
 ### 2-of-2 multisignature 
+
 The 2-of-2 combination is the simplest case. It implies that there is a particular multisignature address to which two 
 key pairs are attached. In fact, a hash value of a concatenation of two public keys is obtained as a corresponding 
 address. To spend the coins from this address, two signatures are necessary; these signatures will be verified with the 
@@ -1670,6 +1707,7 @@ only be used in extreme cases when the service gets hacked, damaged, suspended, 
 transaction with his keys and sends the coins to their destination.
 
 ### Advantages of wallet services using 2-of-3 multisignature
+
 This is a reliable storage method because the service does not own all the necessary keys. The service stores only one 
 of the keys, which is not enough to take possession of client's coins. Therefore, neither a service nor even a potential 
 hacker has access to the coins.
@@ -1684,6 +1722,7 @@ We have described only some of the possible schemes of using multisignature addr
 Bitcoin Script is.
 
 ### Bitcoin Script
+
 Bitcoin Script is a stack-based non-Turing-complete language for describing coin spending scenarios. A language which is 
 non-Turing-complete has limited functionality and cannot perform unconditional jumps, loops, and recursions; that is the 
 script cannot be executed infinitely. This principle allows limiting malicious parties from creating complex 
@@ -1706,6 +1745,7 @@ the prefix "OP_" and the name of the operation itself. The most popular operatio
 OP_CHECKSIG, OP_CHECKMULTISIG, OP_CHECKLOCKTIMEVERIFY [64].
 
 ### Concept of P2SH addresses and their benefits
+
 BIP16 [65] has introduced a new concept in the Bitcoin protocol—the so-called pay to *script hash* (P2SH). It gives the 
 possibility to set the rules for spending coins not with a plain script—where operands and certain data that are 
 subsequently executed in the manner described above are written in succession—but with a hash value from the desired 
@@ -1772,6 +1812,7 @@ address, he will pay for confirmation of large transactions, which is a more equ
 realizing different combinations of such multisignature (2-of-2, 2-of-3 and others).
 
 ### Example of using P2SH for a MultiSig address
+
 Imagine that Alice wants to pay Bob, who only uses a MultiSig address (in fact, any two organizations could take their 
 place). To do this Bob generates several private keys locally on his computer and gets corresponding concatenated public 
 keys (Fig. 4.46). Commonly, public keys are first encrypted with base58Check, then sorted in alphabetical order, and 
@@ -1817,6 +1858,7 @@ to the network and waits for confirmation. These are the basic principles of spe
 address.
 
 ## 4.6 Features of the Segregated Witness update
+
 The Segregated Witness update was probably the most desired and at the same time difficult to achieve in the ten-year 
 history of the Bitcoin protocol. It provoked the first division of the community and showed to the whole world the 
 non-triviality of implementing *governance* in a decentralized anonymous environment, where participants are prone to 
@@ -1828,10 +1870,10 @@ Yet, fortunately or unfortunately, when designing Bitcoin Satoshi did not provid
 disputes.
 
 > **Issues of the original Bitcoin architecture**
->> * Low capacity of the system
->> * Transaction malleability (mutability of unconfirmed transactions)
->> * Combining business logic and coin ownership proofs
->> * Limitations on implementing off-chain protocols
+>> * *Low capacity of the system*
+>> * *Transaction malleability (mutability of unconfirmed transactions)*
+>> * *Combining business logic and coin ownership proofs*
+>> * *Limitations on implementing off-chain protocols*
 
 Segregated Witness has brought great changes to the protocol and significantly improved the format of transactions. In 
 this section, we will cover new formats of transactions and addresses, the possibility to separate the data with proofs 
@@ -1862,6 +1904,7 @@ compatibility with the previous versions of the protocol. The greatest value of 
 implementing a number of important off-chain solutions on top of the Bitcoin protocol (for more details, see 4.8).
 
 ### Backward compatibility and increased capacity 
+
 Since the block size is limited, the number of transactions which can be included to a block is limited as well; it is 
 what the system capacity depends on. Certainly, when an issue of increasing capacity appeared, the methods of increasing 
 the maximum block size were primarily thought about as the solution. Though, this idea was not supported by the majority 
@@ -1899,6 +1942,7 @@ On the left, you can see how the Bitcoin protocol operated before the activation
 maximum size of 1 MB and was distributed among different nodes of the network in the same form.
 
 ### Innovations of Segregated Witness
+
 The first and the most important innovation of Segregated Witness was the new transaction structure. In addition to the 
 already known fields, the new transaction now includes three more: *marker* and *flag*, which are used for versioning 
 (in this case, they are strictly specified, but this can change in further protocols), and also the field *witness*. 
@@ -1962,6 +2006,7 @@ The SegWit update solves issues related to transaction malleability, namely for 
 fields are filled by strict rules. It prescribes setting and serializing the data unambiguously, excluding duality.
 
 ### Example of a SegWit transaction
+
 In order to understand what is stored in the corresponding transaction fields, consider an example of a segwit 
 transaction confirmed on the Bitcoin network and which is presented in JSON format (Fig. 4.53).
 
@@ -2042,6 +2087,7 @@ Thus, the average effective block size can be assumed to be around 1.8 MB (do no
 with its weight). In practice, though, this value totally depends on the set of transactions in a particular block.
 
 ### SegWit adoption statistics
+
 In November 2018, the number of SegWit transactions exceeded 40% of the total number of transactions on the Bitcoin 
 network. Moreover, if you consider the total number of coins transferred on the Bitcoin network, SegWit transactions are 
 liable for 55-60%. At the same time, digital wallets (e.g., Electrum, Bitxfy) and other major services operating with 
@@ -2088,6 +2134,7 @@ of the transaction (bytes of the first input and bytes of the second input), two
 data, which are also written similarly as a sequence of bytes.
 
 ## 4.7 Fees mechanism in Bitcoin
+
 In this section, we will describe the main purpose of fees in Bitcoin, namely how they work and what they influence on. 
 We will cover reasons for the volatility of fees, delays in confirming transactions, and approaches to solving these 
 problems. In addition, we will touch on the topic of how the Segregated Witness update contributes to lowering the 
@@ -2127,6 +2174,7 @@ Bitcoin, it is referred to transaction spam protection. The presence of mandator
 for an attacker to flood the network with fake transactions for a long time.
 
 ### Volatility of the data recording price 
+
 At times, users of the Bitcoin network face the problem of unusually high fee volatility. For example, in 2017, the 
 average price of adding one byte of data to Bitcoin's database fluctuated between 1 and 500 satoshis. The queue of 
 unconfirmed transactions ranged from several KiB to tens and even hundreds MiB.
@@ -2147,6 +2195,7 @@ the service that manages bitcoins. Moreover, many software products for working 
 management from user.
 
 ### Solving the problem of fee volatility 
+
 Instead of using constant or manually updated values, Bitcoin wallets can use special mechanisms to estimate the current 
 price of data recording. These mechanisms are implemented in the software of the wallet and allow users to manage the 
 priority of data recording intelligently.
@@ -2170,6 +2219,7 @@ transactions is minimal. Nevertheless, there are exceptions, so we will consider
 case of an emergency situation.
 
 ### Increasing the fee after the transaction has been sent
+
 Bitcoin protocol is currently quite flexible regarding the fees. There are two protocol improvements that allow you to 
 increase fees even after the transaction has already been created and sent to the network: *replace-by-fee* [69] and 
 *child-pays-for-parent* [70]. Unfortunately, only a few wallets support this functionality, yet more of them appear over 
@@ -2199,6 +2249,7 @@ and CPFP options are supporting the protocol for quite a long time now, their ad
 quite slow.
 
 ### How does Segregated Witness help to lower fees?
+
 Recall that one of the protocol changes that have been introduced with the Segregated Witness update is the new 
 transaction format and its *weight (transaction weight)*. Prior to the advent of Segregated Witness, only the size of a 
 transaction was usually considered when calculating a fee, and now both the size and the weight of a transaction are 
@@ -2225,6 +2276,7 @@ flow of new transactions exceeds the capacity, then the price increases sharply.
 ![Figure 4.59 - Dependence of fees and capacity in the Bitcoin system](/resources/img/volume-1/4.7-fees-mechanism-in-bitcoin/4.59-dependence-of-fees-and-capacity.png)
 
 ### Friend miner case
+
 Imagine that you have a friend who is engaged in mining and who controls 10% of the entire processing power of the 
 Bitcoin network. This means that he creates one block on average once in 100 minutes. If your friendship is strong 
 enough, you can create a transaction with a zero fee and send it to your friend for confirmation (Fig. 4.60).
@@ -2241,6 +2293,7 @@ capacity in Bitcoin is a fortune. However, even if you do not have such a friend
 paying for a block space.
 
 ### Option of selling places in the confirmation queue
+
 Commonly, a validator operates according to a standard scheme and sorts transactions according to the price of adding 1 
 byte of data—it seems that every software for mining is organized this way. However, there possibly may be a way for 
 validators to have a better motivation: they can independently formulate a policy of monetizing their activity (i.e., 
@@ -2299,6 +2352,7 @@ scalable, secure, cheap, and that work in a truly p2p manner, preventing breach 
 principles of both mechanisms, their features in the context of Bitcoin, and see how they work.
 
 ## What is a payment channel?
+
 For the first time, the idea of payment channels was described by Satoshi Nakamoto in a personal letter to one of the 
 active developers of the protocol many years ago. At that time, Bitcoin did not yet receive enough important updates to 
 allow for the implementation of reliable payment channels. However later it became possible, and in 2013 developers 
@@ -2317,6 +2371,7 @@ Below, we will consider the principles of payment channels and the protocol whic
 concept to improve Bitcoin—namely, Lightning Network.
 
 ## Why are payment channels needed? 
+
 Main limitations in Bitcoin are long transaction confirmation time and unpredictable fees which make micropayments 
 (e.g., a fraction of a cent) impractical. What are the advantages of a payment channel compared to usual transactions? 
 In the payment channel, participants make payments between themselves without publishing transactions on the Bitcoin 
@@ -2334,6 +2389,7 @@ fraud scenario, a malicious party would not only lose the coins he tried to ille
 implementation method, also he would lose all the coins on which he opened the channel.
 
 ## Payment channel: step-by-step example
+
 In a simplified version, the operation of a payment channel is shown in Figure 4.61. Alice and Bob have Bitcoin wallets 
 with additional modules for working with the payment channel. These modules exchange data for making payments (for 
 instance, data about coins distribution, relevant data about signatures, etc.).
@@ -2369,6 +2425,7 @@ exchanging with each other the same transaction with the same input but with upd
 come, one of them publishes the last updated transaction on the Bitcoin network.
 
 ### Features of a payment channel
+
 Payment channels (as a concept) do not have any noteworthy shortcomings compared to usual transactions, but they do have 
 certain characteristic features.
 
@@ -2389,6 +2446,7 @@ advent of a certain time or before the scheduled time. In addition, the channel 
 the participants and at the request of one of them but with some specific requirements.
 
 ### Methods of payment channel implementation 
+
 As we have mentioned in the Alice and Bob example, users have a special module that allows them to interact within a 
 payment channel. Depending on the implementation, these modules can support different methods of payment channels 
 functioning. We will list some of the most popular ones.
@@ -2410,6 +2468,7 @@ chain of replaceable ones.
 We will consider in detail the Spillman-style implementation since it is the simplest and the most understandable one. 
 
 ### Spillman-style payment channels
+
 *Spillman-style payment channel* is the method of creating unidirectional payment channels, where there is a role of a 
 sender and recipient. The operational time of this channel is set arbitrarily by the sender, while the recipient can 
 close the channel ahead of the schedule. The basic steps of operation of this channel are shown in the diagram below 
@@ -2479,6 +2538,7 @@ The third transaction can be considered valid since it is signed by the client. 
 that the client will not be able to deceive and steal the money.
 
 ### Application of payment channels
+
 There are two ways of applying payment channels. The first and the basic one is to use them for regular payments between 
 pre-established parties. And the second is through the commutation of channels, the LN case.
 
@@ -2493,6 +2553,7 @@ the most crucial difficulty is the routing issue. The problem is that you need t
 the value while considering the amount of coins and possible restrictions on the transfer in each channel.
 
 ### Features of the Bitcoin network and Lightning Network operation 
+
 On the Bitcoin network, full nodes exchange data about transactions, blocks, and network addresses of each other. There 
 are also lightweight nodes that only receive the information they need without having to process and store the entire 
 history. As a result, a consensus is reached and a shared database is formed.
@@ -2527,6 +2588,7 @@ channels.
 ![Figure 4.66 - Message exchanging between Bitcoin network and Lightning Network](/resources/img/volume-1/4.8-payment-channels-and-lightning-network/4.66-message-exchanging.png)
 
 ### How does Lightning Network work?
+
 To understand the basic idea of LN, consider the following example. Suppose there is a grocery store in town that 
 enables its customers to pay in bitcoins. Moreover, this store gives an opportunity for regular customers to open 
 bidirectional payment channels with it so that both could save on fees and transaction confirmation time. Alice and Bob 
@@ -2582,7 +2644,6 @@ Ken and Den (Fig. 4.70).
 In Figure 4.71, you can see how the state of balances of each channel will change provided that the payment is made in 
 this way (if Alice splits her coins and sends them separately).
 
-[Figure 4.71] - How the state of channel balances has changed after the payment has been transferred separately
 ![Figure 4.71 - How the state of channel balances has changed after the payment has been transferred separately](/resources/img/volume-1/4.8-payment-channels-and-lightning-network/4.71-end-state.png)
 
 
@@ -2591,9 +2652,9 @@ network. This means that there are nodes with the greater and lower load as well
 In Figure 4.72, you can see the relevant state of LN in December 2018 [78]. 
 
 > **Statistics of the Lightning Network in 2018**
->> * Estimated 4,500 nodes
->> * 14,000 channels opened on average
->> * 479.70 BTC locked on the Bitcoin network (are in the circulation of LN)
+>> * *Estimated 4,500 nodes*
+>> * *14,000 channels opened on average*
+>> * *479.70 BTC locked on the Bitcoin network (are in the circulation of LN)*
 
 ![Figure 4.72 - State of Lightning Network in the end of 2018](/resources/img/volume-1/4.8-payment-channels-and-lightning-network/4.72-state-of-ln.png)
 
@@ -2606,10 +2667,10 @@ without going offline. Ordinary users will very likely open at most one or two p
 
 Based on the above-mentioned facts, let's define the basic functions of LN nodes.
 
-> * Routing
-> * Opening channels
-> * Making transfers between intermediary nodes
-> * Closing channels
+> * *Routing*
+> * *Opening channels*
+> * *Making transfers between intermediary nodes*
+> * *Closing channels*
 
 Routing is one of the most complex functions of LN nodes. Every LN node determines the optimal path of a payment, 
 considering factors such as the capacity of a specific channel, the sum on which it is opened, how these parameters 

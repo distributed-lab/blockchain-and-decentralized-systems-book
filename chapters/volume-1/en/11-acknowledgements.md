@@ -1,4 +1,4 @@
-# Acknowledgements
+# ACKNOWLEDGEMENTS
 
 We would like to express great appreciation to our reviewers: Professor Roman Oliynykov, Professor Ivan Gorbenko, 
 Professor Oleksandr Oksiiuk, and Professor Yevhen Vasiliu.

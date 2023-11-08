@@ -1,5 +1,7 @@
 # User privacy in open system
+
 ## 7.1 Privacy as a concept in the digital world
+
 At the beginning of the 21st century, making an online payment was considered risky and was usually done with great 
 caution. Using real names on online resources was, at least, strange, and the need for privacy of online activity was 
 considered as something by default.
@@ -15,6 +17,7 @@ The subject of privacy and the ways to ensure it is a quite extensive topic, so 
 definitions.
 
 ### Importance of maintaining privacy
+
 In practice, privacy in open systems is of paramount importance. Let's suppose there are five restaurants on one street. 
 They compete for the flow of customers and each one strives to earn more revenue. Information about internal pricing 
 processes and revenues remains secret from competitors. Let's imagine what would happen if someone were to make 
@@ -53,6 +56,7 @@ Therefore, one of the most important topics to consider is privacy in the digita
 technology and analytical tools, this question is becoming more and more relevant.
 
 ### Components of privacy
+
 The concept of privacy includes two main components: *untraceability* and *anonymity*. Untraceability implies the 
 inability to attribute a series of actions to a certain user on the network. Anonymity is associated with the inability 
 to reliably establish the identity of a user in the network. Figure 7.1 shows an example of how a typical person may 
@@ -86,6 +90,7 @@ also proposed and even implemented in some cryptocurrency projects. These method
 for transactions while leaving them immutable and publicly verifiable.
 
 ## 7.2 Privacy in digital currencies
+
 As mentioned in the payment channels section (4.8), the development of digital currencies has been complicated due to 
 the problems of user privacy and scalability. Moreover, any asset accounting system that uses a public database faces 
 the issue of privacy [100]. In cryptocurrencies, the principle of full transparency of transaction history is taken for 
@@ -95,11 +100,11 @@ Next, we will get acquainted with the model of privacy and how to achieve it. We
 implemented in practice and will also consider their advantages and disadvantages.
 
 > **Transaction data that should be protected first**
->> * Coin origin history 
->> * Payment amounts 
->> * User addresses (identifiers)
->> * Network addresses of user devices 
->> * Metadata (network propagation time, wallet version, etc.)
+>> * *Coin origin history* 
+>> * *Payment amounts* 
+>> * *User addresses (identifiers)*
+>> * *Network addresses of user devices* 
+>> * *Metadata (network propagation time, wallet version, etc.)*
 
 Some digital currencies use a special transaction structure and a coin registration model which allows hiding data about 
 certain transaction details (Table 7.1). To hide or mix up certain data, different currencies apply different methods. 
@@ -107,6 +112,7 @@ certain transaction details (Table 7.1). To hide or mix up certain data, differe
 ![Table 7.1 - Privacy in digital currencies](/resources/img/volume-1/7.2-privacy-in-digital-currencies/table-7.1-privacy.png)
 
 ### Blind signatures
+
 First, let’s consider one of the techniques that allows several parties to interact while staying private. It is called 
 blind signatures.
 
@@ -123,6 +129,7 @@ signature to a verifier.
 Blind signature protocols are the most applied in the fields of digital currencies and secret voting.
 
 ### Bitcoin privacy by default
+
 Bitcoin comes with the anonymity feature, which is quite easy to lose in practice [101]. The property of untraceability 
 in Bitcoin has not been fully achieved either. It is possible to analyze transactions and draw conclusions about their 
 relation to specific anonymous wallets [102]. If at least one address has been compromised in the context of anonymity, 
@@ -163,6 +170,7 @@ apply protocols such as Freenet, Tor, and I2P. This presents the following probl
 and addresses?
 
 ### CoinJoin
+
 We will start with the simplest method for tangling a transaction graph called CoinJoin. Its essence is to create a 
 shared transaction where coins are mixed so that their origin becomes ambiguous. Here, a group of users create a shared 
 transaction where several payments are made simultaneously, so each user does not have to create a separate transaction.
@@ -194,6 +202,7 @@ Methods we will further describe are all different modifications of the CoinJoin
 even higher privacy through a variety of ways.
 
 ### Chaumian CoinJoin
+
 One of the CoinJoin modifications is called Chaumian CoinJoin, also suggested by Gregory Maxwell. This method includes a 
 centralized operator and a blind signature. Here, the operator is required because it is he who mixes the inputs and 
 outputs and creates the final transaction. At the same time, he cannot steal coins or violate the privacy of mixing, all 
@@ -228,6 +237,7 @@ including fraud. To avoid unfavorable scenarios, a set of security mechanisms ha
 to create a shared transaction securely. Security mechanisms use timeouts, the tracing of unused outputs, etc.
 
 ### CoinShuffle
+
 The *CoinShuffle* technique was proposed in 2014 [107]. In this method, there is no central operator, which is an 
 advantage. Users themselves generate a shared transaction while communicating with each other. They are yet not able to 
 violate the privacy of the output addresses mixing process. Another advantage is that users do not have to use 
@@ -279,6 +289,7 @@ of users. Nowadays, the integration of this protocol into some Bitcoin wallets i
 expected.
 
 ### Disadvantages of the CoinJoin method
+
 The off-chain interaction for the generation of a transaction is very complex. It is necessary to organize the formation 
 of groups and the interaction of users with each other. However, a more significant drawback is that *CoinJoin* does not 
 completely hide the payment amounts. That’s what makes it vulnerable to the CoinJoin Sudoku analysis, which is based on 
@@ -291,6 +302,7 @@ In fact, there is another method that solves the problem of public payment amoun
 Transactions. But before we proceed to it, let’s consider its underlying concept, zero-knowledge proofs.
 
 ### Concept of zero-knowledge proof
+
 A zero-knowledge proof (ZKP) is a method by which one party can prove to the other that he knows a particular secret 
 without disclosing any data about this secret.
 
@@ -298,9 +310,9 @@ For such proof schemes, there are various mathematical approaches that must prov
 listed below.
 
 > **Properties of zero-knowledge proofs**
->> * Completeness 
->> * Soundness 
->> * Zero knowledge
+>> * *Completeness* 
+>> * *Soundness* 
+>> * *Zero knowledge*
 
 *Completeness* presumes that if a prover and verifier follow the protocol honestly, a prover can convince a verifier 
 that the statement is true.
@@ -358,15 +370,16 @@ fact Alice managed to prove Bob she knows the solution to the problem without di
 graph.
 
 ### Confidential Transactions
+
 The peculiarity of the Confidential Transactions (CTs) [94] method is that it completely hides the actual amounts in the 
 transaction inputs and outputs from the third parties. Anyone can verify that the sum of all outputs does not exceed the 
 sum of all inputs, which is enough to validate a transaction.
 
 This is made possible through the use of the above-described approach, zero-knowledge proof.
 
-> * Payment amounts are hidden from everyone except the sender and the receiver 
-> * A transaction contains data sufficient for validation 
-> * Zero-knowledge proof approach is applied
+> * *Payment amounts are hidden from everyone except the sender and the receiver* 
+> * *A transaction contains data sufficient for validation* 
+> * *Zero-knowledge proof approach is applied*
 
 *Pedersen Commitment*, which is based on transformations in a group of points on an elliptical curve, is used to prove 
 that the output sum does not exceed the input sum. This method allows dealing with uncontrolled coin issuance through 
@@ -378,6 +391,7 @@ Confidential Transactions can be integrated into the Bitcoin protocol, but this 
 Nevertheless, Confidential Transactions are already successfully applied in other working accounting systems.
 
 ### Ring Confidential Transactions
+
 The following technique is called *Ring Confidential Transactions*. In order to confuse the history of the coin origin, 
 this method uses ring signatures. Instead of referring to one output (UTXO), the sender refers to several. Next, using a 
 ring signature, she proves that she owns coins of one of several outputs but does not disclose which one in particular. 
@@ -391,16 +405,17 @@ and you don't need to interact with other users to create a transaction (Fig. 7.
 ![Figure 7.13 — Using ring signatures for Ring CTs](/resources/img/volume-1/7.2-privacy-in-digital-currencies/7.13-ring-signature.png)
 
 ### MimbleWimble
+
 MimbleWimble is a format and a protocol of transactions and blocks creation. While being based on the cryptographic 
 primitives [109], it provides for a high level of user privacy. In its current form, MimbleWimble is hardly compatible 
 with the Bitcoin protocol and can be implemented only as a sidechain.
 
 > **Main features of MimbleWimble**
->> * Providing privacy by default 
->> * Ability to scale despite the growing number of users 
->> * Reliable and well-tested cryptographic algorithms 
->> * Simple protocol architecture 
->> * Simple transaction verification and system maintenance
+>> * *Providing privacy by default* 
+>> * *Ability to scale despite the growing number of users* 
+>> * *Reliable and well-tested cryptographic algorithms* 
+>> * *Simple protocol architecture* 
+>> * *Simple transaction verification and system maintenance*
 
 Grin is the first project which implements the MimbleWimble protocol. It is used for detecting issues and 
 vulnerabilities in the protocol of a cryptocurrency even before the launch of its main network. The first test network 
@@ -415,6 +430,7 @@ By November 2018, more than 53 thousand blocks have been created. However, most 
 for the block creation. Currently, in the network, the number of transactions between users is minimal.
 
 ### Stealth Addresses
+
 This approach is a technique of stealth addresses calculation. This idea was first described by Peter Todd. The method 
 requires a sender to create a random one-time address for each coin transfer. If several transactions are performed on 
 the same stealth address, the data in the chain of blocks will, nevertheless, display that these payments were made on 
@@ -437,6 +453,7 @@ each payment to the online store.
 ![Figure 7.15 — Online store using stealth addresses for receiving payments](/resources/img/volume-1/7.2-privacy-in-digital-currencies/7.15-stealth-addresses.png)
 
 ### Concept of homomorphic encryption
+
 Also, in the context of asymmetric cryptography, you cannot go without mentioning the homomorphic encryption. A 
 homomorphic cryptosystem is a system which allows manipulating a plain text through performing operations on the 
 orresponding ciphertext. This means that you can assign the other party to process your private data without worrying 

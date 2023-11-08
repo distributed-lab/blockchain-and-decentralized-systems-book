@@ -13,6 +13,7 @@ modifications at his own discretion (in particular, with backdating). Obviously,
 in such systems.
 
 ## 1.1 What is decentralization?
+
 The process of *decentralization* is opposite to the process of centralization. It implies that the functions of a 
 particular system (storage, computation, decision-making, etc.) are maintained with the responsibility being 
 distributed between the system participants. This concept is applied not only in the scope of information technologies. 
@@ -31,6 +32,7 @@ a central party. Decentralization as a phenomenon has many advantages. In order 
 consider the basic concepts and definitions and refer to the history of decentralized systems development.
 
 ### Concept of decentralization for information systems
+
 First, we should figure out what an information system is. According to ISO/IEC 2382:2015 standard [1], an information 
 system is a system designed for collecting, organizing, storing and processing information and the relevant 
 organizational resources. In order to work, an information system requires a database as well as the technical tools 
@@ -47,6 +49,7 @@ management, participants’ communication, decision-making, storage and processi
 executed by many participants in parallel and independently of one another.
 
 ### Difference between decentralized and redundant systems
+
 Redundancy is often utilized to enhance the reliability of a particular system. It implies the addition of excessive 
 (backup) components to the system. Such an approach assumes that if one of the components fails, the system will not 
 stop working but will rather switch to a backup component. Good examples of redundancy in real life would be the 
@@ -68,6 +71,7 @@ one is that redundancy is mandatory in a decentralized system. In a redundant sy
 particular operating characteristics and is not mandatory.
 
 ## 1.2 History of decentralized systems
+
 As far back as the 1970s, during the search for a more reliable way of storing digital data, the use of decentralization 
 principles drew attention. One of the first projects was Usenet [2]. The basic operational principle of this protocol 
 was the data exchange between servers using a special algorithm that additionally ensured the synchronization of the 
@@ -96,6 +100,7 @@ content, devices, etc. Further, we will consider how such principles have been a
 different types.
 
 ### Decentralized file-sharing systems
+
 For file-sharing systems and data storage systems, the decentralized approach implies that different network nodes store 
 different file fragments (Fig. 1.1).
 
@@ -139,6 +144,7 @@ to have access to the most relevant version of the content and also ensures its 
 both by an identifier and by human-readable names, which is performed using the decentralized name system IPNS.
 
 ### Decentralized data transmission systems
+
 The more actively people have been using the global network, the more pressing the need for privacy has become. In early 
 2002, a project called Tor (The Onion Router) [6] was launched. It is a system of proxy servers that allows setting up 
 an anonymous network connection protected from having the data transmission traced. Its implementation allowed users 
@@ -152,6 +158,7 @@ seek for alternative nodes to reconnect. This method of organizing network inter
 accessible in regions where, for various reasons, centralized providers did not deploy their equipment.
 
 ### Decentralized decision-making systems
+
 Another interesting application of decentralization are the systems where decision-making is decentralized. Imagine that 
 five people put a cake into a shared safe and agreed to eat it only if the majority agrees. Therefore, they split the 
 secret of the code lock and distribute its parts between each other. The cake can only be eaten if the majority of 
@@ -185,6 +192,7 @@ projects such as BOINC, Folding@home, Einstein@Home, etc. Note that the above-me
 been one of the most powerful distributed supercomputers.
 
 ### Decentralized payment systems
+
 The next step happened to be the decentralization of payment systems. They were much harder to decentralize for a clear 
 reason: people are ultimately anxious about everything directly related to the safety of their money. 
 
@@ -215,6 +223,7 @@ focus on Bitcoin, since many of the principles which guided its design and imple
 decentralized system.
 
 ## 1.3 Applying the principles of decentralization
+
 In this subsection, we focus on and formalize the principles of decentralization and specific features of their 
 application. These principles have been applied to create well-known and successful applications including data storage 
 systems (IPFS), computing systems for load distribution (the BOINC project), mesh networks (Open Garden), 
@@ -222,6 +231,7 @@ telecommunications (Tor, I2P), messengers (Tox, BitMessage), and content distrib
 cryptocurrencies.
 
 ### Limitations and issues of centralized systems
+
 The essence of centralized systems is that the management of processes is centralized. In many cases, such an approach 
 can provide a system with high efficiency. One of the striking examples is that the protocol rules can be updated simply 
 and fast. Suppose a vulnerability is detected in a centralized accounting system, whereas developers discover the source 
@@ -229,9 +239,9 @@ of the issue and release an appropriate update. Eventually, all the users who wi
 update their software. In this case, the entire process of updating occurs fast and as painless as possible.
 
 > **Operation of traditional payment systems**
-> * Database is stored on the main server (cloud or cluster)
-> * System is managed in a centralized way 
-> * Users send requests to the system for conducting transactions
+> * *Database is stored on the main server (cloud or cluster)*
+> * *System is managed in a centralized way* 
+> * *Users send requests to the system for conducting transactions*
 
 However, there are certain risks that must be considered when operating in such a system. One of them is the probability 
 of complete system failure. In certain situations (turn-off of the primary power source, negligence of staff maintaining 
@@ -263,14 +273,15 @@ unconditional trust by its users to the owner and the managers of the system. Th
 the owner of a system is able to violate the protocol rules at any moment.
 
 ### Application of a decentralized approach
+
 Historically, people have been designing systems that simulate a familiar model of social relations, and therefore most 
 of the systems we use are based on the hierarchical principle. There is a considerable number of areas where the 
 hierarchical model is well-suited, yet this approach is also related to a number of potential problems.
 
 > **Problems that decentralization solves** 
->> * Possibility of censorship
->> * Presence of a single point of failure
->> * Necessity to trust the owner of a system
+>> * *Possibility of censorship*
+>> * *Presence of a single point of failure*
+>> * *Necessity to trust the owner of a system*
 
 > **_NOTE:_** *Censorship in the context of an accounting system means that a particular party (e.g., organization that 
 > maintains the system) is able to perform activities such as blocking user accounts and modifying transaction data at 
@@ -283,13 +294,14 @@ level of automation. However, the social aspect of decentralization is much more
 which results in a relatively low adoption rate.
 
 ### Principles of designing decentralized systems
+
 We will list the main aspects of decentralization associated with new technological and organizational risks in order to 
 analyze the features and challenges in designing, developing, and using decentralized systems.
 
 > **Basic principles of decentralization**
->> * Ultimate increase in the level of independence of each system component
->> * Maintaining the balance between performance and resources applied
->> * Preserving the integrity of the entire system [13]
+>> * *Ultimate increase in the level of independence of each system component*
+>> * *Maintaining the balance between performance and resources applied*
+>> * *Preserving the integrity of the entire system* [13]
 
 > **_NOTE:_** *Further in the text, we will mostly use the term "data" when referring to a sequence of bytes that can be 
 > transmitted, stored, and processed in automated systems and the term "information" when referring to some knowledge 
@@ -324,6 +336,7 @@ and reliability of decision-making.
 In the search for better solutions, the world has come up with an idea to decentralize accounting systems.
 
 ### Base architecture of decentralized systems
+
 A *decentralized* system is a particular case of a system which uses the *mechanism for reaching consensus* (agreement) 
 between independent parties on how to process and update a shared database (ledger) (Fig. 1.8). All parties have their 
 own copies of a database, while the *consensus-reaching algorithm* ensures that all copies are securely synchronized. 
@@ -333,18 +346,19 @@ matching the final state of all copies.
 ![Figure 1.8 - Decentralized accounting system architecture](/resources/img/volume-1/1.3-applying-the-principles-of-decentralization/1.8-dec-acc-system-architecture.png)
 
 ### Advantages of decentralized systems
+
 In general, a decentralized system assumes that participants exchange information directly, using p2p protocols, and 
 independently store the required data. To do this, they run special software that supports the required p2p protocol of 
 a particular decentralized system. In decentralized systems such as cryptocurrencies, all participants are assumed 
 (ideally) to store copies of the same database and update them using the consensus algorithms.
 
-> * Fault tolerance 
-> * Independence from individual control 
-> * Trustless (no need to trust a third party)
-> * Permissionless (free use)
-> * Persistence (immutability of the final state of a database)
-> * Liveness (appending records is guaranteed)
-> * Formality of protocols 
+> * *Fault tolerance* 
+> * *Independence from individual control* 
+> * *Trustless (no need to trust a third party)*
+> * *Permissionless (free use)*
+> * *Persistence (immutability of the final state of a database)*
+> * *Liveness (appending records is guaranteed)*
+> * *Formality of protocols* 
 
 Let's start with *fault tolerance*. This feature means that a system remains operable even after one or several its 
 components fail. In the traditional client-server architecture, the main efforts are directed at protecting a central 
@@ -398,14 +412,15 @@ The third limitation is that some functions, which are available in centralized 
 decentralized platforms. Some examples are getting statistics, or the system state report at a specific point in time.
 
 ### Factors slowing down the implementation of decentralized systems
+
 The reliability and stability of the system grow with its level of decentralization, however, the very process of 
 decentralization usually meets the following difficulties and limitations.
 
-> * Difficulties in updating the protocol 
-> * Responsibility issue 
-> * Difficulties in monetization of development 
-> * High hardware requirements 
-> * Scalability issue
+> * *Difficulties in updating the protocol* 
+> * *Responsibility issue* 
+> * *Difficulties in monetization of development* 
+> * *High hardware requirements* 
+> * *Scalability issue*
 
 *Difficulties in updating the protocol*. The primary difficulty is that the proposed protocol update requires the 
 majority of active users (nodes) to support it (Fig. 1.9). For this, a party proposing an update should prove the 
@@ -449,6 +464,7 @@ after the successful release).
 ![Figure 1.12 - Provider services capable of censoring software for operating in decentralized systems](/resources/img/volume-1/1.3-applying-the-principles-of-decentralization/1.12-centralized-access.png)
 
 ### Summary
+
 Comparing decentralization with centralization is not always a good idea since everything depends on purpose, 
 requirements, and operating conditions.
 

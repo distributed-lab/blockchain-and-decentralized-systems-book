@@ -1,4 +1,5 @@
 # Conclusion
+
 The topics of blockchain and decentralization are very controversial from the beginning. The industry not only contains 
 innovations in computer science, game theory, psychology, investments, and finance but was also flavored with different 
 political views. It is very easy to get into a heated discussion with simply mentioning Bitcoin.
