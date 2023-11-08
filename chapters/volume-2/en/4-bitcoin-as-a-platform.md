@@ -1,6 +1,8 @@
 # 4 BITCOIN AS A PLATFORM
 
+
 ## 4.1 Sidechains mechanism
+
 The idea of sidechains first appeared in 2014 when the trend of improving the original Bitcoin protocol became more widely known. These attempts were usually undertaken by other projects that were creating their own currencies and which were supposed to work according to their own rules. Beyond the desire to get richer with the price growth of their currencies (which, in fact, had a serious influence on the situation), this trend undoubtedly made sense. By that time, there had already been a lot of proposals for improving the protocol and expanding its functionality, but implementing everything straight away in Bitcoin would have been extremely impractical for many reasons (including security considerations). All upgrades must first be thoroughly tested and only then implemented. But how can you conduct these tests considering that not many people would want to try and use the alternative digital currency?
 
 In this way, community members who wanted to try new algorithms of anonymization, smart-contracts or consensus mechanism with high capacity and low fees could use existing bitcoins in the secondary accounting system with the ability to send them back to the main one. Ideas that were proposed and developed in different sidechain projects had a serious influence on the future of Bitcoin, but they still aren’t used since developers sought to create their own independent currencies.
@@ -16,6 +18,7 @@ The operation rules in it can differ from the mainchain and be determined by the
 The idea of sidechain was first introduced by Gregory Maxwell. The first document describing this idea was “Enabling Blockchain Innovations with Pegged Sidechains” [37] published on October 22, 2014, by a group of authors, one of which is Adam Back. Another famous paper called “Sidechains not a direct means for solving any of the scaling problems Bitcoin has” was published on June 13, 2015, by Pieter Wuille [72]. On June 14, 2015, Gregory Maxwell released his work “Security limitations of pegged chains”.
 
 ### One-way peg and two-way peg sidechains
+
 To transfer value, sidechains can be tethered to a *mainchain* in two ways: *one-way peg* or *two-way peg*. When the *one-way peg* is used, digital assets can be transferred only in one direction – from the main accounting system’s blockchain to the secondary one. This way of asset transfer is rarely used so we will look at the second option in more detail. In the case of *two-way peg*, digital assets can be transferred back and forth.
 
 A two-way peg can be implemented in several ways; the most common are *federated sidechains* and *merged-mined sidechains*. *Sidechains* with a *two-way peg* work as follows. A user must first send his assets to a special address in the main accounting system so they can’t be spent in the *mainchain*. After that, the user will confirm the desired transaction in the *sidechain* network. It will let nodes that process *sidechain* blocks know that certain coins in the main accounting system were frozen. This allows sidechain validators to issue an equivalent amount of coins in the secondary network and send them to the address that corresponds to the user’s public key that he used in the main accounting system. Further, the user can manage this value under the new rules.
@@ -31,6 +34,7 @@ Imagine that Alice sends coins to Bob in the *sidechain*, but Bob wants to spend
 The biggest problem is to implement the interaction between main network and sidechain validators to successfully freeze and unfreeze assets. The solution to this problem is exactly the main difference between *federated* and *merged-mined sidechains*.
 
 ### Federated sidechains
+
 *Federated sidechains* use *multiSig-addresses* to freeze *mainchain* assets. To do this, the sidechain creators select federation members – trustees who determine when the user’s coins are frozen and released (Fig. 4.3). They use special addresses and multi-signature based contracts for this. The reliability of this approach depends on the probability of federation members' malicious collusion.
 
 <img width="50%" alt="Figure 4.3 – Federated sidechains structure" src="/resources/img/volume-2/4.1-Sidechains-mechanism/Figure-4.3-Federated-sidechains-structure.png"/> 
@@ -38,6 +42,7 @@ The biggest problem is to implement the interaction between main network and sid
 This approach does not require any changes in the *mainchain* protocol. If the *sidechain* is attacked or its operation is compromised, this will not affect the *mainchain* state; however, this will allow detecting and considering vulnerabilities of the *sidechain* protocol. A practical implementation for this approach already exists, and its *mainchain* is the Bitcoin blockchain.
 
 ### Merged-mined sidechains
+
 A *merged-mined sidechain* uses *merged mining* technology that allows using the same PoW task solution to generate blocks in both main and side blockchains. The operational principle of this technology has the following features. In the process of new blocks generation, the validator first forms a block for an alternative chain that uses *merged mining*. This block’s title is placed in its new mainchain block. Then the *mainchain* solves the proof-of-work task for the new block. If the validator finds a solution for the task in the *mainchain*, this block is distributed among the *mainchain* nodes. Other *mainchain* participants ignore the block header for the *sidechain*. If the found solution satisfies the sidechain difficulty, then the header for a new *mainchain* block and SPV-proof are specified in the new *sidechain* block. Such PoW verification is done by the *sidechain* rules that provide for the option to accept the puzzle solution for the *mainchain* if the hashing algorithm is the same and the solution satisfies the *sidechain* difficulty.
 
 To implement this approach in the *mainchain* scripting language, an operation similar to OP_COUNT_ACKS, as in Bitcoin, is required. This operation involves the verification of some additional conditions that come from the external accounting system to unfreeze *mainchain* assets. This works by the merged mining data going from the *sidechain* to the *mainchain* block, and *mainchain* validators checking the corresponding data according to the *mainchain* protocol rules. If coins can be spent, they are unfrozen in the main accounting system. The reliability of this approach depends on the participants who own the majority of computing power. To add this operation into the main accounting system protocol, the softfork is needed (Fig. 4.4).
@@ -53,19 +58,23 @@ Nowadays, projects that use *sidechain* already exist. For example, Blockstream 
 Thus, a *sidechain* allows developers not only to test new implementations or protocol changes before activating them but also to enable new tools for working with an existing currency. There is a perception that with reliable *two-way pegs*, the sidechain technology can significantly reduce the mainnet and allow maintaining the majority of users within accounting systems that are connected with the main one and work alongside each other. If so, this technology can solve the problem of excessive load by processing certain types of transactions in separate accounting systems and preserving the basic principles of decentralization.
 
 ### Sidechains disadvantages
+
 To implement the reliable network-level interaction, it is quite challenging to have several decentralized accounting systems that support transactions between each other. They must support transactional scripts, which may later become invalid due to a subsequent change of proofs. This entails the need to have software that can detect potential attacks and block them. It should also be considered that the wallet software must be configured to support several blockchains.
 
 In the case of a two-way peg sidechain that uses SPV-proofs, transferring value from the main accounting system to the secondary one and vice versa is less secure compared to payments within the same accounting system. The problem is that the recipient has confirmation from the validator who only checked the SPV-proof. As for the value itself, coins can be sent at any ratio and with any coefficient (for example, 1:1, 1:10 or 1:100).
 
 ### Summary
+
 Applying the sidechain approach allows adding alternative rules for the accounting of existing coins. The disadvantage is that in order to use alternative accounting rules, the user generally needs to support two full nodes: one for the main accounting system and the second for the additional one.
 
 Nevertheless, the value of the sidechain approach is that it offers a mechanism for introducing new technologies without exposing the main accounting system to risks. Most likely, in the future, it will help to find a solution to many issues, particularly insufficient capacity of the accounting system.
 
 ## 4.2 Lightning Network design
+
 In the previous volume of this textbook, we first looked at a concept called Lightning Network. Now we will examine in more detail how this concept works as well as how a  trustless operation is realized.
 
 ### Bidirectional payment channel structure
+
 To explain the Lightning Network (LN), a preliminary understanding of bidirectional payment channel structure is necessary. In fact, the LN is formed by switching these channels together.
 
 The main advantage of bidirectional channels is that participants can transfer coins in both directions without the need to trust each other and broadcast intermediate transactions into the network. If one of the parties tries to outwit, then according to the protocol he loses all his coins. Noteworthy, this does not require any intervention by a third party: a protocol based on cryptographic proofs allows penalizing an adversary.
@@ -79,6 +88,7 @@ In general, the scheme of work of payment channel can be represented as in Figur
 > **_Attention!_** *It looks quite unwieldy, complicated and frightening; however,  below we will look at  each step of the interaction and describe what actually happens in detail. By the end of this chapter the reader will completely understand how bidirectional payment channels in the Lightning Network work.*
 
 ### Opening a payment channel
+
 To open a payment channel, Alice and Bob contact each other (this interaction happens within the network of lightning-nodes) and exchange their public keys to create a multisig address. The parties also exchange links to unspent outputs with coins that they want to block in a joint channel. Then, one of the parties initiates  a transaction, the inputs of which refer to the mentioned unspent outputs. The generated multisig address is added to the output of a new transaction. In our example, Alice and Bob initially have 5 BTC each, and the transaction output has 10 BTC (fig. 4.6).
 
 <img width="40%" alt="Figure 4.6 – Channel opening and transaction generation scheme" src="/resources/img/volume-2/4.2-Lightning-Network-design/Figure-4.6-Channel-opening-and-transaction-generation-scheme.png"/> 
@@ -111,6 +121,7 @@ In case Bob signs and publishes the transaction he received from Alice, then it 
 As a result, if at least one party will now publish the transaction, coins will be sent to their owners and the channel will be closed. As we have discussed, no one can cheat and steal coins of their counterparty (it can be done only if one of the parties publishes the transaction to the network and then also discloses its own secret).
 
 ### Transferring coins within the channel
+
 After the channel was opened and transactions were created that return coins to users, Alice and Bob can start transferring coins within the channel. Let's look at how this works.
 
 The first step is to generate a new secret and transfer its hash value to the counterparty (as in the case with forming the first transaction in the channel).
@@ -127,6 +138,7 @@ After these transactions are created, channel members exchange them. Then, any o
 Note that after exchanging these transactions, the previous state of refunding transactions in the channel can also be published. Thus, at any moment of time, parties have two ways to close the channel. To ensure the irreversibility of the channel state (only the last state is considered valid), parties exchange secrets they generated at the first stage. Currently, if counterparties get these values, they can’t cheat but can initially get all the coins of the party that would try to outwit. Therefore, Alice gives Bob the first generated secret, and Bob gives Alice his in return. Then each of them checks whether this secret corresponds to the hash value added to the first channel transaction.
 
 ### The punishment mechanism for cheating in the channel
+
 This type of bidirectional payment channels that the party that is trying to cheat loses all its coins in the channel. Now we will look at how this mechanism works.
 
 For example, take a situation that was considered earlier: Alice and Bob placed 5 coins in a payment channel, and then created transactions that return coins to their addresses (5 each). Then Alice made a 2 coin payment so the distribution in the channel has changed. Let’s imagine this interaction stage using the previously introduced scheme (fig. 4.10).
@@ -144,6 +156,7 @@ Now let’s look at what happens if this transaction is sent to the network. As 
 Therefore, after the parties have agreed on a new state of value distribution in a channel, the previous state cannot be published. Otherwise the party signing and sending the previous transaction to the network will simply lose all its coins in the channel.
 
 ### Closing the payment channel
+
 We examined how the payment channel is created, how payments are executed and how the mechanism to protect against cheating works. Now, let’s look at how to safely close an active channel.
 
 Once more, let's say we have the state of the last transactions in the channel (from Alice and Bob) that transfer 3 coins to Alice and 7 to Bob. The channel in this case can be closed in three ways (fig. 4.12).
@@ -163,6 +176,7 @@ The second way to close the channel is similar to the first one, but it assumes 
 However, there is a third way to close the channel when both parties immediately gain access to their coins. To do this, they collectively form a transaction that spends coins from a multisig address on two outputs, one belonging only to Alice and the other only to Bob. After they sign this transaction and publish it to the network, they immediately gain access to their outputs.
 
 ### How does Lightning Network use payment channels?
+
 We fully understood how bidirectional payment channels work. Now, it’s time to explain how this approach is used in the Lightning Network.
 
 To understand why the Lightning Network concept is necessary, let’s consider the situation when Alice wants to transfer coins to Carol, but they don’t have an open payment channel. The easiest way is to open one, but it can be ineffective for a number of reasons (for example, it’s a one-time micropayment and Alice doesn’t want to pay the fee for a regular transaction or to open and then close the channel).
@@ -254,12 +268,13 @@ An important feature is that if Carol wants to get her coins when a secret is di
 <img width="40%" alt="Figure 4.25 – New coin distribution in channels after the payment was executed" src="/resources/img/volume-2/4.2-Lightning-Network-design/Figure-4.25-New-coin-distribution-in-channels-after-the-payment-was-executed.png"/> 
 
 ### Advantages and disadvantages of Lightning Network
+
 After we examined the principles of LN, we can highlight some key advantages of this technology, which are the following:
 
-> * Solving the capacity problem in accounting systems
-> * Privacy of channel participants
-> * Saving transaction confirmation fees
-> * Preventing fraud attempts
+> * *Solving the capacity problem in accounting systems*
+> * *Privacy of channel participants*
+> * *Saving transaction confirmation fees*
+> * *Preventing fraud attempts*
 
 The main advantage of LN is an increased capacity of accounting systems. Actually, channel capacity is not limited and depends entirely on the way users communicate. Users can send payments to each other every second (and even every millisecond) and do not have to wait for validators to confirm transactions, except for funding and refunding transactions.
 
@@ -286,6 +301,7 @@ Some challenges associated with that are:
 As of September 2019, the Lightning Network has about 4,500 nodes with more than 32,000 open channels. The number of locked bitcoins for the Lightning Network operation equals about 850 BTC.
 
 ## 4.3 Operation principles and use of atomic swap
+
 By definition, a cryptocurrency owner can (and this is probably something he is motivated to do) operate with his coins without a trusted party, namely, in a trustless way. In reality, this property is often ignored since users entrust key management to a centralized server and use centralized exchanges to exchange cryptocurrencies, etc. Imagine this situation when you bought a new electric car: fast, comfortable, and energy-efficient. 
 
 However, instead of taking advantage of its features, you harness a  horse to the car. That sounds pretty absurd, doesn't it? The same situation occurs when a user who owns crypto coins entrusts their storage to some service. You have to agree that in this case some of the main cryptocurrency properties will disappear, and what is even worse is that the user will no longer own these coins turning into the owner of digital obligations: centralized, prone to censorship, non-anonymous, etc.
@@ -295,6 +311,7 @@ It is natural that many conscious users still enjoy the properties of cryptocurr
 This section will describe the principles of an atomic swap, the relevance of this mechanism and what requirements digital currencies have to meet in order to work. In addition, we will talk about decentralized exchange technology and consider its main advantages and disadvantages.
 
 ### How do centralized exchanges work?
+
 A centralized approach assumes that users must entrust their money to the service. In this case, the user transfers coins to the balance of the exchange, which, in turn, must fulfill its obligations to return the equivalent amount of money in the other currency. In any case, all this time the money is under the control of an exchange, and the user only has its obligations to return the funds. It is also assumed that the centralized exchange does not make transfers but only rewrites the balances of its users (fig. 4.26).
 
 <img width="50%" alt="Figure 4.26 – Centralized exchange operation scheme" src="/resources/img/volume-2/4.3-Operation-principles-and-use-of-atomic-swap/Figure-4.26-Centralized-exchange-operation-scheme.png"/> 
@@ -312,14 +329,15 @@ Circumstances also include engineers who have designed and developed the exchang
 Another noteworthy event once happened to a centralized exchange Quadriga CX. The problem is that all user coins (about $200 million) were stored in cold wallets, access to which was lost due to the death of the chief executive officer of this exchange. This situation proves that the risk of centralized storage losing coins is quite high, and it results in a lot of people suffering from the consequences.
 
 ### The idea of atomic swaps and accounting system requirements
+
 *Atomic swaps* offer the concept of digital assets being exchanged among each other in such a way that the exchange process will be conducted either completely or will not happen at all. This approach allows you to perform an exchange even if users do not trust each other and at the same time don’t want to have an intermediary.
 
 In order for two different accounting systems to successfully support atomic swaps between one another, they must meet some fundamental requirements.
 
 > **The requirements to support atomic swaps**
->> * The option to create timelock contracts
->> * The support of the same hash function to lock coins
->> * The existence of off-chain channels between participants of the exchange
+>> * *The option to create timelock contracts*
+>> * *The support of the same hash function to lock coins*
+>> * *The existence of off-chain channels between participants of the exchange*
 
 The main requirement is the ability to create a locking smart contract that prevents exchange participants from taking all the money for themselves (we will look at how it works later).
 
@@ -328,6 +346,7 @@ Besides, to complete a transaction between two different accounting systems, bot
 Also, to successfully perform atomic swaps, it is necessary to have an off-chain communication channel that parties use to discuss the exchange conditions.
 
 ### Atomic swaps operation principles
+
 Let's take a closer look at how atomic swaps work. Suppose Alice and Bob want to exchange coins, for example, 2 BTC at 44 LTC. First, they need to make sure that atomic swaps are possible between Bitcoin and Litecoin. Since both systems support time-locked contracts and use the same hash function (let’s take SHA-256 as an example), such kind of exchange is possible.
 
 First, Alice and Bob generate the addresses to which they want to receive coins and exchange these addresses (Fig. 4.28). By doing so, they also agree on the exchange terms. Note that at this stage, they interact off-chain.
@@ -400,11 +419,12 @@ To better understand the mechanics, let's look at the sequence diagram that desc
 It is important to note that if Bob does not take his bitcoins within 24 hours, then Alice can get them back. But if Bob takes his money on time, then neither side can cheat.
 
 ### Atomic swap limitations
+
 Like any technology, the atomic swap mechanism has several advantages and disadvantages. Above, we examined the advantages of this technology such as trustless exchange in a decentralized environment without the need to rely on intermediaries. Now, it’s the time to consider the limitations:
 
-> * Exchange confirmation takes a lot of time
-> * High fees when exchanging 
-> * Necessity to find a counterparty and negotiate on the exchange terms every time
+> * *Exchange confirmation takes a lot of time*
+> * *High fees when exchanging*
+> * *Necessity to find a counterparty and negotiate on the exchange terms every time*
 
 Centralized exchange can settle transactions in  split seconds; atomic swaps depend on platforms and participants and can take a comparatively long time. For example, for the case that we considered, a secure exchange cannot be finished in less than 2 hours (the time of complete confirmation of 2 blocks in Bitcoin and 2 blocks in Litecoin) and that requires the parties act quickly. The upper limit of exchange time in our case is 12 hours.
 
@@ -415,6 +435,7 @@ The last limitation is that you need to search for the counterparty yourself. De
 We should also mention the risk of losing coins due to using a smart contract with a bug. If the user does not conduct a qualified audit of the smart contract of the transaction that was sent to the network, she may lose her money (and in this situation, there will be no party to address with such a claim).
 
 ### How decentralized exchanges use atomic swaps 
+
 Decentralized exchanges that enable you to work with several accounting systems with their own transaction histories can be built based on the principles of atomic swaps. However, when such decentralized exchanges are designed, it should be remembered that anyone must be able to publish their buy or sell offer. Therefore, you must have a protocol that allows you to create a decentralized orderbook first.
 
 As for guarantees of order fulfillment, there are some things to consider. Centralized exchanges store all balances on their servers. Hence, even though the user can cancel the order at any moment, the exchange will complete it in any case unless it was canceled by the user. Decentralized exchanges need fees for obligation violations. This is the best approach to solving this problem in 2019.
@@ -428,6 +449,7 @@ It is worth noting that there is still no single standard for an atomic swap. Ev
 Decentralized exchanges that use atomic swaps technology include Barter DEX, Blockchain.io, Atom DEX, etc.
 
 ### Panic sales problem
+
 With the massive use of atomic swaps, there is a problem that is hard to solve. Suppose there is an accounting system with a very high transaction processing fee, and the time for transaction confirmation is quite long (e.g. Bitcoin). Users start selling this currency (since the system has a low capacity) and create orders on a decentralized exchange, but these orders, when executed, create smart contracts in the same system as the currency they are trying to sell. Thus, the growing network load becomes even higher and pending transactions form an even larger queue so users start to sell this currency more actively, place more orders and increase the transaction queue. This is quite similar to the example from nuclear physics (fig. 4.37).
 
 <img width="40%" alt="Figure 4.37 – Nuclear fission scheme" src="/resources/img/volume-2/4.3-Operation-principles-and-use-of-atomic-swap/Figure-4.37-Nuclear-fission-scheme.png"/> 

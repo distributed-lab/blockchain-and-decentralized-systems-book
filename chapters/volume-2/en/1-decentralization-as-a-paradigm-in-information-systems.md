@@ -1,10 +1,12 @@
 # 1 Decentralization As a Paradigm in Information Systems
 
+
 ## 1.1 Peer-to-peer networks and the BitTorrent protocol
 
 The BitTorrent protocol was one of the first protocols that showed how file-sharing services can be decentralized. It worked much faster than centralized solutions, where the downloading speed was limited by the server performance and connection, and, at the same time, it was more resistant to censorship. This protocol played an essential role in the field of decentralized technologies by showing how to separate the process of storing and transmitting data, all within one system. We will consider the fundamental concepts of the protocol, the properties it provides, and how this technology can be developed and applied in next-generation systems.
 
 ### Traditional client-server architecture
+
 To understand how BitTorrent works, let’s see how traditional centralized file sharing systems operate and why this approach is so ineffective. Let’s start by introducing three basic terms: the client, the server, and the client-server architecture. A client is a piece of hardware and/or software that uses services of a server. A server is software and/or hardware that provides data to other software and/or hardware devices (i.e., its clients).
 
 So what does the client-server architecture mean? Let’s describe it using simple language. Imagine some servers that store large datasets. If needed, a client contacts one of these servers requesting a certain data subset. The server processes the client’s request and provides (or does not provide) access to the desired content (Fig. 1.1).
@@ -15,10 +17,10 @@ So what does the client-server architecture mean? Let’s describe it using simp
 > **_NOTE:_** *In centralized file sharing systems, the client and server roles are strictly divided and in most cases cannot intersect. More on that, these systems pose some additional limitations and disadvantages.*
 
 > **Issues of centralized systems with the client-server architecture**
-> * Subject to censorship
-> * Single point of failure
-> * Capacity limitation on the server side
-> * Difficulty in recovering the lost dataset
+> * *Subject to censorship*
+> * *Single point of failure*
+> * *Capacity limitation on the server side*
+> * *Difficulty in recovering the lost dataset*
 
 One of the most prominent issues is the content censorship on the side of a centralized party that controls servers. For example, in many countries there is strict censorship related to political and social  media; you may not get access to certain content (film, video, etc.) if someone with sufficient influence has decided that you shouldn’t have access to it [1].
 
@@ -35,6 +37,7 @@ It is also worth noting that some content can be stored in a single copy; if the
 <p>
 
 ### Principles of building a peer-to-peer file sharing network
+
 The architecture of peer-to-peer (p2p) file sharing systems is fundamentally different from traditional ones. Each node in the network is both a server and a client. Every network participant can be involved in the distribution of files to other nodes as well as receiving files from them (Fig. 1.3).
 
 <p align="center">
@@ -44,6 +47,7 @@ The architecture of peer-to-peer (p2p) file sharing systems is fundamentally dif
 When the node's software finds a network participant with the requested content, it downloads the data directly from this source. When you request part of the content, you are a client. When one of the participants needs to access data that you store, your software will act as a server and share the stored data.
 
 ### BitTorrent development history
+
 The BitTorrent protocol was created by Bram Cohen in 2001 [3]. He managed to solve one of the most important tasks that society faced with the advent of the Internet: a reliable transmission of large amounts of data in an environment with low capacity and a periodic denial of service of the transmission channels used.
 
 The BitTorrent company was founded in 2004. The project drew attention in many areas, especially among those involved in the illegal distribution of media products. They turned the BitTorrent protocol into another Napster (a service for sharing mp3 files). Unfortunately, BitTorrent was not as successful as its technology. Several attempts to become a media company have not brought the desired results. One thing is certain: BitTorrent protocol has become a disruptive technology that has shown how a decentralized file sharing system can work.
@@ -51,6 +55,7 @@ The BitTorrent company was founded in 2004. The project drew attention in many a
 In 2019, more than 170 million people use the BitTorrent protocol: Facebook [4] and Twitter [5] use BitTorrent to deploy servers, and the Dutch University uses it to update workstations [6]. The BitTorrent protocol is in widespread use due to the fact that it allows reliable data transmission even in networks with unstable connection and low capacity.
 
 ### How does BitTorrent work?
+
 The BitTorrent protocol is an open protocol for sharing files in peer-to-peer systems, which implies p2p data transmission between system participants and the absence of a central server party.
 
 In order to access a specific piece of data, a network participant addresses a tracker, a server that monitors computers connected to the network. Its task is to provide IP addresses of active participants in the system with the requested content parts. Note that the participants never download data from a tracker itself: the tracker is only concerned with providing the active nodes' necessary IP addresses.
@@ -74,6 +79,7 @@ Another feature of the BitTorrent protocol is the primary distribution of rare f
 <p>
 
 ### Data fragmentation
+
 Many readers are familiar with torrent files (.torrent), but not everyone knows how they are formed and what they contain. We have previously determined that content is downloaded in small portions (fragments). Let’s consider how these fragments are formed and where to get links to download them.
 
 When creating a torrent file, the initial data is divided into small parts (the size can vary from 128 KB to 2–4 MB). The SHA-1 hash value is taken from each received fragment and placed in the torrent file (Fig. 1.6) [7].
@@ -89,12 +95,13 @@ Also, a link to a tracker (or several trackers) is placed in the torrent file so
 When one of the participants has a torrent file and wants to receive the content corresponding to it, he contacts the tracker specified in the file and requests addresses whose nodes store the fragments specified in the torrent file. After the tracker returns a list of addresses to the participant, the node sends requests with hash values of the fragments to the received addresses and waits for someone to return the required fragments. When downloading fragments from the network, the node can quickly and simply check whether the necessary fragments were downloaded, since it has the corresponding hash values. This approach prevents errors when downloading files and checking the integrity of all the received content by checking the integrity of its fragments.
 
 ### Protocol limitations
+
 Note that besides its obvious advantages, the BitTorrent protocol also has a number of limitations.
 
-> * Dependence of file download speed on the number of active nodes that contain copies of the file
-> * Threats related to the presence of malicious code in the downloaded  fragments 
-> * Many nodes use protocol only for downloading while not supporting the network (meaning they do not distribute files)
-> * Inability to selectively limit the distribution of content (copyright infringement)
+> * *Dependence of file download speed on the number of active nodes that contain copies of the file*
+> * *Threats related to the presence of malicious code in the downloaded  fragments* 
+> * *Many nodes use protocol only for downloading while not supporting the network (meaning they do not distribute files)*
+> * *Inability to selectively limit the distribution of content (copyright infringement)*
 
 The download speed depends on the number of active system nodes that store the file. If the content is popular, then it is likely to be stored by a large number of network participants and accessing it will not be a problem. However, if there is no particular demand for the content (for example, a textbook on catching caterpillars), and it is stored by only one network node, then any communication failure or shutdown of this node will disable access to the requested content.
 
@@ -133,23 +140,26 @@ The BitTorrent protocol does not ensure the anonymity of its users. Any user can
 Since BitTorrent accounts for most of the traffic, some Internet service providers restrict (slow down) BitTorrent transmission. To solve this problem, many torrent clients use protocol header encryption and message stream encryption. These traffic masking methods help to make it difficult to detect BitTorrent traffic, thereby preventing providers to do the regulation.
 
 ## 1.2 Operation principle and application of DHT
+
 DHT (Distributed Hash Table) is one of the cornerstone protocols of decentralized networks [9]. The protocol was invented in the late 90s to solve the problem of indexing and searching within a large amount of data. Despite the fact that the data itself (e.g., files) can be stored on different servers, the table of data links can potentially be infinitely large, hence excluding the option of storing it in one place. In addition, the protection against attacks on the central node was an important problem. DHT was developed to solve these two problems.
 
 ### Problems that DHT solves
+
 DHT solves the problem of finding content by its hash value (InfoHash) in a decentralized network.
 
 > **Conditions under which the DHT protocol works**
-> * Participants do not identify each other
-> * There can be an unlimited number of participants
-> * There is no central server
-> * Content is stored by the participants themselves (and it is not known in advance by whom exactly)
-> * Every participant can communicate only with a limited number of other participants
+> * *Participants do not identify each other*
+> * *There can be an unlimited number of participants*
+> * *There is no central server*
+> * *Content is stored by the participants themselves (and it is not known in advance by whom exactly)*
+> * *Every participant can communicate only with a limited number of other participants*
 
 For a participant who is searching for data, the task is to get the network address of another participant storing a content part with a specific InfoHash.
 
 The environment in which the content is stored and searched is entirely distributed: many computers that run a specific version of the DHT protocol and conduct independent messaging.
 
 ### How does DHT work?
+
 According to the protocol, every system participant has a unique global identifier. This identifier is a number of the same dimension as InfoHash (usually 160 bits or more). The participant chooses the identifier himself, since there is no decision-making center and all participants are independent. To start operating, a new participant needs to have a program with protocol implementation and the network address of at least one more active participant (it is necessary to connect to an existing network).
 
 According to the protocol rules, each participant allocates some memory (5–50 MB by default) for their own table. In this table, he stores the mappings between InfoHash and content as well as between the participant identifiers and their network addresses (Fig. 1.7). 
@@ -188,6 +198,7 @@ DHT protocols are an indispensable component of many popular projects: I2P, IPFS
 Before DHT, a similar content search problem was solved by using centralized services or a group of centralized services that synchronized with each other. The centralized service also has a public API for requests and, in most cases, a registered domain name. In fact, such services store full tables of mappings between InfoHash and network addresses, which in turn turned out to be much more than 50 MB in volume. An example of such a service is Torrent Tracker. As it is highlighted above, such trackers are easily censored and can be blocked.
 
 ### Issue of content blocking by an attacker
+
 The most common attack on DHT protocols is when an attacker blocks one specific piece of content almost completely.
 Let’s suppose that a man named Taras decided to limit access to Satoshi Nakamoto's real photo because receiving such information by an interested party could cause irreparable damage to the Bitcoin network.
 
@@ -253,10 +264,10 @@ The hierarchical PKI is a traditional organization model, which assumes that cer
 
 Hierarchical PKI has the following features:
 
-> * Each relationship between a child and parent CA is represented by a separate certificate signed by the parent node (the root certificate is self-signed)
-> * All CAs except for the root CA are subordinate to a parent CA
-> * CAs may have subordinate CAs and issue certificates to them or to end users
-> * All users trust the same root CA
+> * *Each relationship between a child and parent CA is represented by a separate certificate signed by the parent node (the root certificate is self-signed)*
+> * *All CAs except for the root CA are subordinate to a parent CA*
+> * *CAs may have subordinate CAs and issue certificates to them or to end users*
+> * *All users trust the same root CA*
 
 Based on these features, it is quite simple to explain how the hierarchical PKI model works. At the top level, there is the root key certification authority. The root authority has its own key pair that it uses to sign certificates for lower-level certification authorities. At the same time, the root certification authority also has its own public key certificate that it generated for itself.
 
@@ -293,13 +304,14 @@ Let’s now consider what will happen if the private key of the root CA is compr
 Hierarchical PKIs have obvious advantages: high speed of building and tracking certificate chains as well as quick reissuance of certificates in case the private keys of both users and CAs are compromised. However, such models have several disadvantages as well.
 
 > **Drawbacks of hierarchical PKI**
-> * The necessity to verify the entire certificate chain
-> * Compromising the private key of the root CA creates a critical situation since the entire network may break down
-> * Issues related to the synchronization of certification authorities among themselves
-> * Users do not actually manage their identities
-> * Difficulties in system compatibility (signature algorithms, etc.)
+> * *The necessity to verify the entire certificate chain*
+> * *Compromising the private key of the root CA creates a critical situation since the entire network may break down*
+> * *Issues related to the synchronization of certification authorities among themselves*
+> * *Users do not actually manage their identities*
+> * *Difficulties in system compatibility (signature algorithms, etc.)*
 
 ### Operational principles of web-of-trust
+
 Web-of-trust is an alternative to the hierarchical PKI model. The concept was first applied for authentication of users' public keys in the PGP protocol in 1991. Moreover, the web-of-trust approach can be used for identification mechanisms in a decentralized environment and rating systems (there are many browser add-ons for online rating of sites that use the web-of-trust mechanism).
 
 To some extent, the basis of the web-of-trust model’s reliable operation is social consensus: no user will trust another user's certificate until this participant receives confirmation of his public key from at least one participant who is in the trust circle of the first user.
@@ -407,6 +419,7 @@ The protocol does not limit the number of nodes in the network, which means that
 However, there is a problem when a previously honest node with a high level of trust suddenly begins to behave maliciously and adds certificates of non-existent participants as target users. As a result, the network may stop trusting this user, however, the rebuilding of a system is a complex process and cannot be completed easily; an attacker may take advantage of that.
 
 ## 1.4 Overview of the BitMessage protocol
+
 After Edward Snowden reported that more than 1 billion people in 60 countries are being monitored globally [10], the need to create a truly confidential means of communication became evident.
 
 On March 21, 2013, the first beta version of the BitMessage client was released. A key innovation in the BitMessage protocol was the absence of central servers or any center that processes user data. The protocol works in line with the peer-to-peer paradigm meaning that every node is both a client and a server at the same time and there is no single centralized server.
@@ -438,6 +451,7 @@ Furthermore, the protocol provides the functionality of using a digital signatur
 The BitMessage protocol allows the creation of broadcast channels and secret chats. Broadcast channels imply that the sender encrypts the message with a hash value of its own public key. Each network member who has the sender’s public key can decrypt such a message. Secret chats involve creating a shared secret for encryption between a group of users. It is important to note that such a secret chat cannot be censored by a third party.
 
 ### Addresses in BitMessage
+
 The BitMessage protocol also implies that users have addresses. Let's observe how an address is generated and why it is needed.
 
 Two key pairs are mapped to each BitMessage address: one pair is used to sign messages (ECDSA), and the other one is used to create a shared secret (ECDH). To create a BitMessage address, both public keys are used (Fig. 1.16).
@@ -462,6 +476,7 @@ Since the seed is set directly by the user, some benefits and risks are related 
 Random addresses use a pseudo-random value as a seed to generate the address, and without knowing this value, the address cannot be recovered. Note that in this case, the user also needs to enter a seed to restore the address, but since a seed is a random value, the convenience of recovery is lost, while the security is increased when interacting with the system.
 
 ### Message structure in BitMessage
+
 Next, we take a closer look at the message structure in the BitMessage protocol, shown in Table 1.5.
 
 <p align="center">
@@ -537,6 +552,7 @@ In section 1.1, we examined how a decentralized file sharing network can work: i
 On October 10, 2018, a new protocol for organizing a decentralized file-sharing network called IPFS was introduced. It applied the key concepts of BitTorrent and added a number of new enhancements to them. Moving forward, IPFS was used as a platform for many decentralized applications. In this subsection, we will elaborate on the basic concepts of IPFS, the advantages of the protocol over other protocols for building decentralized file sharing networks, and how IPFS can be used to implement decentralized applications.
 
 ### Basic principles of the protocol
+
 IPFS (InterPlanetary File System) is a decentralized file sharing system protocol. This protocol uses the DHT concept (see 1.2) to distribute content and enable search between participants. IPFS uses MDAG (Merkle directed acyclic graph) to organize a convenient structure of content links. Like the BitTorrent protocol, IPFS does not simply store all files on each system node: each system participant only stores the part of the content that it considers necessary.
 
 > * *Distributed content storing*

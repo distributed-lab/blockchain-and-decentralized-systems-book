@@ -1,6 +1,8 @@
 # 3 TECHNOLOGICAL DETAILS OF BITCOIN OPERATION  
 
+
 ## 3.1 Bitcoin Script design and features
+
 There are three main approaches to setting coin distribution conditions:
 
 * Turing-complete languages (Ethereum – Solidity)
@@ -30,6 +32,7 @@ These conditions and proof are usually generated automatically by digital wallet
 As you may know, each transaction has fields called scriptPubKey and scriptSig. The scriptPubKey field contains a description of some terms which a user must satisfy in order to spend coins. The scriptSig field contains the data necessary to satisfy such terms. Together, both fields are Script. Nodes of the network execute this script and, based on the results of the execution, decide whether the transaction is valid. In essence, Bitcoin Script allows you to verify transactions in which conditions can be described in arbitrary order.
 
 ### How is Bitcoin Script executed?
+
 Bitcoin Script is a non-Turing-complete instruction description language. In Bitcoin, it is used to both set and satisfy the rules for spending coins. The language is stack-based and uses the "Reverse Polish notation" for operands.
 
 Non-Turing-complete means that the language has limited functionality and does not support the execution of jumps and loops. Consequently, the script excludes the possibility of entering an infinite loop, which allows you to limit malicious parties’ ability to create complex transactions and slow down the entire system.
@@ -58,13 +61,14 @@ Step by step, everything is done as follows:
 As we can see, the calculations using this scheme are quite simple and unambiguous. However, above we examined an example with simple arithmetic operations, where operands were natural numbers. In Bitcoin Script, operations and operands are more complex and diverse.
 
 ### Operations in Bitcoin Script
+
 For operations in Bitcoin Script, there is a special form of writing - OP_code (hereinafter OP-code). Each OP-code can be split into two parts: «OP_» prefix and name directly operation. A specific OP-code tells the computer (virtual processor) which particular sequence of actions should be performed during its execution. Each operation is represented by a set of bits that are read and executed by a virtual processor.
 
 > **Operations in Bitcoin Script**
->> * 7 execution control operations
->> *  19 stack interaction operations
->> *  27 arithmetic operations
->> *  10 cryptographic operations
+>> *  *7 execution control operations*
+>> *  *19 stack interaction operations*
+>> *  *27 arithmetic operations*
+>> *  *10 cryptographic operations*
 
 Execution control operations include OP-codes such as OP_IF, OP_ELSE, OP_NOTIF, OP_ENDIF, OP_RETURN, which enables Bitcoin script branching operations (and thus provides the ability to create multiple independent coin spending conditions). The logic of such operations is not different from the logic of executing if / else statements in familiar programming languages. Remember that Bitcoin Script is a  non-Turing-complete language, so there are no loop operators, such as for, while, and others.
 
@@ -81,6 +85,7 @@ Noteworthy, all operations, except for the operations of pushing values to the s
 In conclusion, the material presented above gives you an idea about the features of Bitcoin Script and computing in it with existing operations. Now let’s have a look at how it is used in real bitcoin transactions.
 
 ### Example of Bitcoin Script execution for P2PKH
+
 Let’s look at the case when coins are sent to a regular address that is associated with the specific hash of one public key (P2PKH, or pay-to-public-key-hash). The script that sets the spending conditions, combined with a script that satisfies these conditions, is presented in Figure 3.4.
 
 You see a data stack on the left-hand side, on the right-hand side the script itself. The first two components of the script line are the value of the signature and public key - the so-called unlocking script, that is, the script that is indicated in the transaction that spends coins input (located in the scriptSig field). Followed by the data set is the locking script that indicates the transaction output (transaction scriptPubKey field).
@@ -106,6 +111,7 @@ The next operation is the comparison operation OP_EQUALVERIFY. Two top elements 
 If the transaction signature is valid (the signature covers the fields of the transaction), then the result of the verification is true, and this value is pushed to the stack. This completes the execution of the script. Data is passed to the calling function and checked there. If the stack is true, then the verification of this transaction input was correct. If all transaction inputs have been correctly verified, then the entire transaction is considered correct.
 
 ### Example with multisignature
+
 Now, let's look at how multi-signature works using the Bitcoin Script. A condition that requires several keys is blocked by the following script (as an example, we implement 2 of 3 multi-signature):
 
 **scriptPubKey : OP_0 OP_2 \<pubKeyA> \<pubKeyB> \<pubKeyC>  OP_3 OP_CHECKMULTISIG**
@@ -137,6 +143,7 @@ The OP_CHECKMULTISIG operation is performed as follows: First, this operation ch
 Such a scheme is rarely used, because in this case the amount of data in the scriptPubKey field is quite large and, accordingly, the transaction fee also increases. Instead of such a scheme, the P2SH (pay-to-script-hash) scheme is often used, which transmits the entire condition in the form of its hash value. The party that needs to unlock the coins must provide the script itself and the data to execute it.
 
 ### Using the locktime mechanism 
+
 Using Bitcoin Script, we can also set a condition under which coins will be spent only after a certain amount of time. To set  such a condition the following script is used:
 
 **\<time> OP_CHECKLOCKTIMEVERIFY OP_DROP OP_DUP OP_HASH160 \<address_В> OP_EQUALVERIFY OP_CHECKSIG**
@@ -156,6 +163,7 @@ After that, the OP_DROP operation removes the top value of the stack (Fig. 3.14)
 <img width="30%" src="/resources/img/volume-2/3.1-Bitcoin-Script-design-and-features/Figure-3.14-The-third-step-of-script-execution.png" alt="Figure 3.14 – The third step of script execution"/> 
 
 ### Unusual transactions using Bitcoin Script
+
 On December 13, 2012, a transaction was added to the Bitcoin blockchain. One bitcoin was transferred to the person that provided the data the hash value was corresponding to.
 
 The transaction contained the following script:
@@ -171,6 +179,7 @@ The transaction that became known as the "Transaction puzzle", demanded the data
 The variety of transactions does not end here. There are transactions on the network requiring to satisfy certain conditions that in turn require a certain signature value. There are also transactions, which conditions require to contain multiple branches. The Bitcoin Script is a powerful tool for setting the coin spending conditions. Its structure and organization do not allow malicious parties to set up a scenario that can significantly overload the network. At the same time, users can specify exactly how coins are spent, when using all features correctly.
 
 ### Bitcoin Transactions Statistics
+
 If we analyze the transactions on the Bitcoin blockchain for the period of August 2018 to August 2019, the statistics on the use of certain types of Bitcoin Script and the related transaction types looks as follows (Fig. 3.16) [23]:
 
 <img width="50%" src="/resources/img/volume-2/3.1-Bitcoin-Script-design-and-features/Figure-3.16-Transactions-Outputs-Type-Statistics.png" alt="Figure 3.16 - Transactions Outputs Type Statistics"/> 
@@ -190,6 +199,7 @@ However, in this case, the number of transactions sent does not always match the
 In 2013, a transaction was added to the network to receive funds from it; however, it was necessary to provide two different lines of text that would produce the same hash using the SHA-1 algorithm. In other words, in order to unlock these funds, it was necessary to detect a collision. Nevertheless, in 2017, a conflict was discovered and the funds were transferred to the address of the user who managed to solve this "riddle".
 
 ## 3.2 Key formats in Bitcoin
+
 First of all, it worth noting that the global trend in digitizing assets is likely to have users ask for means to manage their digital assets directly, sooner or later. Just as a browser allows you to simply work with websites while performing complex interactions at the program level, a digital wallet is a convenient way to manage digitized assets. However, in this case, the user needs to be able to operate with keys since access to assets is carried out through the keys. Therefore, the question of key formats only seems secondary, and sufficient awareness, in this case, will be required even by an average user.
 
 So, in order to manage the coins, three objects are used in the Bitcoin: a private key, a public key, and a bitcoin address. At this stage, the simplest definitions of each component will do. A private key is a randomly generated number of 256 bits; the public key is calculated from the private key (the length of the public key is 512 bits), and the bitcoin address is the hash value of the public key (160 bits) obtained by using two different hashing algorithms.
@@ -197,9 +207,9 @@ So, in order to manage the coins, three objects are used in the Bitcoin: a priva
 Later we consider the private and public key encoding formats that are most often used in Bitcoin. Each of the formats has its own distinctive features, so they should be studied separately.
 
 > **Key encoding formats in Bitcoin**
->> * Hex (Base16 encoding)
->> *  WIF (Wallet Import Format)
->> *  BIP38 (encrypted private keys)
+>> * *Hex (Base16 encoding)*
+>> * *WIF (Wallet Import Format)*
+>> * *BIP38 (encrypted private keys)*
 
 Since Bitcoin uses cryptography on elliptic curves, the public key is a point on the curve that has two coordinates. Thus, we can describe any public key in the form of just two coordinates: *X* and *Y*. However, this is not the only possible form of presenting a public key.
 
@@ -209,9 +219,8 @@ Let’s consider how the public key looks like in the Cartesian coordinate syste
 
 Since *Y<sup>2</sup>* is present in the equation of the elliptic curve *Y<sup>2</sup> = X<sup>3</sup> + 7</nobr>*, for each argument *X*, there are two values of *Y*: positive and negative. In order to strictly set and then distinguish the desired point *(P)* from symmetric *(-P)*; in addition to argument *X*, you also need to know the sign of the value of the function *Y*. Based on these rules, a compressed public key format is constructed.
 
-
-
 ### Compressed key format
+
 So, first, a regular public key is formed from the private key, which has the *X* and *Y* coordinates. After that, the coordinate values are concatenated, and a special prefix is added at the beginning of a serialized key, which allows strictly distinguishing this format from others. In the hexadecimal notation, such a prefix has the value "04". As a result, the uncompressed public key is a sequence of 65 bytes.
 
 To get a compressed format for such a public key, the *X* coordinate, the P point, and a special prefix that indicates the sign of the *Y* coordinate (and also that it is not just a compressed public key format) are enough. The prefix “02” is used for a positive value of *Y*, and the prefix “03” is used for a negative value (Fig. 3.20). At the same time, the format of the public key presented is changed, which is now a sequence of 33 bytes in length. Since the address is the result of double hashing the public key, it also changes.
@@ -221,6 +230,7 @@ To get a compressed format for such a public key, the *X* coordinate, the P poin
 Accordingly, there can be two addresses for the same private key. Therefore, the key formats, that will be discussed later, will have two options: compressed and regular. This is necessary so that we can clearly understand which public keys we need to calculate based on this format: compressed or uncompressed.
 
 ### Private key formats
+
 There are many private keys presentation formats. Almost every day there are proposals for various improvements or new private key formats since there are many problems for which they can be applied. Nevertheless, in any format, the same data is often used, but only the way they are encoded is different. Below we consider three main formats in their usual and concise versions.
 
 Hex, or Base16, is a format that involves writing a number in hexadecimal notation. It is used mainly in software, for example, during communication between network nodes and mobile wallets. It simplifies the search for errors and debugging applications by increasing data readability.
@@ -248,6 +258,7 @@ You can decrypt an encrypted private key in the reverse order. To do this, the u
 Above, we considered the formats of private keys. Now let's move on to the public key formats.
 
 ### Public key formats
+
 Public keys are used primarily in software. End users usually do not operate with a public key, because if you are a Bitcoin user, depending on your goals, it will be convenient for you to use either a private key or a bitcoin address, while the public key is an intermediate link.
 
 There are two public key formats: hex and hex-compressed (compressed version of hex). Like a private key, hex is a public key record in hexadecimal notation. The only difference is that a slightly different scheme is used here to distinguish a compressed public key from a regular one - a special prefix is added. In the case of a regular public key, the prefix “04” is added, and in the case of a compressed one, one of the prefixes is added: “02” or “03” (Fig. 3.24).
@@ -271,11 +282,13 @@ There are three options for import/export of private keys: individually, by list
 In addition to those listed in this section, there are also mini-keys and hierarchical keys. The first format is generated in a certain way in order to get a key with a length of 30 characters. Its main applications are QR codes and physical coins, such as Casascius. The principle of generating hierarchical keys is that a certain seed value is used, from which all used private keys are generated. The advantage of this method is that it suffices to make a backup copy of the main secret from which the rest of the keys can be restored.
 
 ## 3.3 Serialization formats of transactions and blocks in Bitcoin
+
 Bitcoin transactions are transmitted among nodes in a serialized form (raw format), namely in the form of a byte sequence of data. This sequence is also used to hash and further obtain a transaction identifier. Therefore, for the correct transaction processing by the network nodes, the serialization format is required.
 
 A user can then see a transaction in a human-readable form (transformed by a blockchain explorer or a bitcoin wallet). In this section, we will teach you how to read serialized transactions and blocks at a glance, to understand in what form they are transmitted over the network and how they are processed by nodes.
 
 ### Bitcoin transaction serialization
+
 For a better understanding, we suggest starting with an example and review a serialized transaction, which was confirmed on the Bitcoin network. First, let's examine it in the JSON format (Fig. 3.25) [25].
 
 <img width="40%" src="/resources/img/volume-2/3.3-Serialization-formats-of-transactions-and-blocks-in-Bitcoin/Figure-3.25-JSON-Bitcoin-Transaction.png" alt="Figure 3.25 – JSON Bitcoin Transaction"/> 
@@ -352,24 +365,26 @@ Two values follow: the first of them is the difficulty parameter, which determin
 <img width="50%" src="/resources/img/volume-2/3.3-Serialization-formats-of-transactions-and-blocks-in-Bitcoin/Figure-3.40-The-difficulty-parameter-nonce-value-and-the-number-of-transactions-in-the-block.png" alt="Figure 3.40 – The difficulty parameter, nonce value, and the number of transactions in the block"/> 
 
 ## 3.4 Messaging between Bitcoin network nodes
+
 The architecture of the Bitcoin network provides a peer-to-peer network, where each node is equal and self-sufficient. There are no additional restrictions on the interaction between Bitcoin network nodes, as well as on other processes of this system. The consensus is reached by independent participants, and the exchange of messages between them is independent and decentralized. Each network participant independently decides which block to use as a base for further history while the network nodes independently decide which nodes to communicate with and how to process the received information.
 
 In the first part of the book, we have already examined important points of the Bitcoin network structure and the role of nodes in its functioning. In this section, we will consider the technical details of how nodes interact with each other, specifically how the exchange of messages between participants in the Bitcoin network occurs. We will also characterize the state of the Bitcoin network based on data from September 2019 as well as consider the information dissemination protocols, their requirements, problematic issues of these protocols and possible solutions.
 
 ### The roles of nodes in Bitcoin
+
 Earlier, we have determined that nodes can be divided into three groups:
 
-> * Full node (auditor)
-> * Validator node
-> * SPV-node
+> * *Full node (auditor)*
+> * *Validator node*
+> * *SPV-node*
 
 Now we try to expand the classification a little bit by considering the functions that can be implemented by network nodes. Each Bitcoin node can consist of a number of modules that differ in terms of the functions performed.
 
-> * A module that stores the entire transaction history
-> * Transaction verification module
-> * The module responsible for communication with other network nodes
-> * A module forming proof-of-work for mining
-> * The module that implements a user wallet
+> * *A module that stores the entire transaction history*
+> * *Transaction verification module*
+> * *The module responsible for communication with other network nodes*
+> * *A module forming proof-of-work for mining*
+> * *The module that implements a user wallet*
 
 An example of a node containing all the modules is an individual user's PC with Bitcoin Core implementation or a similar one. Such a node can be represented schematically in Figure 3.41
 
@@ -402,6 +417,7 @@ The second type contains only a module that calculates the solution for a resour
 In the last two types of nodes, there was no module responsible for exchanging messages on the Bitcoin network. Next, we will look at the functioning of this particular module; hence we will also cover concepts such as a full and SPV node.
 
 ### The current state of the Bitcoin network
+
 Conventionally, there are two types of nodes in the Bitcoin network: public and private. The public node (public-IP node) does not require permission to connect to it. The software of such a node “listens” to a port on the global Internet network and accepts connection requests. Public nodes help new members to find nodes to join. If there is a sufficiently small number of public sites, then it will be difficult for new participants to find who to join and as a result, the network will not be able to grow or might even break up into subnets.
 
 The private node (private-IP node) joins other public nodes but does not accept incoming connections. A private node is sufficient to audit the accounting system, send your transactions and generally support the full functionality of a digital wallet (Fig. 3.47).
@@ -428,6 +444,7 @@ If we analyze the number of public nodes, we can see that from 60-100 thousand n
 <img width="50%" alt="Figure 3.49 – Concentration map of available Bitcoin Nodes around the world" src="/resources/img/volume-2/3.4-Messaging-between-Bitcoin-network-nodes/Figure-3.49-Concentration-map-of-available-Bitcoin-Nodes-around-the-world.png"/> 
 
 ### Bitcoin Message Structure
+
 Let look at the structure of the messages exchanged between Bitcoin network members. All messages in Bitcoin have the structure as presented in Table 3.1.
 
 Table 3.1.
@@ -439,6 +456,7 @@ Table 3.2.
 <img width="50%" src="/resources/img/volume-2/3.4-Messaging-between-Bitcoin-network-nodes/Table-3.2..png" alt="Table 3.2."/> 
 
 ### Information Distribution Protocol
+
 Information distribution is the main task of the Bitcoin network and system messages are needed to implement it. Thus, there are 27 types of messages in the Bitcoin network. The main of them are shown in Figure 3.50 [31].
 
 <img width="20%" src="/resources/img/volume-2/3.4-Messaging-between-Bitcoin-network-nodes/Figure-3.50-The-main-Types-of-Messages-on-the-Bitcoin-Network.png" alt="Figure 3.50 – The main Types of Messages on the Bitcoin Network"/> 
@@ -446,12 +464,13 @@ Information distribution is the main task of the Bitcoin network and system mess
 In this list, you can see that the biggest amount of data is used by messages related to the transaction transfer (inv, tx, getdata). For example, messages that check the network connection (ping, pong) take only a small part of all traffic.
 
 ### Launching a node in the Bitcoin network
+
 A node that is launched for the first time and starts interacting with other network nodes has to go through the following steps:
 
-> * Sending the request to a DNS server (supported by community members) to get network addresses of active nodes in the network
-> * Connecting to the nodes
-> * Downloading the transaction history (initial blocks downloading)
-> * Exchanging blocks and transactions with other nodes
+> * *Sending the request to a DNS server (supported by community members) to get network addresses of active nodes in the network*
+> * *Connecting to the nodes*
+> * *Downloading the transaction history (initial blocks downloading)*
+> * *Exchanging blocks and transactions with other nodes*
 
 During the first step, the node needs to send a request to one of the DNS servers that are supported by the Bitcoin core developers and community members. It also needs to store a database of existing active nodes (the network addresses of these servers are embedded in the node software).
 
@@ -460,6 +479,7 @@ After sending the request to the DNS server, the node gets IP addresses of the n
 Then the new node needs to request and download all the blocks from the existing blockchain. To do this, the Initial Block Download method is used. After the existing blocks are synchronized, the new node begins to take part in the protocol for transmitting data over the network – to exchange new blocks and transactions with other nodes.
 
 ### Flooding Information Distribution Protocol
+
 To transfer blocks and transactions over the Bitcoin network, a modification of the Flooding protocol is used [32]. According to this protocol, nodes transmit new / received blocks and transactions to all their nodes, except for those that already know about these blocks and transactions (Fig. 3.51).
 
 <img width="30%" src="/resources/img/volume-2/3.4-Messaging-between-Bitcoin-network-nodes/Figure-3.51-General-Flooding-Protocol.png" alt="Figure 3.51 – General Flooding Protocol"/> 
@@ -471,18 +491,20 @@ To save data, a protocol consisting of three messages is used. Its essence is th
 Let’s say node A received transaction tx from a mobile client and is going to share it with nodes B, C, and D. The nodes do not have this transaction, so they will receive it at time t1. At time t2, node B will try to send this transaction to node C, but since node C has already received this transaction, it will not request the full version of this transaction, and therefore the transaction will not be transmitted over this connection. Nodes E and G don’t know about this transaction, and in response to a message about a new transaction, they will request it and receive it at time t2. This process continues until all nodes in the network have the transaction.
 
 ### Diffusion – Flooding Extension
+
 In fact, Bitcoin uses the Diffusion protocol [32] to transfer transactions, which is an extension of the Flooding protocol. According to this protocol, after receiving a new transaction, each node in the network will not send it immediately but will rather wait for a random period of time between 0-5 seconds. Thus, the node accumulates transactions before distributing them further. This helps to save traffic associated with message headers, complicate spying associated with tracking the time at which a transaction was received, and avoid collisions (when two nodes simultaneously send one transaction to each other).
 
 There are several difficulties associated with data transfer protocols in the Bitcoin network.
 
-> * Respecting user anonymity
-> * Resistance to various kinds of attacks
-> * Hardware power and capacity requirements
-> * Network distribution time
+> * *Respecting user anonymity*
+> * *Resistance to various kinds of attacks*
+> * *Hardware power and capacity requirements*
+> * *Network distribution time*
 
 Further, we will consider how each of the listed problems is solved.
 
 ### Examples of problems in the protocols and their solutions
+
 Consider the problem of anonymity. It can be formulated in the following way: how to make it impossible (or very expensive) to determine the origin of transactions in the network, which means making it impossible to link a specific transaction in the Bitcoin network to a network address of the node from which it began to spread across the network?
 
 In the diagram below (Fig. 3.53), you can see that the supernode is a node connected to all nodes in the network. From the point in time at which this node first learns about a transaction from other nodes, it can determine its source. Thus, supernode can associate this transaction with a specific IP address.
@@ -560,20 +582,23 @@ No, it is not encrypted. This issue has been the subject of debate over the past
 Neither hardfork nor softfork is needed to change these protocols, but it is necessary to develop the protocols and corresponding software updates of the node in such a way that they are backward compatible and that non-updated nodes can join the updated and work normally. An example of such a protocol is Compact Blocks Relay [34] discussed above. It provides messaging with old nodes as well as with the new ones.
 
 ## 3.5 Testnet and challenges of protocol updating
+
 The testnet is an alternative network that runs the same protocol as Bitcoin but is supported by fewer participants and acts as a kind of "sandbox", which anyone can join to conduct tests. The testnet has its own genesis block, whereas coins are separated from those in the mainnet and have no real value.
 
 This allows application developers or testers to experiment without having to conduct operations with real coins and clog the mainchain with transactions. The testnet is where the team of Bitcoin protocol developers tests updates and new software as well as conducts network loading tests prior to introducing updates in the mainnet. The testnet is divided into two types: private testnet and public testnet.
 
 ### Testnet in Bitcoin and its purpose
+
 Bitcoin’s public testnet works just like the mainnet;  the only difference is that people don’t presume the value of coins in this system. At the same time, users can both mine test coins on their own — for the testing purpose — and contact participants who distribute small fractions of coins to those who wish to test the software of nodes, wallets, etc.
 
 In addition to the public test network — where everyone can operate — you can create a private testnet (regtest, Regression Test Mode), a local (private) version of Bitcoin. This version of the test network is convenient; you can quickly update the software of all network nodes and demonstrate or test the changes without the need for approval from other participants. This method has three main advantages:
 
-> * No need to connect to a public network
-> * Full control over the network and its transactions
-> * Most network parameters are saved, which allows you to independently change the tested parameters or introduce new functions
+> * *No need to connect to a public network*
+> * *Full control over the network and its transactions*
+> * *Most network parameters are saved, which allows you to independently change the tested parameters or introduce new functions*
 
 ### Protocol update
+
 While updating the protocol of a decentralized system, developers have to deal with certain difficulties. A particularly difficult situation is when an update must be carried out in a permissioned system and its operation cannot be allowed to stop even for a short period of time. Traditional protocols allow different versions on the network, but, for example, in Bitcoin and similar accounting systems, nodes must process blocks of the same format. Consequently, a certain group of participants cannot freely switch to a new protocol version without considering versions of the other network nodes' software (in such cases, forks typically appear).
 
 To implement any protocol change, the following questions must be taken into account: how will the nodes come to an agreement regarding the new rules? Will there be vulnerabilities or bugs as a result of the update? How safe will the updated protocol be?
@@ -601,6 +626,7 @@ We illustrate the process in more detail using the scheme shown in Fig. 3.58. In
 <img width="40%" src="/resources/img/volume-2/3.5-Testnet-and-challenges-of-protocol-updating/Figure-3.58-The-life-cycle-of-updates.png" alt="Figure 3.58 – The life cycle of updates"/> 
 
 ### Most Important Bitcoin Protocol Updates
+
 Since the advent of the very first version, Bitcoin has gone through many changes. Let's look at the most significant of them.
 
 The first version of the protocol, Version 0.1, was released on January 8, 2009. This event was preceded by the publication of the whitepaper on November 1, 2008, in which Satoshi Nakamoto described the principles of the future system.
@@ -612,6 +638,7 @@ The first version of the protocol, Version 0.1, was released on January 8, 2009.
 *Segregated Witness*. The Segregated Witness (SegWit) mechanism, described in BIP 141, 143, and 147 [68–70], was designed to optimize transactions and blocks by issuing signatures in a separate structure. SegWit was first published at the end of 2015, and the release took place in October 2016 (version 0.13.1). The activation threshold has been set to 95%. However, owners of large mining pools, including F2Pool, HaoBTC, AntPool, said they would support the update only if the block size increased to 2 MB.
 
 ### Adaptation of new versions of Bitcoin among nodes
+
 Despite the fact that not all Bitcoin protocol updates were successful, they play an extremely important role, introducing new functionality and correcting old shortcomings. Nevertheless, statistics show that the owners of some nodes react very slowly to the introduction of new versions whilst they continue to use the old ones.
 
 Figure 3.59 shows a graph that depicts the distribution history of versions from August 2017 to August 2019. The graph highlights how, after updating, the number of nodes supporting the new version begins to grow gradually [36].
@@ -627,14 +654,15 @@ Nevertheless, some still use extremely outdated versions of the protocol, up to 
 <img width="50%" src="/resources/img/volume-2/3.5-Testnet-and-challenges-of-protocol-updating/Figure-3.60-Bitcoin-node-version-ratio.png" alt="Figure 3.60 – Bitcoin node version ratio"/> 
 
 ### Risk of the community split
+
 Any change in the distributed accounting system is made only when the open community of the most active users reaches agreement on this change. Projects of such a kind are difficult to monetize directly, so it is very important to have a big community of volunteers who will support the operation of the accounting system.
 
 When disputes appear in a community, they are usually resolved by the opinion of the majority. But it may happen that community members do not reach an agreement. The contradictions between parties grow and may result in a community split (Fig. 3.61). Examples are the splits of the following projects.
 
-> * Ripple and Stellar
-> * Ethereum and Ethereum Classic
-> * Bitcoin and Bcash
-> * Monero and Monero Classic
+> * *Ripple and Stellar*
+> * *Ethereum and Ethereum Classic*
+> * *Bitcoin and Bcash*
+> * *Monero and Monero Classic*
 
 <img width="45%" src="/resources/img/volume-2/3.5-Testnet-and-challenges-of-protocol-updating/Figure-3.61-Accounting-system-community-split.png" alt="Figure 3.61 – Accounting system community split"/> 
 
@@ -647,6 +675,7 @@ It turns out that one of the biggest advantages can sometimes turn into a crucia
 Often, attackers take advantage of the user's carelessness or their desire to obtain more favorable conditions for the purchase of coins by transferring them to a test wallet. In order not to fall for such a trick, you should pay attention to which wallet you are using to receive funds and under no condition allow an outsider to create a wallet for you. Attackers can also create a multisig wallet and then send funds to another address that you do not own.
 
 ## 3.6 Basic classes of attacks on Bitcoin
+
 The emergence of Bitcoin caused real concern among computer scientists. Many of them were initially skeptical about it. On the one hand, it seemed that this was another attempt to involve people in a dubious financial enterprise; on the other hand, people would notice that Bitcoin combines well-known standards of cryptographic schemes – hashing and signature algorithms – without introducing anything new. For cryptographers, this was too easy, and for Internet security researchers, it was too abstract. However, after 2014 the situation changed dramatically. 
 
 People realized that Bitcoin occupied a certain niche within the Internet payment sphere and is constantly growing its user base. At some point, Bitcoin became a testing ground for attacks and methods of protecting decentralized systems (most importantly for anonymous attack testing). This chapter will examine the main classes of attacks on Bitcoin and deep dive into why Bitcoin was designed in that exact setup that we see today.
@@ -656,11 +685,13 @@ For several decades, engineers from all over the world have been looking for a w
 The essence of the solution is to allow anyone to participate in the formation of a list of confirmed transactions. The easiest way to achieve this is to have participants exchange confirmations on transactions that they consider to be correct. However, everyone must also reliably protect oneself from fake messages and overloading honest network nodes with fake data of malicious nodes. The details of how such attacks are conducted and how to protect against them will be described further.
 
 ### Flood attack and protection mechanism
+
 Satoshi Nakamoto proposed a very original solution: each potential validator must provide proof of work done to obtain the right to vote. In fact, this is the essence of the proof-of-work consensus algorithm. The participant must spend some resources and offer her own set of correct transactions, which serves as a means of protection against false opinions.
 
 The use of proof-of-work to protect against unwanted mailings was proposed by Adam Back back in 1997; then it was a solution to protect users of email protocols from spam. Later, this approach formed the basis of the HashCash architecture — one of Adam's early attempts to create an independent digital currency. At the time of 2019, Adam Back remains one of the leading cryptographers and ideologists in the Bitcoin community.
 
 ### Spam attack and its consequences
+
 The term spam usually refers to intrusive spam messages in large numbers. The goal of a spam attack is to remove one or more network nodes from the state of normal functioning. When organizing such an attack, some prerequisites have to be met. You can take a software wallet and make changes to it in a way that it creates a lot of transactions, sending coins from its old addresses to the new ones. Each transaction should include a fee, ultimately leading to three different scenarios.
 
 In the first case, the attacker includes a very low or zero commission. Then its transactions will not disperse over the network at all since each node sets the value of the minimum required fee. If the actual transaction fee is below this threshold, then the node immediately rejects the transaction. Thus, an attacker can send such transactions only to those nodes with which he has a direct connection, and then not for a sustained amount of time. In addition, it will be ineffective because its transactions will be immediately rejected. And after some time, these nodes will also trigger a filter that will break the connection with useless nodes or nodes transmitting incorrect messages.
@@ -670,11 +701,13 @@ In the second case, an attacker includes an average fee (above the threshold val
 In the third case, an attacker includes a sufficient commission. Then his transactions can practically fill the entire bandwidth of the currency. It is important to understand that other users' wallets will also begin to inflate the transaction fee in order to receive service. Therefore, an attacker will need to pay more and more for each subsequent transaction so that the remaining transactions remain at the bottom of the queue. The costs of such a flood attack are very high.
 
 ### Suspension of new transactions’ confirmation (DoS)
+
 Is it possible to create an attack on Bitcoin that will stop validators and new transactions will no longer be confirmed? Theoretically, such an attack is possible. It may turn out that someone who is well versed in programming and software security will find critical vulnerabilities in the source code of full nodes. He might want to exploit them and harm the network instead of offering a fix. However, it is almost impossible to predict such a scenario or to guarantee protection against it.
 
 Nevertheless, the likelihood that this will actually happen is very small. Since Bitcoin has been around for quite some time, attempts to find vulnerabilities have been made many times and researchers continue to work in this direction. In addition, before the adoption of the protocol updates, the source code undergoes a rigorous audit and testing by many independent community members.
 
 ### Long-range attack
+
 The underlying principle of this attack is easy to understand when put in perspective of the well-known 51% attack. 
 
 In a traditional way, this would be as follows. An attacker sends 50 bitcoins to an address just created. After that, he sends the coins to a merchant with whom he exchanges them for another currency (for example, litecoins). The seller waits for 6 transaction confirmations and sends another currency to the user's wallet.
@@ -694,6 +727,7 @@ In reality this is not a vulnerability for the Bitcoin protocol since the develo
 The checkpoints mechanism (discussed in detail in the first part of this tutorial) also helps to combat this threat. However, remember that checkpoints are not a trustless solution. Anyone who adds them to the software may be an attacker, so there has to be a certain level of trust towards both software developers and an author of checkpoints.
 
 ### Routing attacks
+
 Despite the fact that a Bitcoin node can be controlled from anywhere in the world, at the moment, nodes are unevenly distributed globally. According to research (Fig. 3.62), most Bitcoin nodes are located in a few Internet service providers (ISPs): 13 Internet providers (which makes up 0.026% of all Internet providers) accommodate 30% of the nodes of the entire Bitcoin network (shown on the left graph). Moreover, most of the traffic exchanged between Bitcoin nodes crosses several Internet providers. Studies show that 60% of all possible Bitcoin connections are run across 3 different Internet providers. That means that these 3 Internet providers can see 60% of all Bitcoin traffic (shown on the right graphic).
 
 <img width="50%" src="/resources/img/volume-2/3.6-Basic-classes-of-attacks-on-Bitcoin/Figure-3.62-Ratio-between-the-total-number-of-nodes-and-connections-between-them.png" alt="Figure 3.62 – Ratio between the total number of nodes and connections between them"/> 
@@ -736,6 +770,7 @@ The second goal that an attacker can pursue is a delay of 20 minutes for the blo
 <img width="50%" src="/resources/img/volume-2/3.6-Basic-classes-of-attacks-on-Bitcoin/Figure-3.65-Block-Delay-Attack-Scheme.png" alt="Figure 3.65 – Block Delay Attack Scheme"/> 
 
 ### Other technical and social attacks
+
 Network traffic analysis (packet sniffing). Anyone who can see all of your Internet traffic can determine when you submit a transaction that you did not receive from another node (this implies that you created it). Internet service providers or national firewalls can filter Bitcoin protocol traffic, thereby causing some inconvenience to ordinary users. But the issue of filtering network packets can be resolved. For example, Bitcoin Core has good integration with Tor (a decentralized traffic anonymization network).
 
 A block withholding (selfish mining) attack implies that there is a time delay for newly formed blocks before they are sent to other nodes. The attacker is a validator with sufficiently large computing power who creates new blocks of the chain but does not immediately redirect them to other network nodes. These blocks are published later one by one or in groups; that is why the blocks of the remaining validators are rejected by the network as the ones belonging to another, a shorter chain (orphan blocks). In this attack, other validators become victims; however, in the end they either take a lesser part in reaching consensus or cannot create any relevant block at all.
@@ -745,6 +780,7 @@ Other diverse attacks include planned forks, various kinds of restrictions on th
 The most specific attacks include the kidnapping of important community members and the introduction of malicious elements into hardware or software.
 
 ### Bitcoin alert system and how it is turned down
+
 The alert system in Bitcoin allows you to broadcast messages to network clients about cases of detection of problems and potential threats (Fig. 3.66).
 
 <img width="50%" src="/resources/img/volume-2/3.6-Basic-classes-of-attacks-on-Bitcoin/Figure-3.66-An-example-of-Bitcoin-alert-system-message.png" alt="Figure 3.66 – An example of Bitcoin  alert system message"/> 
@@ -766,6 +802,7 @@ Satoshi later transferred his secret key with several trusted Bitcoin Core devel
 This state of affairs was contrary to the Bitcoin security model. And in the Bitcoin Core 0.13.0 update, in 2016, the alert system was completely eliminated.
 
 ### Some discovered and resolved protocol problems
+
 BIP-0050. In May 2013, the BIP 50 was proposed to address one of these problems. In the network, someone created and distributed blocks that had a larger number of total transaction inputs than the previous one. 0.8-Bitcoin nodes were able to handle this, but some of the nodes before version 0.8 did not, causing an unexpected split in blockchain. In the incompatible pre-0.8 chain at that time there was about 60% hashrate, which was not enough to automatically resolve the split.
 
 In order to restore the canonical chain as soon as possible, BTCGuild and Slush lowered their 0.8-Bitcoin nodes to 0.7, due to which their pools also rejected a block containing a larger number of inputs. During this time, one big double-spend was made. However, this was done for the purpose of experimenting, not for malicious reasons.

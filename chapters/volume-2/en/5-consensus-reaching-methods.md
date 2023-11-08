@@ -1,20 +1,23 @@
-# CONSENSUS REACHING METHODS
+# 5 CONSENSUS REACHING METHODS
+
 
 ## 5.1 Proof-of-stake consensus algorithms
+
 The PoS (proof-of-stake) describes the proof of coin ownership in a specific digital accounting system. The PoS-based consensus algorithm was created as a less resource-intensive alternative for proof-of-work. In this approach to building a consensus-reaching algorithm, the probability of a node gaining the right to create a new block depends on its coin balance. In this section, we will look at the basic principles behind PoS consensus algorithms and the features of using this approach in accounting systems.
 
 ### Operation principles and block structure of proof-of-stake
+
 When a proof-of-stake consensus algorithm is used, the validator node is chosen in a pseudo-random manner based on a combination of factors including the age of particular coins, certain random values and a node state. It is also worth noting that in proof-of-stake systems, the process of generating a block is called *forging* or *minting*.
 
 In the generalized form, the order of the new block’s formation in PoS is as follows. A block header, the current time, the validator’s balance (his stake) and other specific data such as calculated coinage (see description below) or a certain random variable is input in a function, which ensures that the validator is chosen in a fair manner. This function is called at a certain interval and each time the validator tries to execute it, it gives back a certain result (whether the request was successful or not).
 
 Digital currencies that use a proof-of-stake consensus algorithm include the following.
 
-> * Peercoin
-> * Nxt
-> * NEM
-> * Novacoin
-> * Cardano
+> * *Peercoin*
+> * *Nxt*
+> * *NEM*
+> * *Novacoin*
+> * *Cardano*
 
 When the proof-of-stake system starts, coins are not distributed. The creators usually start with a pre-issuance of coins or start with proof-of-work and then switch to the pure proof-of-stake. But then, why do validators get the reward? In the first case when coins are pre-issued, validators get rewards from the transaction fees. When PoW and PoS are combined, validators can receive their rewards both for the generation of new coins and for accepting transactions.
 
@@ -35,6 +38,7 @@ In addition, this block contains the block author's signature, which must be ver
 This is done so that no outsider can impropriate a new PoS block and use it to confirm and distribute his transactions. If a user does not own a specific key, she cannot generate the necessary signature.
 
 ### Peercoin
+
 Peercoin [38] is the first cryptocurrency, which introduced the proof-of-stake algorithm. However, it is worth noting that in Peercoin a combination of PoS and PoW algorithms is used. This means that some blocks in the chain are created using PoW, while others are created using PoS. Both options confirm transactions and provide the reward in the form of fees and new (issued) coins. However, when blocks are created using PoW, the number of new coins is much bigger since the probability of a successful generation, in this case, does not depend on the validator’s balance. It is also worth noting that the difficulty parameters for PoW and PoS are calculated and changed independently of each other. As in proof-of-work, the proof-of-stake difficulty is responsible for the probability of proof generation on the first try and is used to control the block generation frequency in order to keep it consistent over a long period of time. For example, if too many or too few blocks were generated recently, the complexity will increase or decrease accordingly.
 
 As already mentioned, the chance of a node to forge a block in a proof-of-stake depends on the number of coins in its balance. However, this is not the only metric since it would give preference to the richest validators who decide to keep more coins in their wallets. To avoid this situation, additional methods are used to select validators.
@@ -48,6 +52,7 @@ After the node has validated the next block, the coinage is reset and it needs t
 If the wallet owner wants his coins to stop participating in the validation process and return to the main balance, he will have to wait for a certain time. This is done to make sure that the blocks added with the participation of these coins won’t appear invalid.
 
 ### Nxt
+
 Nxt [39] is a digital currency based on the pure proof-of-stake algorithm, which means that there is no way to mine new coins and the entire supply (1 billion) is available from the beginning of the system. The main difference of Nxt is how it provides protection against a Nothing-at-Stake- and other types of attacks.
 
 The block is generated based on the unique information from the previous block, which is easy to verify and almost impossible to predict. The node’s chance of forging a new block depends on its effective balance (which is different for each account), time after the previous block was added, and a certain base value. All nodes in the system know the last two parameters. Based on this data, it is easy to predict who will receive the right to generate the next block.
@@ -57,6 +62,7 @@ The coins are added to the account’s effective balance if they didn’t partic
 It is worth noting that Nxt instead of the UTXO mechanism (like in Bitcoin and Peercoin) uses the account and balance model, similar to Stellar and Ethereum.
 
 ### NEM
+
 Initially NEM [40] was designed as a clone of Nxt but later was significantly redesigned and grew into an independent system. Instead of proof-of-stake, NEM uses a modification called proof-of-importance (PoI).
 
 PoI is quite similar to PoS, but additional factors are used to determine the next validator. The node’s importance is determined by the following three characteristics: the number of coins, the number of transactions and the age of the account itself. In such a way the creators of NEM encourage to not only accumulate coins but also to use them.
@@ -74,6 +80,7 @@ As soon as a new transaction appears on the NEM network, the first node that det
 To maintain a “reputation system” among nodes, NEM uses the Eigentrust$++$ algorithm. It distributes the load across the system and eliminates nodes that are not involved in the validation process.
 
 ### Ouroboros
+
 Ouroboros protocol was developed in 2016 [41]. It was designed to eliminate the shortcomings of first-generation systems. Ouroboros is the first provably robust PoS protocol. The right to generate the next block is determined randomly, but this process is verifiable and provably fair. When the majority of participants are honest, an attacker will not be able to influence the randomness of an algorithm.
 
 Ouroboros introduces the concept of an epoch (Cardano, based on this protocol, uses epochs that last 5 days). Each epoch is, in turn, divided into slots lasting 30 seconds (Fig. 5.3). For each slot, a leader is selected who receives the right to add a block to the current slot. Leaders are rewarded regardless of the fact whether they have issued a block. The security model assumes that an attacker can expand an arbitrary number of chains to her time slot.
@@ -93,6 +100,7 @@ The selection is divided into three stages:
 >**_Note._** *The fundamental assumption of the Ouroboros protocol is that there should be a majority of honest nodes, specifically 50% + 1. In this case, the protocol guarantees that attackers will not be able to violate the persistence and liveness of the system.*
 
 ### Ouroboros Praos
+
 Ouroboros Praos [43] is the first proof-of-stake protocol aimed at a widespread usage. The main difference of Praos is that it works in networks with unknown upper message delivery delay. It provides guaranteed security in case an attacker chooses participants who follow his rules and generate blocks beneficial for the attacker. However, this is only possible if more than 50% of participants are honest.
 
 Ouroboros Praos uses verifiably random functions to ensure randomness. The function receives the secret key and input data and outputs a pseudorandom number and the proof. Anyone with a public key and proof can check if the number was actually obtained from the given input but cannot receive it preemptively.
@@ -102,6 +110,7 @@ For each epoch in Praos, there is pre-agreed nonce value, which all participants
 If several leaders are selected, a fork occurs, even if they are all honest. In the case of a fork, honest parties should choose the chain they received first. It means that leaders who transfer their blocks faster have a greater chance of being in the longest chain.
 
 ### Ouroboros Genesis
+
 Ouroboros Genesis [44] was developed with a goal to create a PoS protocol that could work correctly in conditions similar to Bitcoin. To do this, the concept of Dynamic Availability was introduced. This involves an analysis of the blockchain protocol in the environment with the following characteristics:
 
 > * Parties connect and disconnect as they wish
@@ -115,11 +124,12 @@ The main improvement that Ouroboros Genesis brought is the new chain selection p
 <img width="50%" alt="Figure 5.4 – Main chain selection scheme" src="/resources/img/volume-2/5.1-Proof-of-stake-consensus-algorithms/Figure-5.4-Main-chain-selection-scheme.png"/> 
 
 ### Main advantages and disadvantages of proof-of-stake
+
 Now that we have considered the basic principles of proof-of-stake and the specific implementations of accounting systems based on this protocol, let's highlight its advantages, which are more notable when comparing this protocol with proof-of-work.
 
-> * No extensive computational power needed
-> * The right to create blocks depends not on the computational power but on the amount of coins on a particular balance (and in some cases on the characteristics of these coins)
-> * No dedicated hardware is needed to generate blocks
+> * *No extensive computational power needed*
+> * *The right to create blocks depends not on the computational power but on the amount of coins on a particular balance (and in some cases on the characteristics of these coins)*
+> * *No dedicated hardware is needed to generate blocks*
 
 The main advantage of proof-of-stake systems is that extensive computational power is not needed to participate in the transaction validation: any personal computer with an appropriate software and enough coins on the wallet balance can participate in forging. Moreover, as we mentioned earlier, in systems such as NEM, coins can be delegated to a supernode; in this case, the participant does not even need to constantly keep the computer turned on.
 
@@ -129,20 +139,21 @@ The last important advantage is directly related to the previous two. In order t
 
 However, proof-of-stake systems have the following disadvantages:
 
-> * A one-time issuance is a more centralized approach compared to the permissionless coin mining, which is extended over a certain period of time.
-> * Systems based on the proof-of-stake protocol are prone to more attacks that are easier to implement than, for example, proof-of-work-specific attacks.
+> * *A one-time issuance is a more centralized approach compared to the permissionless coin mining, which is extended over a certain period of time.*
+> * *Systems based on the proof-of-stake protocol are prone to more attacks that are easier to implement than, for example, proof-of-work-specific attacks.*
 
 ### Basic types of attacks on proof-of-stake systems
 Now let's look at some specific attacks aimed at proof-of-stake systems:
 
-> * Nothing-at-stake
-> * Precomputing
-> * Fake stake
-> * Coin age accumulation attack
-> * Short-range attacks
-> * Long-range attacks
+> * *Nothing-at-stake*
+> * *Precomputing*
+> * *Fake stake*
+> * *Coin age accumulation attack*
+> * *Short-range attacks*
+> * *Long-range attacks*
 
 ### Nothing-at-stake attack
+
 The idea of nothing-at-stake is based on an assumption that an attacker can easily build the alternative chain of blocks that other validators will support since they can easily work on both chains simultaneously and it costs them nothing in terms of computing power. Thus, a situation can occur when all validators are working on several chains at the same time (fig, 5.5 and 5.6).
 
 <img width="40%" alt="Figure 5.5 – An example when the node behaves correctly in the case of a fork" src="/resources/img/volume-2/5.1-Proof-of-stake-consensus-algorithms/Figure-5.5-An-example-when-the-node-behaves-correctly-in-the-case-of-a-fork.jpg"/> 
@@ -170,21 +181,25 @@ The main risk of nothing-at-stake is that an attacker can perform double spendin
 In real conditions, such a situation is extremely unlikely since it assumes that absolutely all validators will support each new block. In existing systems, there will always be honest nodes that will not support alternative chains. Thus, Alice will have to put some of the validators up to work on her chain or increase her stake.
 
 ### Precomputation attack
+
 If a validator node has significant processing power, it can affect the hash of the current block in order to increase the chance to generate the next one. If calculations show that the next block will belong to another user, the attacker changes the transaction parameters and tries again. The effectiveness of this attack depends on the attacker's stake and the total number of validators in the system.
 
 To prevent such attacks, a certain degree of randomness should be added to the block generation process.
 
 ### Fake stake attack
+
 This attack relies on the fact that some consensus algorithm implementations based on proof-of-stake do not verify a coinstake transaction before placing a block in RAM or on a hard disk. Coinstake transaction is a special transaction that a node sends to itself when generating a block. As a result, an attacker can cause the victim node to fail by filling its hard drive or RAM with fake data even with a very small number of coins (or no coins at all).
 
 The problem is that in many PoS systems (for example, HTMLCoin, Emercoin, Qtum, etc.), when blocks are distributed over the network they are divided into two separate messages: Block and Header. Nodes request Block only after Header is validated and included in the longest chain. Since the coinstake transaction is contained in Block, the node will not be able to validate Header without it. Therefore, it has to store Header directly in RAM, which gives an attacker the possibility to fill the victim’s RAM with counterfeit transactions.
 
 ### Coin age accumulation attack
+
 This attack was possible in early versions of systems that used the coin age mechanism. An attacker with a certain stake could wait for a long time and gain almost complete control over the network.
 
 Currently, in such systems as Peercoin, Novacoin, and Blackcoin, there is a maximum coin age restriction equal to 90 days.
 
 ### Short-range attacks
+
 To perform a short-range attack, the malefactor creates an alternative chain starting with one of the recent blocks and tries to overtake the main one, convincing participants to switch to his version. It is more profitable for validators to work on several chains at the same time since it increases their income and the chances that the version they are working on will turn out correct.
 
 However, as you remember from the previous sections, some PoS-systems, such as Nxt, use mechanisms based on specific characteristics that allow predicting who will work on the new block next.
@@ -192,6 +207,7 @@ However, as you remember from the previous sections, some PoS-systems, such as N
 An alternative approach to protect against short-range attacks is forcing validators to pledge a certain amount of coins before they get the right to participate in the process of generating blocks. Validators that sign conflicting blocks will lose their pledge.
 
 ### Long-range attacks
+
 The long-range attack is based on the method of trying to rewrite the blockchain history starting with the genesis block, since unlike in PoW-based systems, it does not require extensive computational resources. Moreover, an attacker may also try to gain access to the private keys of the early system participants in order to use the corresponding coins for building an alternative chain.
 
 This attack can be prevented by limiting the depth at which validators can create an alternative blockchain. This method is used by many currently operating PoS systems.
@@ -211,6 +227,7 @@ The consensus algorithm will be based on the block selection rule. In order for 
 The rules cannot be modified without modifying the source code of already running nodes. Decentralized systems assume the presence of certain accounting rules, and there are always nodes that follow these rules. Of course, some malicious nodes may modify their software, but they will not be able to work with honest nodes, and any attempts to modify the protocol or its rules will fail.
 
 ## 5.2 Delegated proof-of-stake as a consensus algorithm
+
 DPoS (delegated proof-of-stake) is a consensus algorithm for the decentralized environment that was created as an alternative to PoW (Bitcoin proof-of-work) and PoS (Peercoin or NXT proof-of-stake). DPoS was developed in 2014 in the context of the Graphene project. It was used in Bitshares for the first time and later in Steemit and EOS. DPoS solves the main problem of PoW — significant energy consumption. To solve it, DPoS provides the right to generate blocks only to validator nodes that were chosen during the voting process and have the hardware that meets specific computational power requirements.
 
 DPoS also solves the main problem of PoS that is the need for the user to launch a full node so that his coins can take part in the consensus process. In DPoS this problem is solved by the presence of full-node validators that process transactions. To allow for his coins taking part in the consensus process, a user just needs to send a special transaction with a vote.
@@ -220,6 +237,7 @@ Compared to the proof-of-stake, users’ coins in DPoS systems can take part in 
 This consensus algorithm works best for accounting systems designed for the presence of both ordinary users (mobile clients) and various companies (full-fledged nodes that act as validators). DPoS is designed to maintain a high frequency of generating new blocks and has a high transaction capacity compared to other consensus algorithms that operate in a distributed, trustless environment. DPoS is well suited for systems with open access that don’t need user identification.
 
 ### DPoS algorithm
+
 The working conditions of this consensus algorithm differ from PoW and PoS. Validators need to disclose their identities and declare their readiness to continuously support full nodes, timely verify transactions, and form new blocks.
 
 The consensus algorithm, which is based on the modified proof-of-stake, allows every user to be elected as a validator. Voting is performed among all users and the vote weight is defined by the voter’s asset amount. Since users can see who got the right to generate new blocks, they can form a strict sequence of validators and optimize the block generation and validation process. This enables the platform to reduce the block generation time and increase capacity. It was tested in practice that with several dozens of validators, it is possible to achieve a block generation frequency of 1–2 Hz.
@@ -231,11 +249,11 @@ Based on the voting results, N (a natural number decided by the community, usual
 <img width="50%" alt="Figure 5.8 – Consensus achievement stages" src="/resources/img/volume-2/5.2-Delegated-proof-of-stake-as-a-consensus-algorithm.png/Figure-5.8-Consensus-achievement-stages.png"/> 
 
 Validators participate in:
-> * Supporting full nodes in a stable operating condition
-> * Collecting and verifying transactions from all users 
-> * Block generation
-> * Signing and publishing blocks
-> * Difficult recovery of a lost dataset
+> * *Supporting full nodes in a stable operating condition*
+> * *Collecting and verifying transactions from all users* 
+> * *Block generation*
+> * *Signing and publishing blocks*
+> * *Difficult recovery of a lost dataset*
 
 Validators publish blocks with a hash value of the last block they agree with. If all validators are honest and agree with each other, then the blockchain looks as follows (Fig. 5.9 (1)). If there is a disagreement, for example, validator C does not agree with the block of validator B, then the chain will fork (Fig. 5.9 (2)). The main chain will be determined according to decisions of other validators.
 
@@ -250,9 +268,11 @@ It is worth noting that, for example, BitShares users, in addition to selecting 
 In this algorithm, the weight of each delegate is directly dependent on users. By voting, users can take away the weight from one by redirecting or removing bids if delegates begin to act maliciously or stop performing their work. Notably, changes in the votes come into effect after the epoch ends. Over time, the structure of the validator group can be changed by the voting as a result of which the inactive participants lose their rights while the working ones are awarded.
 
 ### How is DPoS system launched?
+
 At the beginning of the DPoS system, when there are no users who trust each other, there are no validators among them to generate blocks. Thus, the system lacks the ability for users to become validators, and it becomes impossible to launch the system. That’s why before launching a system with this consensus algorithm, the community usually votes on a different platform. This voting allows choosing users who will work as validators and play other system roles. Community members also can announce the first list of validators and other participants that contains their trusted users.
 
 ### How does DPoS work?
+
 Users who want to be validators run a full node and declare their willingness to generate blocks. To do this, they form transactions by creating a new delegate. After the delegate was nominated, users who want to vote form a transaction with a corresponding operation.
 
 For example, Alice and Bob want to become validators (Fig. 5.10). To do this they form transactions that contain the operation of a new delegate creation. These transactions are added to the ledger with the publication of block n. Eve and Carol have 115 and 564 coins on their balance respectively, and they both want to vote. To do this, they form transactions with a voting operation that appear in the ledger with the publication of one of the following blocks, for example, n + 1.
@@ -276,6 +296,7 @@ Voted for Bob: Will (5).
 In the end, Carol, Eve and Alice are considered to be equal validators since they have the largest number of votes, and Bob remains a delegate. In this case, the consensus is achieved by publishing blocks by an alternating group of validators. Suppose some user wants to conduct two conflicting transactions, TxA and TxB. Validators Alice, Caro, and Eva verify them and publish only the transaction they agree with. In this situation, there are two options:
 
 #### Option 1
+
 Validators agree with TxB (fig. 5.12). Eve agrees with TxB; Alice agrees with TxB, meaning she agrees with Eve; Carol agrees with TxB and therefore agrees with Alice. The chain does not fork.
 
 <img width="50%" alt="Figure 5.12 – Block formation if every validator agrees with the previous block state" src="/resources/img/volume-2/5.2-Delegated-proof-of-stake-as-a-consensus-algorithm.png/Figure-5.12-Block-formation-if-every-validator-agrees-with-the-previous-block-state.png"/> 
@@ -303,20 +324,22 @@ As a result, Bob, Eve, and Alice are considered equal validators since they have
 There are several main criteria. Do users trust validators? Are validators anonymous? Is their number constant or does it change over time? How are validators connected? Only by using these indications can you distinguish different types of accounting systems with different consensus algorithms.
 
 ## 5.3 BFT-class algorithms
+
 Not all accounting systems require the same decentralization level as in Bitcoin, but at the same time, they need much higher capacity and a lower transaction confirmation time. Moreover, it often makes sense to create a permissioned accounting system with an ability to assign validators exclusively in the manual mode. BFT consensus protocols work in these specific conditions.
 
 In this section, we will take a look at the operation principles of the most widespread protocols of such class. We will also make a comparative characteristic of these protocols and explain what ensures the fault tolerance of the BFT-type systems.
 
 ### Practical BFT algorithm
+
 Practical Byzantine Fault Tolerance (pBFT) [45] is the consensus algorithm designed to work in asynchronous decentralized systems. All nodes in the system are connected, and at each moment of time, one of them is the leader. The purpose of the protocol is to achieve agreement between all honest nodes when the number of failed nodes is no more than *(n − 1) / 3*, where n is the total number of validator nodes in the system. In BFT terms, failed nodes are not only those who are inactive or unpredictable but also those who intentionally collude to disrupt the work of honest nodes.
 
 The algorithm consists of 5 main stages, from the proposal to add transactions to the final update of the accounting system’s state.
 
-> * Request
-> * Pre-prepare
-> * Prepare
-> * Commit
-> * Reply
+> * *Request*
+> * *Pre-prepare*
+> * *Prepare*
+> * *Commit*
+> * *Reply*
 
 Next, we will take a look at the characteristics of these stages in pBFT, and then we will examine how the number of honest nodes affects the ability of the system to reach an agreement on updating the state of the accounting system.
 
@@ -328,7 +351,7 @@ Next comes the *pre-prepare* stage, during which the leader node sends the forme
 
 <img width="40%" alt="Figure 5.16 – Block transmission scheme" src="/resources/img/volume-2/5.3-BFT-class-algorithms/Figure-5.16-Block-transmission-scheme.png"/> 
 
-During the next step (*prepare*), the remaining validators exchange the received block with each other (each validator sends a block to all other validators). The block is sent with the prepare message and the signature of a validator that sent it (Fig. 5.17). Thus, each validator states that it has verified this block and is ready to confirm it. The maximum number of messages at this stage is *(n − 1) ∗ (n − 1)*, where $n$ is the total number of validators. If some nodes are failed and do not respond, the minimum number of messages in the network is *(n − 1 − f) ∗ (n − 1)*, where *f* is the number of failed nodes *(fmax = (n − 1) / 3)*.
+During the next step (*prepare*), the remaining validators exchange the received block with each other (each validator sends a block to all other validators). The block is sent with the prepare message and the signature of a validator that sent it (Fig. 5.17). Thus, each validator states that it has verified this block and is ready to confirm it. The maximum number of messages at this stage is *(n − 1) ∗ (n − 1)*, where $n$ is the total number of validators. If some nodes are failed and do not respond, the minimum number of messages in the network is *(n − 1 − f) ∗ (n − 1)*, where *f* is the number of failed nodes _(f<sub>max</sub> = (n − 1) / 3)_.
 
 <img width="40%" alt="Figure 5.17 – Block exchange scheme" src="/resources/img/volume-2/5.3-BFT-class-algorithms/Figure-5.17-Block-exchange-scheme.png"/> 
 
@@ -356,6 +379,7 @@ Table 5.1
 Let's take a closer look at how nodes reach consensus, and what happens if multiple validator nodes fail or behave maliciously.
 
 ### Consensus reaching process
+
 Imagine a situation when 5 validators take part in reaching an agreement using the pBFT protocol, while one of them is a leader. In such conditions, the largest number of failed nodes is 1 (if 2 or more nodes fail, consensus will not be reached).
 
 First, let’s look at an example when all nodes are honest and none of them failed (Fig. 5.20). The process of reaching consensus can be broken down into the following steps.
@@ -403,10 +427,10 @@ This approach can significantly reduce the overall network load by reducing the 
 
 The algorithm implies 4 stages through which nodes reach consensus regarding the registry state change (Fig. 5.24).
 
-> * Prepare
-> * Pre-commit
-> * Commit
-> * Decide
+> * *Prepare*
+> * *Pre-commit*
+> * *Commit*
+> * *Decide*
 
 At each of these stages, the leader node forms the so-called quorum certificate, which contains the signatures of the validators. A threshold signature mechanism is used here: nodes proceed to the next stage when the certificate gains the number of signatures that exceeds the required threshold *2f + 1*. Before the beginning of each next stage, the leader sends the certificate of the previous stage to validators. Nodes verify that the required threshold in the certificate has been reached and vote regarding the next stage of consensus.
 
@@ -453,6 +477,7 @@ In theory, there are no severe restrictions. However, the most effective number 
 To add or delete validators, *2f + 1* other validators must agree to it. Therefore, in order to become a validator, you need to get the approval from the current validators and establish connections with them.
 
 ## 5.4 FBA as a consensus algorithm
+
 FBA (Federated Byzantine Agreement) is a BFT-based consensus algorithm. The main difference of FBA is that the interaction of nodes in the system is determined dynamically by the participants themselves. Here the node becomes a validator for those who trust it. In the financial technology field, the FBA algorithm was first successfully implemented in the Stellar platform.
 
 In FBA, the node owner must independently select a group of nodes whose owners she trusts (expecting that they will not violate the rules). Thus, trust can be established in one direction, so node A can trust decisions of node B, but B will not necessarily trust A.
@@ -460,6 +485,7 @@ In FBA, the node owner must independently select a group of nodes whose owners s
 FBA allows consensus to be reached among an unlimited number of validators who do not know each other; moreover, the total number of validators may not be known.
 
 ### Terms quorum, quorum slice, and quorum intersection
+
 The set that includes the node itself and nodes that it trusts is called *quorum slice*. One node may have several slices.
 
 The quorum for node A are all nodes from its slice as well as the nodes in slices of these nodes, in other words, everyone who A trusts and those who trust A. Moreover, a quorum can be deeper, including those trusted by nodes that A trusts. Quorum is a closed set of nodes, which is sufficient to reach an agreement in a distributed system.
@@ -477,11 +503,13 @@ Figure 5.27 displays the quorum intersection where node B is an intersection for
 In fact, a node can belong to several quorum slices, and the quorum slice itself can contain another quorum slice. When nodes try to reach consensus, they exchange messages with each other and agree only if the number of those agreed exceeds a predetermined threshold. The threshold should be no less than ⅔ of the number of nodes in the quorum slice.
 
 ### Blocking set
+
 FBA also introduces the concept of a *blocking set*. The *blocking set* for the node N is a set that contains at least one node from each of N’s quorum slices (Fig. 5.28). The blocking set can convince a participant to make a certain decision.
 
 <img width="30%" alt="Figure 5.28 – An example of a blocking set consisting of nodes B, D, F" src="/resources/img/volume-2/5.4-FBA-as-a-consensus-algorithm/Figure-5.28-An-example-of-a-blocking-set-consisting-of-nodes-B,D,F.png"/> 
 
 ### Disjoint quorums and divergent state
+
 *Disjoint quorums*: two quorum slices that have no nodes intersected directly or indirectly form individual quorums and as a result, come to different decisions, leading to the *divergent state*. The *divergent state* is the state of a system after it has been divided into several independent quorums; while each of them maintains its own transaction history and does not affect the rest.
 
 In PBFT systems, fault tolerance is guaranteed as long as the number of faulty nodes does not exceed ⅓ of the total number of nodes in the system. In the case of FBA, this number varies from 0 to ⅓ depending on the structure of quorum slices. Fault tolerance of FBA will approach zero if a considerable number of nodes create quorum slices with the same number of nodes. If these nodes fail, the system will stop functioning.
@@ -492,6 +520,7 @@ An example of such a situation is shown in Figure 5.29. In this case, two quorum
 Federated voting" src="/resources/img/volume-2/5.4-FBA-as-a-consensus-algorithm/Figure-5.29-An-example-of-disjoin-quorums.png"/> 
 
 ### Federated voting
+
 To achieve consensus in the FBA systems, a federated voting mechanism is used (Fig. 5.30). It consists of three stages: voting, accepting and confirming [46; 47]. First, each node can *vote* for a specific statement regarding, for example, adding a new transaction block. By voting for the statement, the node (if it’s not malicious) will never vote for the contradicting one.
 
 <img width="40%" alt="Figure 5.30 – Possible node stated in the federated voting process" src="/resources/img/volume-2/5.4-FBA-as-a-consensus-algorithm/Figure-5.30-Possible-node-stated-in-the-federated-voting-process.png"/> 
@@ -501,6 +530,7 @@ After the voting phase, the nodes proceed to the *acceptance* phase. A node can 
 However, the blocking set is not a quorum since an interested party could impose its decisions on the node taking control over the nodes from its blocking set. For this reason, there is another step called *confirmation*. The idea is that a node must detect a *quorum* where all nodes accept this statement. A node confirms the statement if all nodes of its quorum also confirm it.
 
 ### Using FBA in Stellar
+
 SCP (Stellar Consensus Protocol) [47] is a consensus protocol based on FBA. The Stellar Consensus Protocol uses a federated voting mechanism to ensure consistent results and system operability. During the process, a large number of rounds of federated voting are conducted for various statements until one of them passes through all the stages.
 
 The first round of federated voting is the *nomination* phase when the nodes vote to accept a specific transaction block. At the first stage, nodes generate candidate values through federated voting. The value is considered to be a candidate if the node has *confirmed* its nomination. A node without candidates can nominate any value. After that, it can only accept and confirm nomination statements from other nodes according to the federated voting procedure.
@@ -532,6 +562,7 @@ The number of malicious nodes with which an FBA system is able to reach consensu
 <img width="30%" alt="Figure 5.33 – Example of a network with one common node" src="/resources/img/volume-2/5.4-FBA-as-a-consensus-algorithm/Figure-5.33-Example-of-a-network-with-one-common-node.png"/> 
 
 ### Decentralization level of the Stellar network
+
 During the analysis of interactions between Stellar nodes in 2019, it became evident that there are about 35 active validators with a monthly uptime of above 90%. In addition, more than half of the quorum slices consist of 10 or less validators [73]. The first reason for the small number of validators is the lack of motivation to participate in the system in this role.
 
 Most of currently active validator nodes are owned either by the Stellar Development Foundation itself or by partner companies. For example, IBM uses Stellar in a blockchain-based payment system, while Satoshi Pay and tempo.eu.com are developing applications based on the Stellar platform. They are motivated to keep the system operating because their services depend on Stellar. However, they do not receive any actual rewards as, for example, in proof-of-work or proof-of-stake systems.
@@ -549,6 +580,7 @@ Among other things, it has been found that quorum slices of most IBM nodes consi
 In the Stellar case, a security failure (such as the possibility of double-spending) is more critical than the loss of liveness (in traditional banking systems transaction delays are still way longer). Therefore, participants choose (and must choose) large quorum slices, which are more likely to be in the state of agreement than in the working state.
 
 ### FBA compared to other consensus algorithms
+
 We reviewed the basic concepts, operating principles, and limitations of the Federated Byzantine Agreement. Now let's compare it to other common consensus algorithms to get a better understanding of the types of systems it is applicable to.
 
 Compared to Practical Byzantine Fault Tolerance, another protocol from the BFT family, the Federated Byzantine Agreement provides a distinct advantage in scalability because it does not require nodes to exchange a lot of messages between each other. It allows building a network with a large number of participants.
@@ -556,6 +588,7 @@ Compared to Practical Byzantine Fault Tolerance, another protocol from the BFT f
 However, when comparing FBA and proof-of-work, the latter has an advantage in terms of anonymity of participants, and it provides greater decentralization since everyone with an appropriate hardware can participate in the block generation process. As was described earlier in this section, Stellar, which is the most prominent example of the FBA protocol usage, has a tendency towards a centralized structure since validators prefer to include nodes in their quorum slices that they definitely trust.
 
 ## 5.5 Hashgraph
+
 Hashgraph is both a way to organize a transaction database and a consensus algorithm. The first version of this algorithm assumes that there is a fixed number of validators and more than ⅔ of them are honest. The database organization method in hashgraph is similar to constantly branching blockchain, where each block from each chain is connected not only with the previous one but also with the blocks of other chains.
 
 *Hashgraph* is a data structure that stores the history of data distribution between nodes (Fig. 5.34).
@@ -565,15 +598,17 @@ Hashgraph is both a way to organize a transaction database and a consensus algor
 This algorithm was developed by Dr. Leemon Baird, co-founder and technical director of Swirlds in 2016, as an alternative to consensus algorithms involving a limited number of known validators and a leader. The disadvantage of leader-based algorithms is that leaders are prone to DoS attacks, and as a result, the entire system stops working until the leader is changed [49]. One of the advantages of this algorithm is that it provides the asynchronous byzantine fault tolerance, which means that its operation doesn’t depend on the time spent on message delivery. In the current version of the algorithm, the validation process is permissioned, meaning that in order to become a validator, the node needs to get permission from other validators.
 
 ### Working principle of hashgraph
+
 In hashgraph, each validator node generates events instead of blocks. An event is an entry that a validator creates and distributes to confirm transactions. The hash graph state is then exchanged with another validator.
 
 The lifecycle of an event is as follows:
 
-> * Creation
-> * Distribution
-> * Confirmation
+> * *Creation*
+> * *Distribution*
+> * *Confirmation*
 
 ### Event creation
+
 Each validator node can create a signed event at any moment of time. It can include both its own transactions, the ones it receives from other nodes or may not include any transactions at all (Table 5.3). Typically, an event does not need to include many transactions, since in a hashgraph, each validator can create a new event at any given time.
 
 Table 5.3
@@ -584,6 +619,7 @@ Table 5.3 shows that each event contains links to two previous events, while eac
 <img width="42%" alt="Figure 5.35 – Forming a new event based on A and B" src="/resources/img/volume-2/5.5-Hashgraph/Figure-5.35-Forming-a-new-event-based-on-A-and-B.png"/> 
 
 ### Event distribution
+
 For event distribution, the *gossip protocol* is used [50]. Each node is connected to other nodes. According to the protocol, when one node receives a message from another node, it starts transmitting this message to others in a random order. So, in the first place, one node sends a message, then two, four, eight, and so on. As a result, the number of nodes that are receiving the message increases exponentially.
 
 Suppose Alice wants to distribute her new event on the network using the gossip protocol:
@@ -616,6 +652,7 @@ Suppose Alice wants to distribute her new event on the network using the gossip 
 Each node stores a hash graph data structure obtained by exchanging information about it with other nodes. Thus, the data structure stored in each node is constantly updated and synchronized with the others. As a result, most nodes have the same data structure. Each event is stored in memory as a byte sequence signed by the author.
 
 ### Event confirmation
+
 Having a set of events with transactions, it is important to know which one was earlier and which was later. Therefore, events should be ordered in time, and this order should be the same for each node. The order is established by consensus achieved through timestamps for each event. Once an event has a timestamp accepted by the majority of nodes, it can be considered confirmed.
 
 In order to reach a consensus on event timestamps, the hash graph is divided into rounds (Fig. 5.41).
