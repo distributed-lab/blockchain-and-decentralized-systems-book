@@ -1131,7 +1131,11 @@ alternative chains and one is ahead of the other by 5 blocks given that the same
 in both chains, the probability that the shorter chain outruns the longer one is very small. In his article [15], 
 Satoshi Nakamoto mathematically proves this on the basis of the following proposition.
 
-[Formula]
+$$ q_{z}=
+\begin{cases}
+1 & \text{ if } p \leq q \cr \\ 
+(q/p)^{z} & \text{ if } p \gt q 
+\end{cases} $$
 
 where p is the probability that the next block will be created by an honest node; q is the probability that the next 
 block will be created by an attacker; and qz is the probability that an attacker will someday catch up with the main 
