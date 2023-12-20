@@ -28,7 +28,7 @@ For example, hash functions work well for this need. A user can bet on the horse
 
 The above-described approach has some issues since each time the commitment for the number 2 is provided, its hash value will be the same. Hence, the verifier will be able to reveal the initial knowledge.
 
-> _Note. If the range of possible knowledge options is small (for example, only 10 horses participate in the race), then having received the hash value of a specific number, the verifier can quickly iterate over all possible values and reveal the value of the secret. However, even if the number of options is large (for example, $2^{256}$), the commitments for the same knowledge will not differ from each other. If one provides a hash value of 2, the verifier can save this mapping (commitment–knowledge). If after some time one provides a commitment for the same knowledge, the verifier can quickly reveal the secret._
+> _Note. If the range of possible knowledge options is small (for example, only 10 horses participate in the race), then having received the hash value of a specific number, the verifier can quickly iterate over all possible values and reveal the value of the secret. However, even if the number of options is large (for example, 2<sup>256</sup>), the commitments for the same knowledge will not differ from each other. If one provides a hash value of 2, the verifier can save this mapping (commitment–knowledge). If after some time one provides a commitment for the same knowledge, the verifier can quickly reveal the secret._
 
 What is the way to solve this? All is quite simple: imagine that the prover sends the verifier the value 2 with a few random bytes appended to it (Fig. 5.3). Since the hash function is resistant to collisions and finding the inverse image, this property can be used so that the verifier cannot disclose the knowledge when having only commitments, and the prover is unable to change this value [91].
 
@@ -36,7 +36,7 @@ What is the way to solve this? All is quite simple: imagine that the prover send
 
 Although hash functions can provide these properties, they have nothing to do with homomorphism, which is a very important property for zero-knowledge proofs.
 
-> _Note. Let us recall that homomorphism means the ability to perform certain mathematical operations with commitments and at the same time ensure the commutativity and associativity of these operations. If we use hash values as commitments, then $\mathrm{hash} (a)+ \mathrm{hash} (b) \neq \mathrm{hash} (a+b)$; this means that we cannot operate over commitments to obtain the correct result_ [92]_._
+> _Note. Let us recall that homomorphism means the ability to perform certain mathematical operations with commitments and at the same time ensure the commutativity and associativity of these operations. If we use hash values as commitments, then_  $\mathrm{hash} (a)+ \mathrm{hash} (b) \neq \mathrm{hash} (a+b)$_; this means that we cannot operate over commitments to obtain the correct result_ [92]_._
 
 
 ### Pedersen commitments
@@ -51,7 +51,7 @@ Now, the prover can provide one commitment to the verifier and then send him a s
 
 ![Figure 5.5 – Providing a single commitment to a wide range of knowledge](/resources/img/volume-3/5.1-Methods-of-building-cryptographic-commitments/F-5.5-single-commitment-to-set-of-knowledge-values.png "Figure 5.5 – Providing a single commitment to a wide range of knowledge")
 
-> _Note. In this subsection, we examine Pedersen commitments that use elliptic cryptography. However, there still exists a “classic” implementation of this scheme. According to the protocol, the parameters are h and g (not elliptic curve points but big prime numbers). The prover holds the secret a and generates a random value r. The proof is the value $C=g^{a}h^{r}$. The verifier, receiving the values of a and r in the same way, can verify that the commitment is satisfied._
+> _Note. In this subsection, we examine Pedersen commitments that use elliptic cryptography. However, there still exists a “classic” implementation of this scheme. According to the protocol, the parameters are h and g (not elliptic curve points but big prime numbers). The prover holds the secret a and generates a random value r. The proof is the value_ $C=g^{a}h^{r}$_. The verifier, receiving the values of a and r in the same way, can verify that the commitment is satisfied._
 
 
 ### Knowledge substitution and "nothing up my sleeve" approaches
@@ -76,7 +76,7 @@ Imagine that you simply take the hash value of any data and check whether that v
 
 In practice, to obtain the point _H_, the hash value of the _G_ point is most often taken and concatenated with a counter _i_ until a point on the curve (more precisely, a valid _x_ coordinate) is found: $x_{H}= \mathrm{hash} (G \Vert i)$.
 
-> _Note. To check whether the x coordinate is chosen correctly, it is necessary to calculate the corresponding integer y value from the equation of the elliptic curve: $y^{2}=ax^{3}+bx+c$. The obtained coordinates will be the coordinates of the H point._
+> _Note. To check whether the x coordinate is chosen correctly, it is necessary to calculate the corresponding integer y value from the equation of the elliptic curve:_ $y^{2}=ax^{3}+bx+c$_. The obtained coordinates will be the coordinates of the H point._
 
 
 ### Single commitment for a vector of values

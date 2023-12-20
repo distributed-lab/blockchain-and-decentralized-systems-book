@@ -87,7 +87,7 @@ Let’s now look at a situation in which Bob wants to trick Alice and steal her 
 
 Here we see that the value of the aggregated key is equal to the value of Bob’s public key. Accordingly, Bob knows the private key, which he can use to calculate the signature that will be verified using the specified public key. Thus, Bob does not need Alice’s confirmation to unlock coins that are tied to that address.
 
-> _Note. While conducting this attack, Bob does not know the value of the secret key that would correspond to the public key_ $X_{\text{B}}-X_{\text{A}}$_. This is due to the properties of elliptic curves. However, this attack can be performed in the basic case, since Alice does not check whether Bob actually knows the secret._
+> _Note. While conducting this attack, Bob does not know the value of the secret key that would correspond to the public key_ X<sub>B</sub>-X<sub>A</sub>. This is due to the properties of elliptic curves. However, this attack can be performed in the basic case, since Alice does not check whether Bob actually knows the secret._
 
 As one of the solutions to this problem one can use an additional iteration after exchanging keys, during which participants must prove that they know the corresponding private keys. To do this, each transaction participant can generate a random nonce value and ask the counterparty to sign it, and then verify the signature with the previously obtained public key (Fig. 2.11). However, this method requires four additional iterations and is not the most optimal solution (in contrast to the method discussed later).
 
