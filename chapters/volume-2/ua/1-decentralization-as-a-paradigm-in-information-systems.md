@@ -576,7 +576,7 @@ IFPS влаштований так само, як і BitTorrent, а саме п�
 Кожен IPFS-файл має структуру, що наведена в таблиці 1.6.
 
 <p align="center">
-<img src="/resources/img/volume-2/1.5-Architecture-and-features-of-IPFS-protocol/Таблица-1.6.png" alt="Таблиця 1.6" width="70%"/>
+<img src="/resources/img/volume-2/1.5-Architecture-and-features-of-IPFS-protocol/Table-1.6.png" alt="Таблиця 1.6" width="70%"/>
 <p>
 
 Файли в IPFS можна розділити на чотири основні типи.
