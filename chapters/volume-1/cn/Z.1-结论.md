@@ -1,4 +1,6 @@
-**结论**
+# [7 开放系统中的用户隐私](/chapters/volume-1/cn/7-开放系统中的用户隐私.md)
+
+# 结论
 
 区块链和分散化的主题从一开始就引起了很大的争议。这个行业不仅包含了计算机科学、博弈论、心理学、投资和金融方面的创新，而且混合了不同的政治观点。仅仅提到比特币就很容易引发激烈讨论。
 
@@ -8,12 +10,18 @@
 
 我们的下一个目标是创建一个分散化技术的“地图”：这些技术的应用领域、关键过程、安全性、可扩展性、身份管理、资源消耗等。
 
+___
+
 作者将感激有益的评论和对改进本书的建设性建议。我们将考虑任何改进材料的建议，包括插图、表格、例子、对文体的评论、材料叙述的顺序，以及包含补充材料。
 
-请将意见和建议发送至[book@distributedlab.com](mailto:book@distributedlab.com) 
+请将意见和建议发送到以下地址。
 
-如果确实想对作者表示感谢，请毫不犹豫。
+<book@distributedlab.com>
 
-比特币捐赠地址
+如果确实想对作者表示感谢，请毫不犹豫捐赠。
 
-**1BooKnbm48Eabw3FdPgTSudt9u4YTWKBvf**
+比特币捐赠地址  
+![比特币捐赠地址的QR码](/resources/img/volume-3/Z.1-Conclusion/QR-code-for-bitcoin-donation-address.png "比特币捐赠地址的QR码")  
+1BooKnbm48Eabw3FdPgTSudt9u4YTWKBvf
+
+# [考试问题](/chapters/volume-1/cn/Z.2-考试问题.md)
